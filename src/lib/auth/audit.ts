@@ -62,7 +62,12 @@ export type AuditAction =
   | "insight_created"
   | "insight_updated"
   | "insight_published"
-  | "insight_unpublished";
+  | "insight_unpublished"
+  /* Phase H — leads lifecycle. */
+  | "lead_created"
+  | "lead_status_changed"
+  | "lead_note_added"
+  | "lead_exported";
 
 export type AuditInput = {
   action: AuditAction;
@@ -83,12 +88,13 @@ export type AuditInput = {
     | "pages"
     | "services"
     | "projects"
-    | "insights";
+    | "insights"
+    | "leads";
   resourceId?: string | number | null;
   actorID?: string | number | null;
   actorEmail?: string | null;
   /** When present, request metadata (IP, user agent, method, path) is recorded. */
-  req?: PayloadRequest;
+  req?: PayloadRequest | { headers?: Headers; method?: string; pathname?: string };
   /** Extra non-secret context worth keeping. Never put credentials or tokens here. */
   details?: Record<string, unknown>;
   /**
@@ -103,7 +109,15 @@ export type AuditInput = {
   detached?: boolean;
 };
 
-const clientIp = (req?: PayloadRequest): string | null => {
+type RequestLike =
+  | PayloadRequest
+  | {
+      headers?: Headers | { get(name: string): string | null };
+      method?: string;
+      pathname?: string;
+    };
+
+const clientIp = (req?: RequestLike): string | null => {
   try {
     const headers = req?.headers;
     if (!headers || typeof headers.get !== "function") return null;
@@ -115,7 +129,7 @@ const clientIp = (req?: PayloadRequest): string | null => {
   }
 };
 
-const userAgent = (req?: PayloadRequest): string | null => {
+const userAgent = (req?: RequestLike): string | null => {
   try {
     const headers = req?.headers;
     if (!headers || typeof headers.get !== "function") return null;
@@ -149,10 +163,13 @@ export async function recordAuditEvent(payload: Payload, input: AuditInput): Pro
         summary,
         resourceType: resourceType ?? "system",
         resourceId: resourceId === null || resourceId === undefined ? null : String(resourceId),
-        actor: asActorID(actorID ?? req?.user?.id),
+        actor: asActorID(actorID ?? ("user" in (req ?? {}) ? (req as PayloadRequest)?.user?.id : undefined)),
         /* Automated writes (seeds, scripts, hooks without a request user) are attributed to
          * "system" so the log never shows an empty actor for a real change. */
-        actorEmail: actorEmail ?? (req?.user as { email?: string } | null)?.email ?? "system",
+        actorEmail:
+          actorEmail ??
+          ("user" in (req ?? {}) ? ((req as PayloadRequest)?.user as { email?: string } | null)?.email : undefined) ??
+          "system",
         occurredAt: new Date().toISOString(),
         context: {
           ip: detachedRequestMeta ? detachedRequestMeta.ip : clientIp(req),

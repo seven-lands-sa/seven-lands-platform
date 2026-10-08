@@ -75,6 +75,7 @@ export interface Config {
     services: Service;
     projects: Project;
     insights: Insight;
+    leads: Lead;
     'payload-kv': PayloadKv;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
@@ -90,6 +91,7 @@ export interface Config {
     services: ServicesSelect<false> | ServicesSelect<true>;
     projects: ProjectsSelect<false> | ProjectsSelect<true>;
     insights: InsightsSelect<false> | InsightsSelect<true>;
+    leads: LeadsSelect<false> | LeadsSelect<true>;
     'payload-kv': PayloadKvSelect<false> | PayloadKvSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
@@ -451,7 +453,11 @@ export interface AuditEvent {
     | 'insight_created'
     | 'insight_updated'
     | 'insight_published'
-    | 'insight_unpublished';
+    | 'insight_unpublished'
+    | 'lead_created'
+    | 'lead_status_changed'
+    | 'lead_note_added'
+    | 'lead_exported';
   summary: string;
   occurredAt: string;
   /**
@@ -479,6 +485,7 @@ export interface AuditEvent {
         | 'services'
         | 'projects'
         | 'insights'
+        | 'leads'
       )
     | null;
   resourceId?: string | null;
@@ -1659,6 +1666,66 @@ export interface Insight {
   _status?: ('draft' | 'published') | null;
 }
 /**
+ * طلبات المشاريع والتواصل الواردة من الموقع.
+ *
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "leads".
+ */
+export interface Lead {
+  id: number;
+  /**
+   * رقم مرجعي فريد تلقائي، مثل SL-20261009-XXXX
+   */
+  reference: string;
+  status: 'NEW' | 'CONTACTED' | 'QUALIFIED' | 'WON' | 'LOST' | 'SPAM';
+  name: string;
+  company?: string | null;
+  phone: string;
+  email?: string | null;
+  channel: 'whatsapp' | 'call';
+  timeline?: ('now' | 'quarter' | 'later' | 'unsure') | null;
+  mode: 'brief' | 'quick';
+  /**
+   * مصفوفة بمفاتيح المجالات المطلوبة في الطلب.
+   */
+  lands?:
+    | {
+        [k: string]: unknown;
+      }
+    | unknown[]
+    | string
+    | number
+    | boolean
+    | null;
+  goal: string;
+  notes?: string | null;
+  consent: boolean;
+  locale: 'ar' | 'en';
+  campaign?:
+    | {
+        [k: string]: unknown;
+      }
+    | unknown[]
+    | string
+    | number
+    | boolean
+    | null;
+  ipHash?: string | null;
+  /**
+   * سجل الملاحظات والمتابعات الداخلية لفريق العمل.
+   */
+  internalNotes?:
+    | {
+        text: string;
+        author?: string | null;
+        createdAt?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-kv".
  */
@@ -1713,6 +1780,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'insights';
         value: number | Insight;
+      } | null)
+    | ({
+        relationTo: 'leads';
+        value: number | Lead;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -2519,6 +2590,38 @@ export interface InsightsSelect<T extends boolean = true> {
   updatedAt?: T;
   createdAt?: T;
   _status?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "leads_select".
+ */
+export interface LeadsSelect<T extends boolean = true> {
+  reference?: T;
+  status?: T;
+  name?: T;
+  company?: T;
+  phone?: T;
+  email?: T;
+  channel?: T;
+  timeline?: T;
+  mode?: T;
+  lands?: T;
+  goal?: T;
+  notes?: T;
+  consent?: T;
+  locale?: T;
+  campaign?: T;
+  ipHash?: T;
+  internalNotes?:
+    | T
+    | {
+        text?: T;
+        author?: T;
+        createdAt?: T;
+        id?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema

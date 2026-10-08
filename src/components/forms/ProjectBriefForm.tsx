@@ -145,7 +145,7 @@ export function ProjectBriefForm({ mode = "brief", className, whatsappBase, phon
       const response = await fetch("/api/brief", {
         method: "POST",
         headers: { "content-type": "application/json" },
-        body: JSON.stringify({ ...data, campaign: campaignContext() }),
+        body: JSON.stringify({ ...data, locale, campaign: campaignContext() }),
       });
       if (!response.ok) throw new Error(String(response.status));
       setSubmitted(data);

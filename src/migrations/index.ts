@@ -7,6 +7,7 @@ import * as migration_20261007_213556_phase_e_shared_sections from './20261007_2
 import * as migration_20261008_102014_phase_e_about_contact_start from './20261008_102014_phase_e_about_contact_start';
 import * as migration_20261008_103522_phase_f_services_projects_insights from './20261008_103522_phase_f_services_projects_insights';
 import * as migration_20261008_103658_phase_f_service_glyph_registry from './20261008_103658_phase_f_service_glyph_registry';
+import * as migration_20261008_220122_phase_h_leads_collection from './20261008_220122_phase_h_leads_collection';
 
 export const migrations = [
   {
@@ -52,6 +53,11 @@ export const migrations = [
   {
     up: migration_20261008_103658_phase_f_service_glyph_registry.up,
     down: migration_20261008_103658_phase_f_service_glyph_registry.down,
-    name: '20261008_103658_phase_f_service_glyph_registry'
+    name: '20261008_103658_phase_f_service_glyph_registry',
+  },
+  {
+    up: migration_20261008_220122_phase_h_leads_collection.up,
+    down: migration_20261008_220122_phase_h_leads_collection.down,
+    name: '20261008_220122_phase_h_leads_collection'
   },
 ];

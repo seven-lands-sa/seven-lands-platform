@@ -9,6 +9,7 @@ import sharp from 'sharp'
 
 import { AuditEvents } from '@/collections/AuditEvents'
 import { Insights } from '@/collections/Insights'
+import { Leads } from '@/collections/Leads'
 import { lexicalEditor } from '@payloadcms/richtext-lexical'
 import { Media } from '@/collections/Media'
 import { Pages } from '@/collections/Pages'
@@ -95,7 +96,7 @@ export default buildConfig({
   },
   editor: lexicalEditor(),
 
-  collections: [Users, Roles, AuditEvents, Media, Pages, Services, Projects, Insights],
+  collections: [Users, Roles, AuditEvents, Media, Pages, Services, Projects, Insights, Leads],
 
   /*
    * Phase C — the global business configuration.

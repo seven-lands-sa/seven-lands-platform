@@ -40,6 +40,7 @@ export const briefSchema = z
     website: z.string().max(200).optional().or(z.literal("")),
     /** Attribution captured client-side; stored with the lead, never shown to the user. */
     campaign: z.record(z.string(), z.string().max(120)).optional(),
+    locale: z.enum(["ar", "en"]).optional(),
   })
   .superRefine((data, ctx) => {
     if (data.mode === "brief" && data.lands.length === 0) {

@@ -81,6 +81,11 @@ export const AuditEvents: CollectionConfig = {
         { label: "تعديل مقال", value: "insight_updated" },
         { label: "نشر مقال", value: "insight_published" },
         { label: "إلغاء نشر مقال", value: "insight_unpublished" },
+        /* Phase H — leads lifecycle. */
+        { label: "تسجيل عميل محتمل", value: "lead_created" },
+        { label: "تغيير حالة عميل محتمل", value: "lead_status_changed" },
+        { label: "إضافة ملاحظة على عميل محتمل", value: "lead_note_added" },
+        { label: "تصدير العملاء المحتملين", value: "lead_exported" },
       ],
     },
     {
@@ -130,6 +135,7 @@ export const AuditEvents: CollectionConfig = {
         { label: "مجال", value: "services" },
         { label: "عمل", value: "projects" },
         { label: "مقال", value: "insights" },
+        { label: "عميل محتمل", value: "leads" },
       ],
     },
     {
