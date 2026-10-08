@@ -3,6 +3,7 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Hero } from "@/components/sections/Hero";
 import { TrustStatement } from "@/components/sections/TrustStatement";
 import { LandsSystem } from "@/components/sections/LandsSystem";
+import { getServiceIndex } from "@/lib/services/public";
 import { Problems } from "@/components/sections/Problems";
 import { WorkTeaser } from "@/components/sections/WorkTeaser";
 import { ProcessSection } from "@/components/sections/ProcessSection";
@@ -46,6 +47,9 @@ export default async function HomePage({ params }: PageProps) {
   /* §44 — the CMS document is served only when this locale is published; until then the static
      composition below is the page, byte for byte. */
   const cms = await getPublishedSystemPage("home", locale);
+  /* The seven capabilities as the home page must show them: CMS-published copy first, shipped
+     content for the rest — never a second, drifting copy of the same names. */
+  const services = await getServiceIndex(locale);
 
   return (
     <>
@@ -75,7 +79,7 @@ export default async function HomePage({ params }: PageProps) {
           lede={t("lede")}
         />
         <div className="mt-14" data-reveal>
-          <LandsSystem />
+          <LandsSystem lands={services} />
         </div>
       </Section>
 

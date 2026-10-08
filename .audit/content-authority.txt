@@ -1,0 +1,77 @@
+=== src/content modules ===
+home.ts
+insights.ts
+services.ts
+site.ts
+work.ts
+
+=== importers of each content module (public app/components only) ===
+-- home
+   src/app/[locale]/services/[slug]/page.tsx
+   src/app/[locale]/about/page.tsx
+   src/components/sections/ProcessSection.tsx
+   src/components/sections/Problems.tsx
+   src/components/sections/TrustStatement.tsx
+   src/components/sections/WhySection.tsx
+-- insig.ts
+   src/app/[locale]/insights/page.tsx
+   src/app/[locale]/insights/[slug]/page.tsx
+-- services
+   src/app/[locale]/services/[slug]/page.tsx
+   src/app/sitemap.ts
+   src/components/forms/ProjectBriefForm.tsx
+-- site
+   src/app/robots.ts
+   src/app/[locale]/insights/[slug]/page.tsx
+   src/app/[locale]/privacy/page.tsx
+   src/app/[locale]/terms/page.tsx
+   src/app/sitemap.ts
+   src/components/blocks/PageBlocks.tsx
+   src/components/layout/Footer.tsx
+-- work
+   src/app/[locale]/services/[slug]/page.tsx
+   src/app/[locale]/work/page.tsx
+   src/app/[locale]/work/[slug]/page.tsx
+   src/components/sections/WorkTeaser.tsx
+
+=== ROUTE REGISTRY (head) ===
+import { lands } from "@/content/services";
+
+/**
+ * Internal route registry — the safe answer to "أدخل الرابط" (§19).
+ *
+ * Admins pick a known destination instead of typing a URL, so the public site never receives a
+ * hand-written path that does not exist, and the proxy's 404 table stays authoritative.
+ *
+ * MIGRATION NOTE (Pages CMS): when `pages` exists, this registry keeps its shape but the *source*
+ * changes — an internal link becomes a relationship to a page document, and `path` is read from
+ * that document. Everything downstream (`LinkTarget`, `resolveLink`, the admin select) stays the
+ * same, so no editor will have to re-pick links when the CMS lands.
+ */
+
+export type RouteLabel = { ar: string; en: string };
+
+export type InternalRoute = {
+  /** Stable key stored in the database. Never a URL. */
+  key: string;
+  /** Path without the locale prefix, exactly as `next-intl`'s Link expects. */
+  path: string;
+  label: RouteLabel;
+  /** Marks routes that are not part of the main navigation but are legitimate targets. */
+  kind: "page" | "legal" | "capability";
+};
+
+const PAGE_ROUTES: InternalRoute[] = [
+  { key: "home", path: "/", label: { ar: "الرئيسية", en: "Home" }, kind: "page" },
+  { key: "services", path: "/services", label: { ar: "خدماتنا", en: "Services" }, kind: "page" },
+  { key: "work", path: "/work", label: { ar: "أعمالنا", en: "Work" }, kind: "page" },
+  { key: "about", path: "/about", label: { ar: "من نحن", en: "About" }, kind: "page" },
+  { key: "insights", path: "/insights", label: { ar: "رؤى", en: "Insights" }, kind: "page" },
+  { key: "contact", path: "/contact", label: { ar: "تواصل", en: "Contact" }, kind: "page" },
+  {
+    key: "start-a-project",
+    path: "/start-a-project",
+    label: { ar: "ابدأ مشروعك", en: "Start a project" },
+    kind: "page",
+  },
+];

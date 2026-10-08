@@ -41,7 +41,12 @@ type MediaFieldRegistration = {
   slug: string;
   label: string;
   adminPath: string;
-  /** Media-bearing fields of that document: Payload field path → Arabic label. */
+  /**
+   * `global` (one document addressed by slug) or `collection` (many documents). Defaults to
+   * `global`, which is what the Phase C registrations are.
+   */
+  kind?: MediaUsageKind;
+  /** Media-bearing fields of that document: Payload field path → Arabic label. `*` walks arrays. */
   fields: Record<string, string>;
 };
 
@@ -63,10 +68,47 @@ export const MEDIA_REFERENCE_REGISTRY: readonly MediaFieldRegistration[] = [
     },
   },
   /*
-   * Later phases append here — the shape is already correct for them:
-   *   { slug: "pages", label: "الصفحات", adminPath: "/admin/collections/pages", fields: { hero: "صورة الغلاف" } }
-   * Nothing else in this module changes when that happens.
+   * Phase E/F content documents. A `*` in a field path walks an array (block compositions), so the
+   * hero's stored image is found wherever its block sits in the page.
    */
+  {
+    slug: "pages",
+    label: "الصفحات",
+    adminPath: "/admin/collections/pages",
+    fields: {
+      "sections.*.media": "قسم الهيرو — الخلفية",
+      "sections.*.mobileMedia": "قسم الهيرو — صورة الجوال",
+      "seo.ogImage": "صورة المشاركة",
+    },
+  },
+  {
+    slug: "services",
+    label: "المجالات",
+    adminPath: "/admin/collections/services",
+    fields: {
+      cover: "صورة الغلاف",
+      "seo.ogImage": "صورة المشاركة",
+    },
+  },
+  {
+    slug: "projects",
+    label: "الأعمال",
+    adminPath: "/admin/collections/projects",
+    fields: {
+      cover: "صورة الغلاف",
+      gallery: "معرض الصور",
+      "seo.ogImage": "صورة المشاركة",
+    },
+  },
+  {
+    slug: "insights",
+    label: "الرؤى",
+    adminPath: "/admin/collections/insights",
+    fields: {
+      cover: "صورة الغلاف",
+      "seo.ogImage": "صورة المشاركة",
+    },
+  },
 ];
 
 /** Value inside an upload field can be an id, a document, or an array of either. */
@@ -81,12 +123,58 @@ const idsIn = (value: unknown): (string | number)[] => {
   return [];
 };
 
-/** Reads a dotted path such as `brand.logo` out of a document. */
+/**
+ * Reads a dotted path such as `brand.logo` out of a document, where `*` walks an array
+ * (`sections.*.media` → every block's media value, flattened).
+ */
 const readPath = (doc: unknown, path: string): unknown =>
   path.split(".").reduce<unknown>((current, key) => {
+    if (key === "*") {
+      if (!Array.isArray(current)) return undefined;
+      return current;
+    }
+    if (Array.isArray(current)) return current.flatMap((entry) => readPath(entry, key));
     if (!current || typeof current !== "object") return undefined;
     return (current as Record<string, unknown>)[key];
   }, doc);
+
+/** All documents of a registration, draft state and every locale included, with a title for the UI. */
+async function documentsFor(
+  payload: Payload,
+  registration: MediaFieldRegistration,
+): Promise<{ doc: unknown; documentId?: string | number; documentTitle?: string }[]> {
+  if ((registration.kind ?? "global") === "global") {
+    try {
+      const doc = await payload.findGlobal({ slug: registration.slug as never, depth: 0, overrideAccess: true });
+      return [{ doc }];
+    } catch {
+      /* A global that does not exist in this build is simply not a reference source. */
+      return [];
+    }
+  }
+
+  try {
+    /* Drafts included on purpose: an unpublished page still OWNS the image, and deleting it would
+       break the editor's work the moment they publish. */
+    const found = await payload.find({
+      collection: registration.slug as never,
+      limit: 200,
+      pagination: false,
+      depth: 0,
+      draft: true,
+      overrideAccess: true,
+    });
+    return (found.docs as unknown[]).map((doc) => {
+      const titled = doc as { id?: string | number; title?: unknown; slug?: unknown; name?: unknown };
+      const raw = titled.title ?? titled.name ?? titled.slug;
+      const documentTitle = typeof raw === "string" && raw.trim() ? raw.trim() : undefined;
+      return { doc, documentId: titled.id, ...(documentTitle ? { documentTitle } : {}) };
+    });
+  } catch {
+    /* A collection that does not exist in this build is not a reference source either. */
+    return [];
+  }
+}
 
 /**
  * Every reference to one media id across the registered documents.
@@ -102,26 +190,29 @@ export async function findMediaUsage(
   const wanted = String(mediaId);
 
   for (const registration of MEDIA_REFERENCE_REGISTRY) {
-    /* Globals are single documents addressed by slug. */
-    let doc: unknown;
-    try {
-      doc = await payload.findGlobal({ slug: registration.slug as never, depth: 0, overrideAccess: true });
-    } catch {
-      /* A global that does not exist in this build is simply not a reference source. */
-      continue;
-    }
-
-    for (const [fieldPath, fieldLabel] of Object.entries(registration.fields)) {
-      const referenced = idsIn(readPath(doc, fieldPath));
-      if (!referenced.some((id) => String(id) === wanted)) continue;
-      references.push({
-        kind: "global",
-        slug: registration.slug,
-        label: registration.label,
-        fieldPath,
-        fieldLabel,
-        href: registration.adminPath,
-      });
+    const documents = await documentsFor(payload, registration);
+    for (const { doc, documentId, documentTitle } of documents) {
+      for (const [fieldPath, fieldLabel] of Object.entries(registration.fields)) {
+        const referenced = idsIn(readPath(doc, fieldPath));
+        if (!referenced.some((id) => String(id) === wanted)) continue;
+        const alreadyRecorded = references.some(
+          (reference) =>
+            reference.slug === registration.slug &&
+            reference.documentId === documentId &&
+            reference.fieldPath === fieldPath,
+        );
+        if (alreadyRecorded) continue;
+        references.push({
+          kind: registration.kind ?? "global",
+          slug: registration.slug,
+          label: registration.label,
+          fieldPath,
+          fieldLabel,
+          href: registration.adminPath,
+          ...(documentId !== undefined ? { documentId } : {}),
+          ...(documentTitle ? { documentTitle } : {}),
+        });
+      }
     }
   }
 
@@ -146,6 +237,10 @@ export function usageBlockMessage(references: readonly MediaUsageReference[]): s
  */
 export function dependentTagsFor(references: readonly MediaUsageReference[]): string[] {
   const tagBySlug: Record<string, string> = {
+    pages: "pages",
+    services: "services",
+    projects: "projects",
+    insights: "insights",
     "site-settings": "site-settings",
     "contact-settings": "contact-settings",
     "business-hours": "business-hours",

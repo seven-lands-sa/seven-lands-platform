@@ -1,7 +1,7 @@
 import { getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import { problems } from "@/content/home";
-import { landBySlug } from "@/content/services";
+import { getServiceLabels } from "@/lib/services/public";
 import { ButtonLink, ArrowRight } from "@/components/ui/Button";
 import { Section, SectionHeading } from "@/components/ui/Section";
 import type { AppLocale } from "@/i18n/routing";
@@ -14,6 +14,9 @@ export type ProblemsContent = {
 export async function Problems({ locale, content }: { locale: AppLocale; content?: ProblemsContent }) {
   const t = await getTranslations("home.problems");
   const source = problems[locale];
+  /* The related capability line under each problem reads the resolved capability name — the same
+     authority the capability pages use. */
+  const landLabels = await getServiceLabels(locale);
   const data = {
     heading: content?.heading ?? source.heading,
     lede: content?.lede ?? source.lede,
@@ -37,7 +40,7 @@ export async function Problems({ locale, content }: { locale: AppLocale; content
 
       <ol className="mt-14 grid gap-px overflow-hidden rounded-[1.25rem] border border-ink-950/10 bg-ink-950/10 md:grid-cols-2" role="list">
         {data.items.map((item, index) => {
-          const land = landBySlug.get(item.land);
+          const land = landLabels.get(item.land);
           return (
             <li key={item.question} className="flex flex-col bg-white p-7 md:p-9">
               <span className="num text-[0.75rem] font-semibold text-muted">
@@ -48,13 +51,13 @@ export async function Problems({ locale, content }: { locale: AppLocale; content
               {land ? (
                 <p className="mt-6 border-t border-ink-950/10 pt-4">
                   <Link
-                    href={`/services/${land.slug}`}
+                    href={`/services/${item.land}`}
                     className="group inline-flex items-center gap-2 text-[0.875rem] font-semibold text-navy-800 underline-offset-[6px] hover:underline"
                     data-analytics="service_cta_click"
                     data-analytics-location="problems"
                   >
                     <span>
-                      {t("relatedLand", { land: land.copy[locale].title })}
+                      {t("relatedLand", { land: land?.title ?? "" })}
                     </span>
                     <ArrowRight />
                   </Link>

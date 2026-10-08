@@ -1,0 +1,68 @@
+=== PAGES ===
+1 | home | slug=home | ar=published | en=published | status=draft
+2 | privacy | slug=privacy | ar=published | en=published | status=draft
+3 | terms | slug=terms | ar=published | en=published | status=draft
+4 | about | slug=about | ar=published | en=published | status=draft
+5 | contact | slug=contact | ar=published | en=published | status=draft
+6 | start-a-project | slug=start-a-project | ar=published | en=published | status=draft
+
+=== TABLES for site_settings / contact / hours / social / navigation / footer ===
+business_hours
+business_hours_exceptions
+business_hours_exceptions_locales
+business_hours_exceptions_periods
+business_hours_locales
+business_hours_week
+business_hours_week_locales
+business_hours_week_periods
+contact_settings
+contact_settings_channels
+contact_settings_channels_locales
+footer
+footer_groups
+footer_groups_items
+footer_groups_items_locales
+footer_groups_locales
+footer_legal
+footer_legal_locales
+footer_locales
+navigation
+navigation_header_items
+navigation_header_items_locales
+navigation_locales
+site_settings
+site_settings_locales
+site_settings_localization_enabled_locales
+social_accounts
+social_accounts_accounts
+social_accounts_accounts_locales
+
+=== site_settings columns ===
+id
+brand_name_ar
+brand_name_en
+brand_logo_id
+brand_logo_light_id
+brand_logo_dark_id
+brand_favicon_id
+brand_default_og_image_id
+localization_default_locale
+localization_timezone
+location_country_code
+location_maps_url
+location_latitude
+location_longitude
+updated_at
+created_at
+
+=== contact-related text rows (ar/en) ===
+
+ERROR:  relation "contact_settings_locales" does not exist
+LINE 1: ..._number,'-')||' email='||coalesce(email,'-') from contact_se...
+                                                             ^
+
+=== business_hours rows ===
+(no business_hours_days)
+
+=== social accounts ===
+(no social_accounts_items)

@@ -1,0 +1,53 @@
+=== PLAYWRIGHT PROJECTS ===
+14:  use: {
+15-    baseURL: process.env.QA_BASE ?? "http://127.0.0.1:3000",
+16-    trace: "retain-on-failure",
+--
+19:  projects: [
+20:    { name: "ar-desktop", use: { ...devices["Desktop Chrome"], locale: "ar-SA" } },
+21:    { name: "ar-mobile", use: { ...devices["Pixel 7"], locale: "ar-SA" } },
+22:    { name: "en-desktop", use: { ...devices["Desktop Chrome"], locale: "en-GB" } },
+23-  ],
+24-  webServer: {
+
+=== TEST FILES ===
+   30 tests/a11y.spec.ts
+  304 tests/smoke.spec.ts
+  334 total
+
+=== ADMIN GROUPS (sidebar) ===
+      6 group: "إعدادات الموقع"
+      5 group: "المحتوى"
+      3 group: "النظام"
+
+=== MEDIA DIR ===
+total 8
+drwxr-xr-x  2 user user 4096 Oct  8 11:04 .
+drwxr-xr-x 20 user user 4096 Oct  8 11:39 ..
+
+=== DOCS HEADERS ===
+# Release Candidate Report
+
+**Project:** Seven Lands / سفن لاند — corporate website
+**Status:** Release candidate, verified locally. **Nothing deployed. No production system touched.**
+**Verified:** 2026-10-07 · Next.js 16.4.0 · React 19.3.0 · Tailwind 4.3.3 · next-intl 4.14.9 · Motion 14 · Playwright 1.63
+
+---
+
+## 1. Feature summary
+
+**Architecture & i18n**
+- Arabic-first bilingual architecture: `/ar` (default, RTL) and `/en` (LTR), each with a real layout
+----
+# Pending Owner Inputs
+
+The build deliberately proceeds around these gaps. Nothing below has been invented, estimated or
+filled with placeholder fiction. Each item says exactly how it is handled today and what changes
+once you supply it.
+
+**Legend:** 🔴 required before public launch · 🟠 affects the design if supplied · 🟢 optional.
+
+---
+
+## Contact & business details
+

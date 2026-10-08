@@ -25,7 +25,13 @@ export type CacheTag =
   | `media:${string}`
   | `page:${string}`
   | `page-system:${string}`
-  | "pages";
+  | "pages"
+  | `service:${string}`
+  | `project:${string}`
+  | `insight:${string}`
+  | "services"
+  | "projects"
+  | "insights";
 
 /** Tag for one page document — invalidated by every write to that page. */
 export const pageTag = (id: string | number) => `page:${id}` as const;
@@ -38,3 +44,23 @@ export const PAGES_LIST_TAG = "pages" as const;
 
 /** Tag for one media document — used when a file's metadata or visibility changes. */
 export const mediaTag = (id: string | number): CacheTag => `media:${id}`;
+
+/* ── Phase F — domain content (§10–§18) ─────────────────────────────────────────────────────── */
+
+/** One capability document. */
+export const serviceTag = (id: string | number) => `service:${id}` as const;
+
+/** The capability list and anything that renders it (hub page, home grid, sitemap). */
+export const servicesTag = "services" as const;
+
+/** One case study document. */
+export const projectTag = (id: string | number) => `project:${id}` as const;
+
+/** The work index, related-work lists and the sitemap. */
+export const projectsTag = "projects" as const;
+
+/** One article document. */
+export const insightTag = (id: string | number) => `insight:${id}` as const;
+
+/** The insights index and the sitemap. */
+export const insightsTag = "insights" as const;

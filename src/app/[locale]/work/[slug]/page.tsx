@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import { caseStudies, publishedCaseStudies } from "@/content/work";
-import { landBySlug } from "@/content/services";
+import { getServiceLabels } from "@/lib/services/public";
 import type { AppLocale } from "@/i18n/routing";
 import { buildMetadata } from "@/lib/seo";
 import { getSiteIdentity } from "@/lib/content";
@@ -63,9 +63,9 @@ export default async function CaseStudyPage({ params }: PageProps) {
   const t = await getTranslations({ locale, namespace: "work" });
   const tCta = await getTranslations({ locale, namespace: "cta" });
   const labels = t.raw("caseStudyLabels") as Record<string, string>;
-  const scope = item.landSlugs
-    .map((landSlug) => landBySlug.get(landSlug as never)?.copy[locale].title)
-    .filter(Boolean);
+  /* Capability names on a case study come from the same authority as the capability pages. */
+  const landLabels = await getServiceLabels(locale);
+  const scope = item.landSlugs.map((landSlug) => landLabels.get(landSlug)?.title).filter(Boolean);
 
   const index = publishedCaseStudies.findIndex((c) => c.slug === item.slug);
   const next = publishedCaseStudies[(index + 1) % publishedCaseStudies.length];

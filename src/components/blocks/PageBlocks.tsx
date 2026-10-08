@@ -14,6 +14,7 @@ import { Section, SectionHeading } from "@/components/ui/Section";
 import { Hero, type HeroCta } from "@/components/sections/Hero";
 import { TrustStatement } from "@/components/sections/TrustStatement";
 import { LandsSystem } from "@/components/sections/LandsSystem";
+import { getServiceIndex } from "@/lib/services/public";
 import { Problems } from "@/components/sections/Problems";
 import { WorkTeaser } from "@/components/sections/WorkTeaser";
 import { ProcessSection } from "@/components/sections/ProcessSection";
@@ -35,6 +36,8 @@ import { resolveCta } from "@/lib/pages/links";
 
 type RenderContext = {
   locale: AppLocale;
+  /** The seven capabilities, already resolved for this locale — one authority for their copy. */
+  services: Awaited<ReturnType<typeof getServiceIndex>>;
   page: PublicPage;
   hrefs: { whatsappHref: string | null; phoneHref: string | null; emailHref: string | null };
 };
@@ -81,6 +84,7 @@ export async function PageBlocks({ page, locale }: { page: PublicPage; locale: A
   const ctx: RenderContext = {
     locale,
     page,
+    services: await getServiceIndex(locale),
     hrefs: {
       whatsappHref: identity.whatsapp.href ?? null,
       phoneHref: identity.phone.href ?? null,
@@ -141,7 +145,7 @@ export async function PageBlocks({ page, locale }: { page: PublicPage; locale: A
                   lede={str(block.lede)}
                 />
                 <div className="mt-14" data-reveal>
-                  <LandsSystem />
+                  <LandsSystem lands={ctx.services} />
                 </div>
               </Section>
             );

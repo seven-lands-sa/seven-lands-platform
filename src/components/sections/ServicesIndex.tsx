@@ -1,6 +1,6 @@
 import { getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
-import { lands } from "@/content/services";
+import { getServiceIndex } from "@/lib/services/public";
 import { LandGlyph } from "@/components/brand/LandGlyphs";
 import { ArrowRight } from "@/components/ui/Button";
 import { Section, SectionHeading } from "@/components/ui/Section";
@@ -25,6 +25,8 @@ export async function ServicesIndex({
   headingId?: string;
 }) {
   const tCta = await getTranslations({ locale, namespace: "cta" });
+  /* One authority for capability copy: the adapter resolves CMS-published documents first. */
+  const lands = await getServiceIndex(locale);
 
   return (
     <Section tone="light" aria-labelledby={headingId}>
@@ -44,7 +46,7 @@ export async function ServicesIndex({
                 <LandGlyph glyph={land.glyph} className="h-6 w-6 text-navy-800" />
                 <span className="num text-[0.75rem] text-muted">{land.number}</span>
               </span>
-              <span className="text-[0.9375rem] font-semibold">{land.copy[locale].title}</span>
+              <span className="text-[0.9375rem] font-semibold">{land.title}</span>
               <span className="mt-auto inline-flex items-center gap-2 text-[0.8125rem] text-steel-600">
                 {tCta("openLand")}
                 <ArrowRight />

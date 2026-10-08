@@ -1,8 +1,8 @@
 {
-  "at": "2026-10-07T22:17:33.236Z",
+  "at": "2026-10-08T11:41:46.799Z",
   "public": {
-    "files": 15,
-    "bytes": 937151
+    "files": 13,
+    "bytes": 914439
   },
   "admin": {
     "files": 16,
@@ -20,6 +20,6 @@
       "/_next/static/chunks/1ibs_mso-ku2s.js"
     ]
   },
-  "publicOnly": 9,
+  "publicOnly": 7,
   "adminCodeLeak": []
 }

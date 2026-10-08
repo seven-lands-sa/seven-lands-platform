@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import { publishedCaseStudies, workEmptyState } from "@/content/work";
-import { landBySlug } from "@/content/services";
+import { getServiceLabels } from "@/lib/services/public";
 import type { AppLocale } from "@/i18n/routing";
 import { buildMetadata } from "@/lib/seo";
 import { getSiteIdentity } from "@/lib/content";
@@ -36,11 +36,10 @@ export default async function WorkPage({ params }: PageProps) {
   const empty = workEmptyState[locale];
 
   // Filters are only rendered when there is content to filter.
-  const activeFilters = Array.from(
-    new Set(publishedCaseStudies.flatMap((item) => item.landSlugs)),
-  )
-    .map((slug) => landBySlug.get(slug as never))
-    .filter(Boolean);
+  const labels = await getServiceLabels(locale);
+  const activeFilters = Array.from(new Set(publishedCaseStudies.flatMap((item) => item.landSlugs)))
+    .map((slug) => ({ slug, label: labels.get(slug) }))
+    .filter((entry) => Boolean(entry.label));
 
   return (
     <>
@@ -87,7 +86,7 @@ export default async function WorkPage({ params }: PageProps) {
                     key={filter!.slug}
                     className="rounded-full border border-ink-950/15 px-3.5 py-1.5 text-[0.8125rem] text-steel-600"
                   >
-                    {filter!.copy[locale].short}
+                    {filter.label!.short}
                   </li>
                 ))}
               </ul>

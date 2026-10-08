@@ -2,11 +2,10 @@
 
 import { useMemo, useState } from "react";
 import { clsx } from "clsx";
-import { useLocale, useTranslations } from "next-intl";
+import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
-import { lands } from "@/content/services";
-import type { AppLocale } from "@/i18n/routing";
 import { smoothPath } from "@/lib/path";
+import type { ServiceView } from "@/lib/services/public";
 import { LandGlyph } from "@/components/brand/LandGlyphs";
 import { ArrowRight } from "@/components/ui/Button";
 
@@ -22,14 +21,20 @@ import { ArrowRight } from "@/components/ui/Button";
 
 const ROW_HEIGHT = 76;
 
-export function LandsSystem() {
-  const locale = useLocale() as AppLocale;
+/**
+ * The seven capabilities as the SECTION receives them: resolved for this locale by the caller
+ * (the service adapter — CMS when published, shipped content otherwise). The component itself never
+ * reads a second source, so the home page can never disagree with the capability pages.
+ */
+export type LandsSystemItem = Pick<ServiceView, "slug" | "number" | "glyph" | "title" | "short" | "promise" | "capabilities">;
+
+export function LandsSystem({ lands }: { lands: LandsSystemItem[] }) {
   const t = useTranslations("home.lands");
   const [active, setActive] = useState(0);
 
   const nodePoints = useMemo(
     () => lands.map((_, index) => ({ x: 12, y: ROW_HEIGHT * index + ROW_HEIGHT / 2 })),
-    [],
+    [lands],
   );
   const pathD = useMemo(() => {
     const bowed = nodePoints.map((point, index) => ({
@@ -40,7 +45,6 @@ export function LandsSystem() {
   }, [nodePoints]);
 
   const activeLand = lands[active];
-  const activeCopy = activeLand.copy[locale];
 
   return (
     <div>
@@ -69,7 +73,6 @@ export function LandsSystem() {
 
           <ul className="relative" role="list">
             {lands.map((land, index) => {
-              const copy = land.copy[locale];
               const isActive = index === active;
               return (
                 <li key={land.slug} style={{ height: ROW_HEIGHT }} className="flex items-center">
@@ -101,7 +104,7 @@ export function LandsSystem() {
                         isActive ? "text-ink-950" : "text-steel-600 group-hover:text-ink-950",
                       )}
                     >
-                      {copy.short}
+                      {land.short}
                     </span>
                     <span
                       aria-hidden="true"
@@ -135,17 +138,17 @@ export function LandsSystem() {
             <div className="flex items-start justify-between gap-6">
               <div>
                 <p className="eyebrow text-ice-400">{t("nodeCount", { number: activeLand.number })}</p>
-                <h3 className="display-3 mt-4 text-offwhite">{activeCopy.title}</h3>
+                <h3 className="display-3 mt-4 text-offwhite">{activeLand.title}</h3>
               </div>
               <LandGlyph glyph={activeLand.glyph} className="h-9 w-9 text-ice-400" />
             </div>
 
             <p className="mt-5 text-[1.0625rem] leading-[1.85] text-offwhite/80">
-              {activeCopy.promise}
+              {activeLand.promise}
             </p>
 
             <ul className="mt-7 flex flex-wrap gap-2">
-              {activeCopy.capabilities.slice(0, 5).map((capability) => (
+              {activeLand.capabilities.slice(0, 5).map((capability) => (
                 <li
                   key={capability}
                   className="rounded-full border border-white/15 px-3 py-1.5 text-[0.8125rem] text-offwhite/75"
@@ -174,7 +177,6 @@ export function LandsSystem() {
       {/* ---------------- Mobile / tablet: readable stacked index ---------------- */}
       <ul className="flex flex-col gap-4 lg:hidden" role="list">
         {lands.map((land) => {
-          const copy = land.copy[locale];
           return (
             <li key={land.slug}>
               <Link
@@ -192,9 +194,9 @@ export function LandsSystem() {
                   </span>
                   <ArrowRight className="text-steel-600" />
                 </span>
-                <span className="display-3 !text-[1.1875rem]">{copy.title}</span>
+                <span className="display-3 !text-[1.1875rem]">{land.title}</span>
                 <span className="text-[0.9375rem] leading-relaxed text-steel-600">
-                  {copy.promise}
+                  {land.promise}
                 </span>
               </Link>
             </li>

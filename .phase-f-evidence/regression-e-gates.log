@@ -1,0 +1,10 @@
+── PHASE E equivalence re-run (system pages)
+terms ar (/ar/terms): cms=1281 chars · static=1281 chars · equal=YES
+terms en (/en/terms): cms=1516 chars · static=1516 chars · equal=YES
+
+EQUIVALENCE: PASS (every locale byte-equal in visible text)
+── PHASE E form/security/UTM gate re-run
+PASS  the first six submissions from one address are accepted — codes=202,202,202,202,202,202,429
+PASS  the seventh is rate limited — codes=202,202,202,202,202,202,429
+
+FORM GATE: ALL GREEN

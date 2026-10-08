@@ -2,12 +2,13 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
-import { landBySlug, lands, scopeNote } from "@/content/services";
+import { lands } from "@/content/services";
 import { process } from "@/content/home";
 import { publishedCaseStudies } from "@/content/work";
 import { routing, type AppLocale } from "@/i18n/routing";
 import { buildMetadata } from "@/lib/seo";
-import { getSiteIdentity, withWhatsAppMessage } from "@/lib/content";
+import { getSiteIdentity, withWhatsAppMessage, resolvePublicMedia } from "@/lib/content";
+import { getOtherServices, getService } from "@/lib/services/public";
 import { breadcrumbSchema, faqSchema, serviceSchema } from "@/lib/schema";
 import { ArrowRight, ButtonAnchor, ButtonLink, WhatsAppIcon } from "@/components/ui/Button";
 import { LandGlyph } from "@/components/brand/LandGlyphs";
@@ -24,17 +25,21 @@ export function generateStaticParams() {
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { locale, slug } = await params;
-  const land = landBySlug.get(slug as never);
-  if (!land) return {};
+  const service = await getService(slug, locale);
+  if (!service) return {};
 
-  const copy = land.copy[locale];
   const identity = await getSiteIdentity(locale);
+  const shareImage = resolvePublicMedia(service.seo.ogImage as never, { locale });
   return buildMetadata({
     identity,
     locale,
-    title: copy.title,
-    description: copy.promise,
-    path: `/services/${land.slug}`,
+    /* The SEO contract of the capability (§37): the document's own title/description when set,
+       otherwise the visible title and promise — never a second, contradictory source. */
+    title: service.seo.title ?? service.title,
+    description: service.seo.description ?? service.promise,
+    path: `/services/${service.slug}`,
+    noIndex: service.seo.noindex,
+    ogImagePath: shareImage?.url ?? null,
   });
 }
 
@@ -43,14 +48,14 @@ export default async function ServiceDetailPage({ params }: PageProps) {
   setRequestLocale(locale);
   const identity = await getSiteIdentity(locale);
 
-  const land = landBySlug.get(slug as never);
-  if (!land) notFound();
+  const service = await getService(slug, locale);
+  if (!service) notFound();
 
-  const copy = land.copy[locale];
   const t = await getTranslations({ locale, namespace: "serviceDetail" });
   const tCta = await getTranslations({ locale, namespace: "cta" });
   const steps = process[locale];
-  const relatedWork = publishedCaseStudies.filter((item) => item.landSlugs.includes(land.slug));
+  const others = await getOtherServices(service.slug, locale);
+  const relatedWork = publishedCaseStudies.filter((item) => item.landSlugs.includes(service.slug));
 
   return (
     <>
@@ -58,11 +63,15 @@ export default async function ServiceDetailPage({ params }: PageProps) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify([
-            serviceSchema(locale, land.slug, identity),
-            faqSchema(locale, land.slug),
+            serviceSchema(locale, service.slug, identity, {
+              title: service.title,
+              promise: service.promise,
+              capabilities: service.capabilities,
+            }),
+            faqSchema(locale, service.slug, service.faqs),
             breadcrumbSchema(locale, [
               { name: locale === "ar" ? "خدماتنا" : "Services", path: "/services" },
-              { name: copy.title, path: `/services/${land.slug}` },
+              { name: service.title, path: `/services/${service.slug}` },
             ], identity),
           ]),
         }}
@@ -76,19 +85,19 @@ export default async function ServiceDetailPage({ params }: PageProps) {
               {tCta("backToServices")}
             </Link>
             <span aria-hidden="true">/</span>
-            <span className="num">{land.number}</span>
+            <span className="num">{service.number}</span>
           </nav>
 
           <div className="grid gap-10 lg:grid-cols-12">
             <div className="lg:col-span-7">
               <div className="flex items-center gap-4">
-                <LandGlyph glyph={land.glyph} className="h-8 w-8 text-navy-800" />
+                <LandGlyph glyph={service.glyph} className="h-8 w-8 text-navy-800" />
                 <span className="num text-[0.8125rem] font-semibold text-muted">
-                  {land.number} / 07
+                  {service.number} / 07
                 </span>
               </div>
-              <h1 className="display-1 mt-6 max-w-[26ch]">{copy.title}</h1>
-              <p className="lede measure mt-7 text-[1.0625rem] md:text-[1.125rem]">{copy.promise}</p>
+              <h1 className="display-1 mt-6 max-w-[26ch]">{service.title}</h1>
+              <p className="lede measure mt-7 text-[1.0625rem] md:text-[1.125rem]">{service.promise}</p>
 
               <div className="mt-9 flex flex-wrap gap-3">
                 <ButtonLink href="/start-a-project" size="lg">
@@ -96,13 +105,13 @@ export default async function ServiceDetailPage({ params }: PageProps) {
                   <ArrowRight />
                 </ButtonLink>
                 <ButtonAnchor
-                  href={withWhatsAppMessage(identity.whatsapp.href, copy.wa)}
+                  href={withWhatsAppMessage(identity.whatsapp.href, service.wa)}
                   target="_blank"
                   rel="noopener noreferrer"
                   size="lg"
                   variant="whatsapp"
                   data-analytics="whatsapp_click"
-                  data-analytics-location={`service_${land.slug}`}
+                  data-analytics-location={`service_${service.slug}`}
                 >
                   <WhatsAppIcon />
                   <span>{tCta("whatsappShort")}</span>
@@ -113,7 +122,7 @@ export default async function ServiceDetailPage({ params }: PageProps) {
             <div className="lg:col-span-4 lg:col-start-9">
               <div className="border-t border-ink-950/15 pt-5">
                 <p className="eyebrow mb-3">{t("outcomeLabel")}</p>
-                <p className="text-[0.9375rem] leading-[1.9] text-steel-600">{copy.intro}</p>
+                <p className="text-[0.9375rem] leading-[1.9] text-steel-600">{service.intro}</p>
               </div>
             </div>
           </div>
@@ -126,7 +135,7 @@ export default async function ServiceDetailPage({ params }: PageProps) {
           {t("problemsHeading")}
         </h2>
         <ul className="mt-12 grid gap-px overflow-hidden rounded-[1.25rem] border border-ink-950/10 bg-ink-950/10 md:grid-cols-2" role="list">
-          {copy.problems.map((item, index) => (
+          {service.problems.map((item, index) => (
             <li key={item.question} className="bg-white p-7 md:p-9">
               <span className="num text-[0.75rem] font-semibold text-muted">
                 {String(index + 1,).padStart(2, "0")}
@@ -151,7 +160,7 @@ export default async function ServiceDetailPage({ params }: PageProps) {
           </div>
 
           <ul className="grid gap-x-8 gap-y-0 sm:grid-cols-2 lg:col-span-7 lg:col-start-6" role="list">
-            {copy.capabilities.map((capability) => (
+            {service.capabilities.map((capability) => (
               <li
                 key={capability}
                 className="flex items-baseline gap-3 border-t border-ink-950/12 py-4 text-[0.9375rem] text-steel-600"
@@ -223,7 +232,7 @@ export default async function ServiceDetailPage({ params }: PageProps) {
           </div>
           <div className="lg:col-span-7 lg:col-start-6">
             <ul className="border-t border-ink-950/12" role="list">
-              {copy.faqs.map((faq) => (
+              {service.faqs.map((faq) => (
                 <li key={faq.q} className="border-b border-ink-950/12">
                   <details className="group py-5">
                     <summary className="flex cursor-pointer list-none items-start justify-between gap-6 text-[1.0625rem] font-semibold marker:content-none">
@@ -254,22 +263,20 @@ export default async function ServiceDetailPage({ params }: PageProps) {
           {t("otherLands")}
         </h2>
         <ul className="grid gap-px overflow-hidden rounded-[1.25rem] border border-ink-950/10 bg-ink-950/10 sm:grid-cols-2 lg:grid-cols-3" role="list">
-          {lands
-            .filter((item) => item.slug !== land.slug)
-            .map((item) => (
+          {others.map((item) => (
               <li key={item.slug} className="bg-white">
                 <Link
                   href={`/services/${item.slug}`}
                   className="flex h-full items-center gap-4 p-5 transition-colors duration-200 hover:bg-offwhite"
                 >
                   <span className="num text-[0.75rem] font-semibold text-muted">{item.number}</span>
-                  <span className="text-[0.9375rem] font-semibold">{item.copy[locale].short}</span>
+                  <span className="text-[0.9375rem] font-semibold">{item.short}</span>
                   <ArrowRight className="ms-auto text-steel-600" />
                 </Link>
               </li>
             ))}
         </ul>
-        <p className="mt-6 text-[0.8125rem] text-muted">{scopeNote[locale]}</p>
+        <p className="mt-6 text-[0.8125rem] text-muted">{service.scopeNote}</p>
       </Section>
 
       <FinalCta />

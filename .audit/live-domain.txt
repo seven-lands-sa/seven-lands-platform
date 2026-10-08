@@ -1,0 +1,43 @@
+=== sevnland.com (read-only HEAD, no changes) ===
+HTTP/2 200 
+x-powered-by: PHP/8.3.33
+content-type: text/html; charset=UTF-8
+link: <https://sevnland.com/wp-json/>; rel="https://api.w.org/"
+cache-control: public, max-age=604800
+expires: Sun, 11 Oct 2026 15:32:29 GMT
+etag: "3-1791127949;;;"
+x-litespeed-cache: hit
+date: Thu, 08 Oct 2026 11:45:23 GMT
+server: LiteSpeed
+platform: hostinger
+panel: hpanel
+content-security-policy: upgrade-insecure-requests
+alt-svc: h3=":443"; ma=2592000, h3-29=":443"; ma=2592000
+
+
+=== OG images on the live domain ===
+https://sevnland.com/og/og-ar.png -> 404 text/html; charset=UTF-8 57384
+https://sevnland.com/og/og-en.png -> 404 text/html; charset=UTF-8 57384
+
+=== live homepage first bytes (what is served today) ===
+<!DOCTYPE html>
+<html dir="rtl" lang="ar">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name='robots' content='max-image-preview:large' />
+<title>sevnland.com</title>
+<link rel='dns-prefetch' href='//cdn-reach.hostinger.com' />
+<link rel="alternate" type="application/rss+xml" title="sevnland.com &laquo; الخلاصة" href="https://sevnland.com/feed/" />
+<link rel="alternate" type="application/rss+xml" title="sevnland.com &laquo; خلاصة التعليقات" href="https://sevnland.com/comments/feed/" />
+<style id="wp-img-auto-sizes-contain-inline-css">
+img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
+/*# sourceURL=wp-img-auto-sizes-contain-inline-css */
+</style>
+
+<style id="wp-block-site-title-inline-css">
+.wp-block-site-title{box-sizing:border-box}.wp-block-site-title :where(a){color:inherit;font-family:inherit;font-size:inherit;font-style:inherit;font-weight:inherit;letter-spacing:inherit;line-height:inherit;text-decoration:inherit}
+/*# sourceURL=https://sevnland.com/wp-includes/blocks/site-title/style.min.css */
+</style>
+<style id="wp-block-navigation-inline-css">
+.wp-block-naviga

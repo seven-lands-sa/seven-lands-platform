@@ -1,0 +1,13 @@
+PHASE F VISUAL EQUIVALENCE (shipped vs CMS-published)
+15/16 screenshots pixel-identical
+  differs: static-home-ar-1440.png — 38 differing pixelsstatic vs published (home-ar-1440): 38 pixels differ, max per-channel delta = 2
+delta histogram: {"1":34,"2":4}
+
+ADDENDUM — the single non-identical capture, analysed
+  static-home-ar-1440.png vs published-home-ar-1440.png: 38 pixels in one 278×62 region (text),
+  max per-channel delta = 2 (histogram: 34 pixels at delta 1, 4 at delta 2).
+  Control: the SAME page in the SAME state captured twice (diag-repeat.mjs) differs by 75 pixels
+  in the same region with delta ≤ 2 — i.e. browser text antialiasing noise on this heading, not a
+  content or layout difference.
+  Independent proof that the content is identical: the visible-text equivalence harness reports
+  home ar/en byte-identical (24/24), and the pixel delta is confined to glyph edges.

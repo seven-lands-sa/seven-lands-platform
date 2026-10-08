@@ -1,0 +1,11 @@
+── npm test
+  -  58 [en-desktop] › tests/smoke.spec.ts:244:3 › mobile surface › mobile menu opens, is keyboard dismissible and links correctly
+  -  59 [en-desktop] › tests/smoke.spec.ts:259:3 › mobile surface › mobile drawer covers the whole viewport and stays above the header
+  -  60 [en-desktop] › tests/smoke.spec.ts:294:3 › mobile surface › no horizontal overflow on the primary pages
+
+  5 skipped
+  55 passed (1.6m)
+── npm run lint
+
+✖ 2 problems (0 errors, 2 warnings)
+

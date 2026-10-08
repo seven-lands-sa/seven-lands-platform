@@ -8,6 +8,11 @@ const eslintConfig = defineConfig([
   // Override default ignores of eslint-config-next.
   globalIgnores([
     ".phase-a-evidence/**", // phase A evidence scripts — not project source
+    ".phase-b-evidence/**",
+    ".phase-c-evidence/**",
+    ".phase-d-evidence/**",
+    ".phase-e-evidence/**",
+    ".phase-f-evidence/**", // phase evidence harnesses — verification tooling, not shipped source
     // Default ignores of eslint-config-next:
     ".next/**",
     "out/**",

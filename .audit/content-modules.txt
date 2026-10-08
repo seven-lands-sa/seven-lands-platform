@@ -1,0 +1,64 @@
+=== home.ts exports ===
+6:export const problems: Record<
+68:export const process: Record<
+94:export const principles: Record<
+144:export const positioning: Record<
+
+=== insights.ts ===
+12:export type Article = {
+13:  slug: string;
+25:export const articles: Article[] = [];
+27:export const publishedArticles = articles
+31:export const insightsEmptyState: Record<AppLocale, { title: string; body: string; note: string }> = {
+
+=== work.ts ===
+14:export type CaseStudy = {
+33:export const caseStudies: CaseStudy[] = [];
+35:export const publishedCaseStudies = caseStudies.filter((c) => c.published && c.clientApproved);
+37:export const workEmptyState: Record<
+
+=== site.ts ===
+12:export const site = {
+57:export const telHref = `tel:${site.phone.e164}`;
+60:export const category = {
+70:export const COPYRIGHT_YEAR = 2026;
+71:export const CONTENT_UPDATED_AT = "2026-10-07";
+
+=== OWNER GATES (doc) ===
+# OWNER GATES — ما ينتظر قرار المالك (لا يوقف العمل المستقل)
+
+> القاعدة: كل بند هنا **لا يوقف** باقي العمل. كل ما هو مستقل عن القرار يُنفَّذ ويُسلَّم.
+
+## G1 · البيانات التجارية المفقودة (C1–C6 من المرحلة D)
+- **DECISION REQUIRED:** البريد الرسمي · العنوان التفصيلي · ساعات العمل · حسابات التواصل · شعار بديل · معنى حدّ الإغلاق.
+- **WHY:** لا يمكن اختراعها (§86، §8 من التفويض).
+- **BLOCKS WHAT:** لا شيء هندسيًا — الحقول جاهزة في الإعدادات العامة والصفحات، والقوالب تُظهر حالة «يُحدَّد لاحقًا» الصحيحة.
+- **SAFE DEFAULT USED:** القيمة فارغة + حالة غير مهيّأة واضحة في اللوحة + عدم إظهار أي معلومة غير معتمدة للزائر.
+- **WORK CONTINUED ELSEWHERE:** نعم.
+
+## G2 · قرار التخزين الإنتاجي (R2 / CDN / TTL)
+- **DECISION REQUIRED:** المزوّد والمنطقة والدومين ومدّة روابط المعاينة الخاصة.
+- **WHY:** مورد مدفوع (§5/B من التفويض).
+- **BLOCKS WHAT:** النشر الإنتاجي للوسائط فقط.
+- **SAFE DEFAULT USED:** التخزين المحلي مع نفس طبقة التجريد المقبولة (`src/lib/media/policy.ts`).
+- **WORK CONTINUED ELSEWHERE:** نعم.
+
+## G3 · معرّفات التحليلات (GA4 / Search Console)
+- **DECISION REQUIRED:** معرّف القياس + صلاحية Search Console.
+- **WHY:** اعتمادات خارجية (§5/C).
+- **BLOCKS WHAT:** تشغيل التتبّع/التقارير الحقيقية.
+- **SAFE DEFAULT USED:** Adapter جاهز + حالة `NOT CONNECTED` صريحة في اللوحة، وبلا أي بيانات مزيفة.
+- **WORK CONTINUED ELSEWHERE:** نعم (المرحلة I تبني كل ما لا يحتاج الاعتماد).
+
+## G4 · مزوّد البريد للإشعارات
+- **DECISION REQUIRED:** مزوّد + اعتماد إرسال.
+- **WHY:** اعتماد خارجي + مورد مدفوع محتمل.
+- **BLOCKS WHAT:** إشعار فوري عند وصول طلب.
+- **SAFE DEFAULT USED:** الطلب يُحفظ بالكامل ويظهر في اللوحة؛ الإشعار «غير مهيّأ».
+- **WORK CONTINUED ELSEWHERE:** نعم.
+
+## G5 · وصفة الأرشفة/الاستعادة للإنتاج + فحص الأجهزة الحقيقية + إذن الإطلاق
+- **DECISION REQUIRED:** إدارة النسخ الاحتياطي في بيئة الاستضافة، وفحص iOS/Android الفعلي، وإذن النشر.
+- **WHY:** إجراء إنتاجي/قانوني (§5/A، §5/H).
+- **SAFE DEFAULT USED:** النسخ الاحتياطي موثّق ومُختبر محليًا فقط؛ لا نشر ولا DNS.
+- **WORK CONTINUED ELSEWHERE:** نعم.

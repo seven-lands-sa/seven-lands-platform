@@ -72,6 +72,9 @@ export interface Config {
     'audit-events': AuditEvent;
     media: Media;
     pages: Page;
+    services: Service;
+    projects: Project;
+    insights: Insight;
     'payload-kv': PayloadKv;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
@@ -84,6 +87,9 @@ export interface Config {
     'audit-events': AuditEventsSelect<false> | AuditEventsSelect<true>;
     media: MediaSelect<false> | MediaSelect<true>;
     pages: PagesSelect<false> | PagesSelect<true>;
+    services: ServicesSelect<false> | ServicesSelect<true>;
+    projects: ProjectsSelect<false> | ProjectsSelect<true>;
+    insights: InsightsSelect<false> | InsightsSelect<true>;
     'payload-kv': PayloadKvSelect<false> | PayloadKvSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
@@ -433,7 +439,19 @@ export interface AuditEvent {
     | 'page_archived'
     | 'page_restored'
     | 'page_slug_changed'
-    | 'page_blocks_reordered';
+    | 'page_blocks_reordered'
+    | 'service_created'
+    | 'service_updated'
+    | 'service_published'
+    | 'service_unpublished'
+    | 'project_created'
+    | 'project_updated'
+    | 'project_published'
+    | 'project_unpublished'
+    | 'insight_created'
+    | 'insight_updated'
+    | 'insight_published'
+    | 'insight_unpublished';
   summary: string;
   occurredAt: string;
   /**
@@ -458,6 +476,9 @@ export interface AuditEvent {
         | 'footer'
         | 'media'
         | 'pages'
+        | 'services'
+        | 'projects'
+        | 'insights'
       )
     | null;
   resourceId?: string | null;
@@ -1389,6 +1410,255 @@ export interface Page {
   _status?: ('draft' | 'published') | null;
 }
 /**
+ * المجالات السبعة. المحتوى يُعدّل هنا، والمسار والترتيب محسومان: كل مجال يحتفظ برابطه الحالي.
+ *
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "services".
+ */
+export interface Service {
+  id: number;
+  /**
+   * Decides the public route /services/… and cannot change after creation. The seven existing capabilities are the same ones already on the site.
+   */
+  landKey:
+    | 'strategy-business-growth'
+    | 'branding-creative'
+    | 'content-production'
+    | 'social-digital-presence'
+    | 'performance-acquisition'
+    | 'web-commerce-experiences'
+    | 'software-automation-technology';
+  /**
+   * Derived from the known capability order (01…07).
+   */
+  number?: string | null;
+  /**
+   * Display order in the services page and site lists. It never changes a capability's URL.
+   */
+  order: number;
+  /**
+   * Stopping a published capability is refused — unpublish it first so an indexed URL cannot drop without a redirect.
+   */
+  enabled?: boolean | null;
+  /**
+   * From the approved glyph set only. No uploads, no custom icons.
+   */
+  glyph: 'strategy' | 'branding' | 'content' | 'social' | 'performance' | 'web' | 'technology';
+  /**
+   * Optional: not rendered on the site in this phase — uploading still obeys the media rules (public + alt text).
+   */
+  cover?: (number | null) | Media;
+  title: string;
+  /**
+   * Used in capability lists and the home grid.
+   */
+  short?: string | null;
+  /**
+   * Outcome language, not service language.
+   */
+  promise: string;
+  intro: string;
+  /**
+   * A context-aware opener per capability — never a generic message.
+   */
+  wa?: string | null;
+  /**
+   * Shown as scope areas with the published scope note — not as priced commitments.
+   */
+  capabilities?:
+    | {
+        item: string;
+        id?: string | null;
+      }[]
+    | null;
+  problems?:
+    | {
+        question: string;
+        answer: string;
+        id?: string | null;
+      }[]
+    | null;
+  faqs?:
+    | {
+        q: string;
+        a: string;
+        id?: string | null;
+      }[]
+    | null;
+  scopeNote?: string | null;
+  seo?: {
+    title?: string | null;
+    description?: string | null;
+    ogImage?: (number | null) | Media;
+    noindex?: boolean | null;
+  };
+  /**
+   * Written by the publish action after the gate passes.
+   */
+  localeState?: {
+    ar?: {
+      state?: ('draft' | 'published') | null;
+      at?: string | null;
+    };
+    en?: {
+      state?: ('draft' | 'published') | null;
+      at?: string | null;
+    };
+  };
+  updatedAt: string;
+  createdAt: string;
+  _status?: ('draft' | 'published') | null;
+}
+/**
+ * الأعمال المنشورة تحتاج موافقة العميل وتوثيقًا حقيقيًا. لا يُضاف أي عمل تجريبي، والحقول الجاهزة تنتظر البيانات الفعلية.
+ *
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "projects".
+ */
+export interface Project {
+  id: number;
+  name: string;
+  /**
+   * Lowercase Latin, digits, hyphens. Locked after publication until the Redirect Manager exists (Phase G).
+   */
+  slug: string;
+  /**
+   * Leave empty when the client has not approved being named; use a general description instead.
+   */
+  client?: string | null;
+  sector?: string | null;
+  year?: string | null;
+  featured?: boolean | null;
+  landKeys?:
+    | (
+        | 'strategy-business-growth'
+        | 'branding-creative'
+        | 'content-production'
+        | 'social-digital-presence'
+        | 'performance-acquisition'
+        | 'web-commerce-experiences'
+        | 'software-automation-technology'
+      )[]
+    | null;
+  cover?: (number | null) | Media;
+  gallery?: (number | Media)[] | null;
+  summary?: string | null;
+  challenge?: string | null;
+  objective?: string | null;
+  approach?: string | null;
+  execution?: string | null;
+  resultNarrative?: string | null;
+  /**
+   * Entered by hand per project once documented. Nothing is calculated or inferred. The source note stays internal.
+   */
+  metrics?:
+    | {
+        label: string;
+        value: string;
+        /**
+         * Never rendered on the public site.
+         */
+        sourceNote?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  testimonial?: {
+    quote?: string | null;
+    attribution?: string | null;
+    approved?: boolean | null;
+  };
+  publishedAt?: string | null;
+  seo?: {
+    title?: string | null;
+    description?: string | null;
+    ogImage?: (number | null) | Media;
+    noindex?: boolean | null;
+  };
+  localeState?: {
+    ar?: {
+      state?: ('draft' | 'published') | null;
+      at?: string | null;
+    };
+    en?: {
+      state?: ('draft' | 'published') | null;
+      at?: string | null;
+    };
+  };
+  updatedAt: string;
+  createdAt: string;
+  _status?: ('draft' | 'published') | null;
+}
+/**
+ * مقالات الرؤى. لا يُنشر مقال بلا مقتطف ونص كامل باللغة نفسها، والصورة — إن وُجدت — من مكتبة الوسائط.
+ *
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "insights".
+ */
+export interface Insight {
+  id: number;
+  title: string;
+  /**
+   * Lowercase Latin, digits and hyphens.
+   */
+  slug: string;
+  excerpt: string;
+  cover?: (number | null) | Media;
+  /**
+   * A simple free label until real content justifies a taxonomy.
+   */
+  category?: string | null;
+  /**
+   * Never publish unapproved personal names. Leave empty or use the team line.
+   */
+  author?: string | null;
+  landKeys?:
+    | (
+        | 'strategy-business-growth'
+        | 'branding-creative'
+        | 'content-production'
+        | 'social-digital-presence'
+        | 'performance-acquisition'
+        | 'web-commerce-experiences'
+        | 'software-automation-technology'
+      )[]
+    | null;
+  body?: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  publishedAt?: string | null;
+  seo?: {
+    title?: string | null;
+    description?: string | null;
+    ogImage?: (number | null) | Media;
+    noindex?: boolean | null;
+  };
+  localeState?: {
+    ar?: {
+      state?: ('draft' | 'published') | null;
+      at?: string | null;
+    };
+    en?: {
+      state?: ('draft' | 'published') | null;
+      at?: string | null;
+    };
+  };
+  updatedAt: string;
+  createdAt: string;
+  _status?: ('draft' | 'published') | null;
+}
+/**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-kv".
  */
@@ -1431,6 +1701,18 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'pages';
         value: number | Page;
+      } | null)
+    | ({
+        relationTo: 'services';
+        value: number | Service;
+      } | null)
+    | ({
+        relationTo: 'projects';
+        value: number | Project;
+      } | null)
+    | ({
+        relationTo: 'insights';
+        value: number | Insight;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -2039,6 +2321,177 @@ export interface PagesSelect<T extends boolean = true> {
               blockName?: T;
             };
       };
+  seo?:
+    | T
+    | {
+        title?: T;
+        description?: T;
+        ogImage?: T;
+        noindex?: T;
+      };
+  localeState?:
+    | T
+    | {
+        ar?:
+          | T
+          | {
+              state?: T;
+              at?: T;
+            };
+        en?:
+          | T
+          | {
+              state?: T;
+              at?: T;
+            };
+      };
+  updatedAt?: T;
+  createdAt?: T;
+  _status?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "services_select".
+ */
+export interface ServicesSelect<T extends boolean = true> {
+  landKey?: T;
+  number?: T;
+  order?: T;
+  enabled?: T;
+  glyph?: T;
+  cover?: T;
+  title?: T;
+  short?: T;
+  promise?: T;
+  intro?: T;
+  wa?: T;
+  capabilities?:
+    | T
+    | {
+        item?: T;
+        id?: T;
+      };
+  problems?:
+    | T
+    | {
+        question?: T;
+        answer?: T;
+        id?: T;
+      };
+  faqs?:
+    | T
+    | {
+        q?: T;
+        a?: T;
+        id?: T;
+      };
+  scopeNote?: T;
+  seo?:
+    | T
+    | {
+        title?: T;
+        description?: T;
+        ogImage?: T;
+        noindex?: T;
+      };
+  localeState?:
+    | T
+    | {
+        ar?:
+          | T
+          | {
+              state?: T;
+              at?: T;
+            };
+        en?:
+          | T
+          | {
+              state?: T;
+              at?: T;
+            };
+      };
+  updatedAt?: T;
+  createdAt?: T;
+  _status?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "projects_select".
+ */
+export interface ProjectsSelect<T extends boolean = true> {
+  name?: T;
+  slug?: T;
+  client?: T;
+  sector?: T;
+  year?: T;
+  featured?: T;
+  landKeys?: T;
+  cover?: T;
+  gallery?: T;
+  summary?: T;
+  challenge?: T;
+  objective?: T;
+  approach?: T;
+  execution?: T;
+  resultNarrative?: T;
+  metrics?:
+    | T
+    | {
+        label?: T;
+        value?: T;
+        sourceNote?: T;
+        id?: T;
+      };
+  testimonial?:
+    | T
+    | {
+        quote?: T;
+        attribution?: T;
+        approved?: T;
+      };
+  publishedAt?: T;
+  seo?:
+    | T
+    | {
+        title?: T;
+        description?: T;
+        ogImage?: T;
+        noindex?: T;
+      };
+  localeState?:
+    | T
+    | {
+        ar?:
+          | T
+          | {
+              state?: T;
+              at?: T;
+            };
+        en?:
+          | T
+          | {
+              state?: T;
+              at?: T;
+            };
+      };
+  updatedAt?: T;
+  createdAt?: T;
+  _status?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "insights_select".
+ */
+export interface InsightsSelect<T extends boolean = true> {
+  title?: T;
+  slug?: T;
+  excerpt?: T;
+  cover?: T;
+  category?: T;
+  author?: T;
+  landKeys?: T;
+  body?: T;
+  publishedAt?: T;
   seo?:
     | T
     | {

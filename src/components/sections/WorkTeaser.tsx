@@ -1,6 +1,6 @@
 import { getTranslations } from "next-intl/server";
 import { publishedCaseStudies, workEmptyState } from "@/content/work";
-import { landBySlug } from "@/content/services";
+import { getServiceLabels } from "@/lib/services/public";
 import type { AppLocale } from "@/i18n/routing";
 import { Link } from "@/i18n/navigation";
 import { ButtonLink, ArrowRight } from "@/components/ui/Button";
@@ -20,6 +20,8 @@ export type WorkTeaserContent = {
 export async function WorkTeaser({ locale, content }: { locale: AppLocale; content?: WorkTeaserContent }) {
   const t = await getTranslations("home.work");
   const empty = workEmptyState[locale];
+  /* Capability names on a work card come from the resolved capability list, never a second table. */
+  const landLabels = await getServiceLabels(locale);
   const c = {
     eyebrow: content?.eyebrow ?? t("eyebrow"),
     selected: content?.selected ?? t("selected"),
@@ -57,7 +59,7 @@ export async function WorkTeaser({ locale, content }: { locale: AppLocale; conte
         <ul className="mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-3" role="list">
           {publishedCaseStudies.slice(0, 3).map((item) => {
             const scopeLabels = item.landSlugs
-              .map((slug) => landBySlug.get(slug as never)?.copy[locale].short)
+              .map((slug) => landLabels.get(slug)?.short)
               .filter(Boolean)
               .join(" · ");
             return (

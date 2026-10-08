@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
-import { lands, scopeNote } from "@/content/services";
 import type { AppLocale } from "@/i18n/routing";
+import { getServiceIndex } from "@/lib/services/public";
 import { buildMetadata } from "@/lib/seo";
 import { getSiteIdentity } from "@/lib/content";
 import { breadcrumbSchema, serviceSchema } from "@/lib/schema";
@@ -33,6 +33,8 @@ export default async function ServicesPage({ params }: PageProps) {
   const identity = await getSiteIdentity(locale);
   const t = await getTranslations({ locale, namespace: "services" });
   const tCta = await getTranslations({ locale, namespace: "cta" });
+  /* One authority (§55): published CMS copy for this locale, shipped content for the rest. */
+  const services = await getServiceIndex(locale);
 
   return (
     <>
@@ -41,7 +43,15 @@ export default async function ServicesPage({ params }: PageProps) {
         dangerouslySetInnerHTML={{
           __html: JSON.stringify([
             breadcrumbSchema(locale, [{ name: t("hero.eyebrow"), path: "/services" }], identity),
-            ...lands.map((land) => serviceSchema(locale, land.slug, identity)).filter(Boolean),
+            ...services
+              .map((service) =>
+                serviceSchema(locale, service.slug, identity, {
+                  title: service.title,
+                  promise: service.promise,
+                  capabilities: service.capabilities,
+                }),
+              )
+              .filter(Boolean),
           ]),
         }}
       />
@@ -80,28 +90,27 @@ export default async function ServicesPage({ params }: PageProps) {
         </h2>
 
         <ol className="flex flex-col border-t border-ink-950/12" role="list">
-          {lands.map((land) => {
-            const copy = land.copy[locale];
+          {services.map((service) => {
             return (
-              <li key={land.slug} className="group border-b border-ink-950/12">
+              <li key={service.slug} className="group border-b border-ink-950/12">
                 <Link
-                  href={`/services/${land.slug}`}
+                  href={`/services/${service.slug}`}
                   data-analytics="service_cta_click"
                   data-analytics-location="services_hub"
                   className="grid gap-6 py-9 transition-colors duration-200 md:grid-cols-12 md:gap-8 lg:py-11"
                 >
                   <div className="flex items-start gap-5 md:col-span-5">
                     <span className="num pt-1 text-[0.8125rem] font-semibold text-muted">
-                      {land.number}
+                      {service.number}
                     </span>
                     <LandGlyph
-                      glyph={land.glyph}
+                      glyph={service.glyph}
                       className="mt-[-0.15rem] h-7 w-7 shrink-0 text-navy-800"
                     />
                     <div>
-                      <h3 className="display-3">{copy.title}</h3>
+                      <h3 className="display-3">{service.title}</h3>
                       <p className="mt-3 max-w-[38ch] text-[0.9375rem] leading-[1.9] text-steel-600">
-                        {copy.promise}
+                        {service.promise}
                       </p>
                     </div>
                   </div>
@@ -109,7 +118,7 @@ export default async function ServicesPage({ params }: PageProps) {
                   <div className="md:col-span-4 md:col-start-7">
                     <p className="eyebrow mb-3">{t("capabilitiesLabel")}</p>
                     <ul className="flex flex-wrap gap-x-2 gap-y-2" role="list">
-                      {copy.capabilities.slice(0, 4).map((capability) => (
+                      {service.capabilities.slice(0, 4).map((capability) => (
                         <li
                           key={capability}
                           className="rounded-full border border-ink-950/12 px-3 py-1 text-[0.8125rem] text-steel-600"
@@ -117,9 +126,9 @@ export default async function ServicesPage({ params }: PageProps) {
                           {capability}
                         </li>
                       ))}
-                      {copy.capabilities.length > 4 ? (
+                      {service.capabilities.length > 4 ? (
                         <li className="num px-3 py-1 text-[0.8125rem] text-muted">
-                          +{copy.capabilities.length - 4}
+                          +{service.capabilities.length - 4}
                         </li>
                       ) : null}
                     </ul>
@@ -137,7 +146,7 @@ export default async function ServicesPage({ params }: PageProps) {
           })}
         </ol>
 
-        <p className="mt-6 text-[0.8125rem] text-muted">{scopeNote[locale]}</p>
+        <p className="mt-6 text-[0.8125rem] text-muted">{services[0]?.scopeNote}</p>
       </Section>
 
       {/* WHY NOT DISCONNECTED SERVICES */}

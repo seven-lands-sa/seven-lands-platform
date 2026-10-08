@@ -1,0 +1,27 @@
+[summary] dev:   210|920|159|1646
+[summary] empty: 210|920|159|1646
+[tables] IDENTICAL (dev 210 vs repro 210)
+[columns] IDENTICAL (dev 1646 vs repro 1646)
+[enums] IDENTICAL (dev 0 vs repro 0)
+ERR ERROR:  aggregate functions are not allowed in GROUP BY
+LINE 1: select t.typname || ' => ' || string_agg(e.enumlabel, ' | ' ...
+                                      ^
+
+ERR ERROR:  aggregate functions are not allowed in GROUP BY
+LINE 1: select t.typname || ' => ' || string_agg(e.enumlabel, ' | ' ...
+                                      ^
+
+[indices] dev 0 
+[enums] IDENTICAL (0 enum types)
+[indexes] IDENTICAL (695 indexes)
+ERR psql: warning: extra command-line argument "	" ignored
+psql: warning: extra command-line argument "select t.typname, string_agg(e.enumlabel, ' | ' order by e.enumsortorder)
+from pg_type t join pg_enum e on e.enumtypid = t.oid
+join pg_namespace n on n.oid = t.typnamespace
+where n.nspname = 'public'
+g
+[enums] IDENTICAL (159 enum types, 920 labels)
+[seeded fresh database ] roles=5 users=1 pages=6 services=0 projects=0 insights=0 media=0 globals=2
+[working database        ] roles=5 users=6 pages=6 services=7 projects=0 insights=0 media=0 globals=2
+[content seeds] pages + services were rebuilt from the repository only: no manual SQL, no push.
+[after deterministic seeds, fresh database] roles=5 pages=6 services=7 service drafts (ar state)=7 projects=0 insights=0 media=0

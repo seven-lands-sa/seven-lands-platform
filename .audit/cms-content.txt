@@ -1,0 +1,27 @@
+siteSettings: {"logo":"empty","favicon":"empty","defaultOg":"empty"}
+contactSettings.channels: [{"id":"6ac76dca6e7716142ea5bfc2","type":"whatsapp","value":"0507776891","hrefOverride":null,"icon":"whatsapp","isPrimary":true,"enabled":true,"normalized":"+966507776891","label":{"ar":null,"en":null}},{"id":"6ac76dca6e7716142ea5bfc3","type":"phone","value":"0507776891","hrefOverride":null,"icon":null,"isPrimary":false,"enabled":true,"normalized":"+966507776891","label":{"ar":"اتصل بنا","en":"Call us"}}]
+businessHours.week rows: 0
+businessHours.exceptions rows: 0
+socialAccounts.accounts: []
+navigation.header items: {"items":[{"id":"6ac778a1c75ff13607f9a445","linkType":"internal","route":"services","url":null,"newTab":true,"enabled":true,"label":{"ar":"خدماتنا","en":"Services"}},{"id":"6ac778a1c75ff13607f9a446","linkType":"internal","route":"work","url":null,"newTab":true,"enabled":true,"label":{"ar":"أعمالنا","en":"Work"}},{"id":"6ac778a1c75ff13607f9a447","linkType":"internal","route":"about","url":null,"newTab":true,"enabled":true,"label":{"ar":"من نحن","en":"About"}},{"id":"6ac778a1c75ff13607f9a448","linkType":"internal","route":"insights","url":null,"newTab":true,"enabled":true,"label":{"ar":"رؤى","en
+footer.groups: [{"id":"6ac76dcc6e7716142ea5bfcf","enabled":true,"items":[{"id":"6ac76dcc6e7716142ea5bfc9","marker":null,"linkType":"internal","route":"services","url":null,"newTab":true,"enabled":true,"label":{"ar":"خدماتنا","en":"Services"}},{"id":"6ac76dcc6e7716142ea5bfca","marker":null,"linkType":"internal","route":"work","url":null,"newTab":true,"enabled":true,"label":{"ar":"أعمالنا","en":"Work"}},{"id":"6ac76dcc6e7716142ea5bfcb","marker":null,"linkType":"internal","route":"about","url":null,"newTab":true,"enabled":true,"label":{"ar":"من نحن","en":"About"}},{"id":"6ac76dcc6e7716142ea5bfcc","marker":null,"linkType":"internal","route":"insights","url":null,"newTab":true,"enabled":true,"label":{"ar":"رؤى"
+footer.legal: [{"id":"6ac76dcc6e7716142ea5bfd8","linkType":"internal","route":"privacy","url":null,"newTab":true,"enabled":true,"label":{"ar":"سياسة الخصوصية","en":"Privacy policy"}},{"id":"6ac76dcc6e7716142ea5bfd9","linkType":"internal","route":"terms","url":null,"newTab":true,"enabled":true,"label":{"ar":"الشروط والأحكام","en":"Terms & conditions"}}]
+pages:
+  #6 start-a-project slug=start-a-project ar=published en=published blocks=1
+  #5 contact slug=contact ar=published en=published blocks=1
+  #4 about slug=about ar=published en=published blocks=8
+  #3 terms slug=terms ar=published en=published blocks=1
+  #2 privacy slug=privacy ar=published en=published blocks=1
+  #1 home slug=home ar=published en=published blocks=8
+services:
+  #1 strategy-business-growth order=1 glyph=strategy enabled=true ar=published en=published title.ar=الاستراتيجية وتطوير الأعمال
+  #2 branding-creative order=2 glyph=branding enabled=true ar=published en=published title.ar=الهوية والإبداع
+  #3 content-production order=3 glyph=content enabled=true ar=published en=published title.ar=المحتوى والإنتاج
+  #4 social-digital-presence order=4 glyph=social enabled=true ar=published en=published title.ar=التواصل والحضور الرقمي
+  #5 performance-acquisition order=5 glyph=performance enabled=true ar=published en=published title.ar=الإعلانات واكتساب العملاء
+  #6 web-commerce-experiences order=6 glyph=web enabled=true ar=published en=published title.ar=المواقع والمتاجر والتجارب الرقمية
+  #7 software-automation-technology order=7 glyph=technology enabled=true ar=published en=published title.ar=البرمجيات والأتمتة والتقنية
+projects: totalDocs=0
+insights: totalDocs=0
+media: totalDocs=0
+audit-events: totalDocs=479

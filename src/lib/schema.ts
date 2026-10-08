@@ -70,10 +70,25 @@ export function websiteSchema(locale: AppLocale, identity: SiteIdentity) {
   };
 }
 
-export function serviceSchema(locale: AppLocale, slug: string, identity: SiteIdentity) {
+/**
+ * A capability's `Service` node.
+ *
+ * `source` is how structured data stays on the SAME authority as the page (§55): the renderer passes
+ * the resolved view (CMS when published, shipped content otherwise), so the JSON-LD can never describe
+ * an older name than the visible page. Without it the shipped content is used, which is exactly the
+ * pre-Phase-F behaviour.
+ */
+export function serviceSchema(
+  locale: AppLocale,
+  slug: string,
+  identity: SiteIdentity,
+  source?: { title: string; promise: string; capabilities: string[] },
+) {
   const land = lands.find((l) => l.slug === slug);
   if (!land) return null;
-  const copy = land.copy[locale];
+  const copy = source
+    ? { title: source.title, promise: source.promise, capabilities: source.capabilities }
+    : { title: land.copy[locale].title, promise: land.copy[locale].promise, capabilities: land.copy[locale].capabilities };
 
   return {
     "@context": "https://schema.org",
@@ -96,10 +111,10 @@ export function serviceSchema(locale: AppLocale, slug: string, identity: SiteIde
   };
 }
 
-export function faqSchema(locale: AppLocale, slug: string) {
+export function faqSchema(locale: AppLocale, slug: string, source?: { q: string; a: string }[]) {
   const land = lands.find((l) => l.slug === slug);
   if (!land) return null;
-  const copy = land.copy[locale];
+  const copy = source ? { faqs: source } : land.copy[locale];
 
   return {
     "@context": "https://schema.org",

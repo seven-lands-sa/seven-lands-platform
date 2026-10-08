@@ -1,0 +1,52 @@
+=== GIT ===
+master
+bc3040a7815fd24928d03d6a7c3d2624b659797d
+bc3040a Phase E sealed: about/contact/start-a-project migrated to the Pages CMS (12/12 text equivalence, 0px visual, form gate green)
+--- status short (count) ---
+39
+--- status short ---
+ M .phase-d-evidence/verify-phase-d-samples.json
+ M docs/admin-control-center/phase-e/PHASE_E_REPORT.md
+ M docs/admin-control-center/phase-e/PLAN.md
+ M eslint.config.mjs
+ M src/app/[locale]/about/page.tsx
+ M src/app/[locale]/not-found.tsx
+ M src/app/[locale]/not-found/page.tsx
+ M src/app/[locale]/page.tsx
+ M src/app/[locale]/services/[slug]/page.tsx
+ M src/app/[locale]/services/page.tsx
+ M src/app/[locale]/work/[slug]/page.tsx
+ M src/app/[locale]/work/page.tsx
+ M src/collections/AuditEvents.ts
+ M src/components/blocks/PageBlocks.tsx
+ M src/components/sections/LandsSystem.tsx
+ M src/components/sections/Problems.tsx
+ M src/components/sections/ServicesIndex.tsx
+ M src/components/sections/WorkTeaser.tsx
+ M src/lib/auth/audit.ts
+ M src/lib/content/tags.ts
+ M src/lib/media/usage.ts
+ M src/lib/schema.ts
+ M src/migrations/index.ts
+ M src/payload-types.ts
+ M src/payload.config.ts
+?? .audit/
+?? .phase-f-evidence/
+?? docs/admin-control-center/overnight/
+?? src/collections/Insights.ts
+?? src/collections/Projects.ts
+?? src/collections/Services.ts
+?? src/lib/insights/
+?? src/lib/projects/
+?? src/lib/services/
+?? src/migrations/20261008_103522_phase_f_services_projects_insights.json
+?? src/migrations/20261008_103522_phase_f_services_projects_insights.ts
+?? src/migrations/20261008_103658_phase_f_service_glyph_registry.json
+?? src/migrations/20261008_103658_phase_f_service_glyph_registry.ts
+?? src/scripts/seed-services.ts
+--- diff stat ---
+ src/lib/schema.ts                                  |  23 +-
+ src/migrations/index.ts                            |  14 +-
+ src/payload-types.ts                               | 455 ++++++++++++++++++++-
+ src/payload.config.ts                              |   5 +-
+ 25 files changed, 885 insertions(+), 134 deletions(-)

@@ -1,0 +1,6 @@
+  ✓  15 [en-desktop] › tests/a11y.spec.ts:12:3 › axe: /ar/services (2.1s)
+  ✓  16 [en-desktop] › tests/a11y.spec.ts:12:3 › axe: /ar/services/web-commerce-experiences (2.1s)
+  ✓  17 [en-desktop] › tests/a11y.spec.ts:12:3 › axe: /ar/start-a-project (2.0s)
+  ✓  18 [en-desktop] › tests/a11y.spec.ts:12:3 › axe: /ar/contact (2.1s)
+
+  18 passed (44.9s)

@@ -1,6 +1,6 @@
 import { getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
-import { lands } from "@/content/services";
+import { getServiceIndex } from "@/lib/services/public";
 import type { AppLocale } from "@/i18n/routing";
 import { routing } from "@/i18n/routing";
 import { ArrowRight, ButtonLink } from "@/components/ui/Button";
@@ -21,6 +21,7 @@ export default async function LocaleNotFound() {
   const t = await getTranslations("notFound");
   const locale: AppLocale = routing.defaultLocale;
   const tCta = await getTranslations("cta");
+  const services = await getServiceIndex(locale);
 
   return (
     <div className="bg-offwhite">
@@ -50,14 +51,14 @@ export default async function LocaleNotFound() {
       <div className="container-x pb-20">
         <h2 className="eyebrow mb-6">{t("landsHeading")}</h2>
         <ul className="grid gap-px overflow-hidden rounded-[1.25rem] border border-ink-950/10 bg-ink-950/10 sm:grid-cols-2 lg:grid-cols-4" role="list">
-          {lands.map((land) => (
+          {services.map((land) => (
             <li key={land.slug} className="bg-white">
               <Link
                 href={`/services/${land.slug}`}
                 className="flex h-full items-center gap-4 p-5 transition-colors duration-200 hover:bg-offwhite"
               >
                 <span className="num text-[0.75rem] font-semibold text-muted">{land.number}</span>
-                <span className="text-[0.9375rem] font-semibold">{land.copy[locale].short}</span>
+                <span className="text-[0.9375rem] font-semibold">{land.short}</span>
               </Link>
             </li>
           ))}

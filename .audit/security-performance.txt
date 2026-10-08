@@ -1,0 +1,30 @@
+=== NPM AUDIT ===
+{"info":0,"low":0,"moderate":5,"high":9,"critical":0,"total":14}
+@esbuild-kit/core-utils [moderate] via esbuild
+@esbuild-kit/esm-loader [moderate] via @esbuild-kit/core-utils
+@next/eslint-plugin-next [high] via fast-glob
+@payloadcms/db-postgres [moderate] via drizzle-kit
+@payloadcms/next [high] via sass
+@payloadcms/richtext-lexical [high] via @payloadcms/next
+braces [high] via braces vulnerable to stack-exhaustion denial of service through deeply nested patterns
+chokidar [high] via braces
+drizzle-kit [moderate] via @esbuild-kit/esm-loader
+esbuild [moderate] via esbuild enables any website to send any requests to the development server and read the response
+eslint-config-next [high] via @next/eslint-plugin-next
+fast-glob [high] via micromatch
+micromatch [high] via braces
+sass [high] via chokidar
+
+=== BUNDLE MEASURE ===
+  public /ar/insights     13 assets
+  public /en/insights     13 assets
+  public /ar/contact      13 assets
+  public /en/contact      13 assets
+  admin  /admin/collections/media     16 assets
+  admin  /admin/media-picker          16 assets
+  admin  /admin/collections/users     16 assets
+
+PUBLIC_BUNDLE ............ 13 files / 914,439 B
+ADMIN_BUNDLE ............. 16 files / 2,565,382 B
+OVERLAP .................. 6 files / 459,310 B (/_next/static/chunks/1yg4x5e3obwvr.js, /_next/static/chunks/3wjkd7x0y2arl.js, /_next/static/chunks/turbopack-2c3mg3r-05n1w.js, /_next/static/chunks/095g8usnrcprg.js, /_next/static/chunks/2yjamibpnhspc.js, /_next/static/chunks/1ibs_mso-ku2s.js)
+ADMIN_CODE_LEAK .......... NO

@@ -1,0 +1,74 @@
+=== ENV VARS REFERENCED IN CODE (names only) ===
+      6 process.env.RUNTIME_ORIGIN
+      6 process.env.NODE_ENV
+      6 process.env.ALLOW_VERIFICATION_WRITES
+      5 process.env.SITE_CANONICAL_URL
+      5 process.env.SEED_SUPER_ADMIN_EMAIL
+      4 process.env.SEED_SUPER_ADMIN_PASSWORD
+      4 process.env.MEDIA_DIR
+      3 process.env.ALLOW_PRODUCTION_SEED
+      2 process.env.QA_BASE
+      2 process.env.MEDIA_TEST_BASE
+      2 process.env.BRIEF_WEBHOOK_TOKEN
+      1 process.env.SEED_SUPER_ADMIN_NAME
+      1 process.env.PAYLOAD_TRUSTED_ORIGINS
+      1 process.env.PAYLOAD_SECRET
+      1 process.env.PAYLOAD_ALLOW_INSECURE_COOKIES
+      1 process.env.NEXT_PUBLIC_SERVER_URL
+      1 process.env.FORCE_SERVICE_SEED
+      1 process.env.FORCE_PAGE_SEED
+      1 process.env.DATABASE_URI
+      1 process.env.CACHE_TEST_BASE
+      1 process.env.BRIEF_WEBHOOK_URL
+      1 process.env.BASE
+      1 process.env.ADMIN_SHOT_DIR
+      1 process.env.ADMIN_BASE
+
+=== APP ROUTE TREE ===
+(payload)/admin/[[...segments]]/not-found.tsx
+(payload)/admin/[[...segments]]/page.tsx
+(payload)/api/[...slug]/route.ts
+(payload)/api/graphql-playground/route.ts
+(payload)/api/graphql/route.ts
+(payload)/layout.tsx
+[locale]/[...rest]/page.tsx
+[locale]/[slug]/page.tsx
+[locale]/about/page.tsx
+[locale]/contact/page.tsx
+[locale]/insights/[slug]/page.tsx
+[locale]/insights/page.tsx
+[locale]/layout.tsx
+[locale]/not-found.tsx
+[locale]/not-found/page.tsx
+[locale]/page.tsx
+[locale]/preview/page.tsx
+[locale]/privacy/page.tsx
+[locale]/services/[slug]/page.tsx
+[locale]/services/page.tsx
+[locale]/start-a-project/page.tsx
+[locale]/terms/page.tsx
+[locale]/work/[slug]/page.tsx
+[locale]/work/page.tsx
+api/brief/route.ts
+robots.ts
+sitemap.ts
+
+=== COLLECTIONS + GLOBALS GROUPS ===
+AuditEvents.ts
+Insights.ts
+Media.ts
+Pages.ts
+Projects.ts
+Roles.ts
+Services.ts
+Users.ts
+globals:
+BusinessHours.ts
+ContactSettings.ts
+Footer.ts
+Navigation.ts
+SiteSettings.ts
+SocialAccounts.ts
+fields.ts
+hooks.ts
+index.ts

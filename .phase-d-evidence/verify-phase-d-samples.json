@@ -4,18 +4,18 @@
   "failed": 0,
   "samples": {
     "private": {
-      "id": 5,
+      "id": 19,
       "filename": "gps-photo.jpg",
       "visibility": "private"
     },
     "public": {
-      "id": 6,
+      "id": 20,
       "filename": "hero-before-f040199c.png",
       "width": 1600,
       "height": 1200
     },
     "svg": {
-      "id": 4,
+      "id": 18,
       "filename": "mark.svg"
     }
   }

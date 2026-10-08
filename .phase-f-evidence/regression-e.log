@@ -1,0 +1,12 @@
+── verify-phase-e.ts
+[11:02:57] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+
+PHASE E SUITE: 64 passed · 0 failed
+── verify-custom-page.mjs
+PASS  route gone after cleanup — HTTP 404
+
+CUSTOM PAGE EVIDENCE: ALL GREEN
+── verify-runtime.mjs
+after reverting + publishing (HTTP 200) → marker gone=true · original copy back=true
+revisions stored for page 1: total=25 (newest ids: 125, 124, 123)
+restore revision 124 → HTTP 200 (Payload restoreVersion through the audited endpoint)

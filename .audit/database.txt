@@ -1,0 +1,47 @@
+=== POSTGRES ===
+host: 127.0.0.1 port: 5432 database: seven_lands_dev
+server_version: 17.11 (Debian 17.11-0+deb13u1)
+public tables: 210
+migrations ledger:
+20261007_162549_phase_b_auth_users_rbac | batch 1 | 2026-10-08 10:17:34
+20261007_173537_phase_c_globals | batch 1 | 2026-10-08 10:17:34
+20261007_200052_phase_d_media_library | batch 1 | 2026-10-08 10:17:34
+20261007_212705_phase_e_pages_blocks | batch 1 | 2026-10-08 10:17:34
+20261007_212958_phase_e_block_fields_align | batch 1 | 2026-10-08 10:17:34
+20261007_213556_phase_e_shared_sections | batch 1 | 2026-10-08 10:17:35
+20261008_102014_phase_e_about_contact_start | batch 2 | 2026-10-08 10:21:32
+20261008_103522_phase_f_services_projects_insights | batch 3 | 2026-10-08 10:35:34
+20261008_103658_phase_f_service_glyph_registry | batch 4 | 2026-10-08 10:37:04
+
+=== CONTENT COUNTS ===
+users                        6
+roles                        5
+pages (all)                  6
+pages (system)               6
+pages (custom)               0
+pages published ar           ERROR:  column l.locale_state_ar_state does not exist
+LINE 1: ...locales l join pages p on p.id=l._parent_id where l.locale_s...
+                                                             ^
+HINT:  Perhaps you meant to reference the column "p.locale_state_ar_state".
+services                     7
+services published ar        7
+services published en        7
+projects                     0
+insights                     0
+media                        0
+audit_events                 479
+audit (service_*)            121
+audit (page_*)               125
+pages versions groups        129
+services versions            162
+leads tables                 0
+redirect tables              0
+site_settings versions       20
+
+=== GLOBALS CONTENT ===
+site_settings rows           1
+contact_settings rows        1
+business_hours rows          1
+social_accounts rows         1
+navigation rows              1
+footer rows                  1

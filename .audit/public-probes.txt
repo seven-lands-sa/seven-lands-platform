@@ -1,0 +1,123 @@
+=== PUBLIC ROUTES (served HTML) ===
+/ar                                              200  title=سفن لاند — تسويق وإبداع وتقنية في اتجاه واحد: نمو أعمالك | desc=114 chars | canon=yes | alt=3 | og=https://sevnland.com/og/og-ar.png | robots=index, follow | ld=Organization,PostalAddress,Country,ContactPoint,WebSite
+/ar/services                                     200  title=خدماتنا — سبعة مجالات مترابطة — Seven Lands | desc=122 chars | canon=yes | alt=3 | og=https://sevnland.com/og/og-ar.png | robots=index, follow | ld=BreadcrumbList,ListItem,Service,Country,OfferCatalog,Offer
+/ar/services/strategy-business-growth            200  title=الاستراتيجية وتطوير الأعمال — Seven Lands | desc=65 chars | canon=yes | alt=3 | og=https://sevnland.com/og/og-ar.png | robots=index, follow | ld=Service,Country,OfferCatalog,Offer,FAQPage,Question,Answer,BreadcrumbList,ListItem
+/ar/services/branding-creative                   200  title=الهوية والإبداع — Seven Lands | desc=45 chars | canon=yes | alt=3 | og=https://sevnland.com/og/og-ar.png | robots=index, follow | ld=Service,Country,OfferCatalog,Offer,FAQPage,Question,Answer,BreadcrumbList,ListItem
+/ar/services/content-production                  200  title=المحتوى والإنتاج — Seven Lands | desc=49 chars | canon=yes | alt=3 | og=https://sevnland.com/og/og-ar.png | robots=index, follow | ld=Service,Country,OfferCatalog,Offer,FAQPage,Question,Answer,BreadcrumbList,ListItem
+/ar/services/social-digital-presence             200  title=التواصل والحضور الرقمي — Seven Lands | desc=43 chars | canon=yes | alt=3 | og=https://sevnland.com/og/og-ar.png | robots=index, follow | ld=Service,Country,OfferCatalog,Offer,FAQPage,Question,Answer,BreadcrumbList,ListItem
+/ar/services/performance-acquisition             200  title=الإعلانات واكتساب العملاء — Seven Lands | desc=49 chars | canon=yes | alt=3 | og=https://sevnland.com/og/og-ar.png | robots=index, follow | ld=Service,Country,OfferCatalog,Offer,FAQPage,Question,Answer,BreadcrumbList,ListItem
+/ar/services/web-commerce-experiences            200  title=المواقع والمتاجر والتجارب الرقمية — Seven Lands | desc=61 chars | canon=yes | alt=3 | og=https://sevnland.com/og/og-ar.png | robots=index, follow | ld=Service,Country,OfferCatalog,Offer,FAQPage,Question,Answer,BreadcrumbList,ListItem
+/ar/services/software-automation-technology      200  title=البرمجيات والأتمتة والتقنية — Seven Lands | desc=58 chars | canon=yes | alt=3 | og=https://sevnland.com/og/og-ar.png | robots=index, follow | ld=Service,Country,OfferCatalog,Offer,FAQPage,Question,Answer,BreadcrumbList,ListItem
+/ar/work                                         200  title=أعمالنا — Seven Lands | desc=86 chars | canon=yes | alt=3 | og=https://sevnland.com/og/og-ar.png | robots=index, follow | ld=BreadcrumbList,ListItem
+/ar/insights                                     200  title=رؤى — Seven Lands | desc=85 chars | canon=yes | alt=3 | og=https://sevnland.com/og/og-ar.png | robots=index, follow | ld=BreadcrumbList,ListItem
+/ar/about                                        200  title=من نحن — Seven Lands | desc=102 chars | canon=yes | alt=3 | og=https://sevnland.com/og/og-ar.png | robots=index, follow | ld=Organization,PostalAddress,Country,ContactPoint,BreadcrumbList,ListItem
+/ar/contact                                      200  title=تواصل معنا — Seven Lands | desc=86 chars | canon=yes | alt=3 | og=https://sevnland.com/og/og-ar.png | robots=index, follow | ld=Organization,PostalAddress,Country,ContactPoint,BreadcrumbList,ListItem
+/ar/start-a-project                              200  title=ابدأ مشروعك — Seven Lands | desc=64 chars | canon=yes | alt=3 | og=https://sevnland.com/og/og-ar.png | robots=index, follow | ld=BreadcrumbList,ListItem
+/ar/privacy                                      200  title=سياسة الخصوصية — Seven Lands | desc=53 chars | canon=yes | alt=3 | og=https://sevnland.com/og/og-ar.png | robots=noindex, nofollow | ld=-
+/ar/terms                                        200  title=الشروط والأحكام — Seven Lands | desc=64 chars | canon=yes | alt=3 | og=https://sevnland.com/og/og-ar.png | robots=noindex, nofollow | ld=-
+/ar/this-page-does-not-exist                     404  title=- | desc=- | canon=NO | alt=0 | og=- | robots=- | ld=-
+/en                                              200  title=Seven Lands — Marketing, creative and technology in one dire | desc=151 chars | canon=yes | alt=3 | og=https://sevnland.com/og/og-en.png | robots=index, follow | ld=Organization,PostalAddress,Country,ContactPoint,WebSite
+/en/services                                     200  title=Services — seven connected capabilities — Seven Lands | desc=140 chars | canon=yes | alt=3 | og=https://sevnland.com/og/og-en.png | robots=index, follow | ld=BreadcrumbList,ListItem,Service,Country,OfferCatalog,Offer
+/en/services/strategy-business-growth            200  title=Strategy & Business Growth — Seven Lands | desc=87 chars | canon=yes | alt=3 | og=https://sevnland.com/og/og-en.png | robots=index, follow | ld=Service,Country,OfferCatalog,Offer,FAQPage,Question,Answer,BreadcrumbList,ListItem
+/en/services/branding-creative                   200  title=Branding & Creative — Seven Lands | desc=73 chars | canon=yes | alt=3 | og=https://sevnland.com/og/og-en.png | robots=index, follow | ld=Service,Country,OfferCatalog,Offer,FAQPage,Question,Answer,BreadcrumbList,ListItem
+/en/services/content-production                  200  title=Content & Production — Seven Lands | desc=83 chars | canon=yes | alt=3 | og=https://sevnland.com/og/og-en.png | robots=index, follow | ld=Service,Country,OfferCatalog,Offer,FAQPage,Question,Answer,BreadcrumbList,ListItem
+/en/services/social-digital-presence             200  title=Social & Digital Presence — Seven Lands | desc=81 chars | canon=yes | alt=3 | og=https://sevnland.com/og/og-en.png | robots=index, follow | ld=Service,Country,OfferCatalog,Offer,FAQPage,Question,Answer,BreadcrumbList,ListItem
+/en/services/performance-acquisition             200  title=Performance & Acquisition — Seven Lands | desc=69 chars | canon=yes | alt=3 | og=https://sevnland.com/og/og-en.png | robots=index, follow | ld=Service,Country,OfferCatalog,Offer,FAQPage,Question,Answer,BreadcrumbList,ListItem
+/en/services/web-commerce-experiences            200  title=Web, Commerce & Digital Experiences — Seven Lands | desc=85 chars | canon=yes | alt=3 | og=https://sevnland.com/og/og-en.png | robots=index, follow | ld=Service,Country,OfferCatalog,Offer,FAQPage,Question,Answer,BreadcrumbList,ListItem
+/en/services/software-automation-technology      200  title=Software, Automation & Technology — Seven Lands | desc=85 chars | canon=yes | alt=3 | og=https://sevnland.com/og/og-en.png | robots=index, follow | ld=Service,Country,OfferCatalog,Offer,FAQPage,Question,Answer,BreadcrumbList,ListItem
+/en/work                                         200  title=Work — Seven Lands | desc=114 chars | canon=yes | alt=3 | og=https://sevnland.com/og/og-en.png | robots=index, follow | ld=BreadcrumbList,ListItem
+/en/insights                                     200  title=Insights — Seven Lands | desc=109 chars | canon=yes | alt=3 | og=https://sevnland.com/og/og-en.png | robots=index, follow | ld=BreadcrumbList,ListItem
+/en/about                                        200  title=About — Seven Lands | desc=119 chars | canon=yes | alt=3 | og=https://sevnland.com/og/og-en.png | robots=index, follow | ld=Organization,PostalAddress,Country,ContactPoint,BreadcrumbList,ListItem
+/en/contact                                      200  title=Contact — Seven Lands | desc=101 chars | canon=yes | alt=3 | og=https://sevnland.com/og/og-en.png | robots=index, follow | ld=Organization,PostalAddress,Country,ContactPoint,BreadcrumbList,ListItem
+/en/start-a-project                              200  title=Start a project — Seven Lands | desc=100 chars | canon=yes | alt=3 | og=https://sevnland.com/og/og-en.png | robots=index, follow | ld=BreadcrumbList,ListItem
+/en/privacy                                      200  title=Privacy policy — Seven Lands | desc=60 chars | canon=yes | alt=3 | og=https://sevnland.com/og/og-en.png | robots=noindex, nofollow | ld=-
+/en/terms                                        200  title=Terms & conditions — Seven Lands | desc=84 chars | canon=yes | alt=3 | og=https://sevnland.com/og/og-en.png | robots=noindex, nofollow | ld=-
+/en/this-page-does-not-exist                     404  title=- | desc=- | canon=NO | alt=0 | og=- | robots=- | ld=-
+
+=== CANONICAL + HREFLANG SAMPLE (/ar/services) ===
+<link rel="canonical" href="https://sevnland.com/ar/services"/>
+<link rel="alternate" hrefLang="ar-SA" href="https://sevnland.com/ar/services"/>
+<link rel="alternate" hrefLang="en" href="https://sevnland.com/en/services"/>
+<link rel="alternate" hrefLang="x-default" href="https://sevnland.com/ar/services"/>
+
+=== SECURITY HEADERS (GET /ar) ===
+  cache-control: s-maxage=60, stale-while-revalidate=3540
+  connection: keep-alive
+  content-encoding: gzip
+  content-security-policy: default-src 'self'; base-uri 'self'; object-src 'none'; img-src 'self' data: blob:; font-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline'; connect-src 'self'; form-action 'self'
+  content-type: text/html; charset=utf-8
+  date: Thu, 08 Oct 2026 11:40:33 GMT
+  etag: "mx3p709h8w3umd"
+  keep-alive: timeout=5
+  link: <http://127.0.0.1:3000/ar>; rel="alternate"; hreflang="ar", <http://127.0.0.1:3000/en>; rel="alternate"; hreflang="en", <http://127.0.0.1:3000/>; rel="alternate"; hreflang="x-default", <http://127.0.0.1:3000/ar>; rel="al
+  permissions-policy: camera=(), microphone=(), geolocation=(self)
+  referrer-policy: strict-origin-when-cross-origin
+  set-cookie: NEXT_LOCALE=ar; Path=/; Expires=Fri, 08 Oct 2027 11:40:33 GMT; Max-Age=31536000; SameSite=lax
+  strict-transport-security: max-age=63072000; includeSubDomains; preload
+  transfer-encoding: chunked
+  vary: rsc, next-router-state-tree, next-router-prefetch, next-router-segment-prefetch, Accept-Encoding
+  x-content-type-options: nosniff
+  x-dns-prefetch-control: on
+  x-nextjs-cache: HIT
+  x-nextjs-prerender: 1
+  x-nextjs-stale-time: 300
+
+=== ROBOTS.TXT ===
+User-Agent: *
+Allow: /
+Disallow: /api/
+Disallow: /admin
+Disallow: /*/preview
+
+Host: https://sevnland.com
+Sitemap: https://sevnland.com/sitemap.xml
+
+=== SITEMAP ===
+urls: 28
+includes privacy/terms: false
+  https://sevnland.com/ar
+  https://sevnland.com/ar/services
+  https://sevnland.com/ar/work
+  https://sevnland.com/ar/about
+  https://sevnland.com/ar/insights
+  https://sevnland.com/ar/start-a-project
+  https://sevnland.com/ar/contact
+  https://sevnland.com/ar/services/strategy-business-growth
+  https://sevnland.com/ar/services/branding-creative
+  https://sevnland.com/ar/services/content-production
+  https://sevnland.com/ar/services/social-digital-presence
+  https://sevnland.com/ar/services/performance-acquisition
+  https://sevnland.com/ar/services/web-commerce-experiences
+  https://sevnland.com/ar/services/software-automation-technology
+  https://sevnland.com/en
+  https://sevnland.com/en/services
+  https://sevnland.com/en/work
+  https://sevnland.com/en/about
+  https://sevnland.com/en/insights
+  https://sevnland.com/en/start-a-project
+  https://sevnland.com/en/contact
+  https://sevnland.com/en/services/strategy-business-growth
+  https://sevnland.com/en/services/branding-creative
+  https://sevnland.com/en/services/content-production
+  https://sevnland.com/en/services/social-digital-presence
+  https://sevnland.com/en/services/performance-acquisition
+  https://sevnland.com/en/services/web-commerce-experiences
+  https://sevnland.com/en/services/software-automation-technology
+alternates in sitemap entry sample: 2
+
+=== PROTECTED SURFACES (anonymous) ===
+  GET /admin                                 → 200
+  GET /api/users                             → 403
+  GET /api/pages?limit=1                     → 403
+  GET /api/services?limit=1&draft=true       → 403
+  GET /api/media?limit=1                     → 200
+  GET /api/audit-events?limit=1              → 403
+  GET /api/globals/site-settings             → 403
+  GET /api/graphql-playground                → 404
+  POST /api/brief                             → 422
+  POST /api/graphql (anonymous introspection) → 500 
+
+=== PREVIEW SURFACE (anonymous) ===
+  /ar/preview?path=/services → 404  
+  /ar/preview → 404  
+  /ar/preview?path=/does-not-exist → 404  

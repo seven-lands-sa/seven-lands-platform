@@ -49,7 +49,20 @@ export type AuditAction =
   | "page_archived"
   | "page_restored"
   | "page_slug_changed"
-  | "page_blocks_reordered";
+  | "page_blocks_reordered"
+  /* Phase F — domain content lifecycle (services · projects · insights). */
+  | "service_created"
+  | "service_updated"
+  | "service_published"
+  | "service_unpublished"
+  | "project_created"
+  | "project_updated"
+  | "project_published"
+  | "project_unpublished"
+  | "insight_created"
+  | "insight_updated"
+  | "insight_published"
+  | "insight_unpublished";
 
 export type AuditInput = {
   action: AuditAction;
@@ -67,7 +80,10 @@ export type AuditInput = {
     | "navigation"
     | "footer"
     | "media"
-    | "pages";
+    | "pages"
+    | "services"
+    | "projects"
+    | "insights";
   resourceId?: string | number | null;
   actorID?: string | number | null;
   actorEmail?: string | null;

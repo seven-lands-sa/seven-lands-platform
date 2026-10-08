@@ -1,0 +1,48 @@
+=== payload.config.ts (key parts) ===
+6:import { postgresAdapter } from '@payloadcms/db-postgres'
+8:import sharp from 'sharp'
+44: * It is deliberately NOT the canonical site origin: Payload uses `serverURL` to build the absolute
+49:const serverURL =
+57: * used from a host that differs from `serverURL`: a hosting preview URL, a staging alias, a port
+65:const trustedOrigins = (process.env.PAYLOAD_TRUSTED_ORIGINS ?? '')
+71:  admin: {
+120:   * Content localization (Arabic default, English second).
+129:  localization: {
+137:  secret: process.env.PAYLOAD_SECRET || '',
+138:  serverURL,
+139:  csrf: [serverURL, ...trustedOrigins],
+140:  typescript: {
+149:  graphQL: {
+154:  db: postgresAdapter({
+161:     * Payload would otherwise let drizzle-kit "push" schema changes straight to the database in
+170:    push: false,
+178:  sharp,
+
+=== Users auth config ===
+9: * Secure cookies in production. The sandbox runs a TLS-less production build for verification,
+10- * so an explicit, clearly-named escape hatch exists for that case only — it must never be set
+11- * in a real deployment.
+12- */
+13-const secureCookies =
+14-  process.env.NODE_ENV === "production" && process.env.PAYLOAD_ALLOW_INSECURE_COOKIES !== "true";
+15-
+--
+22:  auth: {
+23-    /** 2 hours — a compromised session has a bounded life. */
+24:    tokenExpiration: 60 * 60 * 2,
+25-    /** Brute-force protection: 5 failed attempts lock the account for 10 minutes. */
+26:    maxLoginAttempts: 5,
+27:    lockTime: 10 * 60 * 1000,
+28-    /** Server-side sessions, so suspending a user can revoke access immediately. */
+29-    useSessions: true,
+30:    cookies: {
+31-      sameSite: "Lax",
+32-      secure: secureCookies,
+33-    },
+34:    forgotPassword: {
+35-      /** Payload throttles reset requests per account; the default is kept. */
+36-      minRequestInterval: 15_000,
+37-    },
+38-  },
+39-  admin: {
+40-    useAsTitle: "name",

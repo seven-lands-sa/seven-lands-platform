@@ -1,0 +1,44 @@
+=== RUNTIMES ===
+v20.20.2
+10.8.2
+
+=== PACKAGE VERSIONS (declared vs installed) ===
+@axe-core/playwright                   ^4.13.0        installed=4.13.0       dev
+@hookform/resolvers                    ^5.9.1         installed=5.9.1        prod
+@payloadcms/db-postgres                3.90.2         installed=3.90.2       prod
+@payloadcms/next                       3.90.2         installed=3.90.2       prod
+@payloadcms/richtext-lexical           ^3.90.2        installed=3.90.2       prod
+@playwright/test                       ^1.63.0        installed=1.63.0       dev
+@tailwindcss/turbopack                 ^4             installed=4.3.3        dev
+@types/node                            ^20            installed=20.19.43     dev
+@types/react                           ^19            installed=19.3.0       dev
+@types/react-dom                       ^19            installed=19.3.0       dev
+clsx                                   ^2.1.1         installed=2.1.1        prod
+eslint                                 ^9             installed=9.39.5       dev
+eslint-config-next                     16.4.0         installed=16.4.0       dev
+graphql                                16.14.2        installed=16.14.2      prod
+motion                                 ^14.0.0        installed=14.0.0       prod
+next                                   16.4.0         installed=16.4.0       prod
+next-intl                              ^4.14.9        installed=4.14.9       prod
+payload                                3.90.2         installed=3.90.2       prod
+react                                  19.3.0         installed=19.3.0       prod
+react-dom                              19.3.0         installed=19.3.0       prod
+react-hook-form                        ^7.89.0        installed=7.89.0       prod
+sass                                   1.105.1        installed=1.105.1      dev
+sharp                                  0.35.5         installed=0.35.5       prod
+tailwind-merge                         ^3.7.0         installed=3.7.0        prod
+tailwindcss                            ^4             installed=4.3.3        dev
+typescript                             ^5             installed=5.9.3        dev
+zod                                    ^4.6.5         installed=4.6.5        prod
+
+scripts: {
+ "dev": "next dev",
+ "build": "next build",
+ "start": "next start",
+ "lint": "eslint",
+ "typecheck": "tsc --noEmit",
+ "test": "playwright test",
+ "test:e2e": "playwright test tests/smoke.spec.ts",
+ "test:a11y": "playwright test tests/a11y.spec.ts",
+ "qa:capture": "node scripts/qa-capture.mjs"
+}

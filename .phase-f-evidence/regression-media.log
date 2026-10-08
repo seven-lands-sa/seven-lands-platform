@@ -1,0 +1,8 @@
+
+  MEDIA_BINARY_VISIBILITY = PASS
+
+media blocker names the asset or its privacy: true
+publish attempt → HTTP 400 (expected 400: nothing published)
+asset visibility after the blocked publish: private (expected private — never silently changed)
+fixture deleted → HTTP 200
+media-gate exit=0

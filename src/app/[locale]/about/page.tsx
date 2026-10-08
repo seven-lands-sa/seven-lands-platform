@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import { principles, process } from "@/content/home";
-import { lands } from "@/content/services";
+import { getServiceIndex } from "@/lib/services/public";
 import type { AppLocale } from "@/i18n/routing";
 import { buildMetadata } from "@/lib/seo";
 import { PageBlocks } from "@/components/blocks/PageBlocks";
@@ -46,6 +46,7 @@ export default async function AboutPage({ params }: PageProps) {
   const cms = await getPublishedSystemPage("about", locale);
 
   const identity = await getSiteIdentity(locale);
+  const services = await getServiceIndex(locale);
   const t = await getTranslations({ locale, namespace: "about" });
   const tCta = await getTranslations({ locale, namespace: "cta" });
   const story = t.raw("story") as string[];
@@ -129,7 +130,7 @@ export default async function AboutPage({ params }: PageProps) {
         />
 
         <ul className="mt-12 grid gap-px overflow-hidden rounded-[1.25rem] border border-ink-950/10 bg-ink-950/10 sm:grid-cols-2 lg:grid-cols-4" role="list">
-          {lands.map((land) => (
+          {services.map((land) => (
             <li key={land.slug} className="bg-white">
               <Link
                 href={`/services/${land.slug}`}
@@ -139,7 +140,7 @@ export default async function AboutPage({ params }: PageProps) {
                   <LandGlyph glyph={land.glyph} className="h-6 w-6 text-navy-800" />
                   <span className="num text-[0.75rem] text-muted">{land.number}</span>
                 </span>
-                <span className="text-[0.9375rem] font-semibold">{land.copy[locale].title}</span>
+                <span className="text-[0.9375rem] font-semibold">{land.title}</span>
                 <span className="mt-auto inline-flex items-center gap-2 text-[0.8125rem] text-steel-600">
                   {tCta("openLand")}
                   <ArrowRight />

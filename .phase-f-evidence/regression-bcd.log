@@ -1,0 +1,14 @@
+── verify-locale-safety
+  checks failed: 0
+  LOCALIZATION_SAFETY = PASS
+── verify-phase-b
+  PHASE_B_SERVER_ENFORCEMENT = PASS
+
+── verify-phase-c
+
+  PHASE_C_GLOBALS_SOCIAL_HOURS_NAV = PASS
+
+── verify-phase-d
+
+  PHASE_D_MEDIA_SUITE = PASS
+
