@@ -49,6 +49,6 @@
   - `a11y.spec.ts`: 18/18 PASSED.
   - `smoke.spec.ts`: 55/55 PASSED.
   - `npm run build`: 73/73 routes generated cleanly.
-- **COMMIT:** Pending Phase G commit.
-- **END STATE:** Phase G sealed and verified.
+- **COMMIT:** `313e125904dd1d4e31783fa85e82f325b4c56d3a`
+- **END STATE:** Phase G sealed, verified, and committed.
 
