@@ -86,6 +86,10 @@ export const AuditEvents: CollectionConfig = {
         { label: "تغيير حالة عميل محتمل", value: "lead_status_changed" },
         { label: "إضافة ملاحظة على عميل محتمل", value: "lead_note_added" },
         { label: "تصدير العملاء المحتملين", value: "lead_exported" },
+        /* Phase G — redirects lifecycle. */
+        { label: "إنشاء تحويل مسار", value: "redirect_created" },
+        { label: "تعديل تحويل مسار", value: "redirect_updated" },
+        { label: "حذف تحويل مسار", value: "redirect_deleted" },
       ],
     },
     {
@@ -136,6 +140,7 @@ export const AuditEvents: CollectionConfig = {
         { label: "عمل", value: "projects" },
         { label: "مقال", value: "insights" },
         { label: "عميل محتمل", value: "leads" },
+        { label: "تحويل مسار", value: "redirects" },
       ],
     },
     {

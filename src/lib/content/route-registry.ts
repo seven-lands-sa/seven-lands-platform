@@ -58,9 +58,14 @@ const LEGAL_ROUTES: InternalRoute[] = [
  * The seven capability pages. They are routes today and will become relationships to `services`
  * documents later; either way the admin keeps choosing "مجالات العمل ← الاستراتيجية" rather than
  * pasting `/services/strategy-business-growth`.
+ *
+ * NOTE (Defect D1 / Amendment A):
+ * Keys use `capability_${land.slug}` instead of colons (`capability:...`) because GraphQL enum identifiers
+ * strictly require `[_a-zA-Z0-9]`. Stored meaning and route identity `/services/${land.slug}` are 100%
+ * preserved, and `internalRoute()` transparently resolves legacy colon keys as well.
  */
 const CAPABILITY_ROUTES: InternalRoute[] = lands.map((land) => ({
-  key: `capability:${land.slug}`,
+  key: `capability_${land.slug}`,
   path: `/services/${land.slug}`,
   label: { ar: land.copy.ar.short, en: land.copy.en.short },
   kind: "capability" as const,
@@ -76,7 +81,14 @@ const BY_KEY = new Map(INTERNAL_ROUTES.map((route) => [route.key, route]));
 
 export function internalRoute(key: string | null | undefined): InternalRoute | null {
   if (!key) return null;
-  return BY_KEY.get(key) ?? null;
+  const direct = BY_KEY.get(key);
+  if (direct) return direct;
+  // Backward compatibility for legacy colon keys: capability:slug -> capability_slug
+  if (key.startsWith("capability:")) {
+    const normalized = key.replace("capability:", "capability_");
+    return BY_KEY.get(normalized) ?? null;
+  }
+  return null;
 }
 
 export function routePath(key: string | null | undefined): string | null {

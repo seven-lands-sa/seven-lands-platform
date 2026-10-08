@@ -76,6 +76,7 @@ export interface Config {
     projects: Project;
     insights: Insight;
     leads: Lead;
+    redirects: Redirect;
     'payload-kv': PayloadKv;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
@@ -92,6 +93,7 @@ export interface Config {
     projects: ProjectsSelect<false> | ProjectsSelect<true>;
     insights: InsightsSelect<false> | InsightsSelect<true>;
     leads: LeadsSelect<false> | LeadsSelect<true>;
+    redirects: RedirectsSelect<false> | RedirectsSelect<true>;
     'payload-kv': PayloadKvSelect<false> | PayloadKvSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
@@ -457,7 +459,10 @@ export interface AuditEvent {
     | 'lead_created'
     | 'lead_status_changed'
     | 'lead_note_added'
-    | 'lead_exported';
+    | 'lead_exported'
+    | 'redirect_created'
+    | 'redirect_updated'
+    | 'redirect_deleted';
   summary: string;
   occurredAt: string;
   /**
@@ -486,6 +491,7 @@ export interface AuditEvent {
         | 'projects'
         | 'insights'
         | 'leads'
+        | 'redirects'
       )
     | null;
   resourceId?: string | null;
@@ -645,13 +651,13 @@ export interface Page {
                     | 'start-a-project'
                     | 'privacy'
                     | 'terms'
-                    | 'capability:strategy-business-growth'
-                    | 'capability:branding-creative'
-                    | 'capability:content-production'
-                    | 'capability:social-digital-presence'
-                    | 'capability:performance-acquisition'
-                    | 'capability:web-commerce-experiences'
-                    | 'capability:software-automation-technology'
+                    | 'capability_strategy-business-growth'
+                    | 'capability_branding-creative'
+                    | 'capability_content-production'
+                    | 'capability_social-digital-presence'
+                    | 'capability_performance-acquisition'
+                    | 'capability_web-commerce-experiences'
+                    | 'capability_software-automation-technology'
                   )
                 | null;
               /**
@@ -684,13 +690,13 @@ export interface Page {
                     | 'start-a-project'
                     | 'privacy'
                     | 'terms'
-                    | 'capability:strategy-business-growth'
-                    | 'capability:branding-creative'
-                    | 'capability:content-production'
-                    | 'capability:social-digital-presence'
-                    | 'capability:performance-acquisition'
-                    | 'capability:web-commerce-experiences'
-                    | 'capability:software-automation-technology'
+                    | 'capability_strategy-business-growth'
+                    | 'capability_branding-creative'
+                    | 'capability_content-production'
+                    | 'capability_social-digital-presence'
+                    | 'capability_performance-acquisition'
+                    | 'capability_web-commerce-experiences'
+                    | 'capability_software-automation-technology'
                   )
                 | null;
               /**
@@ -980,13 +986,13 @@ export interface Page {
                     | 'start-a-project'
                     | 'privacy'
                     | 'terms'
-                    | 'capability:strategy-business-growth'
-                    | 'capability:branding-creative'
-                    | 'capability:content-production'
-                    | 'capability:social-digital-presence'
-                    | 'capability:performance-acquisition'
-                    | 'capability:web-commerce-experiences'
-                    | 'capability:software-automation-technology'
+                    | 'capability_strategy-business-growth'
+                    | 'capability_branding-creative'
+                    | 'capability_content-production'
+                    | 'capability_social-digital-presence'
+                    | 'capability_performance-acquisition'
+                    | 'capability_web-commerce-experiences'
+                    | 'capability_software-automation-technology'
                   )
                 | null;
               /**
@@ -1044,13 +1050,13 @@ export interface Page {
                     | 'start-a-project'
                     | 'privacy'
                     | 'terms'
-                    | 'capability:strategy-business-growth'
-                    | 'capability:branding-creative'
-                    | 'capability:content-production'
-                    | 'capability:social-digital-presence'
-                    | 'capability:performance-acquisition'
-                    | 'capability:web-commerce-experiences'
-                    | 'capability:software-automation-technology'
+                    | 'capability_strategy-business-growth'
+                    | 'capability_branding-creative'
+                    | 'capability_content-production'
+                    | 'capability_social-digital-presence'
+                    | 'capability_performance-acquisition'
+                    | 'capability_web-commerce-experiences'
+                    | 'capability_software-automation-technology'
                   )
                 | null;
               /**
@@ -1083,13 +1089,13 @@ export interface Page {
                     | 'start-a-project'
                     | 'privacy'
                     | 'terms'
-                    | 'capability:strategy-business-growth'
-                    | 'capability:branding-creative'
-                    | 'capability:content-production'
-                    | 'capability:social-digital-presence'
-                    | 'capability:performance-acquisition'
-                    | 'capability:web-commerce-experiences'
-                    | 'capability:software-automation-technology'
+                    | 'capability_strategy-business-growth'
+                    | 'capability_branding-creative'
+                    | 'capability_content-production'
+                    | 'capability_social-digital-presence'
+                    | 'capability_performance-acquisition'
+                    | 'capability_web-commerce-experiences'
+                    | 'capability_software-automation-technology'
                   )
                 | null;
               /**
@@ -1144,13 +1150,13 @@ export interface Page {
                     | 'start-a-project'
                     | 'privacy'
                     | 'terms'
-                    | 'capability:strategy-business-growth'
-                    | 'capability:branding-creative'
-                    | 'capability:content-production'
-                    | 'capability:social-digital-presence'
-                    | 'capability:performance-acquisition'
-                    | 'capability:web-commerce-experiences'
-                    | 'capability:software-automation-technology'
+                    | 'capability_strategy-business-growth'
+                    | 'capability_branding-creative'
+                    | 'capability_content-production'
+                    | 'capability_social-digital-presence'
+                    | 'capability_performance-acquisition'
+                    | 'capability_web-commerce-experiences'
+                    | 'capability_software-automation-technology'
                   )
                 | null;
               /**
@@ -1225,13 +1231,13 @@ export interface Page {
                     | 'start-a-project'
                     | 'privacy'
                     | 'terms'
-                    | 'capability:strategy-business-growth'
-                    | 'capability:branding-creative'
-                    | 'capability:content-production'
-                    | 'capability:social-digital-presence'
-                    | 'capability:performance-acquisition'
-                    | 'capability:web-commerce-experiences'
-                    | 'capability:software-automation-technology'
+                    | 'capability_strategy-business-growth'
+                    | 'capability_branding-creative'
+                    | 'capability_content-production'
+                    | 'capability_social-digital-presence'
+                    | 'capability_performance-acquisition'
+                    | 'capability_web-commerce-experiences'
+                    | 'capability_software-automation-technology'
                   )
                 | null;
               /**
@@ -1321,13 +1327,13 @@ export interface Page {
                     | 'start-a-project'
                     | 'privacy'
                     | 'terms'
-                    | 'capability:strategy-business-growth'
-                    | 'capability:branding-creative'
-                    | 'capability:content-production'
-                    | 'capability:social-digital-presence'
-                    | 'capability:performance-acquisition'
-                    | 'capability:web-commerce-experiences'
-                    | 'capability:software-automation-technology'
+                    | 'capability_strategy-business-growth'
+                    | 'capability_branding-creative'
+                    | 'capability_content-production'
+                    | 'capability_social-digital-presence'
+                    | 'capability_performance-acquisition'
+                    | 'capability_web-commerce-experiences'
+                    | 'capability_software-automation-technology'
                   )
                 | null;
               /**
@@ -1360,13 +1366,13 @@ export interface Page {
                     | 'start-a-project'
                     | 'privacy'
                     | 'terms'
-                    | 'capability:strategy-business-growth'
-                    | 'capability:branding-creative'
-                    | 'capability:content-production'
-                    | 'capability:social-digital-presence'
-                    | 'capability:performance-acquisition'
-                    | 'capability:web-commerce-experiences'
-                    | 'capability:software-automation-technology'
+                    | 'capability_strategy-business-growth'
+                    | 'capability_branding-creative'
+                    | 'capability_content-production'
+                    | 'capability_social-digital-presence'
+                    | 'capability_performance-acquisition'
+                    | 'capability_web-commerce-experiences'
+                    | 'capability_software-automation-technology'
                   )
                 | null;
               /**
@@ -1726,6 +1732,34 @@ export interface Lead {
   createdAt: string;
 }
 /**
+ * إدارة التحويلات الدائمة والمؤقتة للحفاظ على أرشفة محركات البحث وحماية الروابط القديمة.
+ *
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "redirects".
+ */
+export interface Redirect {
+  id: number;
+  /**
+   * المسار القديم المطلوب تحويله (مثال: /services/old-name أو /legacy-page). يُوحّد تلقائيًا.
+   */
+  from: string;
+  /**
+   * المسار الداخلي الجديد (يبدأ بـ /) أو رابط كامل (يبدأ بـ https://).
+   */
+  to: string;
+  statusCode: '301' | '302' | '307' | '308';
+  /**
+   * عند التعطيل، يتوقف التحويل دون الحاجة لحذفه.
+   */
+  enabled: boolean;
+  /**
+   * سبب التحويل أو مرجع التذكرة.
+   */
+  internalNotes?: string | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-kv".
  */
@@ -1784,6 +1818,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'leads';
         value: number | Lead;
+      } | null)
+    | ({
+        relationTo: 'redirects';
+        value: number | Redirect;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -2625,6 +2663,19 @@ export interface LeadsSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "redirects_select".
+ */
+export interface RedirectsSelect<T extends boolean = true> {
+  from?: T;
+  to?: T;
+  statusCode?: T;
+  enabled?: T;
+  internalNotes?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-kv_select".
  */
 export interface PayloadKvSelect<T extends boolean = true> {
@@ -2939,13 +2990,13 @@ export interface Navigation {
                 | 'start-a-project'
                 | 'privacy'
                 | 'terms'
-                | 'capability:strategy-business-growth'
-                | 'capability:branding-creative'
-                | 'capability:content-production'
-                | 'capability:social-digital-presence'
-                | 'capability:performance-acquisition'
-                | 'capability:web-commerce-experiences'
-                | 'capability:software-automation-technology'
+                | 'capability_strategy-business-growth'
+                | 'capability_branding-creative'
+                | 'capability_content-production'
+                | 'capability_social-digital-presence'
+                | 'capability_performance-acquisition'
+                | 'capability_web-commerce-experiences'
+                | 'capability_software-automation-technology'
               )
             | null;
           /**
@@ -2984,13 +3035,13 @@ export interface Navigation {
             | 'start-a-project'
             | 'privacy'
             | 'terms'
-            | 'capability:strategy-business-growth'
-            | 'capability:branding-creative'
-            | 'capability:content-production'
-            | 'capability:social-digital-presence'
-            | 'capability:performance-acquisition'
-            | 'capability:web-commerce-experiences'
-            | 'capability:software-automation-technology'
+            | 'capability_strategy-business-growth'
+            | 'capability_branding-creative'
+            | 'capability_content-production'
+            | 'capability_social-digital-presence'
+            | 'capability_performance-acquisition'
+            | 'capability_web-commerce-experiences'
+            | 'capability_software-automation-technology'
           )
         | null;
       /**
@@ -3049,13 +3100,13 @@ export interface Footer {
                     | 'start-a-project'
                     | 'privacy'
                     | 'terms'
-                    | 'capability:strategy-business-growth'
-                    | 'capability:branding-creative'
-                    | 'capability:content-production'
-                    | 'capability:social-digital-presence'
-                    | 'capability:performance-acquisition'
-                    | 'capability:web-commerce-experiences'
-                    | 'capability:software-automation-technology'
+                    | 'capability_strategy-business-growth'
+                    | 'capability_branding-creative'
+                    | 'capability_content-production'
+                    | 'capability_social-digital-presence'
+                    | 'capability_performance-acquisition'
+                    | 'capability_web-commerce-experiences'
+                    | 'capability_software-automation-technology'
                   )
                 | null;
               /**
@@ -3103,13 +3154,13 @@ export interface Footer {
               | 'start-a-project'
               | 'privacy'
               | 'terms'
-              | 'capability:strategy-business-growth'
-              | 'capability:branding-creative'
-              | 'capability:content-production'
-              | 'capability:social-digital-presence'
-              | 'capability:performance-acquisition'
-              | 'capability:web-commerce-experiences'
-              | 'capability:software-automation-technology'
+              | 'capability_strategy-business-growth'
+              | 'capability_branding-creative'
+              | 'capability_content-production'
+              | 'capability_social-digital-presence'
+              | 'capability_performance-acquisition'
+              | 'capability_web-commerce-experiences'
+              | 'capability_software-automation-technology'
             )
           | null;
         /**

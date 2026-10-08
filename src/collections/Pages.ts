@@ -292,8 +292,29 @@ export const Pages: CollectionConfig = {
       },
     ],
     afterChange: [
-      async ({ doc, operation, req }) => {
+      async ({ doc, previousDoc, operation, req }) => {
         invalidatePage(doc as { id?: string | number; systemKey?: string | null });
+
+        // Auto-create 301 redirect if an existing custom page slug changes
+        if (operation === "update" && previousDoc?.slug && doc.slug && previousDoc.slug !== doc.slug && !doc.systemKey) {
+          try {
+            const oldPath = `/${previousDoc.slug}`;
+            const newPath = `/${doc.slug}`;
+            await req.payload.create({
+              collection: "redirects",
+              data: {
+                from: oldPath,
+                to: newPath,
+                statusCode: "301",
+                enabled: true,
+                internalNotes: `Auto-created upon renaming page ${doc.id} from ${previousDoc.slug} to ${doc.slug}`,
+              },
+              overrideAccess: true,
+            });
+          } catch {
+            // Ignore if redirect already exists
+          }
+        }
 
         /* Publish/unpublish write their own audit entries with the locale detail; a plain save is
            recorded as an edit so the log answers "who touched this page and when". */

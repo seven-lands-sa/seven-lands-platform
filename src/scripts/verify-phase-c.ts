@@ -248,13 +248,13 @@ console.log("\n══ §10 · Business hours ═══════════�
     slug: "business-hours",
     data: {
       week: [{ day: "sunday", closed: false, allDay: false, periods: [{ from: "09:00", to: "17:00" }] }],
-      exceptions: [{ date: "2026-12-25", closed: true, note: "عطلة" }],
+      exceptions: [{ date: "2026-12-25T12:00:00.000Z", closed: true, note: "عطلة" }],
     },
     overrideAccess: true,
   } as never);
-  const stored = (await findGlobal("business-hours" as never, "ar")) as never as { week: { day: string; periods: { from: string }[] }[]; exceptions: { date: string }[] };
+  const stored = (await findGlobal("business-hours" as never, "ar")) as never as { week: { day: string; periods: { from: string }[] }[]; exceptions: { date?: string | null }[] };
   record(stored.week.length === 1 && stored.week[0]!.day === "sunday" && stored.week[0]!.periods[0]!.from === "09:00", "a schedule round-trips through the CMS unchanged");
-  record(stored.exceptions.length === 1 && stored.exceptions[0]!.date.startsWith("2026-12-25"), "a special date round-trips through the CMS");
+  record(Boolean(stored.exceptions?.length === 1 && stored.exceptions[0]?.date && stored.exceptions[0].date.startsWith("2026-12-25")), "a special date round-trips through the CMS", String(stored.exceptions?.[0]?.date));
   /* restore the deliberate empty state (§49: no invented hours) */
   await payload.updateGlobal({ slug: "business-hours", data: { week: [], exceptions: [], note: null }, overrideAccess: true } as never);
   const restored = (await findGlobal("business-hours" as never, "ar")) as never as { week: unknown[]; exceptions: unknown[] };

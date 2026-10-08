@@ -18,10 +18,12 @@ export const CACHE_TAGS = {
   socialAccounts: "social-accounts",
   navigation: "navigation",
   footer: "footer",
+  redirects: "redirects",
 } as const;
 
 export type CacheTag =
   | (typeof CACHE_TAGS)[keyof typeof CACHE_TAGS]
+  | "redirects"
   | `media:${string}`
   | `page:${string}`
   | `page-system:${string}`

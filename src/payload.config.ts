@@ -14,6 +14,7 @@ import { lexicalEditor } from '@payloadcms/richtext-lexical'
 import { Media } from '@/collections/Media'
 import { Pages } from '@/collections/Pages'
 import { Projects } from '@/collections/Projects'
+import { Redirects } from '@/collections/Redirects'
 import { Services } from '@/collections/Services'
 import { Roles } from '@/collections/Roles'
 import { Users } from '@/collections/Users'
@@ -96,7 +97,7 @@ export default buildConfig({
   },
   editor: lexicalEditor(),
 
-  collections: [Users, Roles, AuditEvents, Media, Pages, Services, Projects, Insights, Leads],
+  collections: [Users, Roles, AuditEvents, Media, Pages, Services, Projects, Insights, Leads, Redirects],
 
   /*
    * Phase C — the global business configuration.

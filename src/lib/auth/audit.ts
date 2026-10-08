@@ -67,7 +67,11 @@ export type AuditAction =
   | "lead_created"
   | "lead_status_changed"
   | "lead_note_added"
-  | "lead_exported";
+  | "lead_exported"
+  /* Phase G — redirects lifecycle. */
+  | "redirect_created"
+  | "redirect_updated"
+  | "redirect_deleted";
 
 export type AuditInput = {
   action: AuditAction;
@@ -89,7 +93,8 @@ export type AuditInput = {
     | "services"
     | "projects"
     | "insights"
-    | "leads";
+    | "leads"
+    | "redirects";
   resourceId?: string | number | null;
   actorID?: string | number | null;
   actorEmail?: string | null;

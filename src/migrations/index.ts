@@ -8,6 +8,8 @@ import * as migration_20261008_102014_phase_e_about_contact_start from './202610
 import * as migration_20261008_103522_phase_f_services_projects_insights from './20261008_103522_phase_f_services_projects_insights';
 import * as migration_20261008_103658_phase_f_service_glyph_registry from './20261008_103658_phase_f_service_glyph_registry';
 import * as migration_20261008_220122_phase_h_leads_collection from './20261008_220122_phase_h_leads_collection';
+import * as migration_20261008_223729_phase_g_graphql_enum_sanitize from './20261008_223729_phase_g_graphql_enum_sanitize';
+import * as migration_20261008_225211_phase_g_redirects_collection from './20261008_225211_phase_g_redirects_collection';
 
 export const migrations = [
   {
@@ -58,6 +60,16 @@ export const migrations = [
   {
     up: migration_20261008_220122_phase_h_leads_collection.up,
     down: migration_20261008_220122_phase_h_leads_collection.down,
-    name: '20261008_220122_phase_h_leads_collection'
+    name: '20261008_220122_phase_h_leads_collection',
+  },
+  {
+    up: migration_20261008_223729_phase_g_graphql_enum_sanitize.up,
+    down: migration_20261008_223729_phase_g_graphql_enum_sanitize.down,
+    name: '20261008_223729_phase_g_graphql_enum_sanitize',
+  },
+  {
+    up: migration_20261008_225211_phase_g_redirects_collection.up,
+    down: migration_20261008_225211_phase_g_redirects_collection.down,
+    name: '20261008_225211_phase_g_redirects_collection'
   },
 ];

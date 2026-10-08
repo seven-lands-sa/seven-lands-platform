@@ -61,11 +61,50 @@ export default async function proxy(request: NextRequest) {
      hiccup cannot take working pages down (the route still answers its own 404 body). */
   if (isCustomPageCandidate(rest)) {
     const published = await isPublishedCustomSlug(request, locale, rest.slice(1));
-    if (!published) return localizedNotFound(locale, request);
-    return response;
+    if (published) return response;
+  }
+
+  // Check CMS Redirects before answering 404
+  const redirectTarget = await matchRedirect(request, rest);
+  if (redirectTarget) {
+    const targetUrl = redirectTarget.to.startsWith("http")
+      ? redirectTarget.to
+      : redirectTarget.to.startsWith(`/${locale}`)
+      ? new URL(redirectTarget.to, request.url)
+      : new URL(`/${locale}${redirectTarget.to.startsWith("/") ? "" : "/"}${redirectTarget.to}`, request.url);
+
+    return NextResponse.redirect(targetUrl, {
+      status: redirectTarget.statusCode,
+      headers: {
+        "x-robots-tag": "noindex",
+        "cache-control": redirectTarget.statusCode === 301 || redirectTarget.statusCode === 308
+          ? "public, max-age=3600"
+          : "no-store",
+      },
+    });
   }
 
   return localizedNotFound(locale, request);
+}
+
+/** Queries the public match endpoint for active redirects */
+async function matchRedirect(
+  request: NextRequest,
+  path: string,
+): Promise<{ to: string; statusCode: number } | null> {
+  try {
+    const url = new URL("/api/redirects/match", request.nextUrl.origin);
+    url.searchParams.set("path", path);
+    const res = await fetch(url, {
+      headers: { "sec-fetch-site": "same-origin" },
+      next: { revalidate: 60, tags: ["redirects"] },
+    });
+    if (!res.ok) return null;
+    const data = (await res.json()) as { match?: { to: string; statusCode: number } | null };
+    return data.match ?? null;
+  } catch {
+    return null;
+  }
 }
 
 /** Cached-for-nothing read of the published custom slugs (see the `/public-slugs` endpoint). */
