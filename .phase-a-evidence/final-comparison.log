@@ -1,0 +1,92 @@
+══════════════════════════════════════════════════════════════════════════════
+1. CONTENT COMPARISON — visible text + DOM skeleton
+══════════════════════════════════════════════════════════════════════════════
+route                                   status      text identical  skeleton identical
+/ar                                     200/200     YES ✅           YES ✅
+      (normalised HTML differs at 68160 of 167751/167774 chars)
+        before: …"ACK\"] = [])).push({\"otherChunks\":[\"static/chunks/1x6obpmlu1_c2.js\",\"static/chunks/06bs-nf19b2js.js\",\"static/chunks/0p_w_"…
+        after : …"ACK\"] = [])).push({\"otherChunks\":[\"static/chunks/1yg4x5e3obwvr.js\",\"static/chunks/3wjkd7x0y2arl.js\",\"static/chunks/1ibs_"…
+/en                                     200/200     YES ✅           YES ✅
+      (normalised HTML differs at 68880 of 170831/170854 chars)
+        before: …"ACK\"] = [])).push({\"otherChunks\":[\"static/chunks/1x6obpmlu1_c2.js\",\"static/chunks/06bs-nf19b2js.js\",\"static/chunks/0p_w_"…
+        after : …"ACK\"] = [])).push({\"otherChunks\":[\"static/chunks/1yg4x5e3obwvr.js\",\"static/chunks/3wjkd7x0y2arl.js\",\"static/chunks/1ibs_"…
+/ar/services                            200/200     YES ✅           YES ✅
+      (normalised HTML differs at 51171 of 154216/154238 chars)
+        before: …"ACK\"] = [])).push({\"otherChunks\":[\"static/chunks/1x6obpmlu1_c2.js\",\"static/chunks/06bs-nf19b2js.js\",\"static/chunks/0p_w_"…
+        after : …"ACK\"] = [])).push({\"otherChunks\":[\"static/chunks/1yg4x5e3obwvr.js\",\"static/chunks/3wjkd7x0y2arl.js\",\"static/chunks/1ibs_"…
+/en/services                            200/200     YES ✅           YES ✅
+      (normalised HTML differs at 51699 of 157276/157298 chars)
+        before: …"ACK\"] = [])).push({\"otherChunks\":[\"static/chunks/1x6obpmlu1_c2.js\",\"static/chunks/06bs-nf19b2js.js\",\"static/chunks/0p_w_"…
+        after : …"ACK\"] = [])).push({\"otherChunks\":[\"static/chunks/1yg4x5e3obwvr.js\",\"static/chunks/3wjkd7x0y2arl.js\",\"static/chunks/1ibs_"…
+/ar/services/branding-creative          200/200     YES ✅           YES ✅
+      (normalised HTML differs at 40221 of 129619/129641 chars)
+        before: …"ACK\"] = [])).push({\"otherChunks\":[\"static/chunks/1x6obpmlu1_c2.js\",\"static/chunks/06bs-nf19b2js.js\",\"static/chunks/0p_w_"…
+        after : …"ACK\"] = [])).push({\"otherChunks\":[\"static/chunks/1yg4x5e3obwvr.js\",\"static/chunks/3wjkd7x0y2arl.js\",\"static/chunks/1ibs_"…
+/ar/work                                200/200     YES ✅           YES ✅
+      (normalised HTML differs at 26274 of 94206/94228 chars)
+        before: …"ACK\"] = [])).push({\"otherChunks\":[\"static/chunks/1x6obpmlu1_c2.js\",\"static/chunks/06bs-nf19b2js.js\",\"static/chunks/0p_w_"…
+        after : …"ACK\"] = [])).push({\"otherChunks\":[\"static/chunks/1yg4x5e3obwvr.js\",\"static/chunks/3wjkd7x0y2arl.js\",\"static/chunks/1ibs_"…
+/ar/insights                            200/200     YES ✅           YES ✅
+      (normalised HTML differs at 26181 of 93965/93987 chars)
+        before: …"ACK\"] = [])).push({\"otherChunks\":[\"static/chunks/1x6obpmlu1_c2.js\",\"static/chunks/06bs-nf19b2js.js\",\"static/chunks/0p_w_"…
+        after : …"ACK\"] = [])).push({\"otherChunks\":[\"static/chunks/1yg4x5e3obwvr.js\",\"static/chunks/3wjkd7x0y2arl.js\",\"static/chunks/1ibs_"…
+/ar/about                               200/200     YES ✅           YES ✅
+      (normalised HTML differs at 44007 of 140777/140799 chars)
+        before: …"ACK\"] = [])).push({\"otherChunks\":[\"static/chunks/1x6obpmlu1_c2.js\",\"static/chunks/06bs-nf19b2js.js\",\"static/chunks/0p_w_"…
+        after : …"ACK\"] = [])).push({\"otherChunks\":[\"static/chunks/1yg4x5e3obwvr.js\",\"static/chunks/3wjkd7x0y2arl.js\",\"static/chunks/1ibs_"…
+/ar/start-a-project                     200/200     YES ✅           YES ✅
+      (normalised HTML differs at 26424 of 87916/87940 chars)
+        before: …"ACK\"] = [])).push({\"otherChunks\":[\"static/chunks/1x6obpmlu1_c2.js\",\"static/chunks/06bs-nf19b2js.js\",\"static/chunks/0p_w_"…
+        after : …"ACK\"] = [])).push({\"otherChunks\":[\"static/chunks/1yg4x5e3obwvr.js\",\"static/chunks/3wjkd7x0y2arl.js\",\"static/chunks/1ibs_"…
+/en/start-a-project                     200/200     YES ✅           YES ✅
+      (normalised HTML differs at 26380 of 89714/89738 chars)
+        before: …"ACK\"] = [])).push({\"otherChunks\":[\"static/chunks/1x6obpmlu1_c2.js\",\"static/chunks/06bs-nf19b2js.js\",\"static/chunks/0p_w_"…
+        after : …"ACK\"] = [])).push({\"otherChunks\":[\"static/chunks/1yg4x5e3obwvr.js\",\"static/chunks/3wjkd7x0y2arl.js\",\"static/chunks/1ibs_"…
+/ar/contact                             200/200     YES ✅           YES ✅
+      (normalised HTML differs at 32089 of 99498/99522 chars)
+        before: …"ACK\"] = [])).push({\"otherChunks\":[\"static/chunks/1x6obpmlu1_c2.js\",\"static/chunks/06bs-nf19b2js.js\",\"static/chunks/0p_w_"…
+        after : …"ACK\"] = [])).push({\"otherChunks\":[\"static/chunks/1yg4x5e3obwvr.js\",\"static/chunks/3wjkd7x0y2arl.js\",\"static/chunks/1ibs_"…
+/ar/privacy                             200/200     YES ✅           YES ✅
+      (normalised HTML differs at 20494 of 80632/80654 chars)
+        before: …"ACK\"] = [])).push({\"otherChunks\":[\"static/chunks/1x6obpmlu1_c2.js\",\"static/chunks/06bs-nf19b2js.js\",\"static/chunks/0p_w_"…
+        after : …"ACK\"] = [])).push({\"otherChunks\":[\"static/chunks/1yg4x5e3obwvr.js\",\"static/chunks/3wjkd7x0y2arl.js\",\"static/chunks/1ibs_"…
+/ar/this-page-does-not-exist            404/404     YES ✅           YES ✅
+      (normalised HTML differs at 21729 of 85108/85130 chars)
+        before: …"ACK\"] = [])).push({\"otherChunks\":[\"static/chunks/1x6obpmlu1_c2.js\",\"static/chunks/06bs-nf19b2js.js\",\"static/chunks/0p_w_"…
+        after : …"ACK\"] = [])).push({\"otherChunks\":[\"static/chunks/1yg4x5e3obwvr.js\",\"static/chunks/3wjkd7x0y2arl.js\",\"static/chunks/1ibs_"…
+
+══════════════════════════════════════════════════════════════════════════════
+2. PIXEL COMPARISON — full-page screenshots, same browser, same code path
+══════════════════════════════════════════════════════════════════════════════
+route                                 viewport    differing pixels    verdict
+/ar                                   390         0.0000% (>10/255: 0.0000%)IDENTICAL ✅
+/ar                                   1440        0.0000% (>10/255: 0.0000%)IDENTICAL ✅
+/en                                   390         0.0000% (>10/255: 0.0000%)IDENTICAL ✅
+/en                                   1440        0.0012% (>10/255: 0.0010%)sub-pixel noise
+/ar/services                          390         0.0000% (>10/255: 0.0000%)IDENTICAL ✅
+/ar/services                          1440        0.0000% (>10/255: 0.0000%)IDENTICAL ✅
+/en/services                          390         0.0000% (>10/255: 0.0000%)IDENTICAL ✅
+/en/services                          1440        0.0000% (>10/255: 0.0000%)IDENTICAL ✅
+/ar/services/branding-creative        390         0.0000% (>10/255: 0.0000%)IDENTICAL ✅
+/ar/services/branding-creative        1440        0.0000% (>10/255: 0.0000%)IDENTICAL ✅
+/ar/work                              390         0.0000% (>10/255: 0.0000%)IDENTICAL ✅
+/ar/work                              1440        0.0000% (>10/255: 0.0000%)IDENTICAL ✅
+/ar/insights                          390         0.0000% (>10/255: 0.0000%)IDENTICAL ✅
+/ar/insights                          1440        0.0000% (>10/255: 0.0000%)IDENTICAL ✅
+/ar/about                             390         0.0000% (>10/255: 0.0000%)IDENTICAL ✅
+/ar/about                             1440        0.0000% (>10/255: 0.0000%)IDENTICAL ✅
+/ar/start-a-project                   390         0.0000% (>10/255: 0.0000%)IDENTICAL ✅
+/ar/start-a-project                   1440        0.0000% (>10/255: 0.0000%)IDENTICAL ✅
+/en/start-a-project                   390         0.0000% (>10/255: 0.0000%)IDENTICAL ✅
+/en/start-a-project                   1440        0.0000% (>10/255: 0.0000%)IDENTICAL ✅
+/ar/contact                           390         0.0000% (>10/255: 0.0000%)IDENTICAL ✅
+/ar/contact                           1440        0.0000% (>10/255: 0.0000%)IDENTICAL ✅
+/ar/privacy                           390         0.0000% (>10/255: 0.0000%)IDENTICAL ✅
+/ar/privacy                           1440        0.0001% (>10/255: 0.0000%)sub-pixel noise
+/ar/this-page-does-not-exist          390         0.0000% (>10/255: 0.0000%)IDENTICAL ✅
+/ar/this-page-does-not-exist          1440        0.0000% (>10/255: 0.0000%)IDENTICAL ✅
+
+SUMMARY — routes compared: 13
+  status mismatches      : 0
+  visible-text mismatches: 0
+  DOM-skeleton mismatches: 0

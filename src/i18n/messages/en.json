@@ -1,0 +1,395 @@
+{
+  "nav": {
+    "services": "Services",
+    "work": "Work",
+    "about": "About",
+    "insights": "Insights",
+    "contact": "Contact",
+    "home": "Home",
+    "start": "Start a project",
+    "menu": "Menu",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu",
+    "language": "العربية",
+    "languageSwitchLabel": "Switch language to Arabic",
+    "skipToContent": "Skip to content",
+    "mainNavigation": "Main navigation",
+    "switchToEnglish": "Switch to English",
+    "switchToArabic": "Switch to Arabic"
+  },
+  "cta": {
+    "start": "Start a project",
+    "viewWork": "View our work",
+    "whatsapp": "Message us on WhatsApp",
+    "whatsappShort": "WhatsApp",
+    "call": "Call us",
+    "directions": "Open in Maps",
+    "exploreServices": "Explore services",
+    "openLand": "View capability",
+    "backToServices": "All capabilities",
+    "backHome": "Back to home"
+  },
+  "common": {
+    "land": "Land",
+    "pendingTag": "In preparation",
+    "inPreparation": "In documentation",
+    "scope": "Scope",
+    "outcome": "Outcome",
+    "problem": "Problem",
+    "all": "All",
+    "readingTime": "{minutes} min read",
+    "seeMore": "More"
+  },
+  "meta": {
+    "home": {
+      "title": "Seven Lands — Marketing, creative and technology in one direction: growth",
+      "description": "A Saudi company based in Buraydah, Al Qassim. We build brand, content, campaigns, websites and software as one system, against a clear commercial goal."
+    },
+    "services": {
+      "title": "Services — seven connected capabilities",
+      "description": "Strategy, branding, content, social, performance, web and software: seven capabilities working as one system around a clear commercial goal."
+    },
+    "work": {
+      "title": "Work",
+      "description": "Projects we can talk about in detail, with the client's agreement. We document the work before publishing results."
+    },
+    "about": {
+      "title": "About",
+      "description": "One team for strategy, creative and technology — working from Buraydah, Al Qassim, with businesses across Saudi Arabia."
+    },
+    "insights": {
+      "title": "Insights",
+      "description": "Notes from the work itself: what works, what doesn't, and how decisions get made in marketing and technology."
+    },
+    "start": {
+      "title": "Start a project",
+      "description": "Tell us the goal and the scope in a few short steps, and we'll come back with a clear starting plan."
+    },
+    "contact": {
+      "title": "Contact",
+      "description": "WhatsApp, phone and our location in Buraydah, Al Qassim. We work with businesses across Saudi Arabia."
+    },
+    "privacy": {
+      "title": "Privacy policy",
+      "description": "How we handle the data that reaches us through this website."
+    },
+    "terms": {
+      "title": "Terms & conditions",
+      "description": "Terms governing the use of the Seven Lands website and the services presented on it."
+    },
+    "notFound": {
+      "title": "Page not found",
+      "description": "The page you're looking for isn't available. Head back home, or pick one of the seven capabilities."
+    }
+  },
+  "home": {
+    "hero": {
+      "eyebrow": "Marketing, creative & technology — Buraydah, Al Qassim",
+      "title1": "Marketing. Creative. Technology.",
+      "title2": "Moving in one direction:",
+      "titleAccent": "growth.",
+      "support": "Brand, content, campaigns, websites and software — one team working to one commercial goal.",
+      "primary": "Start a project",
+      "secondary": "View our work",
+      "whatsappLine": "Or message us on WhatsApp",
+      "pathCaption": "Seven capabilities, one path"
+    },
+    "trust": {
+      "heading": "What we can prove today",
+      "note": "We don't show client logos or numbers we can't verify. Everything on this site reflects how we actually work.",
+      "facts": {
+        "disciplines": "Seven connected capabilities",
+        "decision": "One decision per project",
+        "location": "Working from Buraydah, Al Qassim"
+      }
+    },
+    "lands": {
+      "eyebrow": "The system",
+      "heading": "Seven capabilities. One direction.",
+      "lede": "Growth rarely comes from one channel alone, or from a good-looking website on its own. Our disciplines work as one connected system, from strategy through to technology.",
+      "selectHint": "Select a capability to see its detail",
+      "nodeCount": "Capability {number} of 07",
+      "viewLand": "View capability"
+    },
+    "problems": {
+      "eyebrow": "The reality",
+      "relatedLand": "Related capability: {land}",
+      "explore": "Explore the seven capabilities"
+    },
+    "work": {
+      "eyebrow": "Our work",
+      "selected": "Selected work",
+      "allWork": "All work",
+      "workPage": "The work page",
+      "emptyPoints": [
+        "Work is published after client approval, not before.",
+        "Results are published once real data comes from the official accounts.",
+        "If there's nothing publishable yet, we simply say so."
+      ]
+    },
+    "process": {
+      "eyebrow": "How we work"
+    },
+    "why": {
+      "eyebrow": "Why Seven Lands"
+    },
+    "finalCta": {
+      "eyebrow": "Next step",
+      "heading1": "Have a clear challenge, or the beginning of an idea?",
+      "heading2": "Let's start there.",
+      "body": "Send us a short brief or message us on WhatsApp, and we'll agree the right starting point with you.",
+      "primary": "Start a project",
+      "secondary": "Message us on WhatsApp"
+    }
+  },
+  "services": {
+    "hero": {
+      "eyebrow": "Services",
+      "title": "Seven capabilities working as one system.",
+      "lede": "Each capability stands on its own. Its real value shows when it works with the others around the same goal.",
+      "support": "Start with the capability that matches your problem — we can sequence the rest with you later."
+    },
+    "listHeading": "Capabilities",
+    "crossHeading": "Why we don't sell disconnected services",
+    "crossBody": "Because the problem is rarely in one place. An ad with no clear landing page wastes budget, and a website that doesn't carry a clear message slows the sales team down. We work on the cause, not the symptoms.",
+    "capabilitiesLabel": "Scope of work",
+    "serviceMeta": "Capability {number}"
+  },
+  "serviceDetail": {
+    "outcomeLabel": "Outcome",
+    "problemsHeading": "When you need this",
+    "capabilitiesHeading": "What we work on",
+    "capabilitiesNote": "The final scope of work is agreed after the first discovery session.",
+    "methodHeading": "How we work inside this capability",
+    "faqHeading": "Common questions",
+    "relatedHeading": "Related work",
+    "relatedEmpty": "No published work in this capability yet.",
+    "ctaHeading": "We can start here.",
+    "ctaBody": "Tell us where you are today and we'll come back with a clear view of where to start, before any commitment.",
+    "otherLands": "Other capabilities"
+  },
+  "work": {
+    "hero": {
+      "eyebrow": "Our work",
+      "title": "Our work",
+      "lede": "We show what we can discuss in detail, with the client's agreement."
+    },
+    "filtersLabel": "Filter",
+    "caseStudyLabels": {
+      "challenge": "Challenge",
+      "objective": "Objective",
+      "approach": "Approach",
+      "execution": "Execution",
+      "gallery": "Gallery",
+      "results": "Results",
+      "scope": "Scope",
+      "sector": "Sector",
+      "next": "Next project"
+    },
+    "resultsNote": "Results are published once verified client data is available."
+  },
+  "insights": {
+    "hero": {
+      "eyebrow": "Insights",
+      "title": "Insights",
+      "lede": "Notes from the work itself, with no filler to fill a page."
+    },
+    "backToInsights": "All insights"
+  },
+  "about": {
+    "hero": {
+      "eyebrow": "About",
+      "title": "We build the brand. We reach the audience. We develop the technology that moves the business.",
+      "lede": "Seven Lands is a Saudi company bringing marketing, creative, technology and business growth together, working from Buraydah in Al Qassim."
+    },
+    "storyHeading": "Why seven capabilities?",
+    "story": [
+      "Marketing separated from technology ends in incomplete projects: a campaign that works with a page that doesn't convince, or a good-looking website the sales team can't use.",
+      "So we organised our work into seven connected capabilities. Each one is a clear discipline, and the connection between them is where the difference shows — because the decision stays one decision, from the first session to measurement.",
+      "We don't promise everything to everyone. We define what your project actually needs, then plan, build and measure on that basis."
+    ],
+    "principlesHeading": "How we work",
+    "locationHeading": "Where we work",
+    "locationBody": "We're based in Buraydah, Al Qassim, and work with businesses across Saudi Arabia — remotely, or on site depending on the project.",
+    "teamHeading": "The team",
+    "teamNote": "We don't publish team names or photos before they're approved. The team appears here once official details are supplied.",
+    "factsHeading": "In detail",
+    "factsModel": "Working model",
+    "factsModelValue": "Seven connected capabilities under one direction",
+    "factsStart": "How we start",
+    "factsStartValue": "A discovery session, then a clear scope and timeline",
+    "factsArea": "Service area",
+    "factsAreaValue": "All regions of Saudi Arabia"
+  },
+  "start": {
+    "hero": {
+      "eyebrow": "Start a project",
+      "title": "Let's start from the goal.",
+      "lede": "A few short steps, no long form. The minimum detail is enough for us to come back with a plan."
+    },
+    "stepIndicator": "Step {current} of {total}",
+    "steps": {
+      "need": {
+        "title": "What would you like us to work on?",
+        "help": "Pick the closest fit and we'll sequence the rest with you. You can choose more than one capability."
+      },
+      "goal": {
+        "title": "Tell us briefly about the project.",
+        "help": "Write it in your own words: where you are, and where you want to get to."
+      },
+      "timing": {
+        "title": "When do you want to start?",
+        "help": "Timing helps us prioritise."
+      },
+      "contact": {
+        "title": "Contact details",
+        "help": "Used only to reply to this request."
+      }
+    },
+    "fields": {
+      "lands": "Capabilities needed",
+      "landOther": "Not sure yet — I need guidance",
+      "goal": "Short description",
+      "goalPlaceholder": "Example: we sell online and need a page that convinces customers, plus a campaign with proper measurement.",
+      "timeline": "Timeline",
+      "timelineOptions": {
+        "now": "Within a month",
+        "quarter": "One to three months",
+        "later": "Three to six months",
+        "unsure": "Not decided yet"
+      },
+      "name": "Name",
+      "company": "Business / company",
+      "companyOptional": "Optional",
+      "phone": "Mobile number",
+      "phoneHint": "Example: 0507776891",
+      "email": "Email",
+      "channel": "Preferred contact method",
+      "channelOptions": {
+        "whatsapp": "WhatsApp",
+        "call": "Phone call"
+      },
+      "notes": "Anything else",
+      "consent": "I agree that my details may be used to contact me about this request, per the privacy policy."
+    },
+    "buttons": {
+      "next": "Next",
+      "back": "Back",
+      "submit": "Send project details",
+      "submitting": "Sending…"
+    },
+    "errors": {
+      "lands": "Select at least one capability",
+      "goal": "Please describe this in a few words (at least 10 characters)",
+      "timeline": "Please choose a timeline",
+      "name": "Please enter your name",
+      "phone": "Enter a valid Saudi mobile number",
+      "email": "Enter a valid email address",
+      "consent": "Consent is required to send the request",
+      "generic": "The request couldn't be sent. Try again, or message us on WhatsApp."
+    },
+    "success": {
+      "title": "We've got your details.",
+      "body": "We'll get back to you on the details you sent. If you'd rather send the summary straight to WhatsApp, the button below prepares the message with the same information.",
+      "whatsapp": "Send the summary on WhatsApp",
+      "again": "Send another request"
+    },
+    "aside": {
+      "heading": "What happens next",
+      "points": [
+        "We review the request and flag anything that needs clarifying.",
+        "We reply on the channel you chose.",
+        "A short discovery session, then a clear scope and timeline."
+      ],
+      "note": "We use your details only to reply to this request."
+    }
+  },
+  "contact": {
+    "hero": {
+      "eyebrow": "Contact",
+      "title": "Contact us",
+      "lede": "WhatsApp is the fastest way to reach us. For new projects, use the project brief form."
+    },
+    "channelsHeading": "Contact channels",
+    "phoneLabel": "Phone & WhatsApp",
+    "locationLabel": "Location",
+    "hoursLabel": "Business hours",
+    "pendingValue": "To be confirmed",
+    "formHeading": "Quick enquiry",
+    "formHelp": "For new projects, the brief form tells us more.",
+    "startInstead": "Use the project brief form"
+  },
+  "legal": {
+    "draftNotice": "This page is under legal review before official launch.",
+    "lastUpdated": "Last updated",
+    "privacy": {
+      "intro": "This policy explains how Seven Lands handles data that reaches us through sevnland.com.",
+      "sections": [
+        {
+          "title": "Data we collect",
+          "body": "We collect what you send us through the website forms: name, contact details and the information you provide about your project. We also collect general usage data for measurement."
+        },
+        {
+          "title": "How we use it",
+          "body": "We use your details to respond to your request, deliver agreed work and improve the website. We do not sell your data or share it with third parties for marketing purposes."
+        },
+        {
+          "title": "Sharing",
+          "body": "We may use technical service providers (hosting, analytics, WhatsApp) to operate the site and communicate. Their access is limited to what operation requires."
+        },
+        {
+          "title": "Retention",
+          "body": "We keep request data for as long as needed to follow up on the work, or until you ask us to delete it."
+        },
+        {
+          "title": "Your rights",
+          "body": "You can request access to, correction of, or deletion of your data through the contact channel published on the contact page."
+        }
+      ]
+    },
+    "terms": {
+      "intro": "These terms govern the use of sevnland.com and the information published on it.",
+      "sections": [
+        {
+          "title": "Scope of work",
+          "body": "This website describes our services and the way we work. The details of each project — scope, timeline and fee — are agreed in a written proposal approved by both sides before work begins."
+        },
+        {
+          "title": "Use of the site",
+          "body": "You may not use this site or its content in any way that violates the regulations in force in the Kingdom of Saudi Arabia."
+        },
+        {
+          "title": "Intellectual property",
+          "body": "All marks and materials published on the site are owned by Seven Lands or used under licence, and may not be reused without written permission."
+        },
+        {
+          "title": "External links",
+          "body": "The site may link to third parties. We are not responsible for their content or policies."
+        },
+        {
+          "title": "Changes",
+          "body": "We may update these terms when needed. Continued use of the site constitutes acceptance of the version published at the time."
+        }
+      ]
+    }
+  },
+  "notFound": {
+    "heading": "Looks like you've left the path.",
+    "body": "Head back home, or pick one of the seven capabilities.",
+    "landsHeading": "The seven capabilities"
+  },
+  "footer": {
+    "statement": "Marketing, content, websites and software, working together to grow your business.",
+    "navHeading": "Navigation",
+    "landsHeading": "Capabilities",
+    "contactHeading": "Contact",
+    "rights": "All rights reserved",
+    "legalHeading": "Legal"
+  },
+  "wa": {
+    "generic": "Hello Seven Lands, I'd like to talk about a project.",
+    "hero": "Hello Seven Lands, I'd like to discuss a new project.",
+    "contact": "Hello Seven Lands, I'd like to get in touch about a project.",
+    "start": "Hello Seven Lands, I have a project I'd like to discuss."
+  }
+}

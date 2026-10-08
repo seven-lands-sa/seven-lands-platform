@@ -1,0 +1,22 @@
+PASS  custom page created through the API — HTTP 201 · id=8
+PASS  draft AR answers a real 404 — HTTP 404
+PASS  draft EN answers a real 404 — HTTP 404
+PASS  Arabic publishes on its own — HTTP 200 {"ok":true,"published":["ar"],"at":"2026-10-08T10:26:51.031Z"}
+PASS  published AR renders from the CMS — HTTP 200
+PASS  English stays a real 404 — no AR→EN fallback — HTTP 404
+PASS  sitemap lists the published locale only
+PASS  draft edit saved — HTTP 200
+PASS  draft edit is NOT public
+PASS  preview shows the draft to the editor — HTTP 200
+PASS  preview refuses anonymous visitors — HTTP 404
+PASS  renaming a published page is refused — HTTP 400
+PASS  the published URL still works after the refused rename — HTTP 200
+PASS  draft reset back to the shipped copy — HTTP 200
+PASS  unpublish accepted — HTTP 200
+PASS  unpublished page answers a real 404 again — HTTP 404
+PASS  unpublished page left the sitemap
+PASS  fixture deleted — HTTP 200
+PASS  every migrated system page is untouched by the custom-page round trip — system pages=6 · all pages=6
+PASS  route gone after cleanup — HTTP 404
+
+CUSTOM PAGE EVIDENCE: ALL GREEN

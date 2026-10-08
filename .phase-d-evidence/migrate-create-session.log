@@ -1,0 +1,21 @@
+[1G[0K⠙[1G[0K[20:00:52] [33mWARN[39m: [36mThe following identifiers exceed Postgres's 63-character limit and will be silently truncated, which can leave the database out of sync with your Payload schema: _site_settings_v_version_localization_enabled_locales_parent_idx. Use the dbName property to shorten them.[39m
+[?25l
+Is media_tags table created or renamed from another table?
+❯ + media_tags               create table
+  ~ media_texts › media_tags rename table[20:00:52] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+[20:00:52] [32mINFO[39m: [36mStarting migration: generating UP statements...[39m
+[2K[1G[?25h+ media_tags table will be created
+--- all table conflicts resolved ---
+
+[20:00:53] [32mINFO[39m: [36mMigration UP complete. Generating DOWN statements...[39m
+[?25l
+Is media_texts table created or renamed from another table?
+❯ + media_texts              create table
+  ~ media_tags › media_texts rename table[2K[1G[?25h+ media_texts table will be created
+--- all table conflicts resolved ---
+
+[20:00:53] [32mINFO[39m: [36mMigration DOWN statements generation complete.[39m
+[20:00:53] [32mINFO[39m: [36mMigration created at /home/user/seven-lands-website/src/migrations/20261007_200052_phase_d_media_library.ts[39m
+[20:00:53] [32mINFO[39m: [36mDone.[39m
+[1G[0K⠙[1G[0K
+[driver] prompts answered: 2

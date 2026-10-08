@@ -1,0 +1,5 @@
+route                   BEFORE chunks  BEFORE bytes   AFTER chunks  AFTER bytes    delta
+/ar                     12             819,067        12            821,038        +1,971
+/en                     12             819,067        12            821,038        +1,971
+/ar/services            11             788,341        11            790,300        +1,959
+/ar/start-a-project     13             968,684        13            970,679        +1,995

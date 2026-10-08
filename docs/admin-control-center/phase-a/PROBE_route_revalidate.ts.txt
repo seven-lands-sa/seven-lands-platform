@@ -1,0 +1,25 @@
+/**
+ * ⚠️ TEMPORARY — PHASE A PROBE ROUTE. REMOVED BEFORE THE FINAL PHASE A BUILD.
+ *
+ * Demonstrates tag-based revalidation of the cached Local API read, and exists to
+ * compare two cache-life profiles:
+ *   • ?mode=max        → revalidateTag(tag, 'max')      → one stale hit (stale-while-revalidate)
+ *   • ?mode=immediate  → revalidateTag(tag, {expire:0}) → fresh on the next request
+ *
+ * The publish flow in Phase E must use the immediate form.
+ */
+import { revalidateTag } from 'next/cache'
+import type { NextRequest } from 'next/server'
+
+export async function POST(request: NextRequest) {
+  const mode = request.nextUrl.searchParams.get('mode') ?? 'max'
+
+  // Next 16 / cacheComponents: revalidateTag takes a cacheLife profile as its 2nd argument.
+  if (mode === 'immediate') {
+    revalidateTag('spike-items', { expire: 0 })
+  } else {
+    revalidateTag('spike-items', 'max')
+  }
+
+  return Response.json({ revalidated: true, mode, at: new Date().toISOString() })
+}

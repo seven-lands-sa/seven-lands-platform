@@ -1,0 +1,91 @@
+{
+  "generatedAt": "2026-10-07T16:31:23+00:00",
+  "origin": "http://127.0.0.1:3000",
+  "buildId": "wBFYlnKH1DmpuHUp-y8X2",
+  "sourceFingerprint": {
+    "src/": "abdf6e84fe024ed386f95a02b172bce2",
+    "package.json": "74977343e7b2d1beda682c7023257096"
+  },
+  "why": "Regenerated per §30: the previous qa/final set predated the copy replacement and hardening pass, and its service-*.png files were captured from a different page than their name implies.",
+  "capture": {
+    "script": "scripts/qa-capture.mjs",
+    "routes": 13,
+    "viewports": [
+      "390",
+      "1440"
+    ],
+    "fullPage": true
+  },
+  "files": [
+    "about-ar-1440.png",
+    "about-ar-390.png",
+    "contact-ar-1440.png",
+    "contact-ar-390.png",
+    "home-ar-1440.png",
+    "home-ar-390.png",
+    "home-en-1440.png",
+    "home-en-390.png",
+    "insights-ar-1440.png",
+    "insights-ar-390.png",
+    "notfound-ar-1440.png",
+    "notfound-ar-390.png",
+    "privacy-ar-1440.png",
+    "privacy-ar-390.png",
+    "service-ar-1440.png",
+    "service-ar-390.png",
+    "services-ar-1440.png",
+    "services-ar-390.png",
+    "services-en-1440.png",
+    "services-en-390.png",
+    "start-ar-1440.png",
+    "start-ar-390.png",
+    "start-en-1440.png",
+    "start-en-390.png",
+    "work-ar-1440.png",
+    "work-ar-390.png"
+  ],
+  "findings": [
+    {
+      "route": "/ar/this-page-does-not-exist",
+      "viewport": "390",
+      "errors": [
+        "Failed to load resource: the server responded with a status of 404 (Not Found)"
+      ],
+      "failed": [],
+      "overflow": {
+        "docWidth": 375,
+        "winWidth": 390,
+        "offenders": []
+      },
+      "a11y": {
+        "h1": 1,
+        "main": 1,
+        "dir": "rtl",
+        "lang": "ar-SA",
+        "imgWithoutAlt": 0,
+        "title": "404 — Seven Lands"
+      }
+    },
+    {
+      "route": "/ar/this-page-does-not-exist",
+      "viewport": "1440",
+      "errors": [
+        "Failed to load resource: the server responded with a status of 404 (Not Found)"
+      ],
+      "failed": [],
+      "overflow": {
+        "docWidth": 1425,
+        "winWidth": 1440,
+        "offenders": []
+      },
+      "a11y": {
+        "h1": 1,
+        "main": 1,
+        "dir": "rtl",
+        "lang": "ar-SA",
+        "imgWithoutAlt": 0,
+        "title": "404 — Seven Lands"
+      }
+    }
+  ]
+}

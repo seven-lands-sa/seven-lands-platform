@@ -1,0 +1,16 @@
+PASS  start-a-project serves the CMS composition (brief form present)
+PASS  contact serves the CMS composition (quick enquiry present)
+PASS  a valid brief is accepted (202, no destination configured yet) — HTTP 202 {"ok":true,"delivered":false}
+PASS  a too-short goal is refused server-side with a field path — HTTP 422 issues=["goal"]
+PASS  submitting without consent is refused — HTTP 422
+PASS  an invalid Saudi mobile is refused — HTTP 422 issues=["phone","phone"]
+PASS  a brief with no capability selected is refused — HTTP 422
+PASS  an oversized attribution value is refused (bounded input) — HTTP 422
+PASS  malformed JSON is refused cleanly — HTTP 400
+PASS  the honeypot accepts silently and delivers nothing — HTTP 200 {"ok":true,"delivered":false}
+PASS  refusals carry field paths only — no submitted values echoed back
+PASS  campaign + gclid are accepted on the quick enquiry too — HTTP 202
+PASS  the first six submissions from one address are accepted — codes=202,202,202,202,202,202,429
+PASS  the seventh is rate limited — codes=202,202,202,202,202,202,429
+
+FORM GATE: ALL GREEN

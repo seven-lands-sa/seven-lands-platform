@@ -1,0 +1,14 @@
+[21:36:56] [33mWARN[39m: [36mThe following identifiers exceed Postgres's 63-character limit and will be silently truncated, which can leave the database out of sync with your Payload schema: _site_settings_v_version_localization_enabled_locales_parent_idx. Use the dbName property to shorten them.[39m
+[21:36:56] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+── ar ──
+  title: "تسويق. إبداع. تقنية."
+  sections: 8 types=[hero,trustStatement,landsSystem,problems,workTeaser,process,why,cta]
+  hero.title1: "تسويق. إبداع. تقنية." | primary.label: "ابدأ مشروعك"
+  cta.body: "أرسل تفاصيل مختصرة أو راسلنا على واتساب، ونحدد معك نقطة الب
+  why.items[0].title: undefined
+── en ──
+  title: "Marketing. Creative. Technology."
+  sections: 8 types=[hero,trustStatement,landsSystem,problems,workTeaser,process,why,cta]
+  hero.title1: "Marketing. Creative. Technology." | primary.label: "Start a project"
+  cta.body: "Send us a short brief or message us on WhatsApp, and we'll 
+  why.items[0].title: "One decision"

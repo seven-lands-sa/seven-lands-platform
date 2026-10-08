@@ -1,0 +1,22 @@
+{
+  "created": 7,
+  "passed": 97,
+  "failed": 0,
+  "samples": {
+    "private": {
+      "id": 5,
+      "filename": "gps-photo.jpg",
+      "visibility": "private"
+    },
+    "public": {
+      "id": 6,
+      "filename": "hero-before-f040199c.png",
+      "width": 1600,
+      "height": 1200
+    },
+    "svg": {
+      "id": 4,
+      "filename": "mark.svg"
+    }
+  }
+}

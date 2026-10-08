@@ -1,0 +1,109 @@
+
+> seven-lands-website@0.1.0 build
+> next build
+
+▲ Next.js 16.4.0 (Turbopack)
+- Environments: .env
+✓ Running next.config.ts took 363ms
+- Cache Components enabled
+- Partial Prefetching enabled
+- Experiments (use with caution):
+  ⨯ turbopackServerFastRefresh
+
+  Creating an optimized production build ...
+✓ Compiled successfully in 6.8s
+  Running TypeScript ...
+  Finished TypeScript in 9.4s ...
+  Collecting page data using 1 worker ...
+  Generating static pages using 1 worker (0/72) ...
+  Generating static pages using 1 worker (18/72) 
+  Generating static pages using 1 worker (36/72) 
+  Generating static pages using 1 worker (54/72) 
+✓ Generating static pages using 1 worker (72/72) in 4.6s
+  Finalizing page optimization ...
+
+Route (app)                                  Revalidate  Expire
+┌ ○ /_not-found
+├   /[locale]
+│ ├ ◐ /[locale]
+│ ├ ○ /ar                                            1m      1h
+│ └ ○ /en                                            1m      1h
+├   /[locale]/[...rest]
+│ ├ ◐ /[locale]/[...rest]
+│ ├ ◐ /ar/[...rest]                                  1m      1h
+│ └ ◐ /en/[...rest]                                  1m      1h
+├   /[locale]/[slug]
+│ ├ ◐ /[locale]/[slug]
+│ ├ ◐ /ar/[slug]                                     1m      1h
+│ └ ◐ /en/[slug]                                     1m      1h
+├   /[locale]/about
+│ ├ ◐ /[locale]/about
+│ ├ ○ /ar/about                                      1m      1h
+│ └ ○ /en/about                                      1m      1h
+├   /[locale]/contact
+│ ├ ◐ /[locale]/contact
+│ ├ ○ /ar/contact                                    1m      1h
+│ └ ○ /en/contact                                    1m      1h
+├   /[locale]/insights
+│ ├ ◐ /[locale]/insights
+│ ├ ○ /ar/insights                                   1m      1h
+│ └ ○ /en/insights                                   1m      1h
+├   /[locale]/insights/[slug]
+│ ├ ◐ /[locale]/insights/[slug]
+│ ├ ◐ /ar/insights/[slug]                            1m      1h
+│ └ ◐ /en/insights/[slug]                            1m      1h
+├   /[locale]/not-found
+│ ├ ◐ /[locale]/not-found
+│ ├ ○ /ar/not-found                                  1m      1h
+│ └ ○ /en/not-found                                  1m      1h
+├   /[locale]/preview
+│ ├ ƒ /[locale]/preview
+│ ├ ƒ /ar/preview                                    1m      1h
+│ └ ƒ /en/preview                                    1m      1h
+├   /[locale]/privacy
+│ ├ ◐ /[locale]/privacy
+│ ├ ○ /ar/privacy                                    1m      1h
+│ └ ○ /en/privacy                                    1m      1h
+├   /[locale]/services
+│ ├ ◐ /[locale]/services
+│ ├ ○ /ar/services                                   1m      1h
+│ └ ○ /en/services                                   1m      1h
+├   /[locale]/services/[slug]
+│ ├ ◐ /[locale]/services/[slug]
+│ ├ ◐ /ar/services/[slug]                            1m      1h
+│ ├ ○ /ar/services/strategy-business-growth          1m      1h
+│ └ ◐ [+14 more paths]
+├   /[locale]/start-a-project
+│ ├ ◐ /[locale]/start-a-project
+│ ├ ○ /ar/start-a-project                            1m      1h
+│ └ ○ /en/start-a-project                            1m      1h
+├   /[locale]/terms
+│ ├ ◐ /[locale]/terms
+│ ├ ○ /ar/terms                                      1m      1h
+│ └ ○ /en/terms                                      1m      1h
+├   /[locale]/work
+│ ├ ◐ /[locale]/work
+│ ├ ○ /ar/work                                       1m      1h
+│ └ ○ /en/work                                       1m      1h
+├   /[locale]/work/[slug]
+│ ├ ◐ /[locale]/work/[slug]
+│ ├ ◐ /ar/work/[slug]                                1m      1h
+│ └ ◐ /en/work/[slug]                                1m      1h
+├   /admin/[[...segments]]
+│ └ ◐ /admin/[[...segments]]
+├ ƒ /api/[...slug]
+├ ƒ /api/brief
+├ ƒ /api/graphql
+├ ƒ /api/graphql-playground
+├ ○ /apple-icon.png
+├ ○ /icon.png
+├ ○ /robots.txt
+└ ○ /sitemap.xml                                     1m      1h
+
+
+ƒ Proxy (Middleware)
+
+○  (Static)             prerendered as static content
+◐  (Partial Prerender)  prerendered as static HTML with dynamic server-streamed content
+ƒ  (Dynamic)            server-rendered on demand
+

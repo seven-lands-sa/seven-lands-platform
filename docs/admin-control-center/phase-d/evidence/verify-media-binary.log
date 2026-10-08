@@ -1,0 +1,49 @@
+[21:00:45] [33mWARN[39m: [36mThe following identifiers exceed Postgres's 63-character limit and will be silently truncated, which can leave the database out of sync with your Payload schema: _site_settings_v_version_localization_enabled_locales_parent_idx. Use the dbName property to shorten them.[39m
+[21:00:45] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+  ✅ admin session established over HTTP  — HTTP 200
+[cache] could not invalidate "media:121" (Invariant: static generation store missing in revalidateTag("media:121")) — expected outside a request scope
+
+  fixture: id 121 — phase-c-binary-1791406846013.png
+  original  http://localhost:3000/api/media/file/phase-c-binary-1791406846013.png
+  thumbnail http://localhost:3000/api/media/file/phase-c-binary-1791406846013-400x300.png
+  card      http://localhost:3000/api/media/file/phase-c-binary-1791406846013-768x512.png
+
+  ✅ sharp generated both configured derivatives (400×300, 768×512)
+══ 1 · PRIVATE asset, anonymous visitor ══
+  ✅ PRIVATE original  → DENY  — HTTP 403
+  ✅ PRIVATE thumbnail → DENY  — HTTP 403
+  ✅ PRIVATE card      → DENY  — HTTP 403
+  ✅ the private asset still EXISTS in the library (denial is authorization, not absence)
+  ✅ denied response is not cacheable  — Cache-Control: private, no-store
+
+══ 2 · PRIVATE asset, authenticated admin with media.read ══
+  ✅ authorized original  → ALLOW  — HTTP 200, 14270 B
+  ✅ authorized thumbnail → ALLOW  — HTTP 200, 2477 B
+  ✅ authorized card      → ALLOW  — HTTP 200, 6335 B
+  ✅ a bare cookie replay (no browser context headers) is refused  — HTTP 403
+
+══ 3 · transition PRIVATE → PUBLIC ══
+[cache] could not invalidate "media:121" (Invariant: static generation store missing in revalidateTag("media:121")) — expected outside a request scope
+  ✅ PUBLIC original  → anonymous ALLOW  — HTTP 200, 14270 B
+  ✅ PUBLIC thumbnail → anonymous ALLOW  — HTTP 200, 2477 B
+  ✅ PUBLIC card      → anonymous ALLOW  — HTTP 200, 6335 B
+  ✅ PRIVATE_TO_PUBLIC activation is immediate on the first request  — 138 ms after the write
+  ✅ the SAME URLs served both states — the path/filename never changes on transition  — so neither the filename nor its obscurity is part of the protection
+
+══ 4 · transition PUBLIC → PRIVATE ══
+[cache] could not invalidate "media:121" (Invariant: static generation store missing in revalidateTag("media:121")) — expected outside a request scope
+  ✅ revoked original  → DENY again  — HTTP 403
+  ✅ revoked thumbnail → DENY again  — HTTP 403
+  ✅ revoked card      → DENY again  — HTTP 403
+  ✅ PUBLIC_TO_PRIVATE revocation is immediate on the first request  — 83 ms after the write
+  ✅ revoked response carries no public long-lived cache directive  — Cache-Control: private, no-store
+  ✅ both visibility transitions were audited  — 2 events for media 121
+[cache] could not invalidate "media:121" (Invariant: static generation store missing in revalidateTag("media:121")) — expected outside a request scope
+
+  fixture removed (document + files)
+
+  checks passed: 22
+  checks failed: 0
+
+  MEDIA_BINARY_VISIBILITY = PASS
+

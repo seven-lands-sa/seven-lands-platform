@@ -1,0 +1,25 @@
+{
+  "at": "2026-10-07T22:17:33.236Z",
+  "public": {
+    "files": 15,
+    "bytes": 937151
+  },
+  "admin": {
+    "files": 16,
+    "bytes": 2565382
+  },
+  "overlap": {
+    "files": 6,
+    "bytes": 459310,
+    "urls": [
+      "/_next/static/chunks/1yg4x5e3obwvr.js",
+      "/_next/static/chunks/3wjkd7x0y2arl.js",
+      "/_next/static/chunks/turbopack-2c3mg3r-05n1w.js",
+      "/_next/static/chunks/095g8usnrcprg.js",
+      "/_next/static/chunks/2yjamibpnhspc.js",
+      "/_next/static/chunks/1ibs_mso-ku2s.js"
+    ]
+  },
+  "publicOnly": 9,
+  "adminCodeLeak": []
+}

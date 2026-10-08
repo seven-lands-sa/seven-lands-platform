@@ -1,0 +1,17 @@
+import { chromium } from "@playwright/test";
+import { readFileSync } from "node:fs";
+const env = Object.fromEntries(readFileSync(".env","utf8").split("\n").filter(l=>l.includes("=")&&!l.trim().startsWith("#")).map(l=>{const i=l.indexOf("=");return [l.slice(0,i).trim(),l.slice(i+1).trim().replace(/^"|"$/g,"")];}));
+const browser = await chromium.launch();
+const page = await (await browser.newContext({ viewport:{width:1440,height:900}, locale:"ar-SA" })).newPage();
+await page.goto("http://127.0.0.1:3000/admin/login", { waitUntil: "domcontentloaded" });
+await page.waitForSelector('input[name="email"]');
+await page.fill('input[name="email"]', env.SEED_SUPER_ADMIN_EMAIL);
+await page.fill('input[name="password"]', env.SEED_SUPER_ADMIN_PASSWORD);
+await page.click('button[type="submit"]');
+await page.waitForURL(u=>!u.pathname.endsWith("/login"), { timeout: 45000 });
+await page.waitForTimeout(9000);
+const body = await page.innerText("body");
+console.log("  dashboard text length:", body.trim().length);
+console.log("  nav groups visible:", /المستخدمون/.test(body) ? "✅ المستخدمون" : "—", /الأدوار/.test(body) ? "· ✅ الأدوار" : "", /الوسائط/.test(body) ? "· ✅ الوسائط" : "", /سجل التدقيق/.test(body)||/سجل/.test(body) ? "· ✅ سجل التدقيق" : "");
+await page.screenshot({ path: ".phase-b-evidence/admin-dashboard.png" });
+await browser.close();

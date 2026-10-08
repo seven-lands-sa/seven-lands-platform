@@ -1,0 +1,10 @@
+route                 side    TTFB     LCP      CLS       JS (transfer)   requests
+/ar                   BEFORE  8ms      844ms    0.0077    272 kB (13 files)42
+/ar                   AFTER   7ms      1026ms   0.0002    273 kB (13 files)42
+  → delta   LCP +182 ms · TTFB -1 ms · CLS -0.0075 · JS +785 B transfer
+/ar/services          BEFORE  8ms      782ms    0.0016    272 kB (13 files)41
+/ar/services          AFTER   7ms      984ms    0.0016    273 kB (13 files)41
+  → delta   LCP +202 ms · TTFB -1 ms · CLS 0.0000 · JS +785 B transfer
+/ar/start-a-project   BEFORE  8ms      790ms    0.0002    272 kB (13 files)42
+/ar/start-a-project   AFTER   6ms      972ms    0.0002    273 kB (13 files)42
+  → delta   LCP +182 ms · TTFB -2 ms · CLS 0.0000 · JS +785 B transfer

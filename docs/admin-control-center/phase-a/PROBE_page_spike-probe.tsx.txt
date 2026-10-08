@@ -1,0 +1,54 @@
+/**
+ * ⚠️ TEMPORARY — PHASE A PROBE PAGE. REMOVED BEFORE THE FINAL PHASE A BUILD.
+ *
+ * Proves the two things Phase B/E depend on:
+ *   1. Payload's Local API can be called from a real Server Component (no HTTP hop).
+ *   2. Under `cacheComponents: true`, a tagged `use cache` read is prerendered statically
+ *      and can then be revalidated BY TAG — the mechanism the content adapter will use
+ *      on publish.
+ *
+ * Phase A finding: calling `await connection()` at page level is NOT allowed under
+ * cacheComponents unless wrapped in <Suspense> or the route declares `instant = false`.
+ * The realistic pattern is a cached, tagged read (below), not a request-time read.
+ */
+import { cacheTag } from 'next/cache'
+import { getPayload } from 'payload'
+
+import config from '@payload-config'
+
+export const metadata = {
+  title: 'Phase A Local API probe — not part of the public site',
+  robots: { index: false, follow: false },
+}
+
+async function getCachedSpikeData() {
+  'use cache'
+  cacheTag('spike-items')
+
+  const payload = await getPayload({ config })
+  const items = await payload.find({ collection: 'spike-items', limit: 20, sort: 'title' })
+  const media = await payload.find({ collection: 'spike-media', limit: 5 })
+
+  return {
+    itemCount: items.totalDocs,
+    titles: items.docs.map((d) => (d as { title?: string }).title ?? '?'),
+    mediaCount: media.totalDocs,
+    mediaFile: media.docs[0]
+      ? ((media.docs[0] as { sizes?: { thumbnail?: { url?: string } } }).sizes?.thumbnail?.url ?? null)
+      : null,
+    cachedAt: new Date().toISOString(),
+  }
+}
+
+export default async function SpikeProbePage() {
+  const data = await getCachedSpikeData()
+
+  return (
+    <div>
+      <h1>PHASE_A_PROBE_OK</h1>
+      {/* NOTE: `new Date()` at page level is an unstable value under cacheComponents and
+          is rejected during prerender. The cached function's own timestamp is allowed. */}
+      <pre data-testid="probe">{JSON.stringify(data, null, 2)}</pre>
+    </div>
+  )
+}

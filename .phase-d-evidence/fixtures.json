@@ -1,0 +1,50 @@
+{
+  "created": [
+    {
+      "id": 94,
+      "filename": "hero-workshop.jpg",
+      "label": "hero (public, tagged)"
+    },
+    {
+      "id": 95,
+      "filename": "services-fitting.png",
+      "label": "service card (public)"
+    },
+    {
+      "id": 96,
+      "filename": "project-tower.jpg",
+      "label": "project cover (private)"
+    },
+    {
+      "id": 97,
+      "filename": "brand-mark-alt.png",
+      "label": "product mark (public)"
+    },
+    {
+      "id": 98,
+      "filename": "note-arabic-only.webp",
+      "label": "AR-only alt (private)"
+    },
+    {
+      "id": 99,
+      "filename": "divider-pattern.avif",
+      "label": "decorative divider (avif)"
+    },
+    {
+      "id": 100,
+      "filename": "banner-line.svg",
+      "label": "controlled SVG (public)"
+    },
+    {
+      "id": 101,
+      "filename": "og-default.jpg",
+      "label": "default OG (referenced)"
+    },
+    {
+      "id": 102,
+      "filename": "services-fitting-copy.png",
+      "label": "deliberate duplicate (private)"
+    }
+  ],
+  "ogId": 101
+}

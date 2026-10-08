@@ -1,0 +1,133 @@
+[10:29:44] [33mWARN[39m: [36mThe following identifiers exceed Postgres's 63-character limit and will be silently truncated, which can leave the database out of sync with your Payload schema: _site_settings_v_version_localization_enabled_locales_parent_idx. Use the dbName property to shorten them.[39m
+[10:29:44] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+  ✅ super admin session over HTTP
+  ✅ persona sessions over HTTP (viewer, editor, marketing, admin)
+
+══ 1 · MEDIA CRUD ══
+  ✅ upload succeeds over HTTP  — HTTP 201, ملف تم إنشاؤها بنجاح.
+  ✅ stored filename is sanitised and deterministic  — phased-test-image.png
+  ✅ the original filename is kept as metadata, not as a path  — PhaseD Test Image.PNG
+  ✅ SHA-256 content hash recorded  — 9a02ffcefd2c1b56…
+  ✅ width/height stored  — 800×600
+  ✅ filesize stored  — 581 B
+  ✅ new uploads default to PRIVATE
+  ✅ createdBy recorded  — {"id":1,"name":"مالك النظام","roles":[{"id":1,"label":"مدير 
+  ✅ thumbnail + card generated for an 800×600 source
+  ✅ no content derivative for a source smaller than 1200 px (Payload never upscales — stated policy)  — content: absent
+  ✅ createdBy is the authenticated uploader  — user 1
+  ✅ thumbnail ≤ 400×300 (never upscaled)  — 400×300
+  ✅ card ≤ 768×512  — 768×512
+  ✅ content ≤ 1200×900  — null×null
+  ✅ Arabic alt does NOT appear in the English locale (fallback: false)
+  ✅ Arabic alt stored  — صورة اختبار — واجهة متجر
+  ✅ English alt/caption saved in their own locale  — HTTP 200
+  ✅ library-meta reports alt completeness across both locales  — complete
+  ✅ focal point + tags saved  — HTTP 200
+  ✅ focal point stored as normalised coordinates (0.62, 0.38)
+  ✅ tags stored as a controlled vocabulary  — ["services","website"]
+
+══ 2 · TYPES & SECURITY ══
+  ✅ declared PNG that is really a JPEG is refused in Arabic  — نوع الملف لا يطابق محتواه: الامتداد يقول image/png والمحتوى image/jpeg. الأنواع المسموحة: JPG، PNG، WebP، AVIF، SVG.
+  ✅ executable extension refused  — نوع الملف غير مدعوم. الأنواع المسموحة: JPG، PNG، WebP، AVIF، SVG.
+  ✅ text renamed to .jpg is refused by content sniffing  — تعذّر التعرّف على نوع الملف من محتواه. الأنواع المدعومة: JPG، PNG، WebP، AVIF، SVG.
+  ✅ oversize image refused with the limit in the message  — حجم الصورة يتجاوز الحد المسموح (10 ميجابايت).
+  ✅ SVG with a script/handler is refused for a Super Admin too  — ملف SVG مرفوض: يحتوي على وسم script. أزل العنصر ثم أعد المحاولة.
+  ✅ editor without media.svg_upload cannot upload SVG  — HTTP 403: رفع ملفات SVG يحتاج صلاحية خاصة (خطر أمني). اطلب من مدير النظام رفع الملف أو منحك الصلاحية.
+  ✅ Super Admin can upload a clean SVG  — HTTP 201
+  ✅ delivered SVG carries the CSP backstop  — default-src 'none'; img-src data:; style-src 'unsafe-inline'; sandbox
+  ✅ anonymous is refused the original AND every derivative of a private asset  — 403 / 403 / 403
+  ✅ authenticated staff can read their own private asset  — 200 / 200 / 200
+
+══ 3 · EXIF AND ORIENTATION ══
+  ✅ JPEG with GPS + device EXIF accepted  — HTTP 201
+  ✅ stored original carries NO EXIF block  — exif bytes: 0
+  ✅ orientation tag removed (baked into the pixels instead)
+  ✅ EXIF orientation 6 was applied — the stored image is upright  — 1600×2400 (uploaded 2400×1600 with orientation 6)
+  ✅ device identifiers are absent from the stored bytes
+  ✅ three derivatives for a 2400×1600 source (thumbnail · card · content)  — 400×300 · 768×512 · 1200×900
+  ✅ srcset offers the derivatives in ascending width, original last (original is 1600 wide after orientation)  — /api/media/file/gps-photo-400x300.jpg 400w, /api/media/file/gps-photo-768x512.jpg 768w, /api/media/file/gps-photo-1200x900.jpg 1200w, /api/media/file/gps-photo.jpg 1600w
+  ✅ a source with no content derivative still yields a correct, non-upscaled srcset  — /api/media/file/phased-test-image-400x300.png 400w, /api/media/file/phased-test-image-768x512.png 768w, /api/media/file/phased-test-image.png 800w
+  ✅ the resolver still refuses a private asset (srcset never leaks one)
+  ✅ focal point reaches the frontend as normalised 0–1 coordinates  — {"x":0.62,"y":0.38}
+  ✅ Payload's percentage convention is normalised exactly once (62 → 0.62)  — {"x":0.62,"y":0.38}
+  ✅ no focal point stays null (no invented centre)
+  ✅ derivatives are EXIF-free as well  — gps-photo-400x300.jpg
+
+══ 4 · USAGE AND SAFE DELETION ══
+  ✅ a new asset reports zero usages  — 0
+  ✅ library-meta agrees: usage count 0
+  ✅ the Arabic site-settings localisation is populated before the usage probe  — {"display":"بريدة، القصيم، المملكة العربية السعودية","short":"شركة سعودية مقرها بريدة، الق
+  ✅ Site Settings refuses to reference a PRIVATE asset (visibility is part of the contract)
+[cache] could not invalidate "media:5" (Invariant: static generation store missing in revalidateTag("media:5")) — expected outside a request scope
+[cache] could not invalidate "site-settings" (Invariant: static generation store missing in revalidateTag("site-settings")) — expected outside a request scope
+[cache] could not invalidate "business-hours" (Invariant: static generation store missing in revalidateTag("business-hours")) — expected outside a request scope
+  ✅ attaching it to Site Settings → default OG image registers exactly one usage
+  ✅ the usage names the entity and the field  — {"kind":"global","slug":"site-settings","label":"الإعدادات العامة","fieldPath":"brand.defaultOgImage","fieldLabel":"صورة المشاركة الافتراضية","href":"/admin/globals/site-settings"}
+  ✅ deleting a referenced asset is refused  — HTTP 400
+  ✅ the refusal lists where it is used, in Arabic  — لا يمكن حذف هذه الصورة لأنها مستخدمة في: · • الإعدادات العامة → صورة المشاركة الافتراضية
+  ✅ the asset and its references are untouched by the refused delete
+[cache] could not invalidate "site-settings" (Invariant: static generation store missing in revalidateTag("site-settings")) — expected outside a request scope
+[cache] could not invalidate "business-hours" (Invariant: static generation store missing in revalidateTag("business-hours")) — expected outside a request scope
+  ✅ the Arabic site-settings localisation survives the usage probe intact  — display=بريدة، القصيم، المملكة الع
+  ✅ the English site-settings localisation survives the usage probe intact  — display=Buraydah, Al Qassim, Saudi
+  ✅ removing the reference makes it deletable again — nothing was auto-nulled, the reference was removed deliberately
+[cache] could not invalidate "media:5" (Invariant: static generation store missing in revalidateTag("media:5")) — expected outside a request scope
+  ✅ an unused asset deletes normally  — HTTP 200
+
+══ 5 · REPLACEMENT ══
+  ✅ replacing with identical bytes is refused  — الملف الجديد مطابق للملف الحالي — لا يوجد ما يُستبدل.
+  ✅ raster → SVG replacement is refused (delivery model would change)  — لا يمكن استبدال صورة بملف SVG. أنشئ ملفًا جديدًا بصلاحية SVG.
+  ✅ binary replacement succeeds  — HTTP 200
+  ✅ the document identity is preserved (same id, same references)
+  ✅ dimensions updated to the new file  — 1600×1200
+  ✅ metadata survives the replacement (alt + tags unchanged)
+  ✅ replacedAt recorded  — 2026-10-08T10:29:48.504Z
+  ✅ derivatives were regenerated from the new bytes  — http://localhost:3000/api/media/file/hero-before-f040199c-1200x900.png
+  ✅ the previous derivative is no longer served  — HTTP 403
+  ✅ the new public asset is served anonymously  — HTTP 200
+
+══ 6 · RBAC MATRIX ══
+  ✅ viewer: upload → 403  — got 403
+  ✅ viewer: metadata edit → 403  — got 403
+  ✅ viewer: visibility change → 403  — got 403
+  ✅ viewer: delete → 403  — got 403
+  ✅ editor: upload → 201  — got 201
+  ✅ editor: metadata edit → 200  — got 200
+  ✅ editor: visibility change → 200  — got 200
+  ✅ editor: delete → 403  — got 403
+  ✅ marketing: upload → 201  — got 201
+  ✅ marketing: metadata edit → 200  — got 200
+  ✅ marketing: visibility change → 200  — got 200
+  ✅ marketing: delete → 403  — got 403
+  ✅ admin: upload → 201  — got 201
+  ✅ admin: metadata edit → 200  — got 200
+  ✅ admin: visibility change → 200  — got 200
+  ✅ admin: delete → 403  — got 403
+[cache] could not invalidate "media:6" (Invariant: static generation store missing in revalidateTag("media:6")) — expected outside a request scope
+  ✅ anonymous can list (and therefore see) public assets  — HTTP 200
+  ✅ anonymous cannot read a private asset's document  — HTTP 404
+
+══ 7 · DUPLICATES AND AUDIT ══
+  ✅ identical bytes are still accepted (duplicate detection warns, never blocks)  — HTTP 201
+  ✅ both copies share one content hash
+  ✅ audit records media_uploaded
+  ✅ audit records media_updated
+  ✅ audit records media_visibility_changed
+  ✅ audit records media_binary_replaced
+  ✅ audit records media_deleted
+  ✅ audit records media_delete_blocked
+  ✅ the replacement audit entry names the actor  — owner@sevenlands.test
+  ✅ audit details never contain binary data
+[cache] could not invalidate "media:4" (Invariant: static generation store missing in revalidateTag("media:4")) — expected outside a request scope
+[cache] could not invalidate "media:5" (Invariant: static generation store missing in revalidateTag("media:5")) — expected outside a request scope
+[cache] could not invalidate "media:6" (Invariant: static generation store missing in revalidateTag("media:6")) — expected outside a request scope
+[cache] could not invalidate "media:7" (Invariant: static generation store missing in revalidateTag("media:7")) — expected outside a request scope
+[cache] could not invalidate "media:8" (Invariant: static generation store missing in revalidateTag("media:8")) — expected outside a request scope
+[cache] could not invalidate "media:9" (Invariant: static generation store missing in revalidateTag("media:9")) — expected outside a request scope
+[cache] could not invalidate "media:10" (Invariant: static generation store missing in revalidateTag("media:10")) — expected outside a request scope
+
+  checks passed: 97
+  checks failed: 0
+
+  PHASE_D_MEDIA_SUITE = PASS
+

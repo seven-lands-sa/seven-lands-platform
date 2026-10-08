@@ -1,0 +1,10 @@
+fixture uploaded: #12 gate-check.png visibility=private
+fixture English alt: undefined (no cross-language fallback expected)
+publish status: ar=blocked en=blocked · media blockers=4
+  · [media/ar] «الهيرو» — الملف «gate-check.png» خاص. لن نغيّر ظهوره تلقائيًا: اجعله عامًا من مكتبة الوسائط ثم انشر.
+  · [media/ar] «الهيرو» — النص البديل للملف «gate-check.png» ناقص بالـالعربية.
+  · [media/en] «الهيرو» — الملف «gate-check.png» خاص. لن نغيّر ظهوره تلقائيًا: اجعله عامًا من مكتبة الوسائط ثم انشر.
+media blocker names the asset or its privacy: true
+publish attempt → HTTP 400 (expected 400: nothing published)
+asset visibility after the blocked publish: private (expected private — never silently changed)
+fixture deleted → HTTP 200

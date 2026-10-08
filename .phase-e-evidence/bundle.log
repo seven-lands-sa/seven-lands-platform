@@ -1,0 +1,20 @@
+  public /ar              15 assets
+  public /en              15 assets
+  public /ar/about        15 assets
+  public /en/about        15 assets
+  public /ar/services     15 assets
+  public /en/services     15 assets
+  public /ar/work         15 assets
+  public /en/work         15 assets
+  public /ar/insights     15 assets
+  public /en/insights     15 assets
+  public /ar/contact      15 assets
+  public /en/contact      15 assets
+  admin  /admin/collections/media     16 assets
+  admin  /admin/media-picker          16 assets
+  admin  /admin/collections/users     16 assets
+
+PUBLIC_BUNDLE ............ 15 files / 937,151 B
+ADMIN_BUNDLE ............. 16 files / 2,565,382 B
+OVERLAP .................. 6 files / 459,310 B (/_next/static/chunks/1yg4x5e3obwvr.js, /_next/static/chunks/3wjkd7x0y2arl.js, /_next/static/chunks/turbopack-2c3mg3r-05n1w.js, /_next/static/chunks/095g8usnrcprg.js, /_next/static/chunks/2yjamibpnhspc.js, /_next/static/chunks/1ibs_mso-ku2s.js)
+ADMIN_CODE_LEAK .......... NO

@@ -1,0 +1,3 @@
+[18:35:32] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+REFUSED: refusing to seed a production database. This script creates accounts and roles.
+          Re-run with ALLOW_PRODUCTION_SEED=true only during a planned first-time setup.

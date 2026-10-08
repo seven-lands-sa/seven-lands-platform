@@ -1,0 +1,10 @@
+LCP of /ar under 4x CPU + 1.6 Mbps / 150 ms RTT
+
+  BEFORE (pre-Payload), no hint sent             samples: 908, 800, 824 ms   median 824 ms
+  AFTER (Payload), no hint sent                  samples: 1052, 1016, 1028 ms   median 1028 ms
+  AFTER (Payload), client pre-sends the hint     samples: 868, 876, 892 ms   median 876 ms
+  BEFORE (pre-Payload), client pre-sends the hint samples: 832, 844, 800 ms   median 832 ms
+
+  hypothesis: if Critical-CH causes a retry, AFTER-with-hint should match BEFORE.
+  BEFORE 824 ms · AFTER 1028 ms (+204) · AFTER with hint 876 ms
+  recovered by pre-sending the hint: 152 ms (BEFORE with hint: 832 ms)

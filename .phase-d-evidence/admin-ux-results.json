@@ -1,0 +1,262 @@
+[
+  {
+    "ok": true,
+    "label": "grid shows every fixture",
+    "detail": "9 tiles"
+  },
+  {
+    "ok": true,
+    "label": "tiles render real thumbnails",
+    "detail": ""
+  },
+  {
+    "ok": true,
+    "label": "a referenced asset reports a non-zero usage count",
+    "detail": "غير مستخدمة | مستخدمة في 1 موضع | غير مستخدمة | غير مستخدمة"
+  },
+  {
+    "ok": true,
+    "label": "private assets are labelled",
+    "detail": "3 private tiles"
+  },
+  {
+    "ok": true,
+    "label": "the duplicate pair is flagged",
+    "detail": ""
+  },
+  {
+    "ok": true,
+    "label": "decorative asset flagged as such",
+    "detail": ""
+  },
+  {
+    "ok": true,
+    "label": "search narrows the grid",
+    "detail": "1 tile for «hero»"
+  },
+  {
+    "ok": true,
+    "label": "visibility filter → private only",
+    "detail": "3 tiles"
+  },
+  {
+    "ok": true,
+    "label": "type filter → SVG only",
+    "detail": ""
+  },
+  {
+    "ok": true,
+    "label": "tag filter → «الخدمات»",
+    "detail": "2 tiles"
+  },
+  {
+    "ok": true,
+    "label": "sort by name is alphabetical",
+    "detail": "banner-line.svg"
+  },
+  {
+    "ok": true,
+    "label": "library: no page-level overflow at 390px",
+    "detail": "{\"client\":390,\"scroll\":390,\"offenders\":[\"div.nav__link-indicator\"]}"
+  },
+  {
+    "ok": true,
+    "label": "library: no page-level overflow at 768px",
+    "detail": "{\"client\":768,\"scroll\":768,\"offenders\":[\"div.nav__link-indicator\"]}"
+  },
+  {
+    "ok": true,
+    "label": "library: no page-level overflow at 1024px",
+    "detail": "{\"client\":1024,\"scroll\":1024,\"offenders\":[\"div.nav__link-indicator\"]}"
+  },
+  {
+    "ok": true,
+    "label": "library: no page-level overflow at 1440px",
+    "detail": "{\"client\":1440,\"scroll\":1440,\"offenders\":[]}"
+  },
+  {
+    "ok": true,
+    "label": "dialog keeps a real file input (drag/drop is an addition, not a replacement)",
+    "detail": ""
+  },
+  {
+    "ok": true,
+    "label": "drag-and-drop zone present",
+    "detail": ""
+  },
+  {
+    "ok": true,
+    "label": "upload dialog fits a 390px screen",
+    "detail": "{\"client\":390,\"scroll\":390,\"offenders\":[\"div.nav__link-indicator\"]}"
+  },
+  {
+    "ok": true,
+    "label": "detail view shows the usage area",
+    "detail": ""
+  },
+  {
+    "ok": true,
+    "label": "usage names the exact field",
+    "detail": "صورة المشاركة الافتراضية"
+  },
+  {
+    "ok": true,
+    "label": "detail view shows alt completeness",
+    "detail": ""
+  },
+  {
+    "ok": true,
+    "label": "usage names the owning entity (الإعدادات العامة)",
+    "detail": ""
+  },
+  {
+    "ok": true,
+    "label": "deleting a referenced asset is refused",
+    "detail": "HTTP 400"
+  },
+  {
+    "ok": true,
+    "label": "the refusal is the Arabic block message",
+    "detail": "لا يمكن حذف هذه الصورة لأنها مستخدمة في:\n• الإعدادات العامة → صورة المشاركة الافتراضية"
+  },
+  {
+    "ok": true,
+    "label": "the refusal lists where it is used (in the API response)",
+    "detail": ""
+  },
+  {
+    "ok": true,
+    "label": "authenticated staff can read their own private asset",
+    "detail": "HTTP 200"
+  },
+  {
+    "ok": true,
+    "label": "detail view: no overflow at 390px",
+    "detail": "{\"client\":390,\"scroll\":390,\"offenders\":[\"div.nav__link-indicator\"]}"
+  },
+  {
+    "ok": true,
+    "label": "detail view: no overflow at 1024px",
+    "detail": "{\"client\":1024,\"scroll\":1024,\"offenders\":[\"div.nav__link-indicator\"]}"
+  },
+  {
+    "ok": true,
+    "label": "picker review surface loads",
+    "detail": ""
+  },
+  {
+    "ok": true,
+    "label": "picker lists the library",
+    "detail": "9 tiles"
+  },
+  {
+    "ok": true,
+    "label": "picker search works",
+    "detail": ""
+  },
+  {
+    "ok": true,
+    "label": "picking returns the asset to the field (no ID typing)",
+    "detail": "اختر صورة / "
+  },
+  {
+    "ok": true,
+    "label": "picker fits a 390px screen",
+    "detail": "{\"client\":390,\"scroll\":390,\"offenders\":[]}"
+  },
+  {
+    "ok": true,
+    "label": "media-table: no page overflow at 390px",
+    "detail": "{\"client\":390,\"scroll\":390,\"offenders\":[\"div.nav__link-indicator\"]}"
+  },
+  {
+    "ok": true,
+    "label": "media-table: no page overflow at 768px",
+    "detail": "{\"client\":768,\"scroll\":768,\"offenders\":[\"div.nav__link-indicator\"]}"
+  },
+  {
+    "ok": true,
+    "label": "media-table: no page overflow at 1024px",
+    "detail": "{\"client\":1024,\"scroll\":1024,\"offenders\":[\"div.nav__link-indicator\"]}"
+  },
+  {
+    "ok": true,
+    "label": "media-table: no page overflow at 1440px",
+    "detail": "{\"client\":1440,\"scroll\":1440,\"offenders\":[]}"
+  },
+  {
+    "ok": true,
+    "label": "users: no page overflow at 390px",
+    "detail": "{\"client\":390,\"scroll\":390,\"offenders\":[\"div.nav__link-indicator\"]}"
+  },
+  {
+    "ok": true,
+    "label": "users: no page overflow at 768px",
+    "detail": "{\"client\":768,\"scroll\":768,\"offenders\":[\"div.nav__link-indicator\"]}"
+  },
+  {
+    "ok": true,
+    "label": "users: no page overflow at 1024px",
+    "detail": "{\"client\":1024,\"scroll\":1024,\"offenders\":[\"div.nav__link-indicator\"]}"
+  },
+  {
+    "ok": true,
+    "label": "users: no page overflow at 1440px",
+    "detail": "{\"client\":1440,\"scroll\":1440,\"offenders\":[]}"
+  },
+  {
+    "ok": true,
+    "label": "roles: no page overflow at 390px",
+    "detail": "{\"client\":390,\"scroll\":390,\"offenders\":[\"div.nav__link-indicator\"]}"
+  },
+  {
+    "ok": true,
+    "label": "roles: no page overflow at 768px",
+    "detail": "{\"client\":768,\"scroll\":768,\"offenders\":[\"div.nav__link-indicator\"]}"
+  },
+  {
+    "ok": true,
+    "label": "roles: no page overflow at 1024px",
+    "detail": "{\"client\":1024,\"scroll\":1024,\"offenders\":[\"div.nav__link-indicator\"]}"
+  },
+  {
+    "ok": true,
+    "label": "roles: no page overflow at 1440px",
+    "detail": "{\"client\":1440,\"scroll\":1440,\"offenders\":[]}"
+  },
+  {
+    "ok": true,
+    "label": "audit-events: no page overflow at 390px",
+    "detail": "{\"client\":390,\"scroll\":390,\"offenders\":[\"div.nav__link-indicator\"]}"
+  },
+  {
+    "ok": true,
+    "label": "audit-events: no page overflow at 768px",
+    "detail": "{\"client\":768,\"scroll\":768,\"offenders\":[\"div.nav__link-indicator\"]}"
+  },
+  {
+    "ok": true,
+    "label": "audit-events: no page overflow at 1024px",
+    "detail": "{\"client\":1024,\"scroll\":1024,\"offenders\":[\"div.nav__link-indicator\"]}"
+  },
+  {
+    "ok": true,
+    "label": "audit-events: no page overflow at 1440px",
+    "detail": "{\"client\":1440,\"scroll\":1440,\"offenders\":[]}"
+  },
+  {
+    "ok": true,
+    "label": "axe: no serious/critical issues on the media library",
+    "detail": ""
+  },
+  {
+    "ok": true,
+    "label": "axe: no serious/critical issues on the media picker",
+    "detail": ""
+  },
+  {
+    "ok": true,
+    "label": "tiles are keyboard-focusable",
+    "detail": ""
+  }
+]

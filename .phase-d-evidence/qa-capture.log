@@ -1,0 +1,32 @@
+✓ /ar @390 — h1:1 dir:rtl overflow:0 errors:0 failed:0
+✓ /en @390 — h1:1 dir:ltr overflow:0 errors:0 failed:0
+✓ /ar/services @390 — h1:1 dir:rtl overflow:0 errors:0 failed:0
+✓ /en/services @390 — h1:1 dir:ltr overflow:0 errors:0 failed:0
+✓ /ar/services/branding-creative @390 — h1:1 dir:rtl overflow:0 errors:0 failed:0
+✓ /ar/work @390 — h1:1 dir:rtl overflow:0 errors:0 failed:0
+✓ /ar/insights @390 — h1:1 dir:rtl overflow:0 errors:0 failed:0
+✓ /ar/about @390 — h1:1 dir:rtl overflow:0 errors:0 failed:0
+✓ /ar/start-a-project @390 — h1:1 dir:rtl overflow:0 errors:0 failed:0
+✓ /en/start-a-project @390 — h1:1 dir:ltr overflow:0 errors:0 failed:0
+✓ /ar/contact @390 — h1:1 dir:rtl overflow:0 errors:0 failed:0
+✓ /ar/privacy @390 — h1:1 dir:rtl overflow:0 errors:0 failed:0
+   ↳ offenders: []
+   ↳ errors: ["Failed to load resource: the server responded with a status of 404 (Not Found)"]
+✓ /ar/this-page-does-not-exist @390 — h1:1 dir:rtl overflow:0 errors:1 failed:0
+✓ /ar @1440 — h1:1 dir:rtl overflow:0 errors:0 failed:0
+✓ /en @1440 — h1:1 dir:ltr overflow:0 errors:0 failed:0
+✓ /ar/services @1440 — h1:1 dir:rtl overflow:0 errors:0 failed:0
+✓ /en/services @1440 — h1:1 dir:ltr overflow:0 errors:0 failed:0
+✓ /ar/services/branding-creative @1440 — h1:1 dir:rtl overflow:0 errors:0 failed:0
+✓ /ar/work @1440 — h1:1 dir:rtl overflow:0 errors:0 failed:0
+✓ /ar/insights @1440 — h1:1 dir:rtl overflow:0 errors:0 failed:0
+✓ /ar/about @1440 — h1:1 dir:rtl overflow:0 errors:0 failed:0
+✓ /ar/start-a-project @1440 — h1:1 dir:rtl overflow:0 errors:0 failed:0
+✓ /en/start-a-project @1440 — h1:1 dir:ltr overflow:0 errors:0 failed:0
+✓ /ar/contact @1440 — h1:1 dir:rtl overflow:0 errors:0 failed:0
+✓ /ar/privacy @1440 — h1:1 dir:rtl overflow:0 errors:0 failed:0
+   ↳ offenders: []
+   ↳ errors: ["Failed to load resource: the server responded with a status of 404 (Not Found)"]
+✓ /ar/this-page-does-not-exist @1440 — h1:1 dir:rtl overflow:0 errors:1 failed:0
+
+2 route/viewport combinations with findings — see qa/findings.json

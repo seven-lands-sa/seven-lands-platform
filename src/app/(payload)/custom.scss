@@ -1,0 +1,598 @@
+/**
+ * SEVEN LANDS — ADMIN CUSTOM STYLES
+ *
+ * Two jobs only, both from Phase D:
+ *
+ *   §32  The admin list tables overflowed the viewport at ≤1024px. Payload's own styles deliberately
+ *        shift `.table` left by the gutter and add two gutters of width so the table "bleeds" to the
+ *        screen edges to signal overflowing content. At narrow widths that bleed alone pushed the
+ *        whole page sideways (measured: 16px at 390/768, 80px at 1024). The fix below keeps the
+ *        scroll INSIDE the table container and cancels the bleed only where it cannot fit. It is
+ *        scoped CSS — no node_modules edits, no selectors tied to generated class hashes, no columns
+ *        hidden. Desktop (≥1280px) is intentionally untouched: the media query does not apply.
+ *
+ *   Media library surfaces (Phase D): the grid, tiles, panels, modal, picker and upload UI. These
+ *        are scoped with the `sl-` prefix and use Payload's own theme variables, so they follow the
+ *        admin's light/dark themes and never leak into the public site (this file is bundled with
+ *        the admin only).
+ */
+
+/* ── §32 ADMIN TABLE OVERFLOW ─────────────────────────────────────────────────────────────────── */
+@media (max-width: 1279px) {
+  /* The container becomes the scroll surface … */
+  .collection-list__tables {
+    overflow-x: auto;
+  }
+
+  /* … and the table stops bleeding past it. */
+  .template-default .collection-list .table {
+    width: 100%;
+    max-width: 100%;
+    left: auto;
+    padding-left: 0;
+  }
+
+  .template-default .collection-list .table::after {
+    padding-right: 0;
+  }
+}
+
+/* ── MEDIA LIBRARY ────────────────────────────────────────────────────────────────────────────── */
+.sl-library {
+  --sl-radius: 12px;
+  --sl-radius-lg: 18px;
+  --sl-border: 1px solid var(--theme-elevation-150);
+  --sl-gap: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: var(--sl-gap);
+  width: 100%;
+  min-width: 0;
+}
+
+.sl-library__title {
+  margin: 0;
+  font-size: 1.35rem;
+}
+
+.sl-library__subtitle {
+  margin: 0.15rem 0 0;
+  /* Measured 3.94:1 with elevation-500 against the light theme (§34 axe pass) — one step darker
+     clears AA at the same size without turning the line into a heading. */
+  color: var(--theme-elevation-700);
+}
+
+.sl-library__header {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  align-items: flex-end;
+  justify-content: space-between;
+}
+
+.sl-library__header-actions {
+  align-items: center;
+}
+
+.sl-library__search {
+  flex: 1 1 16rem;
+  min-width: 12rem;
+}
+
+.sl-library__filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  align-items: flex-end;
+  padding: 0.75rem;
+  border: var(--sl-border);
+  border-radius: var(--sl-radius);
+  background: var(--theme-elevation-0);
+}
+
+.sl-library__bulk {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  align-items: center;
+  padding: 0.6rem 0.75rem;
+  border: 1px solid var(--theme-elevation-200);
+  border-radius: var(--sl-radius);
+  background: var(--theme-elevation-50);
+}
+
+.sl-library__bulk-count {
+  font-weight: 600;
+}
+
+.sl-library__select-all {
+  display: flex;
+  align-items: center;
+}
+
+.sl-library__empty {
+  border: 1px dashed var(--theme-elevation-200);
+  border-radius: var(--sl-radius-lg);
+  padding: 2.5rem 1.25rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  align-items: center;
+}
+
+.sl-library__pager {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+  justify-content: center;
+  padding-top: 0.5rem;
+}
+
+.sl-library__pager-status {
+  color: var(--theme-elevation-500);
+}
+
+/* Tiles */
+.sl-grid {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(11rem, 1fr));
+  gap: 0.9rem;
+}
+
+.sl-card {
+  border: var(--sl-border);
+  border-radius: var(--sl-radius-lg);
+  background: var(--theme-elevation-0);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.sl-card--selected {
+  border-color: var(--theme-success-500);
+  box-shadow: 0 0 0 1px var(--theme-success-500) inset;
+}
+
+.sl-card__top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  padding: 0.5rem 0.6rem;
+  position: absolute;
+  inset-inline: 0;
+  top: 0;
+  z-index: 2;
+}
+
+.sl-card__preview {
+  display: block;
+  aspect-ratio: 4 / 3;
+  background: var(--theme-elevation-50);
+}
+
+.sl-card__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.sl-card__placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  min-height: 6rem;
+  color: var(--theme-elevation-400);
+  font-size: 0.8rem;
+}
+
+.sl-card__body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  padding: 0.6rem 0.7rem 0.75rem;
+}
+
+.sl-card__name {
+  font-weight: 600;
+  word-break: break-word;
+}
+
+.sl-card__facts,
+.sl-card__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  align-items: center;
+  margin: 0;
+  color: var(--theme-elevation-500);
+  font-size: 0.8rem;
+}
+
+.sl-card__warning {
+  font-size: 0.78rem;
+  color: var(--theme-warning-600, #a05a00);
+}
+
+.sl-card__pick {
+  all: unset;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  cursor: pointer;
+}
+
+.sl-card__pick:focus-visible,
+.sl-card__preview:focus-visible,
+.sl-card__name:focus-visible {
+  outline: 2px solid var(--theme-elevation-800);
+  outline-offset: 2px;
+  border-radius: var(--sl-radius);
+}
+
+/* Chips */
+.sl-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.1rem 0.5rem;
+  border-radius: 999px;
+  font-size: 0.72rem;
+  line-height: 1.6;
+  border: 1px solid var(--theme-elevation-150);
+  background: var(--theme-elevation-50);
+  color: var(--theme-elevation-700);
+  white-space: nowrap;
+}
+
+.sl-chip--public {
+  border-color: var(--theme-success-400);
+  color: var(--theme-success-600);
+}
+
+.sl-chip--private {
+  border-color: var(--theme-elevation-300);
+  color: var(--theme-elevation-600);
+}
+
+.sl-chip--alt-complete {
+  border-color: var(--theme-success-400);
+  color: var(--theme-success-600);
+}
+
+.sl-chip--alt-ar-only,
+.sl-chip--alt-en-only {
+  border-color: var(--theme-warning-400, #d9a343);
+  color: var(--theme-warning-700, #8a5a00);
+}
+
+.sl-chip--alt-missing {
+  border-color: var(--theme-error-400);
+  color: var(--theme-error-600);
+}
+
+.sl-chip--alt-decorative {
+  border-style: dashed;
+  color: var(--theme-elevation-500);
+}
+
+.sl-chip--usage-on {
+  border-color: var(--theme-elevation-400);
+}
+
+.sl-chip--toggle {
+  cursor: pointer;
+}
+
+.sl-chip--on {
+  background: var(--theme-elevation-800);
+  border-color: var(--theme-elevation-800);
+  color: var(--theme-elevation-0);
+}
+
+.sl-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+/* Form primitives (admin-scoped; Payload's inputs are styled already, these are for our surfaces) */
+.sl-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.sl-field--inline {
+  flex-direction: row;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.sl-field--grow {
+  flex: 1 1 16rem;
+  min-width: 12rem;
+}
+
+.sl-field__label {
+  font-size: 0.78rem;
+  color: var(--theme-elevation-600);
+}
+
+.sl-input,
+.sl-select {
+  width: 100%;
+  padding: 0.45rem 0.6rem;
+  border: 1px solid var(--theme-elevation-200);
+  border-radius: 10px;
+  background: var(--theme-input-bg, var(--theme-elevation-0));
+  color: inherit;
+  font: inherit;
+}
+
+.sl-input:focus-visible,
+.sl-select:focus-visible {
+  outline: 2px solid var(--theme-elevation-800);
+  outline-offset: 1px;
+}
+
+/* Panels */
+.sl-panel {
+  border: var(--sl-border);
+  border-radius: var(--sl-radius);
+  padding: 0.75rem 0.85rem;
+  background: var(--theme-elevation-0);
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.sl-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.sl-checks,
+.sl-usage-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.sl-usage-list a {
+  text-decoration: underline;
+}
+
+/* Modal */
+.sl-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  background: rgb(0 0 0 / 55%);
+}
+
+.sl-modal__panel {
+  width: min(40rem, 100%);
+  max-height: 90vh;
+  overflow-y: auto;
+  background: var(--theme-bg);
+  color: var(--theme-text);
+  border-radius: var(--sl-radius-lg);
+  padding: 1rem 1.1rem 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  box-shadow: 0 18px 60px rgb(0 0 0 / 35%);
+}
+
+.sl-modal__panel--wide {
+  width: min(64rem, 100%);
+}
+
+.sl-modal__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.sl-modal__head h2 {
+  margin: 0;
+  font-size: 1.1rem;
+}
+
+.sl-modal__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  align-items: center;
+}
+
+/* Upload */
+.sl-dropzone {
+  border: 1px dashed var(--theme-elevation-250);
+  border-radius: var(--sl-radius-lg);
+  padding: 1.25rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.35rem;
+  background: var(--theme-elevation-25, var(--theme-elevation-50));
+}
+
+.sl-dropzone--active {
+  border-color: var(--theme-success-500);
+  background: var(--theme-elevation-50);
+}
+
+.sl-dropzone__file {
+  margin: 0;
+  font-weight: 600;
+  word-break: break-all;
+}
+
+.sl-progress {
+  position: relative;
+  border: var(--sl-border);
+  border-radius: 10px;
+  overflow: hidden;
+  padding: 0.5rem 0.6rem;
+  background: var(--theme-elevation-50);
+}
+
+.sl-progress__bar {
+  position: absolute;
+  inset-inline-start: 0;
+  top: 0;
+  bottom: 0;
+  background: var(--theme-success-200, #cfe6c9);
+  transition: width 160ms linear;
+}
+
+.sl-progress__label {
+  position: relative;
+  margin: 0;
+  font-size: 0.82rem;
+}
+
+.sl-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.sl-form__row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+/* Picker field (for future content fields) */
+.sl-picker-field {
+  display: flex;
+  gap: 0.9rem;
+  align-items: center;
+  border: var(--sl-border);
+  border-radius: var(--sl-radius);
+  padding: 0.6rem;
+  flex-wrap: wrap;
+}
+
+.sl-picker-field__preview {
+  width: 7.5rem;
+  aspect-ratio: 4 / 3;
+  border-radius: 10px;
+  overflow: hidden;
+  background: var(--theme-elevation-50);
+  flex: 0 0 auto;
+}
+
+.sl-picker-field__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.sl-picker-field__body {
+  flex: 1 1 12rem;
+  min-width: 10rem;
+}
+
+.sl-grid--picker {
+  grid-template-columns: repeat(auto-fill, minmax(9.5rem, 1fr));
+  max-height: 60vh;
+  overflow-y: auto;
+  padding: 0.25rem;
+}
+
+/* Accessibility helper */
+.sl-visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ── RESPONSIVE (§33) ─────────────────────────────────────────────────────────────────────────── */
+@media (max-width: 1024px) {
+  .sl-library__filters {
+    align-items: stretch;
+  }
+
+  .sl-library__filters .sl-field {
+    flex: 1 1 10rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .sl-grid {
+    grid-template-columns: repeat(auto-fill, minmax(9rem, 1fr));
+    gap: 0.6rem;
+  }
+
+  .sl-modal {
+    padding: 0.5rem;
+    align-items: flex-start;
+  }
+
+  .sl-modal__panel {
+    max-height: 94vh;
+  }
+}
+
+@media (max-width: 480px) {
+  .sl-library__header-actions {
+    width: 100%;
+  }
+
+  .sl-library__search {
+    flex-basis: 100%;
+  }
+
+  .sl-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.sl-chip--duplicate {
+  border-style: dashed;
+  color: var(--theme-elevation-600);
+}
+
+/*
+ * §34 — the admin language switcher label ships with Payload and measures 3.31:1 on the light theme
+ * (axe, WCAG AA needs 4.5:1 for 13px text). One scoped colour change, no layout involved.
+ */
+.localizer-button__label {
+  color: var(--theme-elevation-800);
+}
+
+/* The refusal shown next to the disabled delete button (§18) — visible text, not a tooltip. */
+.sl-actions__note {
+  margin: 0.6rem 0 0;
+  color: var(--theme-elevation-700);
+  font-size: 0.85rem;
+}

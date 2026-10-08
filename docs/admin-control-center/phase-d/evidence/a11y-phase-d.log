@@ -1,0 +1,23 @@
+
+Running 18 tests using 1 worker
+
+  ✓   1 [ar-desktop] › tests/a11y.spec.ts:12:3 › axe: /ar (2.8s)
+  ✓   2 [ar-desktop] › tests/a11y.spec.ts:12:3 › axe: /en (2.8s)
+  ✓   3 [ar-desktop] › tests/a11y.spec.ts:12:3 › axe: /ar/services (2.7s)
+  ✓   4 [ar-desktop] › tests/a11y.spec.ts:12:3 › axe: /ar/services/web-commerce-experiences (2.2s)
+  ✓   5 [ar-desktop] › tests/a11y.spec.ts:12:3 › axe: /ar/start-a-project (2.1s)
+  ✓   6 [ar-desktop] › tests/a11y.spec.ts:12:3 › axe: /ar/contact (2.2s)
+  ✓   7 [ar-mobile] › tests/a11y.spec.ts:12:3 › axe: /ar (2.6s)
+  ✓   8 [ar-mobile] › tests/a11y.spec.ts:12:3 › axe: /en (2.5s)
+  ✓   9 [ar-mobile] › tests/a11y.spec.ts:12:3 › axe: /ar/services (2.1s)
+  ✓  10 [ar-mobile] › tests/a11y.spec.ts:12:3 › axe: /ar/services/web-commerce-experiences (2.2s)
+  ✓  11 [ar-mobile] › tests/a11y.spec.ts:12:3 › axe: /ar/start-a-project (2.0s)
+  ✓  12 [ar-mobile] › tests/a11y.spec.ts:12:3 › axe: /ar/contact (2.0s)
+  ✓  13 [en-desktop] › tests/a11y.spec.ts:12:3 › axe: /ar (2.7s)
+  ✓  14 [en-desktop] › tests/a11y.spec.ts:12:3 › axe: /en (2.6s)
+  ✓  15 [en-desktop] › tests/a11y.spec.ts:12:3 › axe: /ar/services (2.2s)
+  ✓  16 [en-desktop] › tests/a11y.spec.ts:12:3 › axe: /ar/services/web-commerce-experiences (2.1s)
+  ✓  17 [en-desktop] › tests/a11y.spec.ts:12:3 › axe: /ar/start-a-project (2.1s)
+  ✓  18 [en-desktop] › tests/a11y.spec.ts:12:3 › axe: /ar/contact (2.0s)
+
+  18 passed (45.3s)

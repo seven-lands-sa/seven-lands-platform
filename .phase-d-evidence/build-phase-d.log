@@ -1,0 +1,101 @@
+
+> seven-lands-website@0.1.0 build
+> next build
+
+▲ Next.js 16.4.0 (Turbopack)
+- Environments: .env
+✓ Running next.config.ts took 64ms
+- Cache Components enabled
+- Partial Prefetching enabled
+- Experiments (use with caution):
+  ⨯ turbopackServerFastRefresh
+
+  Creating an optimized production build ...
+✓ Compiled successfully in 3.2s
+  Running TypeScript ...
+  Finished TypeScript in 5.5s ...
+  Collecting page data using 1 worker ...
+  Generating static pages using 1 worker (0/66) ...
+  Generating static pages using 1 worker (16/66) 
+  Generating static pages using 1 worker (32/66) 
+  Generating static pages using 1 worker (49/66) 
+✓ Generating static pages using 1 worker (66/66) in 3.9s
+  Finalizing page optimization ...
+
+Route (app)
+┌ ○ /_not-found
+├   /[locale]
+│ ├ ◐ /[locale]
+│ ├ ○ /ar
+│ └ ○ /en
+├   /[locale]/[...rest]
+│ ├ ◐ /[locale]/[...rest]
+│ ├ ◐ /ar/[...rest]
+│ └ ◐ /en/[...rest]
+├   /[locale]/about
+│ ├ ◐ /[locale]/about
+│ ├ ○ /ar/about
+│ └ ○ /en/about
+├   /[locale]/contact
+│ ├ ◐ /[locale]/contact
+│ ├ ○ /ar/contact
+│ └ ○ /en/contact
+├   /[locale]/insights
+│ ├ ◐ /[locale]/insights
+│ ├ ○ /ar/insights
+│ └ ○ /en/insights
+├   /[locale]/insights/[slug]
+│ ├ ◐ /[locale]/insights/[slug]
+│ ├ ◐ /ar/insights/[slug]
+│ └ ◐ /en/insights/[slug]
+├   /[locale]/not-found
+│ ├ ◐ /[locale]/not-found
+│ ├ ○ /ar/not-found
+│ └ ○ /en/not-found
+├   /[locale]/privacy
+│ ├ ◐ /[locale]/privacy
+│ ├ ○ /ar/privacy
+│ └ ○ /en/privacy
+├   /[locale]/services
+│ ├ ◐ /[locale]/services
+│ ├ ○ /ar/services
+│ └ ○ /en/services
+├   /[locale]/services/[slug]
+│ ├ ◐ /[locale]/services/[slug]
+│ ├ ◐ /ar/services/[slug]
+│ ├ ○ /ar/services/strategy-business-growth
+│ └ ◐ [+14 more paths]
+├   /[locale]/start-a-project
+│ ├ ◐ /[locale]/start-a-project
+│ ├ ○ /ar/start-a-project
+│ └ ○ /en/start-a-project
+├   /[locale]/terms
+│ ├ ◐ /[locale]/terms
+│ ├ ○ /ar/terms
+│ └ ○ /en/terms
+├   /[locale]/work
+│ ├ ◐ /[locale]/work
+│ ├ ○ /ar/work
+│ └ ○ /en/work
+├   /[locale]/work/[slug]
+│ ├ ◐ /[locale]/work/[slug]
+│ ├ ◐ /ar/work/[slug]
+│ └ ◐ /en/work/[slug]
+├   /admin/[[...segments]]
+│ └ ◐ /admin/[[...segments]]
+├ ƒ /api/[...slug]
+├ ƒ /api/brief
+├ ƒ /api/graphql
+├ ƒ /api/graphql-playground
+├ ○ /apple-icon.png
+├ ○ /icon.png
+├ ○ /robots.txt
+└ ○ /sitemap.xml
+
+
+ƒ Proxy (Middleware)
+
+○  (Static)             prerendered as static content
+◐  (Partial Prerender)  prerendered as static HTML with dynamic server-streamed content
+ƒ  (Dynamic)            server-rendered on demand
+

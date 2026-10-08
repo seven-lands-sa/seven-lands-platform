@@ -1,0 +1,44 @@
+[
+  {
+    "route": "/ar/this-page-does-not-exist",
+    "viewport": "390",
+    "errors": [
+      "Failed to load resource: the server responded with a status of 404 (Not Found)"
+    ],
+    "failed": [],
+    "overflow": {
+      "docWidth": 375,
+      "winWidth": 390,
+      "offenders": []
+    },
+    "a11y": {
+      "h1": 1,
+      "main": 1,
+      "dir": "rtl",
+      "lang": "ar-SA",
+      "imgWithoutAlt": 0,
+      "title": "404 — Seven Lands"
+    }
+  },
+  {
+    "route": "/ar/this-page-does-not-exist",
+    "viewport": "1440",
+    "errors": [
+      "Failed to load resource: the server responded with a status of 404 (Not Found)"
+    ],
+    "failed": [],
+    "overflow": {
+      "docWidth": 1425,
+      "winWidth": 1440,
+      "offenders": []
+    },
+    "a11y": {
+      "h1": 1,
+      "main": 1,
+      "dir": "rtl",
+      "lang": "ar-SA",
+      "imgWithoutAlt": 0,
+      "title": "404 — Seven Lands"
+    }
+  }
+]

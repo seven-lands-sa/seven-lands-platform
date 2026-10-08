@@ -1,0 +1,41 @@
+[10:29:24] [33mWARN[39m: [36mThe following identifiers exceed Postgres's 63-character limit and will be silently truncated, which can leave the database out of sync with your Payload schema: _site_settings_v_version_localization_enabled_locales_parent_idx. Use the dbName property to shorten them.[39m
+[10:29:25] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+══ §1 · LOCALIZATION SAFETY ══
+
+  baseline AR: display="بريدة، القصيم، المملكة العربية السعودية" short="شركة سعودية مقرها بريدة،…"
+  baseline EN: display="Buraydah, Al Qassim, Saudi Arabia" short="A Saudi company based in…"
+
+[cache] could not invalidate "site-settings" (Invariant: static generation store missing in revalidateTag("site-settings")) — expected outside a request scope
+[cache] could not invalidate "business-hours" (Invariant: static generation store missing in revalidateTag("business-hours")) — expected outside a request scope
+  ✅ AR write lands in AR  — بريدة، القصيم (اختبار)
+  ✅ AR write preserves every EN field  — 5 paths compared
+[cache] could not invalidate "site-settings" (Invariant: static generation store missing in revalidateTag("site-settings")) — expected outside a request scope
+[cache] could not invalidate "business-hours" (Invariant: static generation store missing in revalidateTag("business-hours")) — expected outside a request scope
+  ✅ EN write lands in EN  — Buraydah, Al Qassim (test)
+  ✅ EN write preserves every AR field  — 5 paths compared
+[cache] could not invalidate "site-settings" (Invariant: static generation store missing in revalidateTag("site-settings")) — expected outside a request scope
+[cache] could not invalidate "business-hours" (Invariant: static generation store missing in revalidateTag("business-hours")) — expected outside a request scope
+  ✅ partial AR write lands in AR  — اختبار تصنيف
+  ✅ partial AR write preserves the other AR fields  — display + shortDescription survived
+  ✅ partial write preserves siblings inside the same group  — سفن لاند
+[cache] could not invalidate "site-settings" (Invariant: static generation store missing in revalidateTag("site-settings")) — expected outside a request scope
+[cache] could not invalidate "business-hours" (Invariant: static generation store missing in revalidateTag("business-hours")) — expected outside a request scope
+  ✅ partial EN write lands in EN  — Test category
+  ✅ partial EN write preserves the other EN fields  — Buraydah, Al Qassim, Saudi Arabia
+  ✅ partial EN write preserves siblings inside the same group  — Seven Lands
+  ✅ teardown (per-locale whole-document write) preserves both locales  — AR=بريدة، القصيم، المملكة… · EN=Buraydah, Al Qassim, S…
+  ✅ every localized field still present on both sides  — AR 5/5 · EN 5/5
+[cache] could not invalidate "site-settings" (Invariant: static generation store missing in revalidateTag("site-settings")) — expected outside a request scope
+[cache] could not invalidate "business-hours" (Invariant: static generation store missing in revalidateTag("business-hours")) — expected outside a request scope
+  ✅ an empty EN value reads as empty in EN — never the Arabic text  — null
+  ✅ the AR value is untouched by the EN edit  — شركة سعودية مقرها بريدة،
+[cache] could not invalidate "site-settings" (Invariant: static generation store missing in revalidateTag("site-settings")) — expected outside a request scope
+[cache] could not invalidate "business-hours" (Invariant: static generation store missing in revalidateTag("business-hours")) — expected outside a request scope
+[cache] could not invalidate "site-settings" (Invariant: static generation store missing in revalidateTag("site-settings")) — expected outside a request scope
+[cache] could not invalidate "business-hours" (Invariant: static generation store missing in revalidateTag("business-hours")) — expected outside a request scope
+
+  ↩︎ restored: AR="بريدة، القصيم، المملكة العربية السعودية" · EN="Buraydah, Al Qassim, Saudi Arabia"
+
+  checks passed: 14
+  checks failed: 0
+  LOCALIZATION_SAFETY = PASS

@@ -1,0 +1,64 @@
+▲ Next.js 16.4.0
+- Local:         http://localhost:3101
+- Network:       http://0.0.0.0:3101
+✓ Ready in 191ms
+✓ Running next.config.ts took 85ms
+[20:39:53] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+[20:39:53] [31mERROR[39m: [36mلا يسمح لك القيام بهذه العمليّة.[39m
+    err: {
+      "type": "k",
+      "message": "لا يسمح لك القيام بهذه العمليّة.",
+      "stack":
+          k: لا يسمح لك القيام بهذه العمليّة.
+              at rB (/home/user/seven-lands-website/.next/server/chunks/_03xyualup4ald._.js:104:62952)
+              at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+              at async aL (/home/user/seven-lands-website/.next/server/chunks/_03xyualup4ald._.js:104:247997)
+              at async ro (/home/user/seven-lands-website/.next/server/chunks/_03xyualup4ald._.js:104:329563)
+              at async y (/home/user/seven-lands-website/.next/server/chunks/node_modules_1qltgy1doeruc._.js:1:8358)
+              at async /home/user/seven-lands-website/.next/server/chunks/node_modules_1qltgy1doeruc._.js:1:16619
+              at async r0.renderToResponse (/home/user/seven-lands-website/node_modules/next/dist/compiled/next-server/app-route-turbo.runtime.prod.js:5:14352)
+              at async r0.executeRequest (/home/user/seven-lands-website/node_modules/next/dist/compiled/next-server/app-route-turbo.runtime.prod.js:5:17509)
+              at async z (/home/user/seven-lands-website/.next/server/chunks/_1zwrj8iqv2yp_._.js:1:3162)
+              at async r0.handleResponse (/home/user/seven-lands-website/node_modules/next/dist/compiled/next-server/app-route-turbo.runtime.prod.js:1:132981)
+      "data": null,
+      "isOperational": true,
+      "isPublic": true,
+      "status": 403,
+      "name": "k"
+    }
+⨯ Error: Failed query: select "users"."id", "users"."name", "users"."status", "users"."preferred_admin_language", "users"."last_login_at", "users"."updated_at", "users"."created_at", "users"."email", "users"."reset_password_token", "users"."reset_password_expiration", "users"."salt", "users"."hash", "users"."reset_password_requested_at", "users"."login_attempts", "users"."lock_until", "users_sessions"."data" as "sessions", "users__rels"."data" as "_rels" from "users" "users" left join lateral (select coalesce(json_agg(json_build_array("users_sessions"."_order", "users_sessions"."id", "users_sessions"."created_at", "users_sessions"."expires_at") order by "users_sessions"."_order" asc), '[]'::json) as "data" from (select * from "users_sessions" "users_sessions" where "users_sessions"."_parent_id" = "users"."id" order by "users_sessions"."_order" asc) "users_sessions") "users_sessions" on true left join lateral (select coalesce(json_agg(json_build_array("users__rels"."order", "users__rels"."path", "users__rels"."roles_id") order by "users__rels"."order" asc), '[]'::json) as "data" from (select * from "users_rels" "users__rels" where "users__rels"."parent_id" = "users"."id" order by "users__rels"."order" asc) "users__rels") "users__rels" on true order by "users"."created_at" desc limit $1
+params: 1
+    at m.queryWithCache (.next/server/chunks/_03xyualup4ald._.js:89:14069)
+    at async (.next/server/chunks/_03xyualup4ald._.js:82:35868)
+    at async h (.next/server/chunks/_03xyualup4ald._.js:18:15510)
+    at async Object.a [as findOne] (.next/server/chunks/_03xyualup4ald._.js:18:18705)
+    at async aw (.next/server/chunks/ssr/_1lvoq9jcf70tw._.js:1:28553) {
+  query: `select "users"."id", "users"."name", "users"."status", "users"."preferred_admin_language", "users"."last_login_at", "users"."updated_at", "users"."created_at", "users"."email", "users"."reset_password_token", "users"."reset_password_expiration", "users"."salt", "users"."hash", "users"."reset_password_requested_at", "users"."login_attempts", "users"."lock_until", "users_sessions"."data" as "sessions", "users__rels"."data" as "_rels" from "users" "users" left join lateral (select coalesce(json_agg(json_build_array("users_sessions"."_order", "users_sessions"."id", "users_sessions"."created_at", "users_sessions"."expires_at") order by "users_sessions"."_order" asc), '[]'::json) as "data" from (select * from "users_sessions" "users_sessions" where "users_sessions"."_parent_id" = "users"."id" order by "users_sessions"."_order" asc) "users_sessions") "users_sessions" on true left join lateral (select coalesce(json_agg(json_build_array("users__rels"."order", "users__rels"."path", "users__rels"."roles_id") order by "users__rels"."order" asc), '[]'::json) as "data" from (select * from "users_rels" "users__rels" where "users__rels"."parent_id" = "users"."id" order by "users__rels"."order" asc) "users__rels") "users__rels" on true order by "users"."created_at" desc limit $1`,
+  params: [ 1 ],
+  digest: '168752456',
+  [cause]: error: relation "users" does not exist
+      at async (.next/server/chunks/_03xyualup4ald._.js:82:36078)
+      at async m.queryWithCache (.next/server/chunks/_03xyualup4ald._.js:89:14044)
+      at async (.next/server/chunks/_03xyualup4ald._.js:82:35868)
+      at async h (.next/server/chunks/_03xyualup4ald._.js:18:15510)
+      at async Object.a [as findOne] (.next/server/chunks/_03xyualup4ald._.js:18:18705)
+      at async aw (.next/server/chunks/ssr/_1lvoq9jcf70tw._.js:1:28553) {
+    length: 105,
+    severity: 'ERROR',
+    code: '42P01',
+    detail: undefined,
+    hint: undefined,
+    position: '442',
+    internalPosition: undefined,
+    internalQuery: undefined,
+    where: undefined,
+    schema: undefined,
+    table: undefined,
+    column: undefined,
+    dataType: undefined,
+    constraint: undefined,
+    file: 'parse_relation.c',
+    line: '1449',
+    routine: 'parserOpenTable'
+  }
+}

@@ -1,0 +1,60 @@
+════════ PHASE B · LIVE CHECKS — 2026-10-07T16:28:15Z ════════
+
+── 1 · Public site still serves ─────────────────────────────────────
+   ✅ GET /ar                                              200
+   ✅ GET /en                                              200
+   ✅ GET /ar/services                                     200
+   ✅ GET /ar/work                                         200
+   ✅ GET /en/contact                                      200
+   ✅ GET /ar/privacy                                      200
+
+── 2 · Admin ────────────────────────────────────────────────────────
+   ✅ GET /admin (production build)                        200
+   ✅ GET /ar (public page unaffected)                     200
+   RTL: <html data-theme="light" dir="RTL" lang="ar">
+   ✅ admin renders RTL by default                         RTL
+
+── 3 · Anonymous REST is denied ─────────────────────────────────────
+   ✅ anonymous GET /api/users                             403
+   ✅ anonymous GET /api/roles                             403
+   ✅ anonymous GET /api/audit-events                      403
+   ✅ anonymous GET /api/media                             403
+   ✅ anonymous POST /api/users                            403
+
+── 4 · Login + role-scoped REST ─────────────────────────────────────
+   ✅ super admin login                                    290 chars
+   ✅ viewer login                                         301 chars
+   ✅ super admin GET /api/users                           200
+   ✅ super admin GET /api/roles                           200
+   ✅ super admin GET /api/audit-events                    200
+   ✅ super admin GET /api/media                           200
+   ✅ viewer GET /api/media                                200
+   ✅ viewer GET /api/users                                403
+   ✅ viewer GET /api/roles                                403
+   ✅ viewer GET /api/audit-events                         403
+
+── 5 · Audit log is write-once, even for a Super Admin ──────────────
+   ✅ POST /api/audit-events                               403
+   ✅ PATCH /api/audit-events/31                           403
+   ✅ DELETE /api/audit-events/31                          403
+   ✅ the event still reads back (nothing was really changed) 200
+
+── 6 · Media: upload, derivatives, localized values, permission boundary ──
+   ✅ super admin upload → id 6 · 1200×630 · 45612 B · focal 50,50
+   derivatives declared: ['card', 'thumbnail']
+   ✅ Arabic alt is stored and returned                    بطاقة مشاركة بالعربية
+   ✅ English alt is stored and returned                   English social card
+   ✅ no visible AR→EN fallback: English reads empty     
+   ✅ anonymous cannot fetch the file endpoint             403
+   ✅ anonymous cannot fetch a derivative                  403
+   ✅ editor may upload (media.upload)                     201
+   ✅ viewer may not upload                                403
+   ✅ editor may not delete (media.delete withheld from ADMIN) 403
+   ✅ Super Admin may delete                               200
+── 7 · GraphQL lockdown in production ──────────────────────────────
+   /api/graphql-playground → 404
+   introspection response: {"errors":[{"message":"GraphQL introspection is not allowed, but the query contained __schema or __type","locations":[{"
+   ✅ introspection is refused in the production build
+
+════════ SUMMARY: 36 passed, 0 failed ════════
+PHASE_B_LIVE_ENFORCEMENT = PASS

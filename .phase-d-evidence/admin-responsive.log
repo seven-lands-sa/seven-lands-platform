@@ -1,0 +1,39 @@
+logged in as owner@sevenlands.test
+  390   site-settings   h1=الإعدادات العامة               scroll=390/390
+  390   contact         h1=بيانات التواصل                 scroll=390/390
+  390   business-hours  h1=مواعيد العمل                   scroll=390/390
+  390   social          h1=حسابات التواصل الاجتماعي       scroll=390/390
+  390   navigation      h1=الهيدر والتنقل                 scroll=390/390
+  390   footer          h1=الفوتر                         scroll=390/390
+  390   media-list      h1=مكتبة الوسائط                  scroll=390/390
+  390   media-picker    h1=اختيار صورة — معاينة           scroll=390/390
+  390   users           h1=المستخدمون                     scroll=390/390
+  768   site-settings   h1=الإعدادات العامة               scroll=768/768
+  768   contact         h1=بيانات التواصل                 scroll=768/768
+  768   business-hours  h1=مواعيد العمل                   scroll=768/768
+  768   social          h1=حسابات التواصل الاجتماعي       scroll=768/768
+  768   navigation      h1=الهيدر والتنقل                 scroll=768/768
+  768   footer          h1=الفوتر                         scroll=768/768
+  768   media-list      h1=مكتبة الوسائط                  scroll=768/768
+  768   media-picker    h1=اختيار صورة — معاينة           scroll=768/768
+  768   users           h1=المستخدمون                     scroll=768/768
+  1024  site-settings   h1=الإعدادات العامة               scroll=1024/1024
+  1024  contact         h1=بيانات التواصل                 scroll=1024/1024
+  1024  business-hours  h1=مواعيد العمل                   scroll=1024/1024
+  1024  social          h1=حسابات التواصل الاجتماعي       scroll=1024/1024
+  1024  navigation      h1=الهيدر والتنقل                 scroll=1024/1024
+  1024  footer          h1=الفوتر                         scroll=1024/1024
+  1024  media-list      h1=مكتبة الوسائط                  scroll=1024/1024
+  1024  media-picker    h1=اختيار صورة — معاينة           scroll=1024/1024
+  1024  users           h1=المستخدمون                     scroll=1024/1024
+  1440  site-settings   h1=الإعدادات العامة               scroll=1440/1440
+  1440  contact         h1=بيانات التواصل                 scroll=1440/1440
+  1440  business-hours  h1=مواعيد العمل                   scroll=1440/1440
+  1440  social          h1=حسابات التواصل الاجتماعي       scroll=1440/1440
+  1440  navigation      h1=الهيدر والتنقل                 scroll=1440/1440
+  1440  footer          h1=الفوتر                         scroll=1440/1440
+  1440  media-list      h1=مكتبة الوسائط                  scroll=1440/1440
+  1440  media-picker    h1=اختيار صورة — معاينة           scroll=1440/1440
+  1440  users           h1=المستخدمون                     scroll=1440/1440
+
+  surfaces checked: 36 · overflow/error findings: 0

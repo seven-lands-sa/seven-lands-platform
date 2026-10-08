@@ -1,0 +1,8 @@
+login ....... HTTP 200 as owner@sevenlands.test (super admin, full access)
+read ar nav . HTTP 200 — 5 items, first = 'خدماتنا'
+edit ar nav . HTTP 200 — label → 'خدماتنا ✓'
+GET /ar ..... shows the edited label immediately: True
+English nav . untouched by the Arabic edit: True (en first = 'Services')
+revert ...... HTTP 200
+GET /ar ..... back to the shipped label, marker gone: True
+audit log ... newest entries: [('navigation_updated', 'navigation'), ('navigation_updated', 'navigation')]

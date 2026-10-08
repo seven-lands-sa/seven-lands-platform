@@ -1,0 +1,137 @@
+{
+  "label": "BEFORE",
+  "base": "http://127.0.0.1:3000",
+  "at": "2026-10-07T18:47:00.983Z",
+  "headers": {
+    "public": {
+      "accept-ch": "Sec-CH-Prefers-Color-Scheme",
+      "critical-ch": "Sec-CH-Prefers-Color-Scheme"
+    },
+    "admin": {
+      "accept-ch": "Sec-CH-Prefers-Color-Scheme",
+      "critical-ch": "Sec-CH-Prefers-Color-Scheme"
+    }
+  },
+  "routes": [
+    {
+      "route": "/ar",
+      "rounds": 7,
+      "documentRequestsMedian": 2,
+      "documentRequestsAll": [
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "responseStartMedianMs": 20,
+      "loadEventMedianMs": 227,
+      "samples": [
+        {
+          "documentRequests": 2,
+          "responseStart": 34,
+          "domContentLoaded": 103,
+          "loadEvent": 300
+        },
+        {
+          "documentRequests": 2,
+          "responseStart": 20,
+          "domContentLoaded": 140,
+          "loadEvent": 220
+        },
+        {
+          "documentRequests": 2,
+          "responseStart": 21,
+          "domContentLoaded": 56,
+          "loadEvent": 261
+        },
+        {
+          "documentRequests": 2,
+          "responseStart": 18,
+          "domContentLoaded": 145,
+          "loadEvent": 207
+        },
+        {
+          "documentRequests": 2,
+          "responseStart": 22,
+          "domContentLoaded": 61,
+          "loadEvent": 204
+        },
+        {
+          "documentRequests": 2,
+          "responseStart": 15,
+          "domContentLoaded": 127,
+          "loadEvent": 227
+        },
+        {
+          "documentRequests": 2,
+          "responseStart": 19,
+          "domContentLoaded": 232,
+          "loadEvent": 232
+        }
+      ]
+    },
+    {
+      "route": "/en",
+      "rounds": 7,
+      "documentRequestsMedian": 2,
+      "documentRequestsAll": [
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "responseStartMedianMs": 17,
+      "loadEventMedianMs": 177,
+      "samples": [
+        {
+          "documentRequests": 2,
+          "responseStart": 57,
+          "domContentLoaded": 171,
+          "loadEvent": 221
+        },
+        {
+          "documentRequests": 2,
+          "responseStart": 18,
+          "domContentLoaded": 59,
+          "loadEvent": 177
+        },
+        {
+          "documentRequests": 2,
+          "responseStart": 17,
+          "domContentLoaded": 52,
+          "loadEvent": 174
+        },
+        {
+          "documentRequests": 2,
+          "responseStart": 18,
+          "domContentLoaded": 131,
+          "loadEvent": 193
+        },
+        {
+          "documentRequests": 2,
+          "responseStart": 17,
+          "domContentLoaded": 62,
+          "loadEvent": 175
+        },
+        {
+          "documentRequests": 2,
+          "responseStart": 15,
+          "domContentLoaded": 50,
+          "loadEvent": 171
+        },
+        {
+          "documentRequests": 2,
+          "responseStart": 13,
+          "domContentLoaded": 131,
+          "loadEvent": 184
+        }
+      ]
+    }
+  ]
+}

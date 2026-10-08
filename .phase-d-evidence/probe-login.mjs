@@ -1,0 +1,18 @@
+import { chromium } from "@playwright/test";
+import { readFileSync } from "node:fs";
+const BASE = "http://localhost:3000";
+const env = readFileSync(".env", "utf8");
+const value = (k) => env.match(new RegExp(`^${k}=(.*)$`, "m"))?.[1]?.trim().replace(/^["']|["']$/g, "");
+const browser = await chromium.launch();
+const page = await browser.newPage();
+page.on("console", (m) => { if (m.type() === "error") console.log("CONSOLE:", m.text().slice(0, 300)); });
+page.on("response", (r) => { if (r.url().includes("/api/") && r.status() >= 400) console.log("HTTP", r.status(), r.url().slice(0, 120)); });
+await page.goto(`${BASE}/admin/login`, { waitUntil: "networkidle" });
+await page.fill('input[name="email"]', value("SEED_SUPER_ADMIN_EMAIL"));
+await page.fill('input[name="password"]', value("SEED_SUPER_ADMIN_PASSWORD"));
+await page.click('button[type="submit"]');
+await page.waitForTimeout(6000);
+console.log("url:", page.url());
+const body = await page.evaluate(() => document.body.innerText.slice(0, 400));
+console.log("body:", body);
+await browser.close();

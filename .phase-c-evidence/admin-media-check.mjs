@@ -1,0 +1,27 @@
+import { chromium } from "@playwright/test";
+import { readFileSync } from "node:fs";
+const fixture = JSON.parse(readFileSync("/tmp/private-fixture.json", "utf8"));
+const BASE = process.env.ADMIN_BASE ?? "http://localhost:3000";
+const browser = await chromium.launch();
+const context = await browser.newContext({ viewport: { width: 1440, height: 900 } });
+const page = await context.newPage();
+const seen = [];
+page.on("request", (r) => { const u = r.url().replace(BASE, ""); if (/media|file\/|_next\/image/.test(u)) seen.push({ kind: "req", m: r.method(), u, origin: r.headers()["origin"] ?? "(none)" }); });
+page.on("response", (r) => { const u = r.url().replace(BASE, ""); if (/media|file\/|_next\/image/.test(u)) seen.push({ kind: "res", status: r.status(), u }); });
+
+await page.goto(`${BASE}/admin/login`, { waitUntil: "networkidle" });
+await page.fill('input[name="email"]', process.env.SEED_SUPER_ADMIN_EMAIL);
+await page.fill('input[name="password"]', process.env.SEED_SUPER_ADMIN_PASSWORD);
+await page.click('button[type="submit"]');
+await page.waitForURL((u) => !u.pathname.includes("/login"), { timeout: 30000 });
+await page.goto(`${BASE}/admin/collections/media/${fixture.id}`, { waitUntil: "networkidle" });
+await page.waitForTimeout(6000);
+console.log("edit view url:", page.url());
+const imgs = await page.evaluate(() => [...document.querySelectorAll("img")].map((i) => ({ src: (i.currentSrc || i.src).replace(location.origin, ""), w: i.naturalWidth })));
+console.log("imgs:", JSON.stringify(imgs));
+await page.screenshot({ path: ".phase-c-evidence/admin-media-edit.png", fullPage: true });
+console.log("── traffic ──");
+for (const s of seen) console.log("  ", JSON.stringify(s));
+const files = seen.filter((s) => s.kind === "res" && s.u.includes("/file/"));
+console.log(files.length ? (files.every((f) => f.status === 200) ? "ADMIN_PRIVATE_PREVIEW = OK" : "ADMIN_PRIVATE_PREVIEW = BROKEN") : "ADMIN_PRIVATE_PREVIEW = NOT EXERCISED");
+await browser.close();

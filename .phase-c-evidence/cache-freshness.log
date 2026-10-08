@@ -1,0 +1,8 @@
+  ✅ 1 · public request shows the ORIGINAL footer statement
+  ✅ 1 · the marker is not present beforehand
+  ✅ 4 · FIRST public request after the admin update is FRESH  — no second request, no sleep, no rebuild
+  ✅ 4 · a SECOND surface (header CTA) is fresh on its first request  — a different global, a different cached reader
+  ✅ 5 · restore propagates on the first request (marker gone)
+  ✅ 5 · the canonical footer statement is back
+
+  FIRST_REQUEST_FRESH = YES

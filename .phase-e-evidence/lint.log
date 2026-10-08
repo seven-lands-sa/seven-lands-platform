@@ -1,0 +1,21 @@
+
+> seven-lands-website@0.1.0 lint
+> eslint
+
+
+/home/user/seven-lands-website/src/components/forms/ProjectBriefForm.tsx
+  88:25  warning  Compilation Skipped: Use of incompatible library
+
+This API returns functions which cannot be memoized without leading to stale UI. To prevent this, by default React Compiler will skip memoizing this component/hook. However, you may see issues if values from this API are passed to other components/hooks that are memoized.
+
+/home/user/seven-lands-website/src/components/forms/ProjectBriefForm.tsx:88:25
+  86 |   });
+  87 |
+> 88 |   const selectedLands = watch("lands");
+     |                         ^^^^^ React Hook Form's `useForm()` API returns a `watch()` function which cannot be memoized safely.
+  89 |
+  90 |   // Preselect a capability when arriving from a service page (?land=slug).
+  91 |   useEffect(() => {  react-hooks/incompatible-library
+
+✖ 1 problem (0 errors, 1 warning)
+

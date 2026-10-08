@@ -1,0 +1,676 @@
+▲ Next.js 16.4.0
+- Local:         http://localhost:3000
+- Network:       http://0.0.0.0:3000
+✓ Ready in 166ms
+✓ Running next.config.ts took 231ms
+[22:14:29] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+[22:15:29] [31mERROR[39m: [36mلا يسمح لك القيام بهذه العمليّة.[39m
+    err: {
+      "type": "o",
+      "message": "لا يسمح لك القيام بهذه العمليّة.",
+      "stack":
+          o: لا يسمح لك القيام بهذه العمليّة.
+              at eT (/home/user/seven-lands-website/.next/server/chunks/_1sui7s-xtn8ou._.js:121:133245)
+              at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+              at async eM (/home/user/seven-lands-website/.next/server/chunks/_1sui7s-xtn8ou._.js:121:133800)
+              at async y (/home/user/seven-lands-website/.next/server/chunks/node_modules_1oo3vzbmelf4z._.js:1:8358)
+              at async /home/user/seven-lands-website/.next/server/chunks/node_modules_1oo3vzbmelf4z._.js:1:16619
+              at async r0.renderToResponse (/home/user/seven-lands-website/node_modules/next/dist/compiled/next-server/app-route-turbo.runtime.prod.js:5:14352)
+              at async r0.executeRequest (/home/user/seven-lands-website/node_modules/next/dist/compiled/next-server/app-route-turbo.runtime.prod.js:5:17509)
+              at async z (/home/user/seven-lands-website/.next/server/chunks/_1zwrj8iqv2yp_._.js:1:3162)
+              at async r0.handleResponse (/home/user/seven-lands-website/node_modules/next/dist/compiled/next-server/app-route-turbo.runtime.prod.js:1:132981)
+              at async X (/home/user/seven-lands-website/.next/server/chunks/_1zwrj8iqv2yp_._.js:1:4156)
+      "data": null,
+      "isOperational": true,
+      "isPublic": true,
+      "status": 403,
+      "name": "o"
+    }
+[22:15:29] [31mERROR[39m: [36mلا يسمح لك القيام بهذه العمليّة.[39m
+    err: {
+      "type": "o",
+      "message": "لا يسمح لك القيام بهذه العمليّة.",
+      "stack":
+          o: لا يسمح لك القيام بهذه العمليّة.
+              at eT (/home/user/seven-lands-website/.next/server/chunks/_1sui7s-xtn8ou._.js:121:133245)
+              at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+              at async eM (/home/user/seven-lands-website/.next/server/chunks/_1sui7s-xtn8ou._.js:121:133800)
+              at async y (/home/user/seven-lands-website/.next/server/chunks/node_modules_1oo3vzbmelf4z._.js:1:8358)
+              at async /home/user/seven-lands-website/.next/server/chunks/node_modules_1oo3vzbmelf4z._.js:1:16619
+              at async r0.renderToResponse (/home/user/seven-lands-website/node_modules/next/dist/compiled/next-server/app-route-turbo.runtime.prod.js:5:14352)
+              at async r0.executeRequest (/home/user/seven-lands-website/node_modules/next/dist/compiled/next-server/app-route-turbo.runtime.prod.js:5:17509)
+              at async z (/home/user/seven-lands-website/.next/server/chunks/_1zwrj8iqv2yp_._.js:1:3162)
+              at async r0.handleResponse (/home/user/seven-lands-website/node_modules/next/dist/compiled/next-server/app-route-turbo.runtime.prod.js:1:132981)
+              at async X (/home/user/seven-lands-website/.next/server/chunks/_1zwrj8iqv2yp_._.js:1:4156)
+      "data": null,
+      "isOperational": true,
+      "isPublic": true,
+      "status": 403,
+      "name": "o"
+    }
+[22:15:29] [31mERROR[39m: [36mلا يسمح لك القيام بهذه العمليّة.[39m
+    err: {
+      "type": "o",
+      "message": "لا يسمح لك القيام بهذه العمليّة.",
+      "stack":
+          o: لا يسمح لك القيام بهذه العمليّة.
+              at eT (/home/user/seven-lands-website/.next/server/chunks/_1sui7s-xtn8ou._.js:121:133245)
+              at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+              at async eM (/home/user/seven-lands-website/.next/server/chunks/_1sui7s-xtn8ou._.js:121:133800)
+              at async y (/home/user/seven-lands-website/.next/server/chunks/node_modules_1oo3vzbmelf4z._.js:1:8358)
+              at async /home/user/seven-lands-website/.next/server/chunks/node_modules_1oo3vzbmelf4z._.js:1:16619
+              at async r0.renderToResponse (/home/user/seven-lands-website/node_modules/next/dist/compiled/next-server/app-route-turbo.runtime.prod.js:5:14352)
+              at async r0.executeRequest (/home/user/seven-lands-website/node_modules/next/dist/compiled/next-server/app-route-turbo.runtime.prod.js:5:17509)
+              at async z (/home/user/seven-lands-website/.next/server/chunks/_1zwrj8iqv2yp_._.js:1:3162)
+              at async r0.handleResponse (/home/user/seven-lands-website/node_modules/next/dist/compiled/next-server/app-route-turbo.runtime.prod.js:1:132981)
+              at async X (/home/user/seven-lands-website/.next/server/chunks/_1zwrj8iqv2yp_._.js:1:4156)
+      "data": null,
+      "isOperational": true,
+      "isPublic": true,
+      "status": 403,
+      "name": "o"
+    }
+[22:15:29] [31mERROR[39m: [36mلا يسمح لك القيام بهذه العمليّة.[39m
+    err: {
+      "type": "o",
+      "message": "لا يسمح لك القيام بهذه العمليّة.",
+      "stack":
+          o: لا يسمح لك القيام بهذه العمليّة.
+              at eT (/home/user/seven-lands-website/.next/server/chunks/_1sui7s-xtn8ou._.js:121:133245)
+              at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+              at async eM (/home/user/seven-lands-website/.next/server/chunks/_1sui7s-xtn8ou._.js:121:133800)
+              at async y (/home/user/seven-lands-website/.next/server/chunks/node_modules_1oo3vzbmelf4z._.js:1:8358)
+              at async /home/user/seven-lands-website/.next/server/chunks/node_modules_1oo3vzbmelf4z._.js:1:16619
+              at async r0.renderToResponse (/home/user/seven-lands-website/node_modules/next/dist/compiled/next-server/app-route-turbo.runtime.prod.js:5:14352)
+              at async r0.executeRequest (/home/user/seven-lands-website/node_modules/next/dist/compiled/next-server/app-route-turbo.runtime.prod.js:5:17509)
+              at async z (/home/user/seven-lands-website/.next/server/chunks/_1zwrj8iqv2yp_._.js:1:3162)
+              at async r0.handleResponse (/home/user/seven-lands-website/node_modules/next/dist/compiled/next-server/app-route-turbo.runtime.prod.js:1:132981)
+              at async X (/home/user/seven-lands-website/.next/server/chunks/_1zwrj8iqv2yp_._.js:1:4156)
+      "data": null,
+      "isOperational": true,
+      "isPublic": true,
+      "status": 403,
+      "name": "o"
+    }
+[22:15:29] [31mERROR[39m: [36mلا يسمح لك القيام بهذه العمليّة.[39m
+    err: {
+      "type": "o",
+      "message": "لا يسمح لك القيام بهذه العمليّة.",
+      "stack":
+          o: لا يسمح لك القيام بهذه العمليّة.
+              at eT (/home/user/seven-lands-website/.next/server/chunks/_1sui7s-xtn8ou._.js:121:133245)
+              at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+              at async eM (/home/user/seven-lands-website/.next/server/chunks/_1sui7s-xtn8ou._.js:121:133800)
+              at async y (/home/user/seven-lands-website/.next/server/chunks/node_modules_1oo3vzbmelf4z._.js:1:8358)
+              at async /home/user/seven-lands-website/.next/server/chunks/node_modules_1oo3vzbmelf4z._.js:1:16619
+              at async r0.renderToResponse (/home/user/seven-lands-website/node_modules/next/dist/compiled/next-server/app-route-turbo.runtime.prod.js:5:14352)
+              at async r0.executeRequest (/home/user/seven-lands-website/node_modules/next/dist/compiled/next-server/app-route-turbo.runtime.prod.js:5:17509)
+              at async z (/home/user/seven-lands-website/.next/server/chunks/_1zwrj8iqv2yp_._.js:1:3162)
+              at async r0.handleResponse (/home/user/seven-lands-website/node_modules/next/dist/compiled/next-server/app-route-turbo.runtime.prod.js:1:132981)
+              at async X (/home/user/seven-lands-website/.next/server/chunks/_1zwrj8iqv2yp_._.js:1:4156)
+      "data": null,
+      "isOperational": true,
+      "isPublic": true,
+      "status": 403,
+      "name": "o"
+    }
+[22:15:29] [31mERROR[39m: [36mلا يسمح لك القيام بهذه العمليّة.[39m
+    err: {
+      "type": "o",
+      "message": "لا يسمح لك القيام بهذه العمليّة.",
+      "stack":
+          o: لا يسمح لك القيام بهذه العمليّة.
+              at eT (/home/user/seven-lands-website/.next/server/chunks/_1sui7s-xtn8ou._.js:121:133245)
+              at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+              at async eM (/home/user/seven-lands-website/.next/server/chunks/_1sui7s-xtn8ou._.js:121:133800)
+              at async y (/home/user/seven-lands-website/.next/server/chunks/node_modules_1oo3vzbmelf4z._.js:1:8358)
+              at async /home/user/seven-lands-website/.next/server/chunks/node_modules_1oo3vzbmelf4z._.js:1:16619
+              at async r0.renderToResponse (/home/user/seven-lands-website/node_modules/next/dist/compiled/next-server/app-route-turbo.runtime.prod.js:5:14352)
+              at async r0.executeRequest (/home/user/seven-lands-website/node_modules/next/dist/compiled/next-server/app-route-turbo.runtime.prod.js:5:17509)
+              at async z (/home/user/seven-lands-website/.next/server/chunks/_1zwrj8iqv2yp_._.js:1:3162)
+              at async r0.handleResponse (/home/user/seven-lands-website/node_modules/next/dist/compiled/next-server/app-route-turbo.runtime.prod.js:1:132981)
+              at async X (/home/user/seven-lands-website/.next/server/chunks/_1zwrj8iqv2yp_._.js:1:4156)
+      "data": null,
+      "isOperational": true,
+      "isPublic": true,
+      "status": 403,
+      "name": "o"
+    }
+[22:15:29] [31mERROR[39m: [36mلا يسمح لك القيام بهذه العمليّة.[39m
+    err: {
+      "type": "o",
+      "message": "لا يسمح لك القيام بهذه العمليّة.",
+      "stack":
+          o: لا يسمح لك القيام بهذه العمليّة.
+              at eT (/home/user/seven-lands-website/.next/server/chunks/_1sui7s-xtn8ou._.js:121:133245)
+              at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+              at async eM (/home/user/seven-lands-website/.next/server/chunks/_1sui7s-xtn8ou._.js:121:133800)
+              at async y (/home/user/seven-lands-website/.next/server/chunks/node_modules_1oo3vzbmelf4z._.js:1:8358)
+              at async /home/user/seven-lands-website/.next/server/chunks/node_modules_1oo3vzbmelf4z._.js:1:16619
+              at async r0.renderToResponse (/home/user/seven-lands-website/node_modules/next/dist/compiled/next-server/app-route-turbo.runtime.prod.js:5:14352)
+              at async r0.executeRequest (/home/user/seven-lands-website/node_modules/next/dist/compiled/next-server/app-route-turbo.runtime.prod.js:5:17509)
+              at async z (/home/user/seven-lands-website/.next/server/chunks/_1zwrj8iqv2yp_._.js:1:3162)
+              at async r0.handleResponse (/home/user/seven-lands-website/node_modules/next/dist/compiled/next-server/app-route-turbo.runtime.prod.js:1:132981)
+              at async X (/home/user/seven-lands-website/.next/server/chunks/_1zwrj8iqv2yp_._.js:1:4156)
+      "data": null,
+      "isOperational": true,
+      "isPublic": true,
+      "status": 403,
+      "name": "o"
+    }
+[22:15:36] [31mERROR[39m: [36mنوع الملف لا يطابق محتواه: الامتداد يقول image/png والمحتوى image/jpeg. الأنواع المسموحة: JPG، PNG، WebP، AVIF، SVG.[39m
+    err: {
+      "type": "",
+      "message": "نوع الملف لا يطابق محتواه: الامتداد يقول image/png والمحتوى image/jpeg. الأنواع المسموحة: JPG، PNG، WebP، AVIF، SVG.",
+      "stack":
+          APIError: نوع الملف لا يطابق محتواه: الامتداد يقول image/png والمحتوى image/jpeg. الأنواع المسموحة: JPG، PNG، WebP، AVIF، SVG.
+              at /home/user/seven-lands-website/.next/server/chunks/_1sui7s-xtn8ou._.js:317:102978
+              at Q.hooks.beforeOperation (/home/user/seven-lands-website/.next/server/chunks/_1sui7s-xtn8ou._.js:317:34639)
+              at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+              at async l (/home/user/seven-lands-website/.next/server/chunks/_1sui7s-xtn8ou._.js:119:111302)
+              at async G (/home/user/seven-lands-website/.next/server/chunks/_1sui7s-xtn8ou._.js:121:50807)
+              at async e3 (/home/user/seven-lands-website/.next/server/chunks/_1sui7s-xtn8ou._.js:121:140257)
+              at async includes.i.handler (/home/user/seven-lands-website/.next/server/chunks/_1sui7s-xtn8ou._.js:121:119396)
+              at async y (/home/user/seven-lands-website/.next/server/chunks/node_modules_1oo3vzbmelf4z._.js:1:8358)
+              at async /home/user/seven-lands-website/.next/server/chunks/node_modules_1oo3vzbmelf4z._.js:1:16619
+              at async r0.renderToResponse (/home/user/seven-lands-website/node_modules/next/dist/compiled/next-server/app-route-turbo.runtime.prod.js:5:14352)
+      "data": null,
+      "isOperational": true,
+      "isPublic": true,
+      "status": 400,
+      "name": "APIError"
+    }
+[22:15:36] [31mERROR[39m: [36mنوع الملف غير مدعوم. الأنواع المسموحة: JPG، PNG، WebP، AVIF، SVG.[39m
+    err: {
+      "type": "",
+      "message": "نوع الملف غير مدعوم. الأنواع المسموحة: JPG، PNG، WebP، AVIF، SVG.",
+      "stack":
+          APIError: نوع الملف غير مدعوم. الأنواع المسموحة: JPG، PNG، WebP، AVIF، SVG.
+              at /home/user/seven-lands-website/.next/server/chunks/_1sui7s-xtn8ou._.js:317:102978
+              at Q.hooks.beforeOperation (/home/user/seven-lands-website/.next/server/chunks/_1sui7s-xtn8ou._.js:317:34460)
+              at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+              at async l (/home/user/seven-lands-website/.next/server/chunks/_1sui7s-xtn8ou._.js:119:111302)
+              at async G (/home/user/seven-lands-website/.next/server/chunks/_1sui7s-xtn8ou._.js:121:50807)
+              at async e3 (/home/user/seven-lands-website/.next/server/chunks/_1sui7s-xtn8ou._.js:121:140257)
+              at async includes.i.handler (/home/user/seven-lands-website/.next/server/chunks/_1sui7s-xtn8ou._.js:121:119396)
+              at async y (/home/user/seven-lands-website/.next/server/chunks/node_modules_1oo3vzbmelf4z._.js:1:8358)
+              at async /home/user/seven-lands-website/.next/server/chunks/node_modules_1oo3vzbmelf4z._.js:1:16619
+              at async r0.renderToResponse (/home/user/seven-lands-website/node_modules/next/dist/compiled/next-server/app-route-turbo.runtime.prod.js:5:14352)
+      "data": null,
+      "isOperational": true,
+      "isPublic": true,
+      "status": 400,
+      "name": "APIError"
+    }
+[22:15:36] [31mERROR[39m: [36mتعذّر التعرّف على نوع الملف من محتواه. الأنواع المدعومة: JPG، PNG، WebP، AVIF، SVG.[39m
+    err: {
+      "type": "",
+      "message": "تعذّر التعرّف على نوع الملف من محتواه. الأنواع المدعومة: JPG، PNG، WebP، AVIF، SVG.",
+      "stack":
+          APIError: تعذّر التعرّف على نوع الملف من محتواه. الأنواع المدعومة: JPG، PNG، WebP، AVIF، SVG.
+              at /home/user/seven-lands-website/.next/server/chunks/_1sui7s-xtn8ou._.js:317:102978
+              at Q.hooks.beforeOperation (/home/user/seven-lands-website/.next/server/chunks/_1sui7s-xtn8ou._.js:317:34571)
+              at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+              at async l (/home/user/seven-lands-website/.next/server/chunks/_1sui7s-xtn8ou._.js:119:111302)
+              at async G (/home/user/seven-lands-website/.next/server/chunks/_1sui7s-xtn8ou._.js:121:50807)
+              at async e3 (/home/user/seven-lands-website/.next/server/chunks/_1sui7s-xtn8ou._.js:121:140257)
+              at async includes.i.handler (/home/user/seven-lands-website/.next/server/chunks/_1sui7s-xtn8ou._.js:121:119396)
+              at async y (/home/user/seven-lands-website/.next/server/chunks/node_modules_1oo3vzbmelf4z._.js:1:8358)
+              at async /home/user/seven-lands-website/.next/server/chunks/node_modules_1oo3vzbmelf4z._.js:1:16619
+              at async r0.renderToResponse (/home/user/seven-lands-website/node_modules/next/dist/compiled/next-server/app-route-turbo.runtime.prod.js:5:14352)
+      "data": null,
+      "isOperational": true,
+      "isPublic": true,
+      "status": 400,
+      "name": "APIError"
+    }
+[22:15:37] [31mERROR[39m: [36mحجم الصورة يتجاوز الحد المسموح (10 ميجابايت).[39m
+    err: {
+      "type": "",
+      "message": "حجم الصورة يتجاوز الحد المسموح (10 ميجابايت).",
+      "stack":
+          APIError: حجم الصورة يتجاوز الحد المسموح (10 ميجابايت).
+              at /home/user/seven-lands-website/.next/server/chunks/_1sui7s-xtn8ou._.js:317:102978
+              at Q.hooks.beforeOperation (/home/user/seven-lands-website/.next/server/chunks/_1sui7s-xtn8ou._.js:317:35194)
+              at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+              at async l (/home/user/seven-lands-website/.next/server/chunks/_1sui7s-xtn8ou._.js:119:111302)
+              at async G (/home/user/seven-lands-website/.next/server/chunks/_1sui7s-xtn8ou._.js:121:50807)
+              at async e3 (/home/user/seven-lands-website/.next/server/chunks/_1sui7s-xtn8ou._.js:121:140257)
+              at async includes.i.handler (/home/user/seven-lands-website/.next/server/chunks/_1sui7s-xtn8ou._.js:121:119396)
+              at async y (/home/user/seven-lands-website/.next/server/chunks/node_modules_1oo3vzbmelf4z._.js:1:8358)
+              at async /home/user/seven-lands-website/.next/server/chunks/node_modules_1oo3vzbmelf4z._.js:1:16619
+              at async r0.renderToResponse (/home/user/seven-lands-website/node_modules/next/dist/compiled/next-server/app-route-turbo.runtime.prod.js:5:14352)
+      "data": null,
+      "isOperational": true,
+      "isPublic": true,
+      "status": 400,
+      "name": "APIError"
+    }
+[22:15:37] [31mERROR[39m: [36mملف SVG مرفوض: يحتوي على وسم script. أزل العنصر ثم أعد المحاولة.[39m
+    err: {
+      "type": "",
+      "message": "ملف SVG مرفوض: يحتوي على وسم script. أزل العنصر ثم أعد المحاولة.",
+      "stack":
+          APIError: ملف SVG مرفوض: يحتوي على وسم script. أزل العنصر ثم أعد المحاولة.
+              at /home/user/seven-lands-website/.next/server/chunks/_1sui7s-xtn8ou._.js:317:102978
+              at Q.hooks.beforeOperation (/home/user/seven-lands-website/.next/server/chunks/_1sui7s-xtn8ou._.js:317:35153)
+              at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+              at async l (/home/user/seven-lands-website/.next/server/chunks/_1sui7s-xtn8ou._.js:119:111302)
+              at async G (/home/user/seven-lands-website/.next/server/chunks/_1sui7s-xtn8ou._.js:121:50807)
+              at async e3 (/home/user/seven-lands-website/.next/server/chunks/_1sui7s-xtn8ou._.js:121:140257)
+              at async includes.i.handler (/home/user/seven-lands-website/.next/server/chunks/_1sui7s-xtn8ou._.js:121:119396)
+              at async y (/home/user/seven-lands-website/.next/server/chunks/node_modules_1oo3vzbmelf4z._.js:1:8358)
+              at async /home/user/seven-lands-website/.next/server/chunks/node_modules_1oo3vzbmelf4z._.js:1:16619
+              at async r0.renderToResponse (/home/user/seven-lands-website/node_modules/next/dist/compiled/next-server/app-route-turbo.runtime.prod.js:5:14352)
+      "data": null,
+      "isOperational": true,
+      "isPublic": true,
+      "status": 400,
+      "name": "APIError"
+    }
+[22:15:37] [31mERROR[39m: [36mرفع ملفات SVG يحتاج صلاحية خاصة (خطر أمني). اطلب من مدير النظام رفع الملف أو منحك الصلاحية.[39m
+    err: {
+      "type": "",
+      "message": "رفع ملفات SVG يحتاج صلاحية خاصة (خطر أمني). اطلب من مدير النظام رفع الملف أو منحك الصلاحية.",
+      "stack":
+          APIError: رفع ملفات SVG يحتاج صلاحية خاصة (خطر أمني). اطلب من مدير النظام رفع الملف أو منحك الصلاحية.
+              at /home/user/seven-lands-website/.next/server/chunks/_1sui7s-xtn8ou._.js:317:102978
+              at Q.hooks.beforeOperation (/home/user/seven-lands-website/.next/server/chunks/_1sui7s-xtn8ou._.js:317:35016)
+              at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+              at async l (/home/user/seven-lands-website/.next/server/chunks/_1sui7s-xtn8ou._.js:119:111302)
+              at async G (/home/user/seven-lands-website/.next/server/chunks/_1sui7s-xtn8ou._.js:121:50807)
+              at async e3 (/home/user/seven-lands-website/.next/server/chunks/_1sui7s-xtn8ou._.js:121:140257)
+              at async includes.i.handler (/home/user/seven-lands-website/.next/server/chunks/_1sui7s-xtn8ou._.js:121:119396)
+              at async y (/home/user/seven-lands-website/.next/server/chunks/node_modules_1oo3vzbmelf4z._.js:1:8358)
+              at async /home/user/seven-lands-website/.next/server/chunks/node_modules_1oo3vzbmelf4z._.js:1:16619
+              at async r0.renderToResponse (/home/user/seven-lands-website/node_modules/next/dist/compiled/next-server/app-route-turbo.runtime.prod.js:5:14352)
+      "data": null,
+      "isOperational": true,
+      "isPublic": true,
+      "status": 403,
+      "name": "APIError"
+    }
+[22:15:37] [31mERROR[39m: [36mلا يسمح لك القيام بهذه العمليّة.[39m
+    err: {
+      "type": "o",
+      "message": "لا يسمح لك القيام بهذه العمليّة.",
+      "stack":
+          o: لا يسمح لك القيام بهذه العمليّة.
+              at eT (/home/user/seven-lands-website/.next/server/chunks/_1sui7s-xtn8ou._.js:121:133245)
+              at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+              at async eM (/home/user/seven-lands-website/.next/server/chunks/_1sui7s-xtn8ou._.js:121:133800)
+              at async y (/home/user/seven-lands-website/.next/server/chunks/node_modules_1oo3vzbmelf4z._.js:1:8358)
+              at async /home/user/seven-lands-website/.next/server/chunks/node_modules_1oo3vzbmelf4z._.js:1:16619
+              at async r0.renderToResponse (/home/user/seven-lands-website/node_modules/next/dist/compiled/next-server/app-route-turbo.runtime.prod.js:5:14352)
+              at async r0.executeRequest (/home/user/seven-lands-website/node_modules/next/dist/compiled/next-server/app-route-turbo.runtime.prod.js:5:17509)
+              at async z (/home/user/seven-lands-website/.next/server/chunks/_1zwrj8iqv2yp_._.js:1:3162)
+              at async r0.handleResponse (/home/user/seven-lands-website/node_modules/next/dist/compiled/next-server/app-route-turbo.runtime.prod.js:1:132981)
+              at async X (/home/user/seven-lands-website/.next/server/chunks/_1zwrj8iqv2yp_._.js:1:4156)
+      "data": null,
+      "isOperational": true,
+      "isPublic": true,
+      "status": 403,
+      "name": "o"
+    }
+[22:15:37] [31mERROR[39m: [36mلا يسمح لك القيام بهذه العمليّة.[39m
+    err: {
+      "type": "o",
+      "message": "لا يسمح لك القيام بهذه العمليّة.",
+      "stack":
+          o: لا يسمح لك القيام بهذه العمليّة.
+              at eT (/home/user/seven-lands-website/.next/server/chunks/_1sui7s-xtn8ou._.js:121:133245)
+              at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+              at async eM (/home/user/seven-lands-website/.next/server/chunks/_1sui7s-xtn8ou._.js:121:133800)
+              at async y (/home/user/seven-lands-website/.next/server/chunks/node_modules_1oo3vzbmelf4z._.js:1:8358)
+              at async /home/user/seven-lands-website/.next/server/chunks/node_modules_1oo3vzbmelf4z._.js:1:16619
+              at async r0.renderToResponse (/home/user/seven-lands-website/node_modules/next/dist/compiled/next-server/app-route-turbo.runtime.prod.js:5:14352)
+              at async r0.executeRequest (/home/user/seven-lands-website/node_modules/next/dist/compiled/next-server/app-route-turbo.runtime.prod.js:5:17509)
+              at async z (/home/user/seven-lands-website/.next/server/chunks/_1zwrj8iqv2yp_._.js:1:3162)
+              at async r0.handleResponse (/home/user/seven-lands-website/node_modules/next/dist/compiled/next-server/app-route-turbo.runtime.prod.js:1:132981)
+              at async X (/home/user/seven-lands-website/.next/server/chunks/_1zwrj8iqv2yp_._.js:1:4156)
+      "data": null,
+      "isOperational": true,
+      "isPublic": true,
+      "status": 403,
+      "name": "o"
+    }
+[22:15:37] [31mERROR[39m: [36mلا يسمح لك القيام بهذه العمليّة.[39m
+    err: {
+      "type": "o",
+      "message": "لا يسمح لك القيام بهذه العمليّة.",
+      "stack":
+          o: لا يسمح لك القيام بهذه العمليّة.
+              at eT (/home/user/seven-lands-website/.next/server/chunks/_1sui7s-xtn8ou._.js:121:133245)
+              at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+              at async eM (/home/user/seven-lands-website/.next/server/chunks/_1sui7s-xtn8ou._.js:121:133800)
+              at async y (/home/user/seven-lands-website/.next/server/chunks/node_modules_1oo3vzbmelf4z._.js:1:8358)
+              at async /home/user/seven-lands-website/.next/server/chunks/node_modules_1oo3vzbmelf4z._.js:1:16619
+              at async r0.renderToResponse (/home/user/seven-lands-website/node_modules/next/dist/compiled/next-server/app-route-turbo.runtime.prod.js:5:14352)
+              at async r0.executeRequest (/home/user/seven-lands-website/node_modules/next/dist/compiled/next-server/app-route-turbo.runtime.prod.js:5:17509)
+              at async z (/home/user/seven-lands-website/.next/server/chunks/_1zwrj8iqv2yp_._.js:1:3162)
+              at async r0.handleResponse (/home/user/seven-lands-website/node_modules/next/dist/compiled/next-server/app-route-turbo.runtime.prod.js:1:132981)
+              at async X (/home/user/seven-lands-website/.next/server/chunks/_1zwrj8iqv2yp_._.js:1:4156)
+      "data": null,
+      "isOperational": true,
+      "isPublic": true,
+      "status": 403,
+      "name": "o"
+    }
+[22:15:37] [31mERROR[39m: [36mلا يسمح لك القيام بهذه العمليّة.[39m
+    err: {
+      "type": "o",
+      "message": "لا يسمح لك القيام بهذه العمليّة.",
+      "stack":
+          o: لا يسمح لك القيام بهذه العمليّة.
+              at eT (/home/user/seven-lands-website/.next/server/chunks/_1sui7s-xtn8ou._.js:121:133245)
+              at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+              at async eM (/home/user/seven-lands-website/.next/server/chunks/_1sui7s-xtn8ou._.js:121:133800)
+              at async y (/home/user/seven-lands-website/.next/server/chunks/node_modules_1oo3vzbmelf4z._.js:1:8358)
+              at async /home/user/seven-lands-website/.next/server/chunks/node_modules_1oo3vzbmelf4z._.js:1:16619
+              at async r0.renderToResponse (/home/user/seven-lands-website/node_modules/next/dist/compiled/next-server/app-route-turbo.runtime.prod.js:5:14352)
+              at async r0.executeRequest (/home/user/seven-lands-website/node_modules/next/dist/compiled/next-server/app-route-turbo.runtime.prod.js:5:17509)
+              at async z (/home/user/seven-lands-website/.next/server/chunks/_1zwrj8iqv2yp_._.js:1:3162)
+              at async r0.handleResponse (/home/user/seven-lands-website/node_modules/next/dist/compiled/next-server/app-route-turbo.runtime.prod.js:1:132981)
+              at async X (/home/user/seven-lands-website/.next/server/chunks/_1zwrj8iqv2yp_._.js:1:4156)
+      "data": null,
+      "isOperational": true,
+      "isPublic": true,
+      "status": 403,
+      "name": "o"
+    }
+[22:15:38] [31mERROR[39m: [36mلا يمكن حذف هذه الصورة لأنها مستخدمة في:
+• الإعدادات العامة → صورة المشاركة الافتراضية[39m
+    err: {
+      "type": "",
+      "message": "لا يمكن حذف هذه الصورة لأنها مستخدمة في:\n• الإعدادات العامة → صورة المشاركة الافتراضية",
+      "stack":
+          APIError: لا يمكن حذف هذه الصورة لأنها مستخدمة في:
+          • الإعدادات العامة → صورة المشاركة الافتراضية
+              at /home/user/seven-lands-website/.next/server/chunks/_1sui7s-xtn8ou._.js:317:102978
+              at Q.hooks.beforeDelete (/home/user/seven-lands-website/.next/server/chunks/_1sui7s-xtn8ou._.js:317:38094)
+              at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+              at async X (/home/user/seven-lands-website/.next/server/chunks/_1sui7s-xtn8ou._.js:121:65643)
+              at async te (/home/user/seven-lands-website/.next/server/chunks/_1sui7s-xtn8ou._.js:121:141536)
+              at async y (/home/user/seven-lands-website/.next/server/chunks/node_modules_1oo3vzbmelf4z._.js:1:8358)
+              at async /home/user/seven-lands-website/.next/server/chunks/node_modules_1oo3vzbmelf4z._.js:1:16619
+              at async r0.renderToResponse (/home/user/seven-lands-website/node_modules/next/dist/compiled/next-server/app-route-turbo.runtime.prod.js:5:14352)
+              at async r0.executeRequest (/home/user/seven-lands-website/node_modules/next/dist/compiled/next-server/app-route-turbo.runtime.prod.js:5:17509)
+              at async z (/home/user/seven-lands-website/.next/server/chunks/_1zwrj8iqv2yp_._.js:1:3162)
+      "data": null,
+      "isOperational": true,
+      "isPublic": true,
+      "status": 400,
+      "name": "APIError"
+    }
+[22:15:39] [31mERROR[39m: [36mلا يسمح لك القيام بهذه العمليّة.[39m
+    err: {
+      "type": "o",
+      "message": "لا يسمح لك القيام بهذه العمليّة.",
+      "stack":
+          o: لا يسمح لك القيام بهذه العمليّة.
+              at eT (/home/user/seven-lands-website/.next/server/chunks/_1sui7s-xtn8ou._.js:121:133245)
+              at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+              at async eM (/home/user/seven-lands-website/.next/server/chunks/_1sui7s-xtn8ou._.js:121:133800)
+              at async y (/home/user/seven-lands-website/.next/server/chunks/node_modules_1oo3vzbmelf4z._.js:1:8358)
+              at async /home/user/seven-lands-website/.next/server/chunks/node_modules_1oo3vzbmelf4z._.js:1:16619
+              at async r0.renderToResponse (/home/user/seven-lands-website/node_modules/next/dist/compiled/next-server/app-route-turbo.runtime.prod.js:5:14352)
+              at async r0.executeRequest (/home/user/seven-lands-website/node_modules/next/dist/compiled/next-server/app-route-turbo.runtime.prod.js:5:17509)
+              at async z (/home/user/seven-lands-website/.next/server/chunks/_1zwrj8iqv2yp_._.js:1:3162)
+              at async r0.handleResponse (/home/user/seven-lands-website/node_modules/next/dist/compiled/next-server/app-route-turbo.runtime.prod.js:1:132981)
+              at async X (/home/user/seven-lands-website/.next/server/chunks/_1zwrj8iqv2yp_._.js:1:4156)
+      "data": null,
+      "isOperational": true,
+      "isPublic": true,
+      "status": 403,
+      "name": "o"
+    }
+[22:15:39] [31mERROR[39m: [36mلا يسمح لك القيام بهذه العمليّة.[39m
+    err: {
+      "type": "o",
+      "message": "لا يسمح لك القيام بهذه العمليّة.",
+      "stack":
+          o: لا يسمح لك القيام بهذه العمليّة.
+              at f (/home/user/seven-lands-website/.next/server/chunks/_1sui7s-xtn8ou._.js:121:30998)
+              at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+              at async G (/home/user/seven-lands-website/.next/server/chunks/_1sui7s-xtn8ou._.js:121:51878)
+              at async e3 (/home/user/seven-lands-website/.next/server/chunks/_1sui7s-xtn8ou._.js:121:140257)
+              at async includes.i.handler (/home/user/seven-lands-website/.next/server/chunks/_1sui7s-xtn8ou._.js:121:119396)
+              at async y (/home/user/seven-lands-website/.next/server/chunks/node_modules_1oo3vzbmelf4z._.js:1:8358)
+              at async /home/user/seven-lands-website/.next/server/chunks/node_modules_1oo3vzbmelf4z._.js:1:16619
+              at async r0.renderToResponse (/home/user/seven-lands-website/node_modules/next/dist/compiled/next-server/app-route-turbo.runtime.prod.js:5:14352)
+              at async r0.executeRequest (/home/user/seven-lands-website/node_modules/next/dist/compiled/next-server/app-route-turbo.runtime.prod.js:5:17509)
+              at async z (/home/user/seven-lands-website/.next/server/chunks/_1zwrj8iqv2yp_._.js:1:3162)
+      "data": null,
+      "isOperational": true,
+      "isPublic": true,
+      "status": 403,
+      "name": "o"
+    }
+[22:15:39] [31mERROR[39m: [36mلا يسمح لك القيام بهذه العمليّة.[39m
+    err: {
+      "type": "o",
+      "message": "لا يسمح لك القيام بهذه العمليّة.",
+      "stack":
+          o: لا يسمح لك القيام بهذه العمليّة.
+              at f (/home/user/seven-lands-website/.next/server/chunks/_1sui7s-xtn8ou._.js:121:30998)
+              at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+              at async eZ (/home/user/seven-lands-website/.next/server/chunks/_1sui7s-xtn8ou._.js:121:104976)
+              at async handler (/home/user/seven-lands-website/.next/server/chunks/_1sui7s-xtn8ou._.js:121:145904)
+              at async includes.i.handler (/home/user/seven-lands-website/.next/server/chunks/_1sui7s-xtn8ou._.js:121:119396)
+              at async y (/home/user/seven-lands-website/.next/server/chunks/node_modules_1oo3vzbmelf4z._.js:1:8358)
+              at async /home/user/seven-lands-website/.next/server/chunks/node_modules_1oo3vzbmelf4z._.js:1:16619
+              at async r0.renderToResponse (/home/user/seven-lands-website/node_modules/next/dist/compiled/next-server/app-route-turbo.runtime.prod.js:5:14352)
+              at async r0.executeRequest (/home/user/seven-lands-website/node_modules/next/dist/compiled/next-server/app-route-turbo.runtime.prod.js:5:17509)
+              at async z (/home/user/seven-lands-website/.next/server/chunks/_1zwrj8iqv2yp_._.js:1:3162)
+      "data": null,
+      "isOperational": true,
+      "isPublic": true,
+      "status": 403,
+      "name": "o"
+    }
+[22:15:39] [31mERROR[39m: [36mلا يسمح لك القيام بهذه العمليّة.[39m
+    err: {
+      "type": "o",
+      "message": "لا يسمح لك القيام بهذه العمليّة.",
+      "stack":
+          o: لا يسمح لك القيام بهذه العمليّة.
+              at f (/home/user/seven-lands-website/.next/server/chunks/_1sui7s-xtn8ou._.js:121:30998)
+              at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+              at async eZ (/home/user/seven-lands-website/.next/server/chunks/_1sui7s-xtn8ou._.js:121:104976)
+              at async handler (/home/user/seven-lands-website/.next/server/chunks/_1sui7s-xtn8ou._.js:121:145904)
+              at async includes.i.handler (/home/user/seven-lands-website/.next/server/chunks/_1sui7s-xtn8ou._.js:121:119396)
+              at async y (/home/user/seven-lands-website/.next/server/chunks/node_modules_1oo3vzbmelf4z._.js:1:8358)
+              at async /home/user/seven-lands-website/.next/server/chunks/node_modules_1oo3vzbmelf4z._.js:1:16619
+              at async r0.renderToResponse (/home/user/seven-lands-website/node_modules/next/dist/compiled/next-server/app-route-turbo.runtime.prod.js:5:14352)
+              at async r0.executeRequest (/home/user/seven-lands-website/node_modules/next/dist/compiled/next-server/app-route-turbo.runtime.prod.js:5:17509)
+              at async z (/home/user/seven-lands-website/.next/server/chunks/_1zwrj8iqv2yp_._.js:1:3162)
+      "data": null,
+      "isOperational": true,
+      "isPublic": true,
+      "status": 403,
+      "name": "o"
+    }
+[22:15:39] [31mERROR[39m: [36mلا يسمح لك القيام بهذه العمليّة.[39m
+    err: {
+      "type": "o",
+      "message": "لا يسمح لك القيام بهذه العمليّة.",
+      "stack":
+          o: لا يسمح لك القيام بهذه العمليّة.
+              at f (/home/user/seven-lands-website/.next/server/chunks/_1sui7s-xtn8ou._.js:121:30998)
+              at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+              at async X (/home/user/seven-lands-website/.next/server/chunks/_1sui7s-xtn8ou._.js:121:65300)
+              at async te (/home/user/seven-lands-website/.next/server/chunks/_1sui7s-xtn8ou._.js:121:141536)
+              at async y (/home/user/seven-lands-website/.next/server/chunks/node_modules_1oo3vzbmelf4z._.js:1:8358)
+              at async /home/user/seven-lands-website/.next/server/chunks/node_modules_1oo3vzbmelf4z._.js:1:16619
+              at async r0.renderToResponse (/home/user/seven-lands-website/node_modules/next/dist/compiled/next-server/app-route-turbo.runtime.prod.js:5:14352)
+              at async r0.executeRequest (/home/user/seven-lands-website/node_modules/next/dist/compiled/next-server/app-route-turbo.runtime.prod.js:5:17509)
+              at async z (/home/user/seven-lands-website/.next/server/chunks/_1zwrj8iqv2yp_._.js:1:3162)
+              at async r0.handleResponse (/home/user/seven-lands-website/node_modules/next/dist/compiled/next-server/app-route-turbo.runtime.prod.js:1:132981)
+      "data": null,
+      "isOperational": true,
+      "isPublic": true,
+      "status": 403,
+      "name": "o"
+    }
+[22:15:39] [31mERROR[39m: [36mلا يسمح لك القيام بهذه العمليّة.[39m
+    err: {
+      "type": "o",
+      "message": "لا يسمح لك القيام بهذه العمليّة.",
+      "stack":
+          o: لا يسمح لك القيام بهذه العمليّة.
+              at f (/home/user/seven-lands-website/.next/server/chunks/_1sui7s-xtn8ou._.js:121:30998)
+              at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+              at async X (/home/user/seven-lands-website/.next/server/chunks/_1sui7s-xtn8ou._.js:121:65300)
+              at async te (/home/user/seven-lands-website/.next/server/chunks/_1sui7s-xtn8ou._.js:121:141536)
+              at async y (/home/user/seven-lands-website/.next/server/chunks/node_modules_1oo3vzbmelf4z._.js:1:8358)
+              at async /home/user/seven-lands-website/.next/server/chunks/node_modules_1oo3vzbmelf4z._.js:1:16619
+              at async r0.renderToResponse (/home/user/seven-lands-website/node_modules/next/dist/compiled/next-server/app-route-turbo.runtime.prod.js:5:14352)
+              at async r0.executeRequest (/home/user/seven-lands-website/node_modules/next/dist/compiled/next-server/app-route-turbo.runtime.prod.js:5:17509)
+              at async z (/home/user/seven-lands-website/.next/server/chunks/_1zwrj8iqv2yp_._.js:1:3162)
+              at async r0.handleResponse (/home/user/seven-lands-website/node_modules/next/dist/compiled/next-server/app-route-turbo.runtime.prod.js:1:132981)
+      "data": null,
+      "isOperational": true,
+      "isPublic": true,
+      "status": 403,
+      "name": "o"
+    }
+[22:15:39] [31mERROR[39m: [36mلا يسمح لك القيام بهذه العمليّة.[39m
+    err: {
+      "type": "o",
+      "message": "لا يسمح لك القيام بهذه العمليّة.",
+      "stack":
+          o: لا يسمح لك القيام بهذه العمليّة.
+              at f (/home/user/seven-lands-website/.next/server/chunks/_1sui7s-xtn8ou._.js:121:30998)
+              at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+              at async X (/home/user/seven-lands-website/.next/server/chunks/_1sui7s-xtn8ou._.js:121:65300)
+              at async te (/home/user/seven-lands-website/.next/server/chunks/_1sui7s-xtn8ou._.js:121:141536)
+              at async y (/home/user/seven-lands-website/.next/server/chunks/node_modules_1oo3vzbmelf4z._.js:1:8358)
+              at async /home/user/seven-lands-website/.next/server/chunks/node_modules_1oo3vzbmelf4z._.js:1:16619
+              at async r0.renderToResponse (/home/user/seven-lands-website/node_modules/next/dist/compiled/next-server/app-route-turbo.runtime.prod.js:5:14352)
+              at async r0.executeRequest (/home/user/seven-lands-website/node_modules/next/dist/compiled/next-server/app-route-turbo.runtime.prod.js:5:17509)
+              at async z (/home/user/seven-lands-website/.next/server/chunks/_1zwrj8iqv2yp_._.js:1:3162)
+              at async r0.handleResponse (/home/user/seven-lands-website/node_modules/next/dist/compiled/next-server/app-route-turbo.runtime.prod.js:1:132981)
+      "data": null,
+      "isOperational": true,
+      "isPublic": true,
+      "status": 403,
+      "name": "o"
+    }
+[22:15:39] [31mERROR[39m: [36mلا يسمح لك القيام بهذه العمليّة.[39m
+    err: {
+      "type": "o",
+      "message": "لا يسمح لك القيام بهذه العمليّة.",
+      "stack":
+          o: لا يسمح لك القيام بهذه العمليّة.
+              at f (/home/user/seven-lands-website/.next/server/chunks/_1sui7s-xtn8ou._.js:121:30998)
+              at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+              at async X (/home/user/seven-lands-website/.next/server/chunks/_1sui7s-xtn8ou._.js:121:65300)
+              at async te (/home/user/seven-lands-website/.next/server/chunks/_1sui7s-xtn8ou._.js:121:141536)
+              at async y (/home/user/seven-lands-website/.next/server/chunks/node_modules_1oo3vzbmelf4z._.js:1:8358)
+              at async /home/user/seven-lands-website/.next/server/chunks/node_modules_1oo3vzbmelf4z._.js:1:16619
+              at async r0.renderToResponse (/home/user/seven-lands-website/node_modules/next/dist/compiled/next-server/app-route-turbo.runtime.prod.js:5:14352)
+              at async r0.executeRequest (/home/user/seven-lands-website/node_modules/next/dist/compiled/next-server/app-route-turbo.runtime.prod.js:5:17509)
+              at async z (/home/user/seven-lands-website/.next/server/chunks/_1zwrj8iqv2yp_._.js:1:3162)
+              at async r0.handleResponse (/home/user/seven-lands-website/node_modules/next/dist/compiled/next-server/app-route-turbo.runtime.prod.js:1:132981)
+      "data": null,
+      "isOperational": true,
+      "isPublic": true,
+      "status": 403,
+      "name": "o"
+    }
+[22:15:39] [31mERROR[39m: [36mغير موجود[39m
+    err: {
+      "type": "o",
+      "message": "غير موجود",
+      "stack":
+          o: غير موجود
+              at ep (/home/user/seven-lands-website/.next/server/chunks/_1sui7s-xtn8ou._.js:121:74709)
+              at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+              at async tl (/home/user/seven-lands-website/.next/server/chunks/_1sui7s-xtn8ou._.js:121:143068)
+              at async y (/home/user/seven-lands-website/.next/server/chunks/node_modules_1oo3vzbmelf4z._.js:1:8358)
+              at async /home/user/seven-lands-website/.next/server/chunks/node_modules_1oo3vzbmelf4z._.js:1:16619
+              at async r0.renderToResponse (/home/user/seven-lands-website/node_modules/next/dist/compiled/next-server/app-route-turbo.runtime.prod.js:5:14352)
+              at async r0.executeRequest (/home/user/seven-lands-website/node_modules/next/dist/compiled/next-server/app-route-turbo.runtime.prod.js:5:17509)
+              at async z (/home/user/seven-lands-website/.next/server/chunks/_1zwrj8iqv2yp_._.js:1:3162)
+              at async r0.handleResponse (/home/user/seven-lands-website/node_modules/next/dist/compiled/next-server/app-route-turbo.runtime.prod.js:1:132981)
+              at async X (/home/user/seven-lands-website/.next/server/chunks/_1zwrj8iqv2yp_._.js:1:4156)
+      "data": null,
+      "isOperational": true,
+      "isPublic": true,
+      "status": 404,
+      "name": "o"
+    }
+Error: Route "/admin/[[...segments]]": Next.js encountered the unstable value `new Date()` while prerendering.
+
+This value can change between renders, so it must be either prerendered or computed later.
+
+Ways to fix this:
+  - [dynamic] Render at request time by adding a dynamic data access (e.g. `await connection()`) before this call
+  - [cache] Prerender and cache the value with `"use cache"`
+  - [client] Render the value on the client with `"use client"`
+  - [measure] If the value is for telemetry, use a timing API such as `performance.now()`
+
+Learn more: https://nextjs.org/docs/messages/blocking-prerender-current-time
+    at <unknown> (.next/server/chunks/_1sui7s-xtn8ou._.js:140:129512)
+    at e1 (.next/server/chunks/_1sui7s-xtn8ou._.js:140:130315)
+    at async Object.e8 [as authenticate] (.next/server/chunks/_1sui7s-xtn8ou._.js:140:131643)
+Error: Route "/admin/[[...segments]]": Next.js encountered the unstable value `new Date()` while prerendering.
+
+This value can change between renders, so it must be either prerendered or computed later.
+
+Ways to fix this:
+  - [dynamic] Render at request time by adding a dynamic data access (e.g. `await connection()`) before this call
+  - [cache] Prerender and cache the value with `"use cache"`
+  - [client] Render the value on the client with `"use client"`
+  - [measure] If the value is for telemetry, use a timing API such as `performance.now()`
+
+Learn more: https://nextjs.org/docs/messages/blocking-prerender-current-time
+    at <unknown> (.next/server/chunks/_1sui7s-xtn8ou._.js:140:129512)
+    at e1 (.next/server/chunks/_1sui7s-xtn8ou._.js:140:130315)
+    at async Object.e8 [as authenticate] (.next/server/chunks/_1sui7s-xtn8ou._.js:140:131643)
+Error: Route "/admin/[[...segments]]": Next.js encountered the unstable value `new Date()` while prerendering.
+
+This value can change between renders, so it must be either prerendered or computed later.
+
+Ways to fix this:
+  - [dynamic] Render at request time by adding a dynamic data access (e.g. `await connection()`) before this call
+  - [cache] Prerender and cache the value with `"use cache"`
+  - [client] Render the value on the client with `"use client"`
+  - [measure] If the value is for telemetry, use a timing API such as `performance.now()`
+
+Learn more: https://nextjs.org/docs/messages/blocking-prerender-current-time
+    at <unknown> (.next/server/chunks/_1sui7s-xtn8ou._.js:140:129512)
+    at e1 (.next/server/chunks/_1sui7s-xtn8ou._.js:140:130315)
+    at async Object.e8 [as authenticate] (.next/server/chunks/_1sui7s-xtn8ou._.js:140:131643)
+Error: Route "/admin/[[...segments]]": Next.js encountered the unstable value `new Date()` while prerendering.
+
+This value can change between renders, so it must be either prerendered or computed later.
+
+Ways to fix this:
+  - [dynamic] Render at request time by adding a dynamic data access (e.g. `await connection()`) before this call
+  - [cache] Prerender and cache the value with `"use cache"`
+  - [client] Render the value on the client with `"use client"`
+  - [measure] If the value is for telemetry, use a timing API such as `performance.now()`
+
+Learn more: https://nextjs.org/docs/messages/blocking-prerender-current-time
+    at <unknown> (.next/server/chunks/_1sui7s-xtn8ou._.js:140:129512)
+    at e1 (.next/server/chunks/_1sui7s-xtn8ou._.js:140:130315)
+    at async Object.e8 [as authenticate] (.next/server/chunks/_1sui7s-xtn8ou._.js:140:131643)
+[brief] received (no BRIEF_WEBHOOK_URL configured) {
+  mode: 'brief',
+  lands: [ 'strategy-business-growth' ],
+  phone: '+966507776891',
+  timeline: 'now'
+}
+[brief] received (no BRIEF_WEBHOOK_URL configured) {
+  mode: 'brief',
+  lands: [ 'strategy-business-growth' ],
+  phone: '+966507776891',
+  timeline: 'now'
+}
+[brief] received (no BRIEF_WEBHOOK_URL configured) {
+  mode: 'brief',
+  lands: [ 'strategy-business-growth' ],
+  phone: '+966507776891',
+  timeline: 'now'
+}

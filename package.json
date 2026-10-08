@@ -1,0 +1,53 @@
+{
+  "name": "seven-lands-website",
+  "//type": "ESM is required by Payload 3 (its CLI and config loader assume ESM). See docs/admin-control-center/PHASE_A_SPIKE_REPORT.md",
+  "type": "module",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint",
+    "typecheck": "tsc --noEmit",
+    "test": "playwright test",
+    "test:e2e": "playwright test tests/smoke.spec.ts",
+    "test:a11y": "playwright test tests/a11y.spec.ts",
+    "qa:capture": "node scripts/qa-capture.mjs"
+  },
+  "dependencies": {
+    "@hookform/resolvers": "^5.9.1",
+    "@payloadcms/db-postgres": "3.90.2",
+    "@payloadcms/next": "3.90.2",
+    "@payloadcms/richtext-lexical": "^3.90.2",
+    "clsx": "^2.1.1",
+    "graphql": "16.14.2",
+    "motion": "^14.0.0",
+    "next": "16.4.0",
+    "next-intl": "^4.14.9",
+    "payload": "3.90.2",
+    "react": "19.3.0",
+    "react-dom": "19.3.0",
+    "react-hook-form": "^7.89.0",
+    "sharp": "0.35.5",
+    "tailwind-merge": "^3.7.0",
+    "zod": "^4.6.5"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "^4.13.0",
+    "@playwright/test": "^1.63.0",
+    "@tailwindcss/turbopack": "^4",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "eslint": "^9",
+    "eslint-config-next": "16.4.0",
+    "sass": "1.105.1",
+    "tailwindcss": "^4",
+    "typescript": "^5"
+  },
+  "overrides": {
+    "undici": "^7.29.1",
+    "dompurify": "^3.4.16"
+  }
+}

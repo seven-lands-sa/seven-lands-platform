@@ -1,0 +1,8 @@
+home #1: draft hero.title1="تسويق. إبداع. تقنية." · published hero.title1="تسويق. إبداع. تقنية."
+preview anonymous: /ar HTTP 404 · /en HTTP 404 (expected 404 both)
+preview with admin session: HTTP 200 · has preview bar=true · has hero copy=true
+after DRAFT-only edit → public /ar has marker=false (expected false) · preview has marker=true (expected true)
+after PUBLISH (HTTP 200) → public /ar has marker=true (expected true, no restart, no TTL wait)
+after reverting + publishing (HTTP 200) → marker gone=true · original copy back=true
+revisions stored for page 1: total=25 (newest ids: 101, 100, 99)
+restore revision 100 → HTTP 200 (Payload restoreVersion through the audited endpoint)

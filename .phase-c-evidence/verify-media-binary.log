@@ -1,0 +1,43 @@
+  ✅ admin session established over HTTP  — HTTP 200
+
+  fixture: id 10 — phase-c-binary-1791400303691.png
+  original  http://localhost:3000/api/media/file/phase-c-binary-1791400303691.png
+  thumbnail http://localhost:3000/api/media/file/phase-c-binary-1791400303691-400x300.png
+  card      http://localhost:3000/api/media/file/phase-c-binary-1791400303691-768x512.png
+
+  ✅ sharp generated both configured derivatives (400×300, 768×512)
+══ 1 · PRIVATE asset, anonymous visitor ══
+  ✅ PRIVATE original  → DENY  — HTTP 403
+  ✅ PRIVATE thumbnail → DENY  — HTTP 403
+  ✅ PRIVATE card      → DENY  — HTTP 403
+  ✅ the private asset still EXISTS in the library (denial is authorization, not absence)
+  ✅ denied response is not cacheable  — Cache-Control: private, no-store
+
+══ 2 · PRIVATE asset, authenticated admin with media.read ══
+  ✅ authorized original  → ALLOW  — HTTP 200, 14270 B
+  ✅ authorized thumbnail → ALLOW  — HTTP 200, 2477 B
+  ✅ authorized card      → ALLOW  — HTTP 200, 6335 B
+  ✅ a bare cookie replay (no browser context headers) is refused  — HTTP 403
+
+══ 3 · transition PRIVATE → PUBLIC ══
+  ✅ PUBLIC original  → anonymous ALLOW  — HTTP 200, 14270 B
+  ✅ PUBLIC thumbnail → anonymous ALLOW  — HTTP 200, 2477 B
+  ✅ PUBLIC card      → anonymous ALLOW  — HTTP 200, 6335 B
+  ✅ PRIVATE_TO_PUBLIC activation is immediate on the first request  — 55 ms after the write
+  ✅ the SAME URLs served both states — the path/filename never changes on transition  — so neither the filename nor its obscurity is part of the protection
+
+══ 4 · transition PUBLIC → PRIVATE ══
+  ✅ revoked original  → DENY again  — HTTP 403
+  ✅ revoked thumbnail → DENY again  — HTTP 403
+  ✅ revoked card      → DENY again  — HTTP 403
+  ✅ PUBLIC_TO_PRIVATE revocation is immediate on the first request  — 39 ms after the write
+  ✅ revoked response carries no public long-lived cache directive  — Cache-Control: private, no-store
+  ✅ both visibility transitions were audited  — 2 events for media 10
+
+  fixture removed (document + files)
+
+  checks passed: 22
+  checks failed: 0
+
+  MEDIA_BINARY_VISIBILITY = PASS
+

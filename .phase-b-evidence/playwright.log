@@ -1,0 +1,65 @@
+
+Running 60 tests using 1 worker
+
+[1/60] [ar-desktop] › tests/a11y.spec.ts:12:3 › axe: /ar
+[2/60] [ar-desktop] › tests/a11y.spec.ts:12:3 › axe: /en
+[3/60] [ar-desktop] › tests/a11y.spec.ts:12:3 › axe: /ar/services
+[4/60] [ar-desktop] › tests/a11y.spec.ts:12:3 › axe: /ar/services/web-commerce-experiences
+[5/60] [ar-desktop] › tests/a11y.spec.ts:12:3 › axe: /ar/start-a-project
+[6/60] [ar-desktop] › tests/a11y.spec.ts:12:3 › axe: /ar/contact
+[7/60] [ar-desktop] › tests/smoke.spec.ts:12:3 › navigation and locale › homepage renders in the right direction with one h1
+[8/60] [ar-desktop] › tests/smoke.spec.ts:24:3 › navigation and locale › language switch keeps the reader on the same page
+[9/60] [ar-desktop] › tests/smoke.spec.ts:35:3 › navigation and locale › service navigation reaches every capability detail page
+[10/60] [ar-desktop] › tests/smoke.spec.ts:56:3 › navigation and locale › public pages never carry the old binding-offer disclaimer
+[11/60] [ar-desktop] › tests/smoke.spec.ts:76:3 › navigation and locale › footer carries the approved commercial line and legal links only
+[12/60] [ar-desktop] › tests/smoke.spec.ts:89:3 › navigation and locale › WhatsApp CTAs carry a page-specific message
+[13/60] [ar-desktop] › tests/smoke.spec.ts:111:3 › navigation and locale › campaign context survives the journey into the brief payload
+[14/60] [ar-desktop] › tests/smoke.spec.ts:147:3 › navigation and locale › unknown routes return a real 404 page
+[15/60] [ar-desktop] › tests/smoke.spec.ts:155:3 › conversion paths › WhatsApp links point at the verified number only
+[16/60] [ar-desktop] › tests/smoke.spec.ts:167:3 › conversion paths › phone conventions and the map link are correct
+[17/60] [ar-desktop] › tests/smoke.spec.ts:177:3 › conversion paths › brief form validates before submitting and then confirms
+[18/60] [ar-desktop] › tests/smoke.spec.ts:244:3 › mobile surface › mobile menu opens, is keyboard dismissible and links correctly
+[19/60] [ar-desktop] › tests/smoke.spec.ts:259:3 › mobile surface › mobile drawer covers the whole viewport and stays above the header
+[20/60] [ar-desktop] › tests/smoke.spec.ts:294:3 › mobile surface › no horizontal overflow on the primary pages
+[21/60] [ar-mobile] › tests/a11y.spec.ts:12:3 › axe: /ar
+[22/60] [ar-mobile] › tests/a11y.spec.ts:12:3 › axe: /en
+[23/60] [ar-mobile] › tests/a11y.spec.ts:12:3 › axe: /ar/services
+[24/60] [ar-mobile] › tests/a11y.spec.ts:12:3 › axe: /ar/services/web-commerce-experiences
+[25/60] [ar-mobile] › tests/a11y.spec.ts:12:3 › axe: /ar/start-a-project
+[26/60] [ar-mobile] › tests/a11y.spec.ts:12:3 › axe: /ar/contact
+[27/60] [ar-mobile] › tests/smoke.spec.ts:12:3 › navigation and locale › homepage renders in the right direction with one h1
+[28/60] [ar-mobile] › tests/smoke.spec.ts:24:3 › navigation and locale › language switch keeps the reader on the same page
+[29/60] [ar-mobile] › tests/smoke.spec.ts:35:3 › navigation and locale › service navigation reaches every capability detail page
+[30/60] [ar-mobile] › tests/smoke.spec.ts:56:3 › navigation and locale › public pages never carry the old binding-offer disclaimer
+[31/60] [ar-mobile] › tests/smoke.spec.ts:76:3 › navigation and locale › footer carries the approved commercial line and legal links only
+[32/60] [ar-mobile] › tests/smoke.spec.ts:89:3 › navigation and locale › WhatsApp CTAs carry a page-specific message
+[33/60] [ar-mobile] › tests/smoke.spec.ts:111:3 › navigation and locale › campaign context survives the journey into the brief payload
+[34/60] [ar-mobile] › tests/smoke.spec.ts:147:3 › navigation and locale › unknown routes return a real 404 page
+[35/60] [ar-mobile] › tests/smoke.spec.ts:155:3 › conversion paths › WhatsApp links point at the verified number only
+[36/60] [ar-mobile] › tests/smoke.spec.ts:167:3 › conversion paths › phone conventions and the map link are correct
+[37/60] [ar-mobile] › tests/smoke.spec.ts:177:3 › conversion paths › brief form validates before submitting and then confirms
+[38/60] [ar-mobile] › tests/smoke.spec.ts:244:3 › mobile surface › mobile menu opens, is keyboard dismissible and links correctly
+[39/60] [ar-mobile] › tests/smoke.spec.ts:259:3 › mobile surface › mobile drawer covers the whole viewport and stays above the header
+[40/60] [ar-mobile] › tests/smoke.spec.ts:294:3 › mobile surface › no horizontal overflow on the primary pages
+[41/60] [en-desktop] › tests/a11y.spec.ts:12:3 › axe: /ar
+[42/60] [en-desktop] › tests/a11y.spec.ts:12:3 › axe: /en
+[43/60] [en-desktop] › tests/a11y.spec.ts:12:3 › axe: /ar/services
+[44/60] [en-desktop] › tests/a11y.spec.ts:12:3 › axe: /ar/services/web-commerce-experiences
+[45/60] [en-desktop] › tests/a11y.spec.ts:12:3 › axe: /ar/start-a-project
+[46/60] [en-desktop] › tests/a11y.spec.ts:12:3 › axe: /ar/contact
+[47/60] [en-desktop] › tests/smoke.spec.ts:12:3 › navigation and locale › homepage renders in the right direction with one h1
+[48/60] [en-desktop] › tests/smoke.spec.ts:24:3 › navigation and locale › language switch keeps the reader on the same page
+[49/60] [en-desktop] › tests/smoke.spec.ts:35:3 › navigation and locale › service navigation reaches every capability detail page
+[50/60] [en-desktop] › tests/smoke.spec.ts:56:3 › navigation and locale › public pages never carry the old binding-offer disclaimer
+[51/60] [en-desktop] › tests/smoke.spec.ts:76:3 › navigation and locale › footer carries the approved commercial line and legal links only
+[52/60] [en-desktop] › tests/smoke.spec.ts:89:3 › navigation and locale › WhatsApp CTAs carry a page-specific message
+[53/60] [en-desktop] › tests/smoke.spec.ts:111:3 › navigation and locale › campaign context survives the journey into the brief payload
+[54/60] [en-desktop] › tests/smoke.spec.ts:147:3 › navigation and locale › unknown routes return a real 404 page
+[55/60] [en-desktop] › tests/smoke.spec.ts:155:3 › conversion paths › WhatsApp links point at the verified number only
+[56/60] [en-desktop] › tests/smoke.spec.ts:167:3 › conversion paths › phone conventions and the map link are correct
+[57/60] [en-desktop] › tests/smoke.spec.ts:177:3 › conversion paths › brief form validates before submitting and then confirms
+[58/60] [en-desktop] › tests/smoke.spec.ts:244:3 › mobile surface › mobile menu opens, is keyboard dismissible and links correctly
+[59/60] [en-desktop] › tests/smoke.spec.ts:259:3 › mobile surface › mobile drawer covers the whole viewport and stays above the header
+[60/60] [en-desktop] › tests/smoke.spec.ts:294:3 › mobile surface › no horizontal overflow on the primary pages
+  5 skipped
+  55 passed (1.5m)

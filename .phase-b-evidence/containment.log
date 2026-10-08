@@ -1,0 +1,23 @@
+assets in the build ............. 69 (js + css)
+loaded by public routes ......... 15  · 1,044,798 B
+loaded by /admin ................ 16  · 2,607,104 B
+admin-only ...................... 9  · 2,035,200 B
+shared /admin ∩ public .......... 7  · 571,904 B
+
+Payload markers inside public assets ... 0 ✅
+
+markers inside the 7 shared chunks:
+      229972 B  chunks/1ibs_mso-ku2s.js  clean
+      159792 B  chunks/2yjamibpnhspc.js  clean
+      112594 B  chunks/0cz1d0mv5g_q7.js  clean
+       30833 B  chunks/3wjkd7x0y2arl.js  clean
+       14145 B  chunks/095g8usnrcprg.js  clean
+       13313 B  chunks/1yg4x5e3obwvr.js  clean
+       11255 B  chunks/turbopack-2c3mg3r-05n1w.js  clean
+
+largest admin-only assets (none of which a public route references):
+      1,056,943 B  chunks/3uywmc90v1hr3.js
+        579,878 B  chunks/3sdweth5fflgh.js
+        292,555 B  chunks/0spubi71fm-_c.css
+         33,366 B  chunks/12w-ddygviqxw.js
+         33,343 B  chunks/0bq1g0i1xlma3.js

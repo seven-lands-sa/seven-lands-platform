@@ -1,0 +1,100 @@
+[10:29:36] [33mWARN[39m: [36mThe following identifiers exceed Postgres's 63-character limit and will be silently truncated, which can leave the database out of sync with your Payload schema: _site_settings_v_version_localization_enabled_locales_parent_idx. Use the dbName property to shorten them.[39m
+[10:29:36] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+
+══ §55 · Global settings ══════════════════════════════════════════════
+  ✅ brand reads correctly in Arabic  — سفن لاند / Seven Lands
+  ✅ timezone is the verified company timezone  — Asia/Riyadh
+  ✅ location display is the verified one  — بريدة، القصيم، المملكة العربية السعودية
+  ✅ English location is its own publication, not a transliteration of the Arabic field  — Buraydah, Al Qassim, Saudi Arabia
+[cache] could not invalidate "site-settings" (Invariant: static generation store missing in revalidateTag("site-settings")) — expected outside a request scope
+[cache] could not invalidate "business-hours" (Invariant: static generation store missing in revalidateTag("business-hours")) — expected outside a request scope
+  ✅ an empty English field is null — never the Arabic text
+  ✅ the Arabic value is untouched by an English edit
+[cache] could not invalidate "site-settings" (Invariant: static generation store missing in revalidateTag("site-settings")) — expected outside a request scope
+[cache] could not invalidate "business-hours" (Invariant: static generation store missing in revalidateTag("business-hours")) — expected outside a request scope
+  ✅ an unknown timezone is rejected  — الحقل التالي غير صالح: اللغة والمنطقة الزمنية > اللغة والمنط
+  ✅ an unsafe map URL is rejected  — الحقل التالي غير صالح: الموقع الجغرافي > الموقع الجغرافي > ر
+  ✅ a viewer cannot write global settings (server-enforced, not UI-hidden)
+  ✅ a viewer with settings.read can read them
+  ✅ an anonymous caller cannot write global settings
+
+══ §11 · Social accounts ══════════════════════════════════════════════
+[cache] could not invalidate "social-accounts" (Invariant: static generation store missing in revalidateTag("social-accounts")) — expected outside a request scope
+[cache] could not invalidate "footer" (Invariant: static generation store missing in revalidateTag("footer")) — expected outside a request scope
+[cache] could not invalidate "contact-settings" (Invariant: static generation store missing in revalidateTag("contact-settings")) — expected outside a request scope
+  ✅ an account can be created
+  ✅ the created account is stored
+[cache] could not invalidate "social-accounts" (Invariant: static generation store missing in revalidateTag("social-accounts")) — expected outside a request scope
+[cache] could not invalidate "footer" (Invariant: static generation store missing in revalidateTag("footer")) — expected outside a request scope
+[cache] could not invalidate "contact-settings" (Invariant: static generation store missing in revalidateTag("contact-settings")) — expected outside a request scope
+  ✅ an account can be edited
+[cache] could not invalidate "social-accounts" (Invariant: static generation store missing in revalidateTag("social-accounts")) — expected outside a request scope
+[cache] could not invalidate "footer" (Invariant: static generation store missing in revalidateTag("footer")) — expected outside a request scope
+[cache] could not invalidate "contact-settings" (Invariant: static generation store missing in revalidateTag("contact-settings")) — expected outside a request scope
+  ✅ accounts can be reordered (order is the array order)
+[cache] could not invalidate "social-accounts" (Invariant: static generation store missing in revalidateTag("social-accounts")) — expected outside a request scope
+[cache] could not invalidate "footer" (Invariant: static generation store missing in revalidateTag("footer")) — expected outside a request scope
+[cache] could not invalidate "contact-settings" (Invariant: static generation store missing in revalidateTag("contact-settings")) — expected outside a request scope
+  ✅ a disabled account is not public; the enabled one is  — instagram
+  ✅ a non-https social URL is rejected  — الحقل التالي غير صالح: الحسابات 1 > الرابط
+  ✅ an unknown icon key is rejected by the curated registry  — الحقل التالي غير صالح: الحسابات 1 > الأيقونة
+[cache] could not invalidate "social-accounts" (Invariant: static generation store missing in revalidateTag("social-accounts")) — expected outside a request scope
+[cache] could not invalidate "footer" (Invariant: static generation store missing in revalidateTag("footer")) — expected outside a request scope
+[cache] could not invalidate "contact-settings" (Invariant: static generation store missing in revalidateTag("contact-settings")) — expected outside a request scope
+  ✅ an empty list yields zero accounts (nothing renders)
+[cache] could not invalidate "social-accounts" (Invariant: static generation store missing in revalidateTag("social-accounts")) — expected outside a request scope
+[cache] could not invalidate "footer" (Invariant: static generation store missing in revalidateTag("footer")) — expected outside a request scope
+[cache] could not invalidate "contact-settings" (Invariant: static generation store missing in revalidateTag("contact-settings")) — expected outside a request scope
+[cache] could not invalidate "social-accounts" (Invariant: static generation store missing in revalidateTag("social-accounts")) — expected outside a request scope
+[cache] could not invalidate "footer" (Invariant: static generation store missing in revalidateTag("footer")) — expected outside a request scope
+[cache] could not invalidate "contact-settings" (Invariant: static generation store missing in revalidateTag("contact-settings")) — expected outside a request scope
+  ✅ an account can be deleted
+
+══ §10 · Business hours ═══════════════════════════════════════════════
+  ✅ no configured hours → state is UNKNOWN (the UI shows no open/closed claim)
+  ✅ normal day, inside hours → open  — Sunday 09:00 Riyadh
+  ✅ normal day, after close → closed  — Sunday 18:00 Riyadh
+  ✅ a closed day is closed  — Tuesday 12:00 Riyadh
+  ✅ split shift: the gap between shifts is closed  — Monday 12:30 Riyadh
+  ✅ split shift: first shift is open  — Monday 09:30 Riyadh
+  ✅ split shift: second shift is open  — Monday 16:30 Riyadh
+  ✅ an all-day schedule is open  — Wednesday 12:00 Riyadh
+  ✅ exact opening boundary → OPEN (inclusive)
+  ✅ exact closing boundary → CLOSED (exclusive)
+  ✅ one minute before opening → CLOSED
+  ✅ one minute before closing → OPEN
+  ✅ a special closure date overrides an open weekly day
+  ✅ a special opening date opens a normally closed day
+  ✅ …and closes again outside its hours
+  ✅ the same instant resolves differently per configured timezone (the timezone is actually applied)  — Riyadh open vs London closed
+[cache] could not invalidate "business-hours" (Invariant: static generation store missing in revalidateTag("business-hours")) — expected outside a request scope
+  ✅ a schedule round-trips through the CMS unchanged
+  ✅ a special date round-trips through the CMS
+[cache] could not invalidate "business-hours" (Invariant: static generation store missing in revalidateTag("business-hours")) — expected outside a request scope
+  ✅ the seeded (empty) hours state is restored after the test  — was 0 row(s)
+
+══ §12 · Navigation ═══════════════════════════════════════════════════
+  ✅ javascript: URL is refused by the link resolver
+  ✅ data: URL is refused by the link resolver
+  ✅ a legitimate https URL resolves as external
+[cache] could not invalidate "navigation" (Invariant: static generation store missing in revalidateTag("navigation")) — expected outside a request scope
+[cache] could not invalidate "navigation" (Invariant: static generation store missing in revalidateTag("navigation")) — expected outside a request scope
+  ✅ a disabled item is not published  — 2 of 3 rows
+  ✅ an internal item resolves to its registered route
+  ✅ an external item keeps newTab (rendered as target=_blank + rel=noopener)
+  ✅ AR and EN labels are independent
+  ✅ the primary CTA is localized  — تواصل الآن / Talk now
+[cache] could not invalidate "navigation" (Invariant: static generation store missing in revalidateTag("navigation")) — expected outside a request scope
+  ✅ reordering the rows reorders the menu  — Test external · اختبار داخلي
+  ✅ the CMS rejects a javascript: menu link outright  — الحقل التالي غير صالح: الهيدر > روابط القائمة 1 > 
+[cache] could not invalidate "navigation" (Invariant: static generation store missing in revalidateTag("navigation")) — expected outside a request scope
+[cache] could not invalidate "navigation" (Invariant: static generation store missing in revalidateTag("navigation")) — expected outside a request scope
+  ✅ the seeded five-item Arabic menu is restored exactly  — خدماتنا · أعمالنا · من نحن · رؤى · تواصل
+  ✅ the primary CTA is restored to «ابدأ مشروعك» → /start-a-project  — ابدأ مشروعك → /start-a-project
+  ✅ the seeded English menu is restored exactly  — Services · Work · About · Insights · Contact
+
+  checks passed: 52
+  checks failed: 0
+
+  PHASE_C_GLOBALS_SOCIAL_HOURS_NAV = PASS
+

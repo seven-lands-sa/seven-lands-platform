@@ -1,0 +1,71 @@
+[17:46:55] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+
+══ 0 · Permission catalogue ═══════════════════════════════════════════
+  ✅ catalogue has no duplicate permissions  — 41 permissions, 13 high-risk
+  ✅ §10 — ADMIN holds no high-risk permission beyond the three documented delegations  — 31 permissions
+
+══ 1 · Personas ════════════════════════════════════════════════════════
+  6 personas ready + 1 Super Admin + anonymous
+
+══ 2 · Local API authorization matrix (overrideAccess: false) ════════
+  ✅ users.read matches the role matrix  — anonymous=deny super_admin=allow admin=allow editor=deny marketing=deny viewer=deny viewer-suspended=deny
+  ✅ roles.read matches the role matrix  — anonymous=deny super_admin=allow admin=allow editor=deny marketing=deny viewer=deny viewer-suspended=deny
+  ✅ audit.read matches the role matrix  — anonymous=deny super_admin=allow admin=deny editor=deny marketing=deny viewer=deny viewer-suspended=deny
+  ✅ users.create matches the role matrix  — anonymous=deny super_admin=allow admin=deny editor=deny marketing=deny viewer=deny viewer-suspended=deny
+  ✅ roles.manage (create role) matches the role matrix  — anonymous=deny super_admin=allow admin=deny editor=deny marketing=deny viewer=deny viewer-suspended=deny
+
+══ 2b · Media visibility is a constraint, not a blanket deny ════════
+[cache] could not invalidate "media:1" (Invariant: static generation store missing in revalidateTag("media:1")) — expected outside a request scope
+[cache] could not invalidate "media:2" (Invariant: static generation store missing in revalidateTag("media:2")) — expected outside a request scope
+  ✅ anonymous CAN read a public media document
+  ✅ anonymous CANNOT see a private media document in a query
+  ✅ anonymous CANNOT fetch a private media document by id  — غير موجود
+  ✅ a suspended account sees exactly the public surface
+  ✅ an editor with media.read sees both, private included
+  cleaned up 2 temporary media fixture(s)
+
+══ 3 · Audit log is write-once (§18) ══════════════════════════════════
+  ✅ Super Admin cannot CREATE an audit event
+  ✅ Super Admin cannot UPDATE an audit event
+  ✅ Super Admin cannot DELETE an audit event
+  ✅ the audit event survived all three attempts  — id 45
+  ✅ positive control — the system writer can still append
+  other active Super Admins: 0 (must be 0 for §14 to be meaningful)
+
+══ 4 · Last-active-Super-Admin invariant (§14) ═══════════════════════
+  ✅ stripping the last Super Admin role is refused  — The following field is invalid: status
+  ✅ suspending the last Super Admin is refused  — The following field is invalid: status
+  ✅ deleting the last Super Admin is refused  — The following field is invalid: status
+  ✅ with a second Super Admin, suspension is allowed
+  ✅ the original Super Admin is ACTIVE again
+
+══ 5 · Effective permissions come from roles only (§7/§13) ═══════════
+  ✅ super_admin resolves to exactly its role's 41 permissions
+  ✅ admin resolves to exactly its role's 31 permissions
+  ✅ editor resolves to exactly its role's 18 permissions
+  ✅ marketing resolves to exactly its role's 18 permissions
+  ✅ viewer resolves to exactly its role's 8 permissions
+  ✅ a SUSPENDED user resolves to zero permissions  — 0 permissions
+
+══ 6 · Suspension ends access (§19) ═══════════════════════════════════
+  ✅ a suspended user cannot log in
+  ✅ an active user can log in (positive control)  — token 301 chars
+  ✅ an active session exists before suspension  — 1 session(s)
+  ✅ suspension revokes every stored session immediately  — 0 session(s) remain
+  ✅ a suspended account resolves to no permissions  — 0 permissions
+  ✅ a suspended account is refused by the access layer
+
+══ 7 · Anonymous cannot reach protected data ═══════════════════════════
+  ✅ anonymous read of users is denied
+  ✅ anonymous read of roles is denied
+  ✅ anonymous read of audit-events is denied
+  cleaned up 1 temporary roles fixture(s)
+  cleaned up 1 temporary users fixture(s)
+  restored the seeded Super Admin (role + ACTIVE)
+
+══ SUMMARY ═════════════════════════════════════════════════════════════
+  checks passed: 37
+  checks failed: 0
+
+  PHASE_B_SERVER_ENFORCEMENT = PASS
+

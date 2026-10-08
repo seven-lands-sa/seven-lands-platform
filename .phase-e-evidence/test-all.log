@@ -1,0 +1,10 @@
+[21:37:26] [33mWARN[39m: [36mThe following identifiers exceed Postgres's 63-character limit and will be silently truncated, which can leave the database out of sync with your Payload schema: _site_settings_v_version_localization_enabled_locales_parent_idx. Use the dbName property to shorten them.[39m
+[21:37:26] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+hero.title1 (locale:all) = {"ar":"تسويق. إبداع. تقنية.","en":"Marketing. Creative. Technology."}
+why.items[0] = {"id":"6ac6bb61e8df9e9783bcbe73","title":{"en":"One decision"},"body":{"en":"Message, design, campaign and technology run against a single commercial goal — not
+[cache] could not invalidate "pages" (Invariant: static generation store missing in revalidateTag("pages")) — expected outside a request scope
+[cache] could not invalidate "page:2" (Invariant: static generation store missing in revalidateTag("page:2")) — expected outside a request scope
+[cache] could not invalidate "page-system:home" (Invariant: static generation store missing in revalidateTag("page-system:home")) — expected outside a request scope
+write with locale:'all' → OK
+  read ar: title="تسويق. إبداع. تقنية." why.items=4 first=undefined
+  read en: title="Marketing. Creative. Technology." why.items=4 first="One decision"

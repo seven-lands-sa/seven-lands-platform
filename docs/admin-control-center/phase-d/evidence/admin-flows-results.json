@@ -1,0 +1,92 @@
+[
+  {
+    "ok": true,
+    "label": "progress observer installed",
+    "detail": ""
+  },
+  {
+    "ok": true,
+    "label": "a progress state is shown during upload (uploading → processing)",
+    "detail": "role=progressbar observed"
+  },
+  {
+    "ok": true,
+    "label": "the editor's upload exists in the library",
+    "detail": "#112"
+  },
+  {
+    "ok": true,
+    "label": "Arabic alt was stored from the dialog",
+    "detail": "صورة رفعها المحرر من الأداة"
+  },
+  {
+    "ok": true,
+    "label": "visibility choice was stored",
+    "detail": "public"
+  },
+  {
+    "ok": true,
+    "label": "the chosen tag was stored",
+    "detail": "[\"website\"]"
+  },
+  {
+    "ok": true,
+    "label": "English alt was stored separately",
+    "detail": "An image the editor uploaded"
+  },
+  {
+    "ok": true,
+    "label": "the grid refreshed and shows the new asset",
+    "detail": "10 tiles"
+  },
+  {
+    "ok": true,
+    "label": "replace case starts from the 1400×900 upload",
+    "detail": "1400×900"
+  },
+  {
+    "ok": true,
+    "label": "the replacement is recorded (replacedAt)",
+    "detail": "2026-10-07T20:52:16.772Z"
+  },
+  {
+    "ok": true,
+    "label": "identity preserved (same document id — references untouched)",
+    "detail": "#112"
+  },
+  {
+    "ok": true,
+    "label": "the stored filename/URL follows the new bytes (so no cache can serve the old image under the same URL)",
+    "detail": "editor-upload-eb968646.jpg"
+  },
+  {
+    "ok": true,
+    "label": "the asset's original name is kept as metadata, never as a path",
+    "detail": "editor-upload.png"
+  },
+  {
+    "ok": true,
+    "label": "visibility can be changed from the detail panel",
+    "detail": "private"
+  },
+  {
+    "ok": true,
+    "label": "delete is disabled for a referenced asset (no force-delete in V1)",
+    "detail": ""
+  },
+  {
+    "ok": true,
+    "label": "the refusal is stated in visible Arabic text next to the disabled button",
+    "detail": ""
+  },
+  {
+    "ok": true,
+    "label": "the refusal names the reason and points at the usage section",
+    "detail": "لا يمكن حذف هذا الملف لأنه مستخدم في الموقع (1 موضع) — راجع قسم «أين تُستخدم هذه الصورة» أعلاه، وأزل الاستخدام أولًا."
+  },
+  {
+    "ok": true,
+    "label": "an unused asset deletes from the UI after confirmation",
+    "detail": "HTTP 404"
+  }
+]

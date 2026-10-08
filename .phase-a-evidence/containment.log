@@ -1,0 +1,16 @@
+static assets in the build .......... 69 (js + css)
+loaded by the 12 public routes ...... 15 files — 1,044,798 B
+admin / api only .................... 54 files — 2,342,374 B
+overlap ............................. 0
+marker "payloadcms"         public: 0   admin-only: 0
+marker "@payloadcms"        public: 0   admin-only: 0
+marker "create-first-user"  public: 0   admin-only: 1  (e.g. /_next/static/chunks/0spubi71fm-_c.css)
+marker "payload.config"     public: 0   admin-only: 0
+
+largest admin-only assets:
+    1,056,943 B  3uywmc90v1hr3.js
+      579,878 B  3sdweth5fflgh.js
+      292,555 B  0spubi71fm-_c.css
+       33,366 B  12w-ddygviqxw.js
+
+/admin references 16 static files, 9 of which no public route references

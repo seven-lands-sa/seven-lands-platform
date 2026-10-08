@@ -1,0 +1,27 @@
+
+> seven-lands-website@0.1.0 test:a11y
+> playwright test tests/a11y.spec.ts
+
+
+Running 18 tests using 1 worker
+
+  ✓   1 [ar-desktop] › tests/a11y.spec.ts:12:3 › axe: /ar (2.6s)
+  ✓   2 [ar-desktop] › tests/a11y.spec.ts:12:3 › axe: /en (2.4s)
+  ✓   3 [ar-desktop] › tests/a11y.spec.ts:12:3 › axe: /ar/services (2.0s)
+  ✓   4 [ar-desktop] › tests/a11y.spec.ts:12:3 › axe: /ar/services/web-commerce-experiences (1.9s)
+  ✓   5 [ar-desktop] › tests/a11y.spec.ts:12:3 › axe: /ar/start-a-project (1.8s)
+  ✓   6 [ar-desktop] › tests/a11y.spec.ts:12:3 › axe: /ar/contact (2.0s)
+  ✓   7 [ar-mobile] › tests/a11y.spec.ts:12:3 › axe: /ar (2.6s)
+  ✓   8 [ar-mobile] › tests/a11y.spec.ts:12:3 › axe: /en (2.4s)
+  ✓   9 [ar-mobile] › tests/a11y.spec.ts:12:3 › axe: /ar/services (2.0s)
+  ✓  10 [ar-mobile] › tests/a11y.spec.ts:12:3 › axe: /ar/services/web-commerce-experiences (2.0s)
+  ✓  11 [ar-mobile] › tests/a11y.spec.ts:12:3 › axe: /ar/start-a-project (1.8s)
+  ✓  12 [ar-mobile] › tests/a11y.spec.ts:12:3 › axe: /ar/contact (1.8s)
+  ✓  13 [en-desktop] › tests/a11y.spec.ts:12:3 › axe: /ar (2.6s)
+  ✓  14 [en-desktop] › tests/a11y.spec.ts:12:3 › axe: /en (2.4s)
+  ✓  15 [en-desktop] › tests/a11y.spec.ts:12:3 › axe: /ar/services (2.1s)
+  ✓  16 [en-desktop] › tests/a11y.spec.ts:12:3 › axe: /ar/services/web-commerce-experiences (2.1s)
+  ✓  17 [en-desktop] › tests/a11y.spec.ts:12:3 › axe: /ar/start-a-project (2.0s)
+  ✓  18 [en-desktop] › tests/a11y.spec.ts:12:3 › axe: /ar/contact (2.0s)
+
+  18 passed (41.5s)

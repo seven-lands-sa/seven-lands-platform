@@ -1,0 +1,14 @@
+home ar (/ar): cms=4158 chars · static=4158 chars · equal=YES
+home en (/en): cms=5145 chars · static=5145 chars · equal=YES
+about ar (/ar/about): cms=2750 chars · static=2750 chars · equal=YES
+about en (/en/about): cms=3441 chars · static=3441 chars · equal=YES
+contact ar (/ar/contact): cms=1403 chars · static=1403 chars · equal=YES
+contact en (/en/contact): cms=1517 chars · static=1517 chars · equal=YES
+start-a-project ar (/ar/start-a-project): cms=1059 chars · static=1059 chars · equal=YES
+start-a-project en (/en/start-a-project): cms=1241 chars · static=1241 chars · equal=YES
+privacy ar (/ar/privacy): cms=1329 chars · static=1329 chars · equal=YES
+privacy en (/en/privacy): cms=1571 chars · static=1571 chars · equal=YES
+terms ar (/ar/terms): cms=1281 chars · static=1281 chars · equal=YES
+terms en (/en/terms): cms=1516 chars · static=1516 chars · equal=YES
+
+EQUIVALENCE: PASS (every locale byte-equal in visible text)

@@ -1,0 +1,33 @@
+══ CANONICAL AUTHORITY (served over http://127.0.0.1:3000 — a DIFFERENT origin than canonical) ══
+
+-- AR home canonical / hreflang / og:url --
+<link rel="canonical" href="https://sevnland.com/ar"
+<meta property="og:url" content="https://sevnland.com/ar"
+
+-- EN home canonical --
+<link rel="canonical" href="https://sevnland.com/en"
+
+-- OG image URL --
+<meta property="og:image" content="https://sevnland.com/og/og-ar.png"
+
+-- sitemap origin --
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+<url>
+<loc>https://sevnland.com/ar</loc>
+<xhtml:link rel="alternate" hreflang="ar" href="https://sevnland.com/ar" />
+<xhtml:link rel="alternate" hreflang="en" href="https://sevnland.com/en" />
+
+-- robots host --
+User-Agent: *
+Allow: /
+Disallow: /api/
+
+Host: https://sevnland.com
+Sitemap: https://sevnland.com/sitemap.xml
+
+-- JSON-LD organization url/logo --
+"@id":"https://sevnland.com/#organization"
+"@id":"https://sevnland.com/#website"
+"logo":"https://sevnland.com/brand/seven-lands-logo.png"
+"url":"https://sevnland.com/ar"
