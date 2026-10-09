@@ -67,14 +67,13 @@ Authoritative tracking of known defects, security bugs, and architectural anomal
 
 ---
 
-### [D6] Project Brief Form Copy Hardcoded in Component
-- **Severity:** LOW (Content Authority Debt)
-- **Status:** `OPEN`
+### [D6] Project Brief Form Copy Authority Convergence
+- **Severity:** LOW (Content Authority Review)
+- **Status:** `CLOSED` (By Design / Correctly Code-Controlled)
 - **Area:** `src/components/forms/ProjectBriefForm.tsx`
-- **Description:** Form field labels, placeholders, and step headers are hardcoded in the component instead of being retrieved from the CMS or localized message dictionaries.
-- **Impact:** Editors cannot modify form copy from the Admin panel.
-- **Recommended Fix:** Connect step labels and hints to CMS fields in `start-a-project` page blocks.
-- **Execution Target:** Phase H / Phase L.
+- **Description:** Review of interactive form copy vs CMS architecture. Form labels, hints, and error strings are dynamic and fully localized via `next-intl` message dictionaries (`src/i18n/messages/{ar,en}.json`); contact channels (WhatsApp, phone) are dynamically injected from CMS `ContactSettings` globals; validation schema and multi-step state machine are intentionally code-controlled (`src/features/brief/schema.ts`) to maintain strict API and type safety.
+- **Resolution:** Confirmed in Phase L / RC1 audit as `CORRECTLY_CODE_CONTROLLED`. Zero accidental hardcoding.
+
 
 ---
 

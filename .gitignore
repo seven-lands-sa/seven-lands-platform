@@ -51,3 +51,8 @@ next-env.d.ts
 /qa/playwright-report.json
 /test-results
 /playwright-report
+
+# Database backups and dumps
+*.dump
+*.sql
+/backups/

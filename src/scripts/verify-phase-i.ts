@@ -96,7 +96,6 @@ async function main() {
   console.log("\nALL PHASE I/J VERIFICATION TESTS PASSED SUCCESSFULLY (6/6).");
 }
 
-main().catch((err) => {
-  console.error("Verification script failed:", err);
-  process.exit(1);
-});
+await main();
+process.exit(0);
+

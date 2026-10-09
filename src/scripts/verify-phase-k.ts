@@ -151,7 +151,6 @@ async function main() {
   process.exit(0);
 }
 
-main().catch((err) => {
-  console.error("FATAL: Phase K verification failed:", err);
-  process.exit(1);
-});
+await main();
+process.exit(0);
+

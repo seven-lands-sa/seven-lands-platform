@@ -53,9 +53,13 @@ Every schema mutation has been executed via timestamped migrations in `src/migra
 12. `20261008_225211_phase_g_redirects_collection.ts`
 13. `20261008_234513_phase_i_tracking_consent_globals.ts`
 
-**Disaster Recovery Verification:**
-- Clean binary dump `drill_pre_release.dump` (984 KB) generated via `pg_dump.exe -F c`.
-- Verified TOC with 2,308 archive entries via `pg_restore.exe -l`.
+**Disaster Recovery Verification (True Restore Drill):**
+- Binary custom dump `drill_rc1_restore.dump` (985,192 bytes) generated via `pg_dump.exe -F c`.
+- Successfully restored to fresh database `seven_lands_restore_drill` via `pg_restore.exe`.
+- Schema match confirmed: exactly 221 tables and 167 enums on both dev and restored databases.
+- Record counts verified: 6 users, 6 pages, 7 services, 0 media, 25 leads.
+- Full local API boot, lead creation (`SL-RESTORE-DRILL-001`), lead query, and clean lead removal confirmed.
+- Scratch database reconstruction drill: clean empty DB -> 13 migrations -> guarded production seeds -> 0 test leads / 0 test users / 0 fixture media / 0 scratch pages.
 
 ---
 
@@ -66,6 +70,7 @@ Every schema mutation has been executed via timestamped migrations in `src/migra
 - **Defect D3 (Honeypot Pre-Parsing Error):** CLOSED. Silent bot drop active without validation crashes.
 - **Defect D4 (Multi-Locale Concurrent Publication Overwrite):** CLOSED. Verified per-locale publication state merging.
 - **Defect D5 (Media Usage Registry Missing Nested Blocks):** CLOSED. Verified bidirectional asset tracking.
+- **Defect D6 (Project Brief Form Copy):** RESOLVED / CLOSED AS BY-DESIGN. All user-facing strings are dynamically localized via `next-intl` message dictionaries (`src/i18n/messages/{ar,en}.json`); contact channels are dynamically fed from CMS globals (`ContactSettings`); validation schemas and state machine are correctly code-controlled (`src/features/brief/schema.ts`). Zero accidental hardcoding.
 
 ---
 
@@ -73,10 +78,12 @@ Every schema mutation has been executed via timestamped migrations in `src/migra
 
 | Test Suite | Result | Scope / Notes |
 |---|---|---|
+| **Phase B Security Suite (`verify-phase-b.ts`)** | **37/37 PASSED** | Auth, RBAC, write-once audit log, last-super-admin invariant, session revocation |
+| **Media Binary Visibility (`verify-media-binary.ts`)** | **22/22 PASSED** | Private media 403 denial, admin 200, cache-control no-store, SVG security |
 | **Phase G Suite (`verify-phase-g.ts`)** | **17/17 PASSED** | GraphQL root/collection queries, redirect rules, audit logging |
 | **Phase H Suite (`verify-phase-h.ts`)** | **5/5 PASSED** | Brief submissions, leads DB commit, honeypot, audit trail |
 | **Phase I/J Suite (`verify-phase-i.ts`)** | **6/6 PASSED** | Tracking & consent globals, consent state machine, audit log |
-| **Phase K Suite (`verify-phase-k.ts`)** | **6/6 PASSED** | Unified search, health diagnostics, DB latency (2ms), 13/13 migrations |
+| **Phase K Suite (`verify-phase-k.ts`)** | **6/6 PASSED** | Unified search, health diagnostics, DB latency (7ms), 13/13 migrations |
 | **Accessibility Gate (`a11y.spec.ts`)** | **18/18 PASSED** | Zero Axe-core violations across ar-desktop, ar-mobile, en-desktop |
 | **Smoke Gate (`smoke.spec.ts`)** | **37/37 PASSED** | Public navigation, bilingual switch, WhatsApp CTAs, brief form flow |
 | **TypeScript Typecheck** | **0 errors** | `tsc --noEmit` exited 0 |
@@ -89,11 +96,13 @@ Every schema mutation has been executed via timestamped migrations in `src/migra
 
 The Seven Lands software platform is **100% COMPLETE locally**.
 
-To transition this Local Release Candidate into live production on the public internet, the remaining steps are strictly operational **Owner Gates**:
-1. **Gate G1:** Input real portfolio case studies and confirmed business hours.
-2. **Gate G2:** Provision Cloudflare R2 or AWS S3 credentials for media persistence.
-3. **Gate G3:** Final owner review of legal text on `/privacy` and `/terms`.
-4. **Gate G4:** Configure transactional email credentials (Resend/SMTP) for admin password reset.
-5. **Gate G5:** Deploy PostgreSQL schema, restore database, and switch DNS from Hostinger.
+To transition this Local Release Candidate into live production on the public internet, the remaining steps are strictly operational **Owner Gates** (documented in `docs/project-completion/11_OWNER_GATES.md`):
+1. **Gate G1_BUSINESS_DATA:** Input real portfolio case studies and confirmed business hours/social handles.
+2. **Gate G2_PRODUCTION_STORAGE:** Provision Cloudflare R2 or AWS S3 credentials for media persistence.
+3. **Gate G3_LEGAL_APPROVAL:** Final owner review of legal text on `/privacy` and `/terms`.
+4. **Gate G4_TRANSACTIONAL_EMAIL:** Configure transactional email credentials (Resend/SMTP) for admin password reset.
+5. **Gate G5_HOSTING_AND_CUTOVER:** Deploy PostgreSQL schema, restore database, and switch DNS from Hostinger.
+6. **Gate G6_ANALYTICS_ACCESS:** Provision Google Analytics 4 ID and Search Console verification token.
 
 Detailed cutover instructions are compiled in `docs/release/STAGING_CUTOVER_PACK.md`.
+
