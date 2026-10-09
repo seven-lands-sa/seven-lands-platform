@@ -1,51 +1,69 @@
-<!-- BEGIN:nextjs-agent-rules -->
+# Seven Lands — Agent Operational Authority & Invariants
 
-## This is NOT the Next.js you know
+This file establishes the authoritative operating rules and system invariants for any AI agent or software engineer working on the Seven Lands platform.
 
-This version has breaking changes — APIs, conventions, and file structure may all differ from your training data. Read the relevant guide in `node_modules/next/dist/docs/` (resolved from this file's directory; in monorepos the `next` package may not be visible from the repo root) before writing any code. Heed deprecation notices.
+---
 
-This block is written and re-added by `next dev` — verify at `node_modules/next/dist/server/lib/generate-agent-files.js`. Removing it from a diff only re-creates the uncommitted change; committing it with your work keeps the tree clean.
+## 1. Project Authority & Hierarchy
 
-<!-- END:nextjs-agent-rules -->
+- **Canonical Domain Authority**: `https://7-lands.com` is the sole canonical production domain.
+- **Legacy Domain**: `sevnland.com` (and its WordPress instance) is FROZEN. Do not touch, mutate, or cut over `sevnland.com`.
+- **Authoritative Docs**:
+  - `docs/project-completion/`: Master Completion Plan & Phase Ledgers.
+  - `docs/production/`: Infrastructure, DNS, Email, Database, and Deployment Playbooks.
 
-## Phase C invariants (do not break these)
+---
 
-* **Migrations only.** `push: false` in the Postgres adapter is permanent. Schema changes are
-  `npx payload migrate:create` + `npx payload migrate`. See `docs/phase-c/MIGRATION_POLICY.md`.
-* **Two origins.** `SITE_CANONICAL_URL` is what is published (canonical, hreflang, sitemap, JSON-LD,
-  OG). `RUNTIME_ORIGIN` / `NEXT_PUBLIC_SERVER_URL` is where this process runs. Never publish the
-  runtime origin; never point canonical at a preview. See `docs/phase-c/ORIGINS_AND_HEADERS.md`.
-* **Client hints are admin-only.** Public `Critical-CH` is deliberately removed by scoping in
-  `next.config.ts`; the admin keeps it. Re-measure with `scripts/measure-nav-cost.mjs` before
-  changing that.
-* **Media is private by default and enforced in the binary layer**, not by obscurity, with
-  `private, no-store` responses. Gate: `npx payload run src/scripts/verify-media-binary.ts`.
-* **One locale per API call**, and **array rows are shared between locales**: write `ar` → read the
-  generated row ids → write `en` with those ids. Replacing a localized array without ids deletes the
-  other language's values.
-* **Payload REST global updates are POST.** A PATCH returns 404.
-* **Writes from `payload run` cannot invalidate the running server's cache.** Provision data that
-  way; change content through the running server when freshness matters.
-* **Verification scripts refuse to run without `ALLOW_VERIFICATION_WRITES=true`;** the seeders
-  require `ALLOW_PRODUCTION_SEED=true`. Both must stay.
-* **Run the gates after any content change:** `npx tsc --noEmit`, `npm run build`,
-  `npx eslint .`, `npx playwright test`, `node scripts/qa-capture.mjs` + the ImageMagick diff against
-  `qa/final/`, then the three `verify-*.ts` scripts and `node scripts/cache-freshness.mjs`.
+## 2. Core Architectural Invariants
 
-## Payload localisation traps (Phase D, learned the hard way)
+1. **Database Schema Policy (`push: false`)**:
+   - `PAYLOAD_PUSH` is permanently `false`.
+   - All database schema mutations MUST be executed via versioned migration files in `src/migrations/`.
+   - Never run raw destructive DDL without an approved rollback path.
 
-- **Every programmatic global read and write must name its locale explicitly.** With
-  `localization.fallback: false`, a REST read **without** `?locale=` returns `null` for every
-  localized field, and a REST write without `?locale=` lands in the default locale — so posting a
-  global back "as read" **deletes that locale's whole row**. This destroyed the Arabic Site Settings
-  twice during Phase D (once via the fixture script, once via a fixture helper); the repaired values
-  and the guard are in `.phase-d-evidence/restore-site-settings.ts`,
-  `.phase-d-evidence/make-fixtures.mjs` and the preservation checks in `src/scripts/verify-phase-d.ts`.
-- **A partial write to one locale merges (Local API), but do not rely on it** — sed the whole
-  document per locale whenever a script rewrites a global.
-- **`payload run` cannot revalidate the live server's caches.** After a script edits a global, the
-  running `next start` can still serve the previous render (this produced a stale footer in a QA
-  capture); restart the server or write through the live API before taking evidence.
-- **`npx payload migrate` is the only schema path** (`PAYLOAD_PUSH` stays `false`), and verification
-  suites must restore anything they temporarily change — `verify-phase-c.ts` and `verify-phase-d.ts`
-  now do this in `finally` blocks.
+2. **Dual-Origin Invariant**:
+   - `SITE_CANONICAL_URL`: Always set to `https://7-lands.com` in production. Used by SEO, sitemaps, OpenGraph, hreflang.
+   - `RUNTIME_ORIGIN`: Transient process address. Never publish this in canonical tags or sitemaps.
+
+3. **Durable Lead Persistence**:
+   - All contact forms and project briefs must write directly to PostgreSQL before any external API / notification dispatch.
+   - External notification failure (Resend, webhooks) must NEVER mark a lead submission as failed or swallow the persisted record.
+
+4. **Media Security & Storage**:
+   - Media is private by default. Access is enforced at the binary handler level with `private, no-store` headers.
+   - Hosted environments use Cloudflare R2 S3 storage adapter.
+   - Sharp image processing strips EXIF data automatically.
+
+5. **Strict Bilingual & Localization Discipline**:
+   - Arabic (`ar`) is the default locale (RTL-first).
+   - English (`en`) is the secondary locale (LTR).
+   - In Payload Local/REST API: Always specify `?locale=` explicitly. Array rows must preserve IDs across languages.
+
+6. **Zero Fake Business Data**:
+   - Never hallucinate addresses, registration numbers, fake client testimonials, or unverified staff counts.
+   - Known verified contact: Phone/WhatsApp `+966507776891`, Email `info@7-lands.com`.
+
+---
+
+## 3. Production Safety & Owner Gates
+
+1. **Zero Cost Invariant**: Never purchase paid add-ons, plan upgrades, or domain services. Stay strictly within free tiers.
+2. **Secrets Invariant**: Never commit `.env`, API keys, database credentials, passwords, or private tokens to Git.
+3. **Rollback Invariant**: Before modifying DNS on IONOS, always record existing records in `docs/production/DNS_LEDGER.md`.
+
+---
+
+## 4. Standard Verification Commands
+
+```bash
+# Typecheck
+npx tsc --noEmit
+
+# Production Build
+npm run build
+
+# Authoritative Gate Checks
+npx tsx src/scripts/verify-phase-g.ts
+npx tsx src/scripts/verify-phase-e.ts
+npx tsx src/scripts/verify-media-binary.ts
+```
