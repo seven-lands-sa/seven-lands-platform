@@ -18,12 +18,15 @@ Schema changes are governed strictly by timestamped migrations in `src/migration
 | **1** | `20261007_212705_phase_e_pages_blocks` | Pages collection, blocks tables, block versioning |
 | **1** | `20261007_212958_phase_e_block_fields_align`| Field alignment for shared page sections |
 | **1** | `20261007_213556_phase_e_shared_sections` | Cross-page section tables (why, cta, header) |
-| **2** | `20261008_102014_phase_e_about_contact_start`| System page specific sections (briefForm, contactPanel) |
-| **3** | `20261008_103522_phase_f_services_projects_insights` | Domain collections: Services, Projects, Insights |
-| **4** | `20261008_103658_phase_f_service_glyph_registry` | Glyph identifier registry on services collection |
-| **5** | `20261008_220122_phase_h_leads_collection` | Phase H: Leads collection, internal notes, lead audit types |
+| **1** | `20261008_102014_phase_e_about_contact_start`| System page specific sections (briefForm, contactPanel) |
+| **1** | `20261008_103522_phase_f_services_projects_insights` | Domain collections: Services, Projects, Insights |
+| **1** | `20261008_103658_phase_f_service_glyph_registry` | Glyph identifier registry on services collection |
+| **2** | `20261008_220122_phase_h_leads_collection` | Phase H: Leads collection, internal notes, lead audit types |
+| **3** | `20261008_223729_phase_g_graphql_enum_sanitize` | Phase G: Defect D1 enum sanitization for GraphQL safety |
+| **4** | `20261008_225211_phase_g_redirects_collection` | Phase G: Redirects collection, audit action, cache tags |
+| **5** | `20261008_234513_phase_i_tracking_consent_globals` | Phase I & J: TrackingSettings & ConsentSettings globals |
 
-Total migrations in codebase: **10 migrations** (all applied in active database).
+Total migrations in codebase: **13 migrations** (all applied in active database).
 
 ---
 

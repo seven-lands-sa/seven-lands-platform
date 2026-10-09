@@ -8,13 +8,17 @@ Authoritative tracking of known defects, security bugs, and architectural anomal
 
 ### [D1] GraphQL Endpoint Crashes with HTTP 500
 - **Severity:** HIGH (API / Integration)
-- **Status:** `OPEN` (Verified Live on Local Runtime)
+- **Status:** `FIXED` (Verified Live on Local Runtime)
 - **Area:** `POST /api/graphql`
-- **Description:** Any query sent to the GraphQL endpoint results in an unhandled internal error (HTTP 500).
-- **Root Cause:** In `src/lib/content/route-registry.ts`, internal route key choices contain colons (e.g., `capability:strategy-business-growth`). Payload uses these select option values to construct GraphQL enum identifiers. Colons are illegal characters in GraphQL enum names (`/[_A-Za-z][_0-9A-Za-z]*/`), triggering a validation exception during GraphQL schema construction.
-- **Impact:** Any client or integration relying on GraphQL is blocked. Does NOT affect the public site or Payload Admin (both use REST and Local API).
-- **Resolution Mandate (Amendment A):** Do NOT treat `capability:slug` -> `capability_slug` as a casual direct rename, as these values participate in persisted CMS/navigation identities. When addressed in Phase G, preserve route identity and stored meaning; prefer a GraphQL-safe mapping/representation or use an explicit migration proving navigation/public routes/content equivalence without patching Payload internals. Do NOT execute in Phase H mandate.
-- **Execution Target:** Phase G / Phase L.
+- **Description:** Any query sent to the GraphQL endpoint previously resulted in an unhandled internal error (HTTP 500) during GraphQL schema construction.
+- **Root Cause:** In `src/lib/content/route-registry.ts`, internal route key choices contained colons (e.g., `capability:strategy-business-growth`). Payload uses these select option values to construct GraphQL enum identifiers. Colons are illegal characters in GraphQL enum names (`/[_A-Za-z][_0-9A-Za-z]*/`), triggering a validation exception during GraphQL schema construction.
+- **Resolution (Amendment A Compliant):**
+  1. Preserved route identity, public paths (`/services/${slug}`), and stored meaning.
+  2. Sanitized internal capability route enum keys from `capability:${slug}` to `capability_${slug}` to comply with GraphQL enum specification `[_a-zA-Z0-9]`.
+  3. Applied explicit database migration `20261008_223729_phase_g_graphql_enum_sanitize.ts` using SQL `REPLACE("route", 'capability:', 'capability_')` to safely update stored enum values in PostgreSQL.
+  4. Maintained backward compatibility in `internalRoute()` helper.
+  5. Tested GraphQL queries: 5/5 PASSED with HTTP 200 responses.
+- **Execution Target:** Phase G (SEALED).
 
 ---
 

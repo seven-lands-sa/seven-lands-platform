@@ -18,10 +18,10 @@
 | **Site Globals (6 items)** | `FUNCTIONAL` | Globals in PostgreSQL | `verify-phase-c.ts` | Hours & Social empty | Owner data inputs (G1) |
 | **Leads Collection & Forms (Phase H)** | `COMPLETE` | Payload CMS + PostgreSQL | `verify-phase-h.ts` (5/5) | D2 resolved; 0 data loss | None (Mini operational lead manager) |
 | **WhatsApp Integration** | `COMPLETE` | Contact global / Code | Smoke tests | None | None |
-| **Technical SEO & Sitemap** | `COMPLETE` | Dynamic sitemap.ts / Code | Smoke tests / HTTP probes | None | SEO Control Center (Phase G) |
-| **GraphQL API** | `BROKEN` | Payload GraphQL Route | Manual HTTP probe | **Defect D1**: 500 error on query | Preserve identities / mapping (Phase G) |
-| **Analytics (GA4/GSC)** | `NOT STARTED`| Code placeholder | None | No IDs configured | Phase I implementation (non-blocking for organic; required for ads) |
-| **Marketing Pixels & Scripts**| `NOT STARTED`| None (Clean by design) | Probes confirm zero 3rd-party | Requires consent engine | Phase J |
-| **Consent Management** | `NOT STARTED`| None (No tracking cookies) | HTML inspect confirms 0 cookies | Must ship with analytics | Phase J |
-| **Admin Operations / Health** | `NOT STARTED`| None | None | None | Phase K |
-| **Database Migrations** | `COMPLETE` | 10 migration files | Reconstructed in repro DB | Drizzle push disabled | None |
+| **Technical SEO & Redirects** | `COMPLETE` | `src/collections/Redirects.ts` | `verify-phase-g.ts` (17/17) | None | Redirect Manager live |
+| **GraphQL API** | `COMPLETE` | Payload GraphQL Route | Defect D1 suite (5/5 passed) | D1 resolved; enum-safe mapping | None |
+| **Analytics (GA4/GSC/GTM)** | `COMPLETE` | `src/globals/TrackingSettings.ts` | `verify-phase-i.ts` (6/6) | None (Honest status `غير متصل` until credentials provided) | Owner IDs configuration |
+| **Marketing Pixels & CSP** | `COMPLETE` | TrackingSettings + hardened CSP | `verify-phase-i.ts` (6/6) | None; zero tracking before consent | Owner pixel credentials |
+| **Consent Management (v2)** | `COMPLETE` | `src/lib/consent.ts` + Banner | `verify-phase-i.ts` + Axe a11y | None (WCAG AA compliant) | None |
+| **Admin Operations & Health** | `COMPLETE` | `/api/admin/health` & `/search` | `verify-phase-k.ts` (6/6) | None | None |
+| **Database Migrations** | `COMPLETE` | 13 migration files | Reconstructed in PostgreSQL | `push: false` strictly enforced | None |

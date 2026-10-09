@@ -96,3 +96,26 @@
 - **COMMIT:** `83d013290ecf8bb1cd5032d9fa6e0fad5b1ee79a`
 - **END STATE:** Phase K sealed, verified, and committed.
 
+---
+
+## Release Candidate (RC) Milestone — Final Verification, Authority Convergence & Release Pack
+- **START:** 2026-10-09 05:30:00
+- **BASELINE:** HEAD `ee29488` (Phase K sealed).
+- **CHANGES & DRILLS:**
+  - Defect Register updated: D1 (GraphQL enum) and D2 (Durable leads) recorded as `FIXED / CLOSED`.
+  - Feature Completion Matrix reconciled: All 12 feature domains confirmed `COMPLETE`.
+  - Database & Migrations authority updated: 13 timestamped migrations logged under `push: false`.
+  - Disaster Recovery drill: Executed `pg_dump.exe -F c` producing verified `drill_pre_release.dump` (984 KB) with 2,308 TOC entries.
+  - Test suites sweep executed:
+    - `verify-phase-g.ts`: 17/17 PASSED
+    - `verify-phase-h.ts`: 5/5 PASSED
+    - `verify-phase-i.ts`: 6/6 PASSED
+    - `verify-phase-k.ts`: 6/6 PASSED
+    - `a11y.spec.ts`: 18/18 PASSED
+    - `smoke.spec.ts`: 37/37 PASSED
+    - `npm run typecheck`: 0 errors
+    - `npm run lint`: 0 errors
+    - `npm run build`: 76/76 routes compiled with PPR
+  - Produced `docs/release/RELEASE_CANDIDATE_REPORT.md` and `docs/release/STAGING_CUTOVER_PACK.md`.
+- **END STATE:** Local Release Candidate (RC1) completed, verified, documented, and sealed.
+
