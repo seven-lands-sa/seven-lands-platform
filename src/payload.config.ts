@@ -99,6 +99,16 @@ export default buildConfig({
           path: "/analytics",
           exact: true,
         },
+        siteHealth: {
+          Component: "/components/admin/SiteHealthView#SiteHealthView",
+          path: "/health",
+          exact: true,
+        },
+        globalSearch: {
+          Component: "/components/admin/GlobalSearchView#GlobalSearchView",
+          path: "/search",
+          exact: true,
+        },
       },
     },
   },

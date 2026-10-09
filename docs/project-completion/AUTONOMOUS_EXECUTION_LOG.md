@@ -77,3 +77,21 @@
 - **COMMIT:** `8de90cac18dc6c8b5ad5d48a15040822e2316924`
 - **END STATE:** Phase I & J sealed, verified, and committed.
 
+---
+
+## Phase K — Admin Operations & Site Health Diagnostics Checkpoint
+- **START:** 2026-10-09 03:30:00
+- **BASELINE:** HEAD `7f54b7f` (Phase I & J committed).
+- **CHANGES:**
+  - Added Global Unified Admin Search endpoint `src/app/api/admin/search/route.ts` across 7 collections (`Pages`, `Services`, `Projects`, `Insights`, `Leads`, `Media`, `Redirects`) with RBAC enforcement and PostgreSQL enum-safe querying.
+  - Added Site Health Diagnostics endpoint `src/app/api/admin/health/route.ts` checking DB connectivity/latency, migration sync, storage write permissions, content completeness, and system runtime specs.
+  - Added custom admin views `GlobalSearchView.tsx` and `SiteHealthView.tsx` with Arabic RTL-first interface.
+  - Registered views in `src/payload.config.ts` under `/admin/search` and `/admin/health`.
+  - Added verification suite `src/scripts/verify-phase-k.ts`.
+- **TESTS:**
+  - `verify-phase-k.ts`: 6/6 PASSED.
+  - `npm run typecheck`: 0 errors.
+  - `npm run lint`: 0 errors.
+  - `npm run build`: 76/76 routes generated cleanly.
+- **END STATE:** Phase K sealed, verified, ready to commit.
+
