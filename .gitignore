@@ -61,3 +61,6 @@ next-env.d.ts
 *.dump
 *.sql
 /backups/
+
+.vercel
+.env*
