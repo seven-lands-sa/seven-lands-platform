@@ -3,11 +3,13 @@ import { NextIntlClientProvider, hasLocale } from "next-intl";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
-import { getSiteIdentity } from "@/lib/content";
+import { getConsentSettings, getSiteIdentity, getTrackingSettings } from "@/lib/content";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { ScrollReveal } from "@/components/system/ScrollReveal";
 import { AnalyticsListener } from "@/components/system/AnalyticsListener";
+import { CookieConsentBanner } from "@/components/system/CookieConsentBanner";
+import { TrackingScripts } from "@/components/system/TrackingScripts";
 import "../globals.css";
 
 export function generateStaticParams() {
@@ -69,6 +71,11 @@ export default async function LocaleLayout({
   setRequestLocale(locale);
 
   const t = await getTranslations({ locale, namespace: "nav" });
+  const [trackingSettings, consentSettings] = await Promise.all([
+    getTrackingSettings(),
+    getConsentSettings(locale as "ar" | "en"),
+  ]);
+  const currentEnv = process.env.NODE_ENV === "production" ? "production" : "development";
   const dir = locale === "ar" ? "rtl" : "ltr";
   const htmlLang = locale === "ar" ? "ar-SA" : "en";
 
@@ -102,6 +109,7 @@ export default async function LocaleLayout({
           crossOrigin="anonymous"
           fetchPriority={locale === "en" ? "high" : undefined}
         />
+        <TrackingScripts settings={trackingSettings} env={currentEnv} />
       </head>
       <body className={locale === "ar" ? undefined : "latin"}>
         <a
@@ -117,6 +125,7 @@ export default async function LocaleLayout({
           <Footer locale={locale} />
           <ScrollReveal />
           <AnalyticsListener />
+          <CookieConsentBanner settings={consentSettings} locale={locale} />
         </NextIntlClientProvider>
       </body>
     </html>

@@ -28,6 +28,8 @@ import type {
   NavigationView,
   SiteSettingsView,
   SocialAccountsView,
+  TrackingSettingsView,
+  ConsentSettingsView,
 } from "./views";
 import { normalizePhone } from "./contact";
 
@@ -69,6 +71,38 @@ export function fallbackSiteSettings(locale: AppLocale): SiteSettingsView {
       latitude: null,
       longitude: null,
     },
+  };
+}
+
+export function fallbackTrackingSettings(): TrackingSettingsView {
+  return {
+    source: "fallback",
+    environments: ["production"],
+    googleAnalytics: { id: null, enabled: false },
+    gtm: { containerId: null, enabled: false },
+    googleAds: { conversionId: null, enabled: false },
+    metaPixel: { id: null, enabled: false },
+    snapPixel: { id: null, enabled: false },
+    tiktokPixel: { id: null, enabled: false },
+    linkedin: { partnerId: null, enabled: false },
+    clarity: { projectId: null, enabled: false },
+  };
+}
+
+export function fallbackConsentSettings(locale: AppLocale): ConsentSettingsView {
+  return {
+    source: "fallback",
+    enabled: true,
+    cookieExpiryMonths: 6,
+    bannerTitle: locale === "ar" ? "تفضيلات الخصوصية وملفات تعريف الارتباط" : "Privacy Preferences & Cookies",
+    bannerDescription:
+      locale === "ar"
+        ? "نستخدم ملفات تعريف الارتباط وأدوات التحليل لفهم استخدام الموقع وتحسين تجربتك وقياس أداء الحملات الإعلانية."
+        : "We use cookies and analytics tools to understand site usage, enhance your experience, and measure campaign effectiveness.",
+    acceptAllLabel: locale === "ar" ? "قبول الكل" : "Accept All",
+    rejectAllLabel: locale === "ar" ? "رفض غير الضروري" : "Reject Non-Essential",
+    preferencesLabel: locale === "ar" ? "تخصيص الخيارات" : "Preferences",
+    savePreferencesLabel: locale === "ar" ? "حفظ التفضيلات" : "Save Preferences",
   };
 }
 

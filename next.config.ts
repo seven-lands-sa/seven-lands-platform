@@ -12,19 +12,19 @@ const isProd = process.env.NODE_ENV === "production";
  */
 /**
  * A deliberately conservative CSP: it locks down script/style/object/base origins
- * without needing nonces (Next.js streams inline bootstrap scripts). Framing rules
- * are still delegated to the hosting layer. If GA4 / Meta Pixel are added later,
- * extend `script-src` and `connect-src` with their domains in the same commit.
+ * without needing nonces (Next.js streams inline bootstrap scripts).
+ * Native tracking domains for GA4, GTM, Meta, Snap, TikTok, Clarity, LinkedIn
+ * are permitted on script-src, img-src, and connect-src.
  */
 const csp = [
   "default-src 'self'",
   "base-uri 'self'",
   "object-src 'none'",
-  "img-src 'self' data: blob:",
+  "img-src 'self' data: blob: https://www.google-analytics.com https://www.googletagmanager.com https://www.facebook.com https://tr.snapchat.com https://analytics.tiktok.com https://px.ads.linkedin.com https://c.clarity.ms",
   "font-src 'self'",
   "style-src 'self' 'unsafe-inline'",
-  "script-src 'self' 'unsafe-inline'",
-  "connect-src 'self'",
+  "script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://connect.facebook.net https://sc-static.net https://analytics.tiktok.com https://snap.licdn.com https://www.clarity.ms",
+  "connect-src 'self' https://www.google-analytics.com https://analytics.google.com https://stats.g.doubleclick.net https://connect.facebook.net https://tr.snapchat.com https://analytics.tiktok.com https://px.ads.linkedin.com https://*.clarity.ms",
   "form-action 'self'",
 ].join("; ");
 

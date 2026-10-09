@@ -53,6 +53,8 @@ export const AuditEvents: CollectionConfig = {
         { label: "تعديل حسابات التواصل الاجتماعي", value: "social_updated" },
         { label: "تعديل الهيدر والتنقل", value: "navigation_updated" },
         { label: "تعديل الفوتر", value: "footer_updated" },
+        { label: "تعديل أدوات التتبع", value: "tracking_updated" },
+        { label: "تعديل إعدادات الموافقة", value: "consent_updated" },
         { label: "تغيير ظهور وسيط", value: "media_visibility_changed" },
         /* Phase D — media library lifecycle. */
         { label: "رفع وسيط", value: "media_uploaded" },
@@ -141,6 +143,8 @@ export const AuditEvents: CollectionConfig = {
         { label: "مقال", value: "insights" },
         { label: "عميل محتمل", value: "leads" },
         { label: "تحويل مسار", value: "redirects" },
+        { label: "أدوات التتبع", value: "tracking-settings" },
+        { label: "إعدادات الموافقة", value: "consent-settings" },
       ],
     },
     {

@@ -34,6 +34,8 @@ import type {
   NavigationView,
   SiteSettingsView,
   SocialAccountView,
+  TrackingSettingsView,
+  ConsentSettingsView,
   Weekday,
 } from "./views";
 
@@ -465,4 +467,122 @@ export function mapFooter(doc: RawFooter, locale: AppLocale): FooterView {
     rightsText: pick(doc?.copyright?.rightsText, locale),
   };
 }
+
+/* ── Tracking Settings ───────────────────────────────────────────────────────── */
+
+type RawTrackingSettings = {
+  environments?: ("production" | "preview" | "development")[] | null;
+  googleAnalyticsId?: string | null;
+  googleAnalyticsEnabled?: boolean | null;
+  gtmContainerId?: string | null;
+  gtmEnabled?: boolean | null;
+  googleAdsConversionId?: string | null;
+  googleAdsEnabled?: boolean | null;
+  metaPixelId?: string | null;
+  metaPixelEnabled?: boolean | null;
+  tiktokPixelId?: string | null;
+  tiktokPixelEnabled?: boolean | null;
+  snapPixelId?: string | null;
+  snapPixelEnabled?: boolean | null;
+  linkedinPartnerId?: string | null;
+  linkedinEnabled?: boolean | null;
+  clarityProjectId?: string | null;
+  clarityEnabled?: boolean | null;
+};
+
+async function readTrackingSettings(): Promise<RawGlobal<RawTrackingSettings>> {
+  "use cache";
+  cacheTag(CACHE_TAGS.trackingSettings);
+  cacheLife("minutes");
+  const payload = await getPayload({ config });
+  return (await payload.findGlobal({
+    slug: "tracking-settings",
+    depth: 0,
+    overrideAccess: true,
+  })) as unknown as RawTrackingSettings;
+}
+
+export function mapTrackingSettings(doc: RawTrackingSettings): TrackingSettingsView {
+  return {
+    source: "cms",
+    environments: doc.environments?.length ? doc.environments : ["production"],
+    googleAnalytics: {
+      id: doc.googleAnalyticsId?.trim() || null,
+      enabled: doc.googleAnalyticsEnabled === true,
+    },
+    gtm: {
+      containerId: doc.gtmContainerId?.trim() || null,
+      enabled: doc.gtmEnabled === true,
+    },
+    googleAds: {
+      conversionId: doc.googleAdsConversionId?.trim() || null,
+      enabled: doc.googleAdsEnabled === true,
+    },
+    metaPixel: {
+      id: doc.metaPixelId?.trim() || null,
+      enabled: doc.metaPixelEnabled === true,
+    },
+    snapPixel: {
+      id: doc.snapPixelId?.trim() || null,
+      enabled: doc.snapPixelEnabled === true,
+    },
+    tiktokPixel: {
+      id: doc.tiktokPixelId?.trim() || null,
+      enabled: doc.tiktokPixelEnabled === true,
+    },
+    linkedin: {
+      partnerId: doc.linkedinPartnerId?.trim() || null,
+      enabled: doc.linkedinEnabled === true,
+    },
+    clarity: {
+      projectId: doc.clarityProjectId?.trim() || null,
+      enabled: doc.clarityEnabled === true,
+    },
+  };
+}
+
+export const cmsTrackingSettings = readTrackingSettings;
+
+/* ── Consent Settings ────────────────────────────────────────────────────────── */
+
+type RawConsentSettings = {
+  enabled?: boolean | null;
+  cookieExpiryMonths?: number | null;
+  bannerTitle?: Localized;
+  bannerDescription?: Localized;
+  acceptAllLabel?: Localized;
+  rejectAllLabel?: Localized;
+  preferencesLabel?: Localized;
+  savePreferencesLabel?: Localized;
+};
+
+async function readConsentSettings(locale: AppLocale): Promise<RawGlobal<RawConsentSettings>> {
+  "use cache";
+  cacheTag(CACHE_TAGS.consentSettings);
+  cacheLife("minutes");
+  const payload = await getPayload({ config });
+  return (await payload.findGlobal({
+    slug: "consent-settings",
+    locale,
+    depth: 0,
+    overrideAccess: true,
+  })) as unknown as RawConsentSettings;
+}
+
+export function mapConsentSettings(doc: RawConsentSettings, locale: AppLocale): ConsentSettingsView {
+  return {
+    source: "cms",
+    enabled: doc.enabled !== false,
+    cookieExpiryMonths: typeof doc.cookieExpiryMonths === "number" ? doc.cookieExpiryMonths : 6,
+    bannerTitle: pick(doc.bannerTitle, locale),
+    bannerDescription: pick(doc.bannerDescription, locale),
+    acceptAllLabel: pick(doc.acceptAllLabel, locale) || (locale === "ar" ? "قبول الكل" : "Accept All"),
+    rejectAllLabel: pick(doc.rejectAllLabel, locale) || (locale === "ar" ? "رفض غير الضروري" : "Reject Non-Essential"),
+    preferencesLabel: pick(doc.preferencesLabel, locale) || (locale === "ar" ? "تخصيص الخيارات" : "Preferences"),
+    savePreferencesLabel: pick(doc.savePreferencesLabel, locale) || (locale === "ar" ? "حفظ التفضيلات" : "Save Preferences"),
+  };
+}
+
+export const cmsConsentSettings = readConsentSettings;
+
 

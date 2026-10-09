@@ -52,3 +52,27 @@
 - **COMMIT:** `313e125904dd1d4e31783fa85e82f325b4c56d3a`
 - **END STATE:** Phase G sealed, verified, and committed.
 
+---
+
+## Phase I & J — Analytics Architecture, Tracking Globals & Consent Engine Checkpoint
+- **START:** 2026-10-09 02:25:00
+- **BASELINE:** HEAD `313e125904dd1d4e31783fa85e82f325b4c56d3a` (Phase G sealed).
+- **CHANGES:**
+  - Added `src/globals/TrackingSettings.ts` (Tier 1 providers GA4, GTM, Google Ads, Meta, Snap, TikTok, LinkedIn, Clarity) with RBAC (`tracking.read`, `tracking.manage`).
+  - Added `src/globals/ConsentSettings.ts` (bilingual cookie banner settings) with RBAC.
+  - Added PostgreSQL migration `20261008_234513_phase_i_tracking_consent_globals.ts` applied with `push: false`.
+  - Added client consent management `src/lib/consent.ts` + Google Consent Mode v2 dispatcher.
+  - Added accessible `CookieConsentBanner.tsx` and `TrackingScripts.tsx` with zero pre-consent tracking.
+  - Added `PrivacyPreferencesButton.tsx` in `Footer.tsx` for re-opening consent preferences.
+  - Added admin analytics route `/api/admin/analytics` and component `AnalyticsDashboardView.tsx` with honest status (`غير متصل` when credentials unconfigured).
+  - Hardened CSP allowlist in `next.config.ts` without wildcards.
+  - Added audit actions `tracking_updated` and `consent_updated`.
+- **TESTS:**
+  - `verify-phase-i.ts`: 6/6 PASSED.
+  - `a11y.spec.ts`: 18/18 PASSED across desktop and mobile.
+  - `smoke.spec.ts`: 37/37 PASSED.
+  - `npm run typecheck`: 0 errors.
+  - `npm run lint`: 0 errors.
+  - `npm run build`: 74/74 routes generated cleanly.
+- **END STATE:** Phase I & J sealed, verified, ready to commit.
+

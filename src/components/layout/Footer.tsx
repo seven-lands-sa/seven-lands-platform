@@ -4,6 +4,7 @@ import { COPYRIGHT_YEAR } from "@/content/site";
 import type { AppLocale } from "@/i18n/routing";
 import { getFooter, getSiteIdentity, withWhatsAppMessage } from "@/lib/content";
 import { PhoneIcon, PinIcon, WhatsAppIcon } from "@/components/ui/Button";
+import { PrivacyPreferencesButton } from "@/components/system/PrivacyPreferencesButton";
 
 export async function Footer({ locale }: { locale: AppLocale }) {
   const [t, footer, identity] = await Promise.all([
@@ -186,6 +187,11 @@ export async function Footer({ locale }: { locale: AppLocale }) {
                 )}
               </li>
             ))}
+            <li>
+              <PrivacyPreferencesButton
+                label={locale === "ar" ? "تفضيلات الخصوصية" : "Privacy Preferences"}
+              />
+            </li>
           </ul>
         </div>
       </div>

@@ -19,6 +19,8 @@ export const CACHE_TAGS = {
   navigation: "navigation",
   footer: "footer",
   redirects: "redirects",
+  trackingSettings: "tracking-settings",
+  consentSettings: "consent-settings",
 } as const;
 
 export type CacheTag =

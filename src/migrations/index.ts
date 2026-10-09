@@ -10,6 +10,7 @@ import * as migration_20261008_103658_phase_f_service_glyph_registry from './202
 import * as migration_20261008_220122_phase_h_leads_collection from './20261008_220122_phase_h_leads_collection';
 import * as migration_20261008_223729_phase_g_graphql_enum_sanitize from './20261008_223729_phase_g_graphql_enum_sanitize';
 import * as migration_20261008_225211_phase_g_redirects_collection from './20261008_225211_phase_g_redirects_collection';
+import * as migration_20261008_234513_phase_i_tracking_consent_globals from './20261008_234513_phase_i_tracking_consent_globals';
 
 export const migrations = [
   {
@@ -70,6 +71,11 @@ export const migrations = [
   {
     up: migration_20261008_225211_phase_g_redirects_collection.up,
     down: migration_20261008_225211_phase_g_redirects_collection.down,
-    name: '20261008_225211_phase_g_redirects_collection'
+    name: '20261008_225211_phase_g_redirects_collection',
+  },
+  {
+    up: migration_20261008_234513_phase_i_tracking_consent_globals.up,
+    down: migration_20261008_234513_phase_i_tracking_consent_globals.down,
+    name: '20261008_234513_phase_i_tracking_consent_globals'
   },
 ];

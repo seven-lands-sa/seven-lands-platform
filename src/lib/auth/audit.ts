@@ -34,6 +34,8 @@ export type AuditAction =
   | "social_updated"
   | "navigation_updated"
   | "footer_updated"
+  | "tracking_updated"
+  | "consent_updated"
   | "media_visibility_changed"
   /* Phase D — media library lifecycle. */
   | "media_uploaded"
@@ -94,7 +96,9 @@ export type AuditInput = {
     | "projects"
     | "insights"
     | "leads"
-    | "redirects";
+    | "redirects"
+    | "tracking-settings"
+    | "consent-settings";
   resourceId?: string | number | null;
   actorID?: string | number | null;
   actorEmail?: string | null;

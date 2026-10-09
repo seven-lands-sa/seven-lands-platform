@@ -41,7 +41,7 @@ for (const t of testQueries) {
     headers: { "content-type": "application/json" },
     body: JSON.stringify({ query: t.query }),
   });
-  const res = await handler(req as any);
+  const res = await handler(req as unknown as import("next/server").NextRequest);
   assert(res.status === 200, `${t.label} returns HTTP 200`);
 }
 

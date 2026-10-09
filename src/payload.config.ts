@@ -20,11 +20,13 @@ import { Roles } from '@/collections/Roles'
 import { Users } from '@/collections/Users'
 import {
   BusinessHours,
+  ConsentSettings,
   ContactSettings,
   Footer,
   Navigation,
   SiteSettings,
   SocialAccounts,
+  TrackingSettings,
 } from '@/globals'
 
 /**
@@ -92,6 +94,11 @@ export default buildConfig({
           path: "/media-picker",
           exact: true,
         },
+        analyticsDashboard: {
+          Component: "/components/admin/AnalyticsDashboardView#AnalyticsDashboardView",
+          path: "/analytics",
+          exact: true,
+        },
       },
     },
   },
@@ -107,7 +114,7 @@ export default buildConfig({
    * tagged) and never fetched from the browser. Still absent by design: services, projects,
    * insights, SEO, analytics, tracking, scripts and leads — those remain later phases.
    */
-  globals: [SiteSettings, ContactSettings, BusinessHours, SocialAccounts, Navigation, Footer],
+  globals: [SiteSettings, ContactSettings, BusinessHours, SocialAccounts, Navigation, Footer, TrackingSettings, ConsentSettings],
   /*
    * Arabic-first admin UI. Payload ships full Arabic translations and treats a language
    * as RTL via @payloadcms/translations' rtlLanguages — this only selects the default.

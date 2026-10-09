@@ -110,6 +110,8 @@ export interface Config {
     'social-accounts': SocialAccount;
     navigation: Navigation;
     footer: Footer;
+    'tracking-settings': TrackingSetting;
+    'consent-settings': ConsentSetting;
   };
   globalsSelect: {
     'site-settings': SiteSettingsSelect<false> | SiteSettingsSelect<true>;
@@ -118,6 +120,8 @@ export interface Config {
     'social-accounts': SocialAccountsSelect<false> | SocialAccountsSelect<true>;
     navigation: NavigationSelect<false> | NavigationSelect<true>;
     footer: FooterSelect<false> | FooterSelect<true>;
+    'tracking-settings': TrackingSettingsSelect<false> | TrackingSettingsSelect<true>;
+    'consent-settings': ConsentSettingsSelect<false> | ConsentSettingsSelect<true>;
   };
   locale: 'ar' | 'en';
   widgets: {
@@ -430,6 +434,8 @@ export interface AuditEvent {
     | 'social_updated'
     | 'navigation_updated'
     | 'footer_updated'
+    | 'tracking_updated'
+    | 'consent_updated'
     | 'media_visibility_changed'
     | 'media_uploaded'
     | 'media_updated'
@@ -492,6 +498,8 @@ export interface AuditEvent {
         | 'insights'
         | 'leads'
         | 'redirects'
+        | 'tracking-settings'
+        | 'consent-settings'
       )
     | null;
   resourceId?: string | null;
@@ -3189,6 +3197,104 @@ export interface Footer {
   createdAt?: string | null;
 }
 /**
+ * إدارة معرّفات التحليل والتتبع الرسمية (GA4، سناب، ميتا، تيك توك، وغيرها). التفعيل يخضع لموافقة الزائر.
+ *
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "tracking-settings".
+ */
+export interface TrackingSetting {
+  id: number;
+  /**
+   * حدد البيئات التي يُسمح لأدوات التتبع بالعمل فيها. افتراضيًا: الإنتاج فقط.
+   */
+  environments: ('production' | 'preview' | 'development')[];
+  /**
+   * معرّف القياس المعتمد من Google Analytics 4.
+   */
+  googleAnalyticsId?: string | null;
+  googleAnalyticsEnabled?: boolean | null;
+  /**
+   * معرّف حاوية GTM (اختياري، في حال تفضيل إدارة العلامات من خلال GTM).
+   */
+  gtmContainerId?: string | null;
+  gtmEnabled?: boolean | null;
+  /**
+   * معرّف إعلانات Google لتحويلات الحملات الإعلانية.
+   */
+  googleAdsConversionId?: string | null;
+  googleAdsEnabled?: boolean | null;
+  /**
+   * معرّف بكسل ميتا الرقمي.
+   */
+  metaPixelId?: string | null;
+  metaPixelEnabled?: boolean | null;
+  /**
+   * معرّف بكسل سناب شات (UUID).
+   */
+  snapPixelId?: string | null;
+  snapPixelEnabled?: boolean | null;
+  /**
+   * معرّف بكسل تيك توك.
+   */
+  tiktokPixelId?: string | null;
+  tiktokPixelEnabled?: boolean | null;
+  /**
+   * معرّف الشريك لشبكة لينكد إن.
+   */
+  linkedinPartnerId?: string | null;
+  linkedinEnabled?: boolean | null;
+  /**
+   * معرّف مشروع Microsoft Clarity للخرائط الحرارية.
+   */
+  clarityProjectId?: string | null;
+  clarityEnabled?: boolean | null;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * إدارة لافتة ملفات تعريف الارتباط وفئات الموافقة (التحليلات والتسويق). متوافقة مع الأنظمة السعودية.
+ *
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "consent-settings".
+ */
+export interface ConsentSetting {
+  id: number;
+  /**
+   * عند التعطيل، لا تظهر لافتة الموافقة للزائر، ولا تعمل أدوات التتبع المعتمدة على الموافقة إلا عند التفعيل الصريح.
+   */
+  enabled?: boolean | null;
+  /**
+   * المدة التي تُحفظ فيها تفضيلات الزائر في المتصفح قبل طلب الموافقة مجددًا (الافتراضي 6 أشهر).
+   */
+  cookieExpiryMonths: number;
+  /**
+   * عنوان مختصر يظهر في أعلى اللافتة.
+   */
+  bannerTitle?: string | null;
+  /**
+   * شرح استخدام ملفات تعريف الارتباط وأدوات التحليل.
+   */
+  bannerDescription?: string | null;
+  /**
+   * افتراضيًا: قبول الكل / Accept All
+   */
+  acceptAllLabel?: string | null;
+  /**
+   * افتراضيًا: رفض غير الضروري / Reject Non-Essential
+   */
+  rejectAllLabel?: string | null;
+  /**
+   * افتراضيًا: الخيارات / Preferences
+   */
+  preferencesLabel?: string | null;
+  /**
+   * افتراضيًا: حفظ الخيارات / Save Preferences
+   */
+  savePreferencesLabel?: string | null;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "site-settings_select".
  */
@@ -3393,6 +3499,49 @@ export interface FooterSelect<T extends boolean = true> {
         owner?: T;
         rightsText?: T;
       };
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "tracking-settings_select".
+ */
+export interface TrackingSettingsSelect<T extends boolean = true> {
+  environments?: T;
+  googleAnalyticsId?: T;
+  googleAnalyticsEnabled?: T;
+  gtmContainerId?: T;
+  gtmEnabled?: T;
+  googleAdsConversionId?: T;
+  googleAdsEnabled?: T;
+  metaPixelId?: T;
+  metaPixelEnabled?: T;
+  snapPixelId?: T;
+  snapPixelEnabled?: T;
+  tiktokPixelId?: T;
+  tiktokPixelEnabled?: T;
+  linkedinPartnerId?: T;
+  linkedinEnabled?: T;
+  clarityProjectId?: T;
+  clarityEnabled?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "consent-settings_select".
+ */
+export interface ConsentSettingsSelect<T extends boolean = true> {
+  enabled?: T;
+  cookieExpiryMonths?: T;
+  bannerTitle?: T;
+  bannerDescription?: T;
+  acceptAllLabel?: T;
+  rejectAllLabel?: T;
+  preferencesLabel?: T;
+  savePreferencesLabel?: T;
   updatedAt?: T;
   createdAt?: T;
   globalType?: T;

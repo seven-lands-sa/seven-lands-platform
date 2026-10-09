@@ -86,7 +86,7 @@ export const Redirects: CollectionConfig = {
       },
     ],
     afterChange: [
-      async ({ doc, operation, previousDoc, req }) => {
+      async ({ doc, operation, req }) => {
         invalidateTags([CACHE_TAGS.redirects]);
 
         if (req?.user) {

@@ -58,6 +58,31 @@ export type SiteSettingsView = {
   };
 };
 
+export type TrackingSettingsView = {
+  source: ContentSource;
+  environments: ("production" | "preview" | "development")[];
+  googleAnalytics: { id: string | null; enabled: boolean };
+  gtm: { containerId: string | null; enabled: boolean };
+  googleAds: { conversionId: string | null; enabled: boolean };
+  metaPixel: { id: string | null; enabled: boolean };
+  snapPixel: { id: string | null; enabled: boolean };
+  tiktokPixel: { id: string | null; enabled: boolean };
+  linkedin: { partnerId: string | null; enabled: boolean };
+  clarity: { projectId: string | null; enabled: boolean };
+};
+
+export type ConsentSettingsView = {
+  source: ContentSource;
+  enabled: boolean;
+  cookieExpiryMonths: number;
+  bannerTitle: string | null;
+  bannerDescription: string | null;
+  acceptAllLabel: string;
+  rejectAllLabel: string;
+  preferencesLabel: string;
+  savePreferencesLabel: string;
+};
+
 export type ContactChannelType = "phone" | "whatsapp" | "email" | "custom";
 
 export type ContactChannelView = {

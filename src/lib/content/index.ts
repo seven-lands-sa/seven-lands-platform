@@ -1,24 +1,45 @@
 import type { AppLocale } from "@/i18n/routing";
 import { site } from "@/content/site";
 
-import { cmsBusinessHours, cmsContactSettings, cmsFooter, cmsNavigation, cmsSiteSettings, cmsSocialAccounts, mapBusinessHours, mapContactChannels, mapFooter, mapNavigation, mapSiteSettings, mapSocialAccounts } from "./cms";
+import {
+  cmsBusinessHours,
+  cmsConsentSettings,
+  cmsContactSettings,
+  cmsFooter,
+  cmsNavigation,
+  cmsSiteSettings,
+  cmsSocialAccounts,
+  cmsTrackingSettings,
+  mapBusinessHours,
+  mapConsentSettings,
+  mapContactChannels,
+  mapFooter,
+  mapNavigation,
+  mapSiteSettings,
+  mapSocialAccounts,
+  mapTrackingSettings,
+} from "./cms";
 import {
   fallbackBusinessHours,
+  fallbackConsentSettings,
   fallbackContactSettings,
   fallbackFooter,
   fallbackNavigation,
   fallbackSiteSettings,
   fallbackSocialAccounts,
+  fallbackTrackingSettings,
 } from "./fallback";
 import { channelOfType } from "./links";
 import type {
   BusinessHoursView,
+  ConsentSettingsView,
   ContactSettingsView,
   FooterView,
   NavigationView,
   SiteSettingsView,
   SiteIdentity,
   SocialAccountsView,
+  TrackingSettingsView,
 } from "./views";
 
 /**
@@ -107,6 +128,28 @@ export async function getBusinessHours(locale: AppLocale): Promise<BusinessHours
   } catch (error) {
     reportFailure("business-hours", error);
     return fallbackBusinessHours();
+  }
+}
+
+export async function getTrackingSettings(): Promise<TrackingSettingsView> {
+  try {
+    const doc = await cmsTrackingSettings();
+    if (!doc) return fallbackTrackingSettings();
+    return mapTrackingSettings(doc);
+  } catch (error) {
+    reportFailure("tracking-settings", error);
+    return fallbackTrackingSettings();
+  }
+}
+
+export async function getConsentSettings(locale: AppLocale): Promise<ConsentSettingsView> {
+  try {
+    const doc = await cmsConsentSettings(locale);
+    if (!doc) return fallbackConsentSettings(locale);
+    return mapConsentSettings(doc, locale);
+  } catch (error) {
+    reportFailure("consent-settings", error);
+    return fallbackConsentSettings(locale);
   }
 }
 

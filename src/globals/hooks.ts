@@ -21,7 +21,9 @@ export type AuditedGlobalOptions = {
     | "business-hours"
     | "social-accounts"
     | "navigation"
-    | "footer";
+    | "footer"
+    | "tracking-settings"
+    | "consent-settings";
   /** Human name shown in the log: "بيانات التواصل". */
   label: string;
   /** Cache tags this global owns (+ any global whose view depends on it). */
