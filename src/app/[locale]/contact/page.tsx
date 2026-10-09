@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import type { AppLocale } from "@/i18n/routing";
@@ -174,6 +175,19 @@ export default async function ContactPage({ params }: PageProps) {
 
             <aside className="lg:col-span-4 lg:col-start-9">
               <div className="sticky top-28 flex flex-col gap-6">
+                <div className="overflow-hidden rounded-[1.25rem] border border-ink-950/12 bg-white p-3 shadow-sm">
+                  <div className="relative aspect-[16/10] w-full overflow-hidden rounded-[0.875rem]">
+                    <Image
+                      src="/media/editorial/riyadh-consultation-space.webp"
+                      alt={locale === "ar" ? "مقر سفن لاند في الرياض — صالة الاستشارات" : "Seven Lands Riyadh HQ — Consultation Lounge"}
+                      fill
+                      priority
+                      sizes="(max-width: 1024px) 100vw, 30vw"
+                      className="object-cover"
+                    />
+                  </div>
+                </div>
+
                 <div className="rounded-[1.25rem] border border-ink-950/12 bg-white p-6">
                   <h2 className="display-3">{locale === "ar" ? "مشروع جديد؟" : "New project?"}</h2>
                   <p className="mt-4 text-[0.9375rem] leading-[1.9] text-steel-600">

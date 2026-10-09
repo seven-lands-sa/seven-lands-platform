@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { notFound } from "next/navigation";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
@@ -9,6 +10,7 @@ import { routing, type AppLocale } from "@/i18n/routing";
 import { buildMetadata } from "@/lib/seo";
 import { getSiteIdentity, withWhatsAppMessage, resolvePublicMedia } from "@/lib/content";
 import { getOtherServices, getService } from "@/lib/services/public";
+import { SERVICE_MEDIA } from "@/lib/services/images";
 import { breadcrumbSchema, faqSchema, serviceSchema } from "@/lib/schema";
 import { ArrowRight, ButtonAnchor, ButtonLink, WhatsAppIcon } from "@/components/ui/Button";
 import { LandGlyph } from "@/components/brand/LandGlyphs";
@@ -126,6 +128,31 @@ export default async function ServiceDetailPage({ params }: PageProps) {
               </div>
             </div>
           </div>
+
+          {/* CINEMATIC MEDIA SHOWCASE */}
+          {SERVICE_MEDIA[service.slug] && (
+            <div className="mt-12 lg:mt-16 overflow-hidden rounded-[1.5rem] border border-ink-950/15 shadow-2xl bg-ink-950">
+              <div className="relative aspect-[21/9] sm:aspect-[16/7] w-full overflow-hidden">
+                <Image
+                  src={SERVICE_MEDIA[service.slug].src}
+                  alt={locale === "ar" ? SERVICE_MEDIA[service.slug].altAr : SERVICE_MEDIA[service.slug].altEn}
+                  fill
+                  priority
+                  sizes="(max-width: 1200px) 100vw, 1200px"
+                  className="object-cover transition-transform duration-700 hover:scale-[1.02]"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-ink-950/85 via-transparent to-black/20" />
+                <div className="absolute bottom-4 start-6 end-6 flex items-center justify-between text-white/90">
+                  <span className="text-[0.875rem] font-bold tracking-tight">
+                    {locale === "ar" ? SERVICE_MEDIA[service.slug].altAr : SERVICE_MEDIA[service.slug].altEn}
+                  </span>
+                  <span className="num text-[0.75rem] bg-white/20 px-3 py-1 rounded-full backdrop-blur-xs font-semibold">
+                    LAND {service.number}
+                  </span>
+                </div>
+              </div>
+            </div>
+          )}
         </div>
       </section>
 

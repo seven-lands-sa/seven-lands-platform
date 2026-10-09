@@ -37,6 +37,10 @@ yarn-error.log*
 # browser ops profile and daemon
 /browser-ops-profile/
 scripts/browser-actions/*.tmp
+scripts/browser-actions/.*
+scripts/browser-actions/*.png
+scripts/browser-actions/*.json
+.neon
 
 # vercel
 .vercel

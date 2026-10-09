@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import type { AppLocale } from "@/i18n/routing";
 import { getServiceIndex } from "@/lib/services/public";
+import { SERVICE_MEDIA } from "@/lib/services/images";
 import { buildMetadata } from "@/lib/seo";
 import { getSiteIdentity } from "@/lib/content";
 import { breadcrumbSchema, serviceSchema } from "@/lib/schema";
@@ -97,7 +99,7 @@ export default async function ServicesPage({ params }: PageProps) {
                   href={`/services/${service.slug}`}
                   data-analytics="service_cta_click"
                   data-analytics-location="services_hub"
-                  className="grid gap-6 py-9 transition-colors duration-200 md:grid-cols-12 md:gap-8 lg:py-11"
+                  className="grid gap-6 py-9 transition-colors duration-200 md:grid-cols-12 md:gap-8 lg:py-11 items-center"
                 >
                   <div className="flex items-start gap-5 md:col-span-5">
                     <span className="num pt-1 text-[0.8125rem] font-semibold text-muted">
@@ -115,10 +117,26 @@ export default async function ServicesPage({ params }: PageProps) {
                     </div>
                   </div>
 
-                  <div className="md:col-span-4 md:col-start-7">
+                  {/* Photographic Preview */}
+                  <div className="md:col-span-3 md:col-start-6">
+                    {SERVICE_MEDIA[service.slug] && (
+                      <div className="relative aspect-[16/10] w-full overflow-hidden rounded-[1rem] bg-ink-950/5 shadow-xs">
+                        <Image
+                          src={SERVICE_MEDIA[service.slug].src}
+                          alt={locale === "ar" ? SERVICE_MEDIA[service.slug].altAr : SERVICE_MEDIA[service.slug].altEn}
+                          fill
+                          sizes="(max-width: 768px) 100vw, 25vw"
+                          className="object-cover transition-transform duration-500 group-hover:scale-105"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-ink-950/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+                      </div>
+                    )}
+                  </div>
+
+                  <div className="md:col-span-2 md:col-start-9">
                     <p className="eyebrow mb-3">{t("capabilitiesLabel")}</p>
                     <ul className="flex flex-wrap gap-x-2 gap-y-2" role="list">
-                      {service.capabilities.slice(0, 4).map((capability) => (
+                      {service.capabilities.slice(0, 3).map((capability) => (
                         <li
                           key={capability}
                           className="rounded-full border border-ink-950/12 px-3 py-1 text-[0.8125rem] text-steel-600"
@@ -126,16 +144,16 @@ export default async function ServicesPage({ params }: PageProps) {
                           {capability}
                         </li>
                       ))}
-                      {service.capabilities.length > 4 ? (
+                      {service.capabilities.length > 3 ? (
                         <li className="num px-3 py-1 text-[0.8125rem] text-muted">
-                          +{service.capabilities.length - 4}
+                          +{service.capabilities.length - 3}
                         </li>
                       ) : null}
                     </ul>
                   </div>
 
                   <div className="flex items-center md:col-span-2 md:col-start-11 md:justify-end">
-                    <span className="inline-flex items-center gap-2 text-[0.875rem] font-semibold text-navy-800">
+                    <span className="inline-flex items-center gap-2 text-[0.875rem] font-semibold text-navy-800 group-hover:text-ink-950">
                       <span>{tCta("openLand")}</span>
                       <ArrowRight />
                     </span>

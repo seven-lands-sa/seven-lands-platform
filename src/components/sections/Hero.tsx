@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { getLocale, getTranslations } from "next-intl/server";
 import type { AppLocale } from "@/i18n/routing";
 import { getSiteIdentity, withWhatsAppMessage } from "@/lib/content";
@@ -146,20 +147,42 @@ export async function Hero({ content }: { content?: HeroContent } = {}) {
             </p>
           </div>
 
-          {/* Brand composition panel. */}
+          {/* Brand composition & Riyadh HQ visual panel */}
           <div className="lg:col-span-4 lg:col-start-9">
             <figure className="relative">
-              <div className="on-dark relative overflow-hidden rounded-[1.25rem] bg-ink-950 px-6 pt-8 pb-2 sm:px-10 sm:pt-10">
-                <div
-                  aria-hidden="true"
-                  className="pointer-events-none absolute inset-0 opacity-[0.55]"
-                  style={{
-                    backgroundImage:
-                      "linear-gradient(to right, rgba(245,247,248,0.06) 1px, transparent 1px), linear-gradient(to bottom, rgba(245,247,248,0.06) 1px, transparent 1px)",
-                    backgroundSize: "56px 56px",
-                  }}
-                />
-                <PathArt variant="dark" className="relative mx-auto max-h-[24rem] w-full max-w-[20rem]" />
+              <div className="on-dark relative overflow-hidden rounded-[1.5rem] bg-ink-950 p-5 sm:p-6 shadow-2xl border border-ink-950/20">
+                <div className="relative aspect-[4/3] w-full overflow-hidden rounded-[1rem] bg-ink-950/40">
+                  <Image
+                    src="/media/editorial/riyadh-kafd-skyline.webp"
+                    alt={locale === "ar" ? "أفق الرياض ومركز الملك عبدالله المالي — سفن لاند" : "Riyadh KAFD Skyline — Seven Lands"}
+                    fill
+                    priority
+                    sizes="(max-width: 1024px) 100vw, 35vw"
+                    className="object-cover transition-transform duration-700 hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-ink-950 via-ink-950/35 to-transparent" />
+                  <div className="absolute bottom-3 start-3.5 end-3.5 flex items-center justify-between text-white/90">
+                    <span className="text-[0.8125rem] font-bold tracking-tight">
+                      {locale === "ar" ? "الرياض · المملكة العربية السعودية" : "Riyadh · Saudi Arabia"}
+                    </span>
+                    <span className="num text-[0.6875rem] bg-white/20 px-2 py-0.5 rounded-full backdrop-blur-xs font-semibold">
+                      KAFD
+                    </span>
+                  </div>
+                </div>
+
+                <div className="mt-5 flex items-center justify-between border-t border-white/10 pt-4">
+                  <div className="flex items-center gap-2.5">
+                    <span className="relative flex h-2 w-2">
+                      <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-ice-400 opacity-75" />
+                      <span className="relative inline-flex h-2 w-2 rounded-full bg-ice-400" />
+                    </span>
+                    <span className="text-[0.75rem] font-medium text-white/70">
+                      {locale === "ar" ? "المقر الرئيسي وعمليات النمو" : "HQ & Growth Operations"}
+                    </span>
+                  </div>
+                  <span className="num text-[0.75rem] font-bold text-ice-400">07 LANDS</span>
+                </div>
               </div>
               <figcaption className="mt-4 flex items-center gap-3 text-[0.8125rem] text-muted">
                 <span className="num">07</span>

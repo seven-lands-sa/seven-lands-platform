@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import { principles, process } from "@/content/home";
@@ -88,8 +89,21 @@ export default async function AboutPage({ params }: PageProps) {
             </div>
 
             <div className="lg:col-span-4 lg:col-start-9">
-              <div className="on-dark rounded-[1.25rem] bg-ink-950 p-6">
-                <PathArt variant="dark" animate={false} className="max-h-64" />
+              <div className="overflow-hidden rounded-[1.5rem] border border-ink-950/15 bg-white p-3 shadow-xl">
+                <div className="relative aspect-[4/3] w-full overflow-hidden rounded-[1.125rem] bg-ink-950/5">
+                  <Image
+                    src="/media/editorial/studio-discovery-workshop.webp"
+                    alt={locale === "ar" ? "استوديو سفن لاند في الرياض — مساحة العمل والتخطيط الإبداعي" : "Seven Lands Studio Riyadh — Strategy & Creative Workshop"}
+                    fill
+                    priority
+                    sizes="(max-width: 1024px) 100vw, 35vw"
+                    className="object-cover transition-transform duration-500 hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-ink-950/60 to-transparent" />
+                  <span className="absolute bottom-3 start-4 text-[0.8125rem] font-bold text-white">
+                    {locale === "ar" ? "استوديو التخطيط والتنفيذ · الرياض" : "Studio & Workshop · Riyadh"}
+                  </span>
+                </div>
               </div>
             </div>
           </div>
@@ -98,11 +112,22 @@ export default async function AboutPage({ params }: PageProps) {
 
       {/* STORY */}
       <Section tone="white" aria-labelledby="story-heading">
-        <div className="grid gap-10 lg:grid-cols-12">
+        <div className="grid gap-10 lg:grid-cols-12 items-center">
           <div className="lg:col-span-5">
             <h2 id="story-heading" className="display-2 max-w-[20ch]">
               {t("storyHeading")}
             </h2>
+            <div className="mt-8 overflow-hidden rounded-[1.25rem] border border-ink-950/10 shadow-md">
+              <div className="relative aspect-[16/10] w-full overflow-hidden">
+                <Image
+                  src="/media/editorial/riyadh-consultation-space.webp"
+                  alt={locale === "ar" ? "مساحة الاستشارات والترحيب بشركاء الأعمال في الرياض" : "Client Consultation Lounge — Seven Lands Riyadh"}
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 40vw"
+                  className="object-cover transition-transform duration-500 hover:scale-105"
+                />
+              </div>
+            </div>
           </div>
           <div className="lg:col-span-6 lg:col-start-7">
             <div className="flex flex-col gap-6">

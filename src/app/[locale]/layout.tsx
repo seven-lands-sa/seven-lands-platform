@@ -10,6 +10,7 @@ import { ScrollReveal } from "@/components/system/ScrollReveal";
 import { AnalyticsListener } from "@/components/system/AnalyticsListener";
 import { CookieConsentBanner } from "@/components/system/CookieConsentBanner";
 import { TrackingScripts } from "@/components/system/TrackingScripts";
+import { SalesChatWidget } from "@/components/chat/SalesChatWidget";
 import "../globals.css";
 
 export function generateStaticParams() {
@@ -126,6 +127,7 @@ export default async function LocaleLayout({
           <ScrollReveal />
           <AnalyticsListener />
           <CookieConsentBanner settings={consentSettings} locale={locale} />
+          <SalesChatWidget />
         </NextIntlClientProvider>
       </body>
     </html>

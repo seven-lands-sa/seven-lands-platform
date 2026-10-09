@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import { publishedCaseStudies, workEmptyState } from "@/content/work";
 import { getServiceLabels } from "@/lib/services/public";
+import { CRAFT_MEDIA } from "@/lib/services/images";
 import type { AppLocale } from "@/i18n/routing";
 import { buildMetadata } from "@/lib/seo";
 import { getSiteIdentity } from "@/lib/content";
@@ -166,6 +168,49 @@ export default async function WorkPage({ params }: PageProps) {
             </div>
           </div>
         )}
+      </Section>
+
+      {/* MULTIDISCIPLINARY CRAFT & DISCIPLINE VIGNETTES */}
+      <Section tone="light" aria-labelledby="craft-heading">
+        <div className="mb-12">
+          <p className="eyebrow">{locale === "ar" ? "الحرفية والإتقان" : "Disciplines & Craft"}</p>
+          <h2 id="craft-heading" className="display-2 mt-4 max-w-[26ch]">
+            {locale === "ar" ? "مجالات الإبداع ومعايير التنفيذ" : "Disciplines of Execution & Craftsmanship"}
+          </h2>
+          <p className="lede mt-5 max-w-[48ch] text-[1rem]">
+            {locale === "ar"
+              ? "نلبي متطلبات المشاريع الطموحة عبر دمج الاستراتيجية، والهوية البصرية، والإنتاج السينمائي، وهندسة البرمجيات."
+              : "We deliver ambitious mandates through the convergence of strategy, brand architecture, cinematic film, and software engineering."}
+          </p>
+        </div>
+
+        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+          {Object.entries(CRAFT_MEDIA).map(([key, item]) => (
+            <div
+              key={key}
+              className="group overflow-hidden rounded-[1.25rem] border border-ink-950/12 bg-white transition-all duration-300 hover:border-ink-950/30 hover:shadow-lg"
+            >
+              <div className="relative aspect-[4/3] w-full overflow-hidden bg-ink-950/5">
+                <Image
+                  src={item.src}
+                  alt={locale === "ar" ? item.titleAr : item.titleEn}
+                  fill
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                  className="object-cover transition-transform duration-500 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-ink-950/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+              </div>
+              <div className="p-5">
+                <h3 className="text-[1.0625rem] font-bold text-ink-950">
+                  {locale === "ar" ? item.titleAr : item.titleEn}
+                </h3>
+                <p className="mt-2 text-[0.875rem] leading-[1.8] text-steel-600">
+                  {locale === "ar" ? item.descAr : item.descEn}
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
       </Section>
 
       <FinalCta />

@@ -2,12 +2,51 @@
 
 import { useMemo, useState } from "react";
 import { clsx } from "clsx";
-import { useTranslations } from "next-intl";
+import Image from "next/image";
+import { useLocale, useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { smoothPath } from "@/lib/path";
 import type { ServiceView } from "@/lib/services/public";
 import { LandGlyph } from "@/components/brand/LandGlyphs";
 import { ArrowRight } from "@/components/ui/Button";
+
+const SERVICE_IMAGES: Record<string, { src: string; altAr: string; altEn: string }> = {
+  "strategy-business-growth": {
+    src: "/media/services/01-strategy-growth.webp",
+    altAr: "استراتيجية ونمو الأعمال — مقر سفن لاند في الرياض",
+    altEn: "Strategy & Business Growth — Seven Lands Riyadh",
+  },
+  "branding-creative": {
+    src: "/media/services/02-branding-creative.webp",
+    altAr: "الهوية والعلامة التجارية — حرفية التصميم والخط العربي",
+    altEn: "Branding & Creative Identity — Typography & Design Craft",
+  },
+  "content-production": {
+    src: "/media/services/03-content-production.webp",
+    altAr: "الإنتاج الإبداعي وصناعة المحتوى — كاميرات سينمائية واستوديو متكامل",
+    altEn: "Creative Content Production — Cinema Optics & Studio Production",
+  },
+  "social-digital-presence": {
+    src: "/media/services/04-social-presence.webp",
+    altAr: "التواجد الرقمي والشبكات — إدارة الحملات وصناعة التأثير",
+    altEn: "Social & Digital Presence — Content Command Center",
+  },
+  "performance-acquisition": {
+    src: "/media/services/05-performance-acquisition.webp",
+    altAr: "الأداء واكتساب العملاء — تحليلات وبيانات دقيقة لنمو المبيعات",
+    altEn: "Performance & Acquisition — Growth Marketing Telemetry",
+  },
+  "web-commerce-experiences": {
+    src: "/media/services/06-web-experiences.webp",
+    altAr: "التجارب الرقمية والتجارة — مواقع وتطبيقات تفاعلية متقدمة",
+    altEn: "Web & Commerce Experiences — Flagship Digital Platforms",
+  },
+  "software-automation-technology": {
+    src: "/media/services/07-technology-automation.webp",
+    altAr: "البرمجيات والأتمتة والتقنية — حلول سحابية وأنظمة رقمية متطورة",
+    altEn: "Software, Automation & Technology — Cloud & Backend Systems",
+  },
+};
 
 /**
  * THE SEVEN LANDS PATH — the signature interaction.
@@ -45,6 +84,10 @@ export function LandsSystem({ lands }: { lands: LandsSystemItem[] }) {
   }, [nodePoints]);
 
   const activeLand = lands[active];
+
+  const locale = useLocale();
+  const isAr = locale === "ar";
+  const activeImage = SERVICE_IMAGES[activeLand.slug];
 
   return (
     <div>
@@ -124,18 +167,31 @@ export function LandsSystem({ lands }: { lands: LandsSystemItem[] }) {
           <div
             id="land-detail"
             aria-live="polite"
-            className="on-dark relative h-full overflow-hidden rounded-[1.25rem] bg-ink-950 p-8 xl:p-10"
+            className="on-dark relative h-full overflow-hidden rounded-[1.25rem] bg-ink-950 p-8 xl:p-10 shadow-xl"
           >
+            {activeImage && (
+              <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+                <Image
+                  src={activeImage.src}
+                  alt={isAr ? activeImage.altAr : activeImage.altEn}
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 60vw"
+                  className="object-cover opacity-30 transition-transform duration-700 ease-out"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-ink-950 via-ink-950/85 to-ink-950/50" />
+              </div>
+            )}
+
             <div
               aria-hidden="true"
-              className="pointer-events-none absolute -end-16 -top-20 h-64 w-64 rounded-full border border-white/[0.06]"
+              className="pointer-events-none absolute -end-16 -top-20 h-64 w-64 rounded-full border border-white/[0.06] z-10"
             />
             <div
               aria-hidden="true"
-              className="pointer-events-none absolute -end-6 -top-4 h-40 w-40 rounded-full border border-white/[0.05]"
+              className="pointer-events-none absolute -end-6 -top-4 h-40 w-40 rounded-full border border-white/[0.05] z-10"
             />
 
-            <div className="flex items-start justify-between gap-6">
+            <div className="relative z-10 flex items-start justify-between gap-6">
               <div>
                 <p className="eyebrow text-ice-400">{t("nodeCount", { number: activeLand.number })}</p>
                 <h3 className="display-3 mt-4 text-offwhite">{activeLand.title}</h3>
@@ -143,22 +199,22 @@ export function LandsSystem({ lands }: { lands: LandsSystemItem[] }) {
               <LandGlyph glyph={activeLand.glyph} className="h-9 w-9 text-ice-400" />
             </div>
 
-            <p className="mt-5 text-[1.0625rem] leading-[1.85] text-offwhite/80">
+            <p className="relative z-10 mt-5 text-[1.0625rem] leading-[1.85] text-offwhite/90">
               {activeLand.promise}
             </p>
 
-            <ul className="mt-7 flex flex-wrap gap-2">
+            <ul className="relative z-10 mt-7 flex flex-wrap gap-2">
               {activeLand.capabilities.slice(0, 5).map((capability) => (
                 <li
                   key={capability}
-                  className="rounded-full border border-white/15 px-3 py-1.5 text-[0.8125rem] text-offwhite/75"
+                  className="rounded-full border border-white/20 bg-white/5 px-3 py-1.5 text-[0.8125rem] text-offwhite/85 backdrop-blur-xs"
                 >
                   {capability}
                 </li>
               ))}
             </ul>
 
-            <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3">
+            <div className="relative z-10 mt-8 flex flex-wrap items-center gap-x-6 gap-y-3">
               <Link
                 href={`/services/${activeLand.slug}`}
                 className="group/btn inline-flex items-center gap-2.5 text-[0.9375rem] font-semibold text-offwhite underline-offset-[6px] hover:underline"
@@ -174,30 +230,47 @@ export function LandsSystem({ lands }: { lands: LandsSystemItem[] }) {
         </div>
       </div>
 
-      {/* ---------------- Mobile / tablet: readable stacked index ---------------- */}
-      <ul className="flex flex-col gap-4 lg:hidden" role="list">
+      {/* ---------------- Mobile / tablet: readable stacked index with visual previews ---------------- */}
+      <ul className="flex flex-col gap-6 lg:hidden" role="list">
         {lands.map((land) => {
+          const img = SERVICE_IMAGES[land.slug];
           return (
             <li key={land.slug}>
               <Link
                 href={`/services/${land.slug}`}
-                className="group flex flex-col gap-3 rounded-[1rem] border border-ink-950/12 bg-white p-5 transition-colors duration-200 hover:border-ink-950/30"
+                className="group flex flex-col overflow-hidden rounded-[1.25rem] border border-ink-950/12 bg-white transition-colors duration-200 hover:border-ink-950/30 shadow-xs"
                 data-analytics="service_cta_click"
                 data-analytics-location="lands_mobile"
               >
-                <span className="flex items-center justify-between gap-4">
-                  <span className="flex items-center gap-3">
-                    <span className="num text-[0.8125rem] font-semibold text-muted">
-                      {land.number}
+                {img && (
+                  <div className="relative h-48 w-full overflow-hidden bg-ink-950/5">
+                    <Image
+                      src={img.src}
+                      alt={isAr ? img.altAr : img.altEn}
+                      fill
+                      sizes="(max-width: 768px) 100vw, 50vw"
+                      className="object-cover transition-transform duration-500 group-hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-ink-950/60 to-transparent" />
+                    <span className="absolute bottom-3 start-4 flex items-center gap-2 text-white">
+                      <span className="num text-[0.75rem] font-bold bg-white/20 px-2 py-0.5 rounded-full backdrop-blur-xs">
+                        {land.number}
+                      </span>
                     </span>
-                    <LandGlyph glyph={land.glyph} className="h-5 w-5 text-navy-800" />
+                  </div>
+                )}
+                <div className="flex flex-col gap-3 p-5">
+                  <span className="flex items-center justify-between gap-4">
+                    <span className="flex items-center gap-2">
+                      <LandGlyph glyph={land.glyph} className="h-5 w-5 text-navy-800" />
+                      <span className="display-3 !text-[1.1875rem]">{land.title}</span>
+                    </span>
+                    <ArrowRight className="text-steel-600" />
                   </span>
-                  <ArrowRight className="text-steel-600" />
-                </span>
-                <span className="display-3 !text-[1.1875rem]">{land.title}</span>
-                <span className="text-[0.9375rem] leading-relaxed text-steel-600">
-                  {land.promise}
-                </span>
+                  <span className="text-[0.9375rem] leading-relaxed text-steel-600">
+                    {land.promise}
+                  </span>
+                </div>
               </Link>
             </li>
           );
