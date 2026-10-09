@@ -47,6 +47,46 @@ export function getStoredConsent(): ConsentState | null {
   return null;
 }
 
+/*
+ * useSyncExternalStore contract: getSnapshot MUST return the same reference while the store is
+ * unchanged. getStoredConsent() builds a fresh object on every call, so passing it directly made
+ * React see a "changed" store on every render and loop until it aborted (React error #185) — the
+ * whole page crashed for every visitor who had already saved a consent choice.
+ * The snapshot is therefore memoised on the raw cookie string.
+ */
+let cachedRawConsent: string | null | undefined;
+let cachedConsent: ConsentState | null = null;
+
+function readRawConsentCookie(): string | null {
+  if (typeof document === "undefined") return null;
+  const match = document.cookie.match(new RegExp(`(^|;\\s*)(${CONSENT_COOKIE_NAME})=([^;]*)`));
+  return match && match[3] ? match[3] : null;
+}
+
+/** Referentially stable consent snapshot for useSyncExternalStore. */
+export function getConsentSnapshot(): ConsentState | null {
+  const raw = readRawConsentCookie();
+  if (raw !== cachedRawConsent) {
+    cachedRawConsent = raw;
+    cachedConsent = raw === null ? null : getStoredConsent();
+  }
+  return cachedConsent;
+}
+
+/** Server snapshot: no consent is ever known during SSR. */
+export function getServerConsentSnapshot(): ConsentState | null {
+  return null;
+}
+
+/** Subscribe to consent changes dispatched by saveConsent(). */
+export function subscribeConsent(callback: () => void): () => void {
+  if (typeof window === "undefined") return () => {};
+  window.addEventListener("sevenlands:consent_updated", callback);
+  return () => {
+    window.removeEventListener("sevenlands:consent_updated", callback);
+  };
+}
+
 export function saveConsent(
   consent: { analytics: boolean; marketing: boolean },
   expiryMonths: number = 6,

@@ -3,31 +3,15 @@
 import { useSyncExternalStore } from "react";
 import Script from "next/script";
 import type { TrackingSettingsView } from "@/lib/content/views";
-import { getStoredConsent, type ConsentState } from "@/lib/consent";
+import { getConsentSnapshot, getServerConsentSnapshot, subscribeConsent } from "@/lib/consent";
 
 interface TrackingScriptsProps {
   settings: TrackingSettingsView;
   env: string;
 }
 
-function subscribeConsent(callback: () => void) {
-  if (typeof window === "undefined") return () => {};
-  window.addEventListener("sevenlands:consent_updated", callback);
-  return () => {
-    window.removeEventListener("sevenlands:consent_updated", callback);
-  };
-}
-
-function getConsentSnapshot(): ConsentState | null {
-  return getStoredConsent();
-}
-
-function getServerSnapshot(): ConsentState | null {
-  return null;
-}
-
 export function TrackingScripts({ settings, env }: TrackingScriptsProps) {
-  const consent = useSyncExternalStore(subscribeConsent, getConsentSnapshot, getServerSnapshot);
+  const consent = useSyncExternalStore(subscribeConsent, getConsentSnapshot, getServerConsentSnapshot);
 
   // Verify environment eligibility
   const isEnvAllowed = settings.environments.includes(env as "production" | "preview" | "development");

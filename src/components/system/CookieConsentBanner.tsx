@@ -2,27 +2,17 @@
 
 import { useSyncExternalStore, useState, useEffect } from "react";
 import type { ConsentSettingsView } from "@/lib/content/views";
-import { getStoredConsent, saveConsent, type ConsentState } from "@/lib/consent";
+import {
+  getConsentSnapshot,
+  getServerConsentSnapshot,
+  getStoredConsent,
+  saveConsent,
+  subscribeConsent,
+} from "@/lib/consent";
 
 interface CookieConsentBannerProps {
   settings: ConsentSettingsView;
   locale: string;
-}
-
-function subscribeConsent(callback: () => void) {
-  if (typeof window === "undefined") return () => {};
-  window.addEventListener("sevenlands:consent_updated", callback);
-  return () => {
-    window.removeEventListener("sevenlands:consent_updated", callback);
-  };
-}
-
-function getConsentSnapshot(): ConsentState | null {
-  return getStoredConsent();
-}
-
-function getServerSnapshot(): ConsentState | null {
-  return null;
 }
 
 const emptySubscribe = () => () => {};
@@ -37,7 +27,7 @@ function getServerMounted(): boolean {
 
 export function CookieConsentBanner({ settings, locale }: CookieConsentBannerProps) {
   const mounted = useSyncExternalStore(emptySubscribe, getClientMounted, getServerMounted);
-  const consent = useSyncExternalStore(subscribeConsent, getConsentSnapshot, getServerSnapshot);
+  const consent = useSyncExternalStore(subscribeConsent, getConsentSnapshot, getServerConsentSnapshot);
   const [manualOpen, setManualOpen] = useState(false);
   const [showPreferences, setShowPreferences] = useState(false);
   const [analyticsAllowed, setAnalyticsAllowed] = useState(false);
