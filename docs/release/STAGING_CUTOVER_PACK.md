@@ -18,18 +18,18 @@ This pack provides the exact, non-destructive step-by-step procedure for deployi
 ### Target Environment Variables (`.env.production`):
 ```bash
 # Public & Canonical Identity
-SITE_CANONICAL_URL=https://sevnland.com
-RUNTIME_ORIGIN=https://sevnland.com
-NEXT_PUBLIC_APP_URL=https://sevnland.com
+SITE_CANONICAL_URL=https://7-lands.com
+RUNTIME_ORIGIN=https://7-lands.com
+NEXT_PUBLIC_APP_URL=https://7-lands.com
 
-# Database Connection (Managed PostgreSQL 16 or 17)
+# Database Connection (Managed PostgreSQL 16 or 17 - Neon Serverless)
 DATABASE_URI=postgresql://<user>:<password>@<host>:5432/<dbname>?sslmode=require
 
 # Payload CMS Security Secret (Cryptographically random 64-char string)
 PAYLOAD_SECRET=<generated_high_entropy_secret>
 
 # Trusted Origins (Must match canonical domains and staging previews)
-PAYLOAD_TRUSTED_ORIGINS=https://sevnland.com,https://staging.sevnland.com
+PAYLOAD_TRUSTED_ORIGINS=https://7-lands.com,https://staging.7-lands.com,https://www.7-lands.com
 
 # Node Environment
 NODE_ENV=production
@@ -39,30 +39,33 @@ NODE_ENV=production
 
 ## 3. Owner Gates Checklist (Operational Sign-Offs)
 
-Before DNS cutover, the owner must provide/approve the following 5 items:
+Before DNS cutover, the owner gates must be resolved:
 
-- [ ] **Owner Gate G1 (Real Business Data):**
+- [ ] **Owner Gate G1_BUSINESS_DATA (Business Identity & Content):**
   - Verify confirmed office business hours in `/admin/globals/business-hours`.
   - Add official social media handles (LinkedIn, X/Twitter, Instagram) in `/admin/globals/social-accounts`.
   - Enter initial real client projects in `/admin/collections/projects` when NDAs permit.
 
-- [ ] **Owner Gate G2 (Cloud Media Storage Adapter):**
-  - Provision an S3-compatible bucket (Cloudflare R2 or AWS S3).
-  - Configure `@payloadcms/plugin-cloud-storage` with bucket name, access key ID, secret key, and public asset CDN domain.
+- [ ] **Owner Gate G2_PRODUCTION_STORAGE (Cloud Media Storage Adapter):**
+  - Provision an S3-compatible bucket (Cloudflare R2 recommended).
+  - Configure cloud storage with bucket name, access key ID, secret key, and public asset CDN domain.
 
-- [ ] **Owner Gate G3 (Legal & Compliance Review):**
-  - Review Arabic and English copy on `/privacy` and `/terms` with legal counsel.
+- [ ] **Owner Gate G3_LEGAL_APPROVAL (Legal & Compliance Review):**
+  - Review Arabic and English copy on `/privacy` and `/terms` for `7-lands.com`.
   - Confirm privacy consent banner copy in `/admin/globals/consent-settings`.
 
-- [ ] **Owner Gate G4 (Transactional Email):**
-  - Provide SMTP or Resend API key for Payload CMS (`nodemailerAdapter` or `@payloadcms/email-nodemailer`).
-  - Configure sender address: `notifications@sevnland.com`.
-  - Verifies admin password reset link delivery.
+- [ ] **Owner Gate G4_TRANSACTIONAL_EMAIL (Transactional Email):**
+  - Configure Resend API key for Payload CMS and application notifications.
+  - Configure sender address: `notifications@7-lands.com`.
+  - Verifies admin password reset and lead notification delivery.
 
-- [ ] **Owner Gate G5 (DNS & Staging Restore Drill):**
-  - Restore `drill_pre_release.dump` to the staging database using `pg_restore`.
+- [ ] **Owner Gate G5_HOSTING_AND_CUTOVER (DNS & Hosting Cutover):**
+  - Deploy to Vercel connected to Neon PostgreSQL.
   - Perform live verification on physical iOS (Safari) and Android (Chrome) devices.
-  - Update DNS A / CNAME records on domain registrar from legacy WordPress Hostinger instance to the new server IP / CDN.
+  - Configure DNS records on IONOS domain registrar (`7-lands.com`).
+
+- [ ] **Owner Gate G6_ANALYTICS_ACCESS (Analytics & Search Verification):**
+  - Provision Google Analytics 4 ID and Search Console verification token.
 
 ---
 

@@ -15,15 +15,15 @@
 
 ## 2. Hard Launch Blockers Before Public Release
 
-To transition the project from its current pre-launch state to production on `sevnland.com`, the following 5 requirements must be resolved:
+To transition the project from its current pre-launch state to production on `7-lands.com`, the following operational owner gates must be resolved:
 
-1. **Lead Persistence (Defect D2 / Phase H):**
-   Form submissions must be durably recorded in PostgreSQL and trigger notifications to the sales team. Launching without this creates commercial risk of lost client inquiries.
-2. **Backup & Disaster Recovery Drill (Owner Gate G5):**
-   Establish automated daily PostgreSQL backups and verify a complete restore drill on the target hosting environment.
-3. **Production Media Storage (Owner Gate G2):**
-   Determine object storage provider (Cloudflare R2 / AWS S3) for persistent, CDN-backed media delivery, replacing local disk storage.
-4. **Legal & Business Review of Public Copy (Owner Gate G1):**
-   Review legal documents (`/privacy`, `/terms`) to replace placeholder text and authorize indexing (`index, follow`).
-5. **Transactional Email Provider (Owner Gate G4):**
-   Configure SMTP/API provider (Resend / SendGrid / Postmark) for admin password recovery and lead alerts.
+1. **Owner Gate G1_BUSINESS_DATA:**
+   Confirm office hours, official email, social accounts, and real portfolio case studies.
+2. **Owner Gate G2_PRODUCTION_STORAGE:**
+   Determine object storage provider (Cloudflare R2 recommended) for persistent, CDN-backed media delivery.
+3. **Owner Gate G3_LEGAL_APPROVAL:**
+   Review legal documents (`/privacy`, `/terms`) to authorize public indexing (`index, follow`).
+4. **Owner Gate G4_TRANSACTIONAL_EMAIL:**
+   Configure transactional email provider (Resend) for admin password recovery and lead alerts.
+5. **Owner Gate G5_HOSTING_AND_CUTOVER:**
+   Deploy to Vercel/Neon staging and production, authorize DNS cutover on IONOS for `7-lands.com`.

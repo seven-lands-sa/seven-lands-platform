@@ -35,7 +35,7 @@ const check = (name: string, condition: boolean, detail?: string) => {
 
 /* ── HTTP helpers (admin session, exactly what the admin UI does) ───────────────────────────── */
 
-const email = process.env.SEED_SUPER_ADMIN_EMAIL ?? "owner@sevnland.com";
+const email = process.env.SEED_SUPER_ADMIN_EMAIL ?? "owner@7-lands.com";
 const password = process.env.SEED_SUPER_ADMIN_PASSWORD ?? "";
 let cookie = "";
 try {
@@ -332,7 +332,7 @@ check("live: preview renders for an authorized session", previewAuthed.status ==
 check("live: preview is not indexable", (previewAuthed.headers.get("x-robots-tag") ?? "").includes("noindex"));
 
 const sitemap = await http("/sitemap.xml");
-check("live: sitemap lists the published home page", sitemap.text.includes("https://sevnland.com/ar</loc>"));
+check("live: sitemap lists the published home page", sitemap.text.includes("https://7-lands.com/ar</loc>"));
 check("live: sitemap excludes noindex legal pages", !sitemap.text.includes("/privacy") && !sitemap.text.includes("/terms"));
 check("live: sitemap never lists the preview surface", !sitemap.text.includes("/preview"));
 
@@ -342,7 +342,7 @@ check("live: robots.txt keeps crawlers out of admin + preview", robots.text.incl
 const privacy = await http("/ar/privacy");
 check("live: migrated legal page keeps its noindex", /<meta name="robots"[^>]*noindex/i.test(privacy.text));
 const homePage = await http("/ar");
-check("live: canonical stays derived from the real route", homePage.text.includes('rel="canonical" href="https://sevnland.com/ar"'));
+check("live: canonical stays derived from the real route", homePage.text.includes('rel="canonical" href="https://7-lands.com/ar"'));
 check("live: hreflang alternates intact", (homePage.text.match(/rel="alternate"/g) ?? []).length >= 3);
 check("live: home is served from the CMS when published", homePage.text.includes("تسويق. إبداع. تقنية."));
 

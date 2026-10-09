@@ -21,7 +21,7 @@ export const CANONICAL_SITE_URL: string = (
   process.env.SITE_CANONICAL_URL ??
   /* Safe default: the verified production domain. A missing variable must degrade to the real
      domain, never to a preview host. */
-  "https://sevnland.com"
+  "https://7-lands.com"
 ).replace(/\/$/, "");
 
 /**

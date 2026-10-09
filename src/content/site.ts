@@ -16,7 +16,7 @@ export const site = {
     /** Canonical spelling — never render "Sevn Land" / "SevenLand" in UI copy. */
     wordmark: "Seven Lands",
   },
-  domain: "sevnland.com",
+  domain: "7-lands.com",
   /**
    * Canonical origin for canonical tags, hreflang, sitemap and OG URLs.
    * Comes from `SITE_CANONICAL_URL` (server-only) — see src/lib/site-origin.ts for why this is

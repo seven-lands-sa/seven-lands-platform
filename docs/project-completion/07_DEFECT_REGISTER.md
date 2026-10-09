@@ -77,10 +77,10 @@ Authoritative tracking of known defects, security bugs, and architectural anomal
 
 ---
 
-### [D7] OpenGraph Images 404 on Uncutover Live Domain
+### [D7] OpenGraph Images on Pre-Launch Domain
 - **Severity:** MEDIUM (Social Sharing Quality)
 - **Status:** `OPEN` (External Dependency)
-- **Area:** `https://sevnland.com/og/og-ar.png` & `og-en.png`
-- **Description:** Metadata points to canonical production domain for OG images. Because `sevnland.com` still hosts the legacy WordPress site, crawlers trying to fetch the image receive HTTP 404.
+- **Area:** `https://7-lands.com/og/og-ar.png` & `og-en.png`
+- **Description:** Metadata points to canonical production domain `7-lands.com` for OG images. Crawlers trying to fetch the image will receive previews once the domain is attached and deployed.
 - **Impact:** Social shares display fallback or missing link previews until production deployment cutover occurs.
-- **Resolution:** Auto-resolves upon public deployment of Next.js assets to the canonical domain.
+- **Resolution:** Auto-resolves upon public deployment of Next.js assets to `7-lands.com`.

@@ -46,7 +46,7 @@ The local development environment uses `.env` with the following active paramete
 
 ```bash
 # Canonical site authority (Server-side metadata, sitemaps, canonicals)
-SITE_CANONICAL_URL=https://sevnland.com
+SITE_CANONICAL_URL=https://7-lands.com
 
 # Runtime origin for local process
 RUNTIME_ORIGIN=http://localhost:3000

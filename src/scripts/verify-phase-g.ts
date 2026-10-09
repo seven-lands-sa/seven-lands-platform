@@ -48,7 +48,7 @@ for (const t of testQueries) {
 // 2. Normalization & Validation Unit Tests
 console.log("\n--- TEST 2: Redirect Normalization & Validation ---");
 assert(normalizeRedirectPath("  /OLD-Path/  ") === "/old-path", "Path normalized: trimmed, lowercased, no trailing slash");
-assert(normalizeRedirectPath("https://sevnland.com/ar/about?foo=bar#section") === "/ar/about", "Full URL normalized to clean path segment");
+assert(normalizeRedirectPath("https://7-lands.com/ar/about?foo=bar#section") === "/ar/about", "Full URL normalized to clean path segment");
 assert(normalizeRedirectPath("/") === "/", "Root path preserved");
 
 assert(validateRedirectDestination("/new-destination", "/old-path") === null, "Valid internal destination allowed");
