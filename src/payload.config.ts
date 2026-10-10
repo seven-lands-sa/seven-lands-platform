@@ -74,6 +74,7 @@ const trustedOrigins = (process.env.PAYLOAD_TRUSTED_ORIGINS ?? '')
 export default buildConfig({
   admin: {
     user: Users.slug,
+    avatar: 'default',
     meta: {
       titleSuffix: ' — سفن لاند | Seven Lands',
       icons: {
