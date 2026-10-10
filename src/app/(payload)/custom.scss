@@ -629,34 +629,42 @@ body:has([dir="rtl" i]) {
   direction: rtl;
   text-align: right;
 
-  /* 1. Base Layout Grid: Nav moves to the RIGHT */
+  /* 1. Base Layout Grid: Nav moves cleanly to the RIGHT */
   .template-default {
-    direction: rtl !important;
+    direction: ltr !important; /* LTR grid tracks: Col 1 = 1fr (content wrap), Col 2 = 275px (right sidebar) */
     display: grid !important;
     grid-template-columns: 1fr var(--nav-width, 275px) !important;
+    grid-template-rows: auto !important;
 
     .nav {
       grid-column: 2 !important;
+      grid-row: 1 !important;
       left: auto !important;
       right: 0 !important;
       border-left: 1px solid var(--theme-elevation-150) !important;
       border-right: none !important;
       direction: rtl !important;
       text-align: right !important;
+      position: sticky !important;
+      top: 0 !important;
+      height: 100vh !important;
+      overflow-y: auto !important;
     }
 
     .template-default__wrap {
       grid-column: 1 !important;
+      grid-row: 1 !important;
       direction: rtl !important;
       text-align: right !important;
       margin-right: 0 !important;
+      min-width: 0 !important;
     }
   }
 
-  /* Nav toggler button */
+  /* Nav toggler button pinned to right */
   .template-default__nav-toggler-wrapper {
-    left: 0 !important;
-    right: auto !important;
+    right: 0 !important;
+    left: auto !important;
   }
 
   /* 2. Top App Header: Logo & Breadcrumbs on Right, User & Lang on Left */
