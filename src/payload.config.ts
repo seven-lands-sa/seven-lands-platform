@@ -73,21 +73,25 @@ const trustedOrigins = (process.env.PAYLOAD_TRUSTED_ORIGINS ?? '')
 
 export default buildConfig({
   admin: {
-    /*
-     * The admin authenticates against the real `users` collection. The Phase A `spike-users`
-     * collection is gone (§4) — no second authority remains anywhere in the config.
-     */
     user: Users.slug,
+    meta: {
+      titleSuffix: ' — سفن لاند | Seven Lands',
+      icons: {
+        icon: '/icon.png',
+        apple: '/apple-icon.png',
+      },
+      openGraph: {
+        images: ['/og/og-ar.png'],
+      },
+    },
     importMap: {
       baseDir: path.resolve(dirname),
     },
-    /*
-     * Phase D — the media picker preview. Reachable at /admin/media-picker for authenticated staff,
-     * deliberately not linked in the navigation: it exists so the picker is reviewable and testable
-     * before the content phases that consume it. Phase E wires the same component into real fields
-     * and this entry can be removed.
-     */
     components: {
+      graphics: {
+        Logo: '/components/admin/AdminLogo#AdminLogo',
+        Icon: '/components/admin/AdminIcon#AdminIcon',
+      },
       views: {
         mediaPicker: {
           Component: "/components/admin/MediaPickerPreview#MediaPickerPreview",
