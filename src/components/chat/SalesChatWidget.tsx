@@ -223,7 +223,12 @@ export function SalesChatWidget() {
   };
 
   return (
-    <div className="fixed bottom-20 lg:bottom-6 end-3 lg:end-6 z-50 flex flex-col items-end">
+    <div
+      className={clsx(
+        "fixed end-3 lg:end-6 z-[120] flex flex-col items-end",
+        isOpen ? "bottom-3 lg:bottom-6" : "bottom-20 lg:bottom-6"
+      )}
+    >
       {/* CHAT WINDOW */}
       {isOpen && (
         <div
