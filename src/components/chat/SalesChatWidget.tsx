@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useRef, useEffect } from "react";
+import Image from "next/image";
 import { useLocale } from "next-intl";
 import { clsx } from "clsx";
 import { WhatsAppIcon, ArrowRight } from "@/components/ui/Button";
@@ -14,6 +15,21 @@ interface ChatMessage {
   showLeadForm?: boolean;
 }
 
+const INVITATION_PROMPTS_AR = [
+  "يا هلا والله! أنا هنا لمساعدتك في أي استفسار 👋",
+  "جاهز أساعدك في اختيار الخطة الأنسب لمشروعك 🚀",
+  "ودك تستشيرنا مجاناً عن نمو وتطوير متجرك؟ ✨",
+  "تبي تسأل عن مجالاتنا الـ 7 أو تحجز جلسة استكشاف؟ 🤝",
+  "حياك الله، اسألني عن خدماتنا وخطط التسويق الرقمي 💡",
+];
+
+const INVITATION_PROMPTS_EN = [
+  "Hello! I am here to help you explore our services 👋",
+  "Ready to assist you find the best plan for your project 🚀",
+  "Looking for a free consultation on ecommerce growth? ✨",
+  "Ask about our 7 capabilities or book a discovery session 🤝",
+];
+
 export function SalesChatWidget() {
   const locale = useLocale();
   const isAr = locale === "ar";
@@ -23,6 +39,18 @@ export function SalesChatWidget() {
   const [loading, setLoading] = useState(false);
   const [leadFormActive, setLeadFormActive] = useState(false);
   const [leadSubmitted, setLeadSubmitted] = useState(false);
+
+  // Saudi Persona floating calls-to-action
+  const prompts = isAr ? INVITATION_PROMPTS_AR : INVITATION_PROMPTS_EN;
+  const [activePromptIndex, setActivePromptIndex] = useState(0);
+  const [showPromptBubble, setShowPromptBubble] = useState(true);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setActivePromptIndex((prev) => (prev + 1) % prompts.length);
+    }, 4500);
+    return () => clearInterval(timer);
+  }, [prompts.length]);
 
   // Lead inputs
   const [leadName, setLeadName] = useState("");
@@ -206,17 +234,23 @@ export function SalesChatWidget() {
           {/* HEADER */}
           <div className="relative flex items-center justify-between border-b border-ink-950/10 bg-ink-950 px-5 py-4 text-white">
             <div className="flex items-center gap-3">
-              <div className="relative flex h-10 w-10 items-center justify-center rounded-full bg-ice-400 text-ink-950 font-bold">
-                <span className="text-[0.875rem]">7L</span>
+              <div className="relative flex h-11 w-11 shrink-0 overflow-hidden rounded-full border-2 border-emerald-400/60 bg-offwhite shadow-sm">
+                <Image
+                  src="/brand/advisor-avatar.webp"
+                  alt={isAr ? "مستشار سفن لاند" : "Seven Lands Advisor"}
+                  fill
+                  sizes="44px"
+                  className="object-cover"
+                />
                 <span className="absolute bottom-0 end-0 h-3 w-3 rounded-full border-2 border-ink-950 bg-emerald-500" />
               </div>
               <div>
                 <h3 className="text-[0.9375rem] font-bold tracking-tight">
-                  {isAr ? "مستشار سفن لاند" : "Seven Lands Concierge"}
+                  {isAr ? "مستشار سفن لاندز الذكي" : "Seven Lands Sales Concierge"}
                 </h3>
                 <p className="flex items-center gap-1.5 text-[0.75rem] text-white/70">
                   <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" />
-                  <span>{isAr ? "متصل الآن · الرياض" : "Online · Riyadh"}</span>
+                  <span>{isAr ? "مستشارك لنمو الأعمال والمبيعات · الرياض" : "Business Growth & Sales · Riyadh"}</span>
                 </p>
               </div>
             </div>
@@ -395,7 +429,79 @@ export function SalesChatWidget() {
         </div>
       )}
 
-      {/* FLOATING TRIGGER BUTTON (Desktop only - mobile triggers via dock) */}
+      {/* FLOATING SAUDI ADVISOR & INVITATION CALLOUT (Visible when chat is closed) */}
+      {!isOpen && (
+        <div className="relative mb-2 flex flex-col items-end pointer-events-auto">
+          {/* Rotating Speech Balloon */}
+          {showPromptBubble && (
+            <div
+              onClick={() => setIsOpen(true)}
+              role="button"
+              tabIndex={0}
+              aria-label={isAr ? "فتح المحادثة والاستفسار" : "Open chat with advisor"}
+              className={clsx(
+                "group relative mb-2 max-w-[270px] sm:max-w-[320px] cursor-pointer rounded-2xl border border-ink-950/15 bg-white/95 p-3.5 shadow-2xl backdrop-blur-md transition-all duration-300 hover:scale-[1.02] hover:border-ink-950/30",
+                "animate-in fade-in slide-in-from-bottom-2"
+              )}
+            >
+              {/* Dismiss button */}
+              <button
+                type="button"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setShowPromptBubble(false);
+                }}
+                className="absolute top-2.5 start-2.5 flex h-5 w-5 items-center justify-center rounded-full text-muted transition-colors hover:bg-offwhite hover:text-ink-950"
+                aria-label={isAr ? "إخفاء الرسالة" : "Dismiss"}
+              >
+                <svg className="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+
+              <div className="flex items-center gap-2 ps-5 text-[0.6875rem] font-bold text-emerald-700">
+                <span className="relative flex h-2 w-2">
+                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
+                  <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-500" />
+                </span>
+                <span>{isAr ? "مستشار النمو متاح الآن · الرياض" : "Growth Advisor Online · Riyadh"}</span>
+              </div>
+
+              <p className="mt-1.5 text-[0.875rem] font-bold leading-snug text-ink-950 transition-all duration-300">
+                {prompts[activePromptIndex]}
+              </p>
+
+              {/* Speech balloon arrow pointing down to character */}
+              <div className="absolute -bottom-1.5 end-8 h-3 w-3 rotate-45 border-b border-e border-ink-950/15 bg-white" />
+            </div>
+          )}
+
+          {/* Floating Saudi Advisor Bust Character */}
+          <div
+            onClick={() => setIsOpen(true)}
+            role="button"
+            tabIndex={0}
+            className="group relative cursor-pointer transition-transform duration-300 hover:scale-105 active:scale-95"
+            aria-label={isAr ? "تحدث مع مستشار المبيعات السعودي" : "Chat with Saudi Sales Advisor"}
+          >
+            {/* Subtle glow behind advisor */}
+            <div className="absolute inset-0 mx-auto h-24 w-24 rounded-full bg-emerald-500/10 blur-xl group-hover:bg-emerald-500/20" />
+
+            <div className="relative h-24 w-24 sm:h-28 sm:w-28 drop-shadow-[0_12px_24px_rgba(6,20,40,0.2)]">
+              <Image
+                src="/brand/advisor-bust.webp"
+                alt={isAr ? "مستشار خدمة العملاء والمبيعات بسفن لاندز" : "Saudi Customer Care & Sales Advisor — Seven Lands"}
+                fill
+                sizes="112px"
+                className="object-contain"
+                priority
+              />
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* FLOATING TRIGGER BUTTON (Desktop launcher) */}
       <button
         type="button"
         onClick={() => setIsOpen((prev) => !prev)}

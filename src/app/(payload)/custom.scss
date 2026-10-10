@@ -596,3 +596,208 @@
   color: var(--theme-elevation-700);
   font-size: 0.85rem;
 }
+
+/* ==========================================================================
+   SEVEN LANDS — LUXURY ADMIN THEME, ARABIC TYPOGRAPHY & RTL POLISH
+   ========================================================================== */
+@import url('https://fonts.googleapis.com/css2?family=Alexandria:wght@300;400;500;600;700;800&family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&display=swap');
+
+:root,
+body,
+html,
+.template-default,
+.app-header,
+.nav,
+.collection-list,
+.doc-header,
+.field,
+button,
+input,
+textarea,
+select {
+  font-family: 'Alexandria', 'IBM Plex Sans Arabic', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── RTL POLISH & ALIGNMENT ──────────────────────────────────────────────── */
+[dir="rtl"],
+html[dir="rtl"] {
+  text-align: right;
+
+  .nav {
+    border-left: 1px solid var(--theme-elevation-150);
+    border-right: none;
+    text-align: right;
+  }
+
+  .nav__scroll {
+    text-align: right;
+  }
+
+  .nav__link,
+  .nav-group__toggle {
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+    text-align: right;
+    gap: 0.75rem;
+  }
+
+  .field-type {
+    text-align: right;
+  }
+
+  .field-type label,
+  .field-label {
+    text-align: right;
+    display: block;
+    font-weight: 600;
+  }
+
+  .field-description {
+    text-align: right;
+    font-size: 0.85rem;
+    opacity: 0.85;
+  }
+
+  input[type="text"],
+  input[type="password"],
+  textarea {
+    text-align: right;
+    direction: rtl;
+  }
+
+  /* Keep technical strings LTR */
+  input[name*="url"],
+  input[name*="slug"],
+  input[name*="key"],
+  input[name*="email"],
+  input[name*="code"],
+  input[type="email"],
+  .field-type.code textarea,
+  code,
+  pre {
+    direction: ltr !important;
+    text-align: left !important;
+  }
+
+  .table th,
+  .table td {
+    text-align: right;
+  }
+
+  .doc-header__controls {
+    flex-direction: row-reverse;
+    gap: 0.75rem;
+  }
+
+  .step-nav {
+    flex-direction: row;
+    direction: rtl;
+  }
+
+  .step-nav svg,
+  .breadcrumb svg {
+    transform: rotate(180deg);
+  }
+
+  .tabs-nav {
+    direction: rtl;
+  }
+
+  .popup__content {
+    text-align: right;
+  }
+}
+
+/* ── LUXURY SEVEN LANDS BRANDING & UI REFINEMENT ─────────────────────────── */
+.app-header {
+  background: #061428 !important;
+  border-bottom: 1px solid rgba(197, 168, 128, 0.25) !important;
+  box-shadow: 0 4px 20px rgba(6, 20, 40, 0.15) !important;
+
+  .app-header__logo {
+    padding: 0.5rem 1rem;
+    display: flex;
+    align-items: center;
+  }
+}
+
+/* Tabs Styling */
+.tabs-nav {
+  gap: 0.5rem;
+  padding-bottom: 0.5rem;
+  margin-bottom: 1.5rem;
+  border-bottom: 2px solid var(--theme-elevation-150);
+
+  .tabs-nav__button {
+    font-weight: 600;
+    font-size: 0.95rem;
+    padding: 0.6rem 1.15rem;
+    border-radius: 10px;
+    transition: all 0.2s cubic-bezier(0.22, 0.61, 0.36, 1);
+    color: var(--theme-elevation-700);
+
+    &:hover {
+      background: var(--theme-elevation-100);
+      color: var(--theme-elevation-950);
+    }
+
+    &--active {
+      background: #061428 !important;
+      color: #ffffff !important;
+      box-shadow: 0 4px 14px rgba(6, 20, 40, 0.18) !important;
+    }
+  }
+}
+
+/* Buttons Enhancement */
+.btn--style-primary {
+  background: #061428 !important;
+  border-color: #061428 !important;
+  color: #ffffff !important;
+  border-radius: 10px !important;
+  font-weight: 600 !important;
+  padding: 0.65rem 1.25rem !important;
+  box-shadow: 0 2px 10px rgba(6, 20, 40, 0.2) !important;
+  transition: all 0.2s ease !important;
+
+  &:hover {
+    background: #0e2036 !important;
+    transform: translateY(-1px);
+    box-shadow: 0 6px 18px rgba(6, 20, 40, 0.3) !important;
+  }
+}
+
+.btn--style-secondary {
+  border-radius: 10px !important;
+  font-weight: 600 !important;
+  padding: 0.65rem 1.25rem !important;
+}
+
+/* Form Inputs Focus & Styling */
+input:focus,
+textarea:focus,
+select:focus {
+  border-color: #0e2036 !important;
+  box-shadow: 0 0 0 3px rgba(14, 32, 54, 0.14) !important;
+}
+
+/* Sidebar Navigation Link Polish */
+.nav__link {
+  border-radius: 8px;
+  margin: 0.15rem 0.5rem;
+  padding: 0.55rem 0.85rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: background 0.15s ease, color 0.15s ease;
+
+  &:hover {
+    background: var(--theme-elevation-100);
+  }
+
+  &--active {
+    background: rgba(6, 20, 40, 0.08) !important;
+    font-weight: 700;
+  }
+}
+

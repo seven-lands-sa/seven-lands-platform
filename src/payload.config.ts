@@ -50,26 +50,32 @@ const dirname = path.dirname(filename)
  * production domain. Publishing is a separate concern, handled by `SITE_CANONICAL_URL`
  * (src/lib/site-origin.ts) — public markup and structured data never read this value.
  */
-const serverURL =
-  process.env.NEXT_PUBLIC_SERVER_URL || process.env.RUNTIME_ORIGIN || 'http://localhost:3000'
+const resolveServerURL = () => {
+  if (process.env.NEXT_PUBLIC_SERVER_URL) return process.env.NEXT_PUBLIC_SERVER_URL
+  if (process.env.SITE_CANONICAL_URL) return process.env.SITE_CANONICAL_URL
+  if (process.env.RUNTIME_ORIGIN) return process.env.RUNTIME_ORIGIN
+  if (process.env.VERCEL_PROJECT_PRODUCTION_URL) return `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
+  if (process.env.VERCEL_URL) return `https://${process.env.VERCEL_URL}`
+  if (process.env.NODE_ENV === 'production') return 'https://7-lands.com'
+  return 'http://localhost:3000'
+}
+
+const serverURL = resolveServerURL()
 
 /**
  * Additional origins whose cookies Payload will accept (its CSRF allow-list).
- *
- * Browsers send `Origin` on every mutating request, and Payload refuses a `*-token` cookie whose
- * `Origin` is not listed here. That is correct protection — but it also means the admin cannot be
- * used from a host that differs from `serverURL`: a hosting preview URL, a staging alias, a port
- * forward. Those have to be named explicitly.
- *
- * Comma-separated, never a wildcard. Production sets this only if the admin is genuinely served
- * from more than one origin.
- *
- * PAYLOAD_TRUSTED_ORIGINS=https://3000-<id>.e2b.app
  */
-const trustedOrigins = (process.env.PAYLOAD_TRUSTED_ORIGINS ?? '')
-  .split(',')
-  .map((origin) => origin.trim())
-  .filter(Boolean)
+const trustedOrigins = [
+  'https://7-lands.com',
+  'https://www.7-lands.com',
+  'http://localhost:3000',
+  'http://127.0.0.1:3000',
+  ...(process.env.VERCEL_URL ? [`https://${process.env.VERCEL_URL}`] : []),
+  ...(process.env.PAYLOAD_TRUSTED_ORIGINS ?? '')
+    .split(',')
+    .map((origin) => origin.trim())
+    .filter(Boolean),
+]
 
 export default buildConfig({
   admin: {
