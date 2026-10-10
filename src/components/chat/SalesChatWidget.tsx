@@ -65,14 +65,17 @@ export function SalesChatWidget() {
   const [isRecording, setIsRecording] = useState(false);
   const [recordingSeconds, setRecordingSeconds] = useState(0);
   const [transcribing, setTranscribing] = useState(false);
+  const [micPermissionDenied, setMicPermissionDenied] = useState(false);
   const mediaRecorderRef = useRef<MediaRecorder | null>(null);
   const audioChunksRef = useRef<Blob[]>([]);
   const recordingTimerRef = useRef<NodeJS.Timeout | null>(null);
 
   const startRecording = async () => {
+    setMicPermissionDenied(false);
     try {
       if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
-        alert(isAr ? "المتصفح لا يدعم تسجيل الصوت" : "Microphone not supported on this browser");
+        setMicPermissionDenied(true);
+        setTimeout(() => setMicPermissionDenied(false), 5000);
         return;
       }
       const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
@@ -135,9 +138,10 @@ export function SalesChatWidget() {
         setRecordingSeconds((prev) => prev + 1);
       }, 1000);
     } catch (err) {
-      console.error("Mic error:", err);
-      alert(isAr ? "يرجى السماح بالوصول للمايكروفون للتحدث" : "Please allow microphone access to record audio");
+      console.warn("Microphone access denied or ungranted:", err);
       setIsRecording(false);
+      setMicPermissionDenied(true);
+      setTimeout(() => setMicPermissionDenied(false), 6000);
     }
   };
 
@@ -502,6 +506,18 @@ export function SalesChatWidget() {
 
           {/* INPUT BAR WITH VOICE SPEECH-TO-TEXT */}
           <div className="border-t border-ink-950/10 bg-white p-3">
+            {micPermissionDenied && (
+              <div className="mb-2 flex items-center gap-2 rounded-xl border border-amber-300 bg-amber-50 px-3 py-2 text-[0.75rem] font-medium text-amber-900 animate-in fade-in duration-200">
+                <svg className="h-4 w-4 shrink-0 text-amber-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                </svg>
+                <span>
+                  {isAr
+                    ? "يرجى السماح بالوصول للمايكروفون من إعدادات المتصفح للتحدث بالصوت."
+                    : "Please allow microphone access in your browser to speak."}
+                </span>
+              </div>
+            )}
             {isRecording ? (
               <div className="flex items-center justify-between gap-3 rounded-xl border border-rose-300 bg-rose-50/80 px-3.5 py-2 text-rose-950 animate-in fade-in duration-200">
                 <div className="flex items-center gap-2">

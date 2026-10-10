@@ -661,10 +661,59 @@ body:has([dir="rtl" i]) {
     }
   }
 
-  /* Nav toggler button pinned to right */
-  .template-default__nav-toggler-wrapper {
-    right: 0 !important;
-    left: auto !important;
+  /* Desktop: Sidebar is ALWAYS visible and cleanly docked on the right */
+  @media (min-width: 1024px) {
+    .template-default .nav {
+      opacity: 1 !important;
+      visibility: visible !important;
+      pointer-events: auto !important;
+      transform: none !important;
+      display: block !important;
+    }
+
+    .template-default__nav-toggler-wrapper {
+      display: none !important;
+    }
+  }
+
+  /* Mobile & Tablet (< 1024px): Full-width content with slide-in RTL drawer */
+  @media (max-width: 1023px) {
+    .template-default {
+      grid-template-columns: 1fr !important;
+
+      .nav {
+        position: fixed !important;
+        right: 0 !important;
+        top: 0 !important;
+        width: 280px !important;
+        height: 100vh !important;
+        z-index: 9999 !important;
+        background: var(--theme-elevation-50, #ffffff) !important;
+        box-shadow: -4px 0 25px rgba(0, 0, 0, 0.15) !important;
+        transform: translateX(100%) !important;
+        transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+
+        &--nav-open {
+          transform: translateX(0) !important;
+          pointer-events: auto !important;
+        }
+      }
+
+      .template-default__wrap {
+        grid-column: 1 !important;
+        width: 100% !important;
+      }
+    }
+
+    .template-default__nav-toggler-wrapper {
+      display: flex !important;
+      right: 1rem !important;
+      left: auto !important;
+      top: 0.5rem !important;
+      z-index: 10000 !important;
+    }
   }
 
   /* 2. Top App Header: Logo & Breadcrumbs on Right, User & Lang on Left */
