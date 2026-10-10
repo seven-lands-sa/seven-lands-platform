@@ -140,6 +140,7 @@ export function fallbackContactSettings(locale: AppLocale): ContactSettingsView 
 
 export function fallbackNavigation(locale: AppLocale): NavigationView {
   const items = [
+    { id: "nav-home", path: "/", label: locale === "ar" ? "الرئيسية" : "Home" },
     { id: "nav-services", path: "/services", label: text("nav.services", locale) },
     { id: "nav-work", path: "/work", label: text("nav.work", locale) },
     { id: "nav-about", path: "/about", label: text("nav.about", locale) },

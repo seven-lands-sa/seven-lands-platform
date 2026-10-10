@@ -922,6 +922,14 @@ body:has([dir="rtl" i]) {
     padding: 0.5rem 1rem;
     display: flex;
     align-items: center;
+
+    .admin-logo-text {
+      color: #ffffff !important;
+    }
+
+    .admin-logo-subtext {
+      color: rgba(255, 255, 255, 0.8) !important;
+    }
   }
 }
 

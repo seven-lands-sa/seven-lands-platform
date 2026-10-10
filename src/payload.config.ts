@@ -2,7 +2,6 @@ import path from 'path'
 import { fileURLToPath } from 'url'
 
 import { ar } from '@payloadcms/translations/languages/ar'
-import { en } from '@payloadcms/translations/languages/en'
 import { postgresAdapter } from '@payloadcms/db-postgres'
 import { buildConfig } from 'payload'
 import sharp from 'sharp'
@@ -142,7 +141,7 @@ export default buildConfig({
    * Verified in Phase A: the admin renders <html dir="RTL" lang="ar">.
    */
   i18n: {
-    supportedLanguages: { ar, en },
+    supportedLanguages: { ar },
     fallbackLanguage: 'ar',
   },
 

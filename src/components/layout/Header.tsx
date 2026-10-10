@@ -28,11 +28,17 @@ export async function Header({ locale }: { locale?: AppLocale } = {}) {
     without a deploy. The seeder mirrors the shipped menu exactly, and an empty menu falls back to
     it, so the header can never render bare.
   */
-  const items = navigation.items.map((item) => ({
+  const homeLabel = activeLocale === "ar" ? "الرئيسية" : "Home";
+  const rawItems = navigation.items.map((item) => ({
     href: destination(item.link, "/"),
     label: item.label,
     external: leavesTheSite(item.link),
   }));
+
+  const hasHome = rawItems.some((item) => item.href === "/" || item.href === "" || item.label === homeLabel);
+  const items = hasHome
+    ? rawItems
+    : [{ href: "/", label: homeLabel, external: false }, ...rawItems];
 
   const ctaHref = destination(navigation.cta?.link, "/start-a-project");
   const ctaLabel = navigation.cta?.label ?? t("nav.start");

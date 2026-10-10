@@ -77,7 +77,7 @@ export async function TrustStatement({ locale, content }: { locale: AppLocale; c
 
             <div className="mt-6 rounded-[1.25rem] border border-ink-950/8 bg-offwhite/40 p-5 text-[0.8125rem] text-steel-600 leading-relaxed">
               <span className="font-bold text-ink-950 block mb-1">
-                {isAr ? "المعايير المعتمدة في سفن لاند:" : "Seven Lands Core Standards:"}
+                {isAr ? "ركائز العمل والقيم الراسخة في سفن لاند:" : "Seven Lands Core Operating Pillars:"}
               </span>
               {isAr
                 ? "فريق عمل استشاري وتقني مقيم في الرياض، إدارة مباشرة للمشاريع بدون وسطاء، وشفافية مطلقة في مؤشرات الأداء وعوائد الاستثمار."

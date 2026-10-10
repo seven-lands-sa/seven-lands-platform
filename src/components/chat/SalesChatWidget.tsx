@@ -67,11 +67,75 @@ export function SalesChatWidget() {
   const [transcribing, setTranscribing] = useState(false);
   const [micPermissionDenied, setMicPermissionDenied] = useState(false);
   const mediaRecorderRef = useRef<MediaRecorder | null>(null);
+  const recognitionRef = useRef<any>(null);
   const audioChunksRef = useRef<Blob[]>([]);
   const recordingTimerRef = useRef<NodeJS.Timeout | null>(null);
 
   const startRecording = async () => {
     setMicPermissionDenied(false);
+
+    // 1. Primary: Native Browser Speech Recognition (Web Speech API)
+    // Works natively on Chrome, Edge, Safari, iOS & Android with live interim results
+    const SpeechRecognition =
+      typeof window !== "undefined"
+        ? (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition
+        : null;
+
+    if (SpeechRecognition) {
+      try {
+        const recognition = new SpeechRecognition();
+        recognition.lang = isAr ? "ar-SA" : "en-US";
+        recognition.continuous = true;
+        recognition.interimResults = true;
+        recognition.maxAlternatives = 1;
+
+        const initialText = inputText ? `${inputText.trim()} ` : "";
+
+        recognition.onstart = () => {
+          setIsRecording(true);
+          setRecordingSeconds(0);
+          recordingTimerRef.current = setInterval(() => {
+            setRecordingSeconds((prev) => prev + 1);
+          }, 1000);
+        };
+
+        recognition.onresult = (event: any) => {
+          let currentTranscript = "";
+          for (let i = 0; i < event.results.length; i++) {
+            currentTranscript += event.results[i][0].transcript;
+          }
+          if (currentTranscript.trim()) {
+            setInputText(`${initialText}${currentTranscript}`.trim());
+          }
+        };
+
+        recognition.onerror = (event: any) => {
+          console.warn("Speech recognition error:", event.error);
+          if (event.error === "not-allowed" || event.error === "service-not-allowed") {
+            setMicPermissionDenied(true);
+            setTimeout(() => setMicPermissionDenied(false), 6000);
+          }
+          stopRecording();
+        };
+
+        recognition.onend = () => {
+          setIsRecording(false);
+          if (recordingTimerRef.current) {
+            clearInterval(recordingTimerRef.current);
+            recordingTimerRef.current = null;
+          }
+          setRecordingSeconds(0);
+        };
+
+        recognitionRef.current = recognition;
+        recognition.start();
+        return;
+      } catch (err) {
+        console.warn("Native SpeechRecognition initialization error, falling back to MediaRecorder:", err);
+      }
+    }
+
+    // 2. Secondary Fallback: MediaRecorder + GhostMind Whisper-1 Server Endpoint
     try {
       if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
         setMicPermissionDenied(true);
@@ -97,8 +161,13 @@ export function SalesChatWidget() {
       mediaRecorder.onstop = async () => {
         stream.getTracks().forEach((track) => track.stop());
 
+        const cleanMime = (mediaRecorder.mimeType || "audio/webm").split(";")[0].trim().toLowerCase();
+        const isMp4 = cleanMime.includes("mp4") || cleanMime.includes("m4a") || cleanMime.includes("aac");
+        const ext = isMp4 ? "mp4" : "webm";
+        const finalMime = isMp4 ? "audio/mp4" : "audio/webm";
+
         const audioBlob = new Blob(audioChunksRef.current, {
-          type: mediaRecorder.mimeType || "audio/webm",
+          type: finalMime,
         });
 
         if (audioBlob.size < 500) {
@@ -109,7 +178,7 @@ export function SalesChatWidget() {
         setTranscribing(true);
         try {
           const formData = new FormData();
-          formData.append("file", audioBlob, "recording.webm");
+          formData.append("file", audioBlob, `recording.${ext}`);
 
           const res = await fetch("/api/transcribe", {
             method: "POST",
@@ -137,11 +206,13 @@ export function SalesChatWidget() {
       recordingTimerRef.current = setInterval(() => {
         setRecordingSeconds((prev) => prev + 1);
       }, 1000);
-    } catch (err) {
+    } catch (err: any) {
       console.warn("Microphone access denied or ungranted:", err);
       setIsRecording(false);
-      setMicPermissionDenied(true);
-      setTimeout(() => setMicPermissionDenied(false), 6000);
+      if (err?.name === "NotAllowedError" || err?.name === "PermissionDeniedError") {
+        setMicPermissionDenied(true);
+        setTimeout(() => setMicPermissionDenied(false), 6000);
+      }
     }
   };
 
@@ -150,15 +221,28 @@ export function SalesChatWidget() {
       clearInterval(recordingTimerRef.current);
       recordingTimerRef.current = null;
     }
+    if (recognitionRef.current) {
+      try {
+        recognitionRef.current.stop();
+      } catch {}
+      recognitionRef.current = null;
+    }
     if (mediaRecorderRef.current && mediaRecorderRef.current.state === "recording") {
       mediaRecorderRef.current.stop();
     }
+    setIsRecording(false);
   };
 
   const cancelRecording = () => {
     if (recordingTimerRef.current) {
       clearInterval(recordingTimerRef.current);
       recordingTimerRef.current = null;
+    }
+    if (recognitionRef.current) {
+      try {
+        recognitionRef.current.abort();
+      } catch {}
+      recognitionRef.current = null;
     }
     if (mediaRecorderRef.current) {
       mediaRecorderRef.current.onstop = null;

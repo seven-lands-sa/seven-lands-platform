@@ -40,7 +40,7 @@ export async function WorkTeaser({ locale, content }: { locale: AppLocale; conte
       <SectionHeading
         id="work-heading"
         eyebrow={c.eyebrow}
-        title={hasWork ? c.selected : (locale === "ar" ? "معايير الحرفية والتنفيذ" : "Execution Craft & Disciplines")}
+        title={hasWork ? c.selected : (locale === "ar" ? "أبرز مجالاتنا وحلولنا المتكاملة" : "Featured Disciplines & Integrated Solutions")}
         lede={hasWork ? undefined : c.emptyBody}
         actions={
           <ButtonLink href="/work" variant="secondary" size="lg">
@@ -85,9 +85,10 @@ export async function WorkTeaser({ locale, content }: { locale: AppLocale; conte
           {/* Mobile swipeable reel / Desktop 4-col grid */}
           <div className="flex gap-4 overflow-x-auto pb-4 pt-2 -mx-4 px-4 sm:mx-0 sm:px-0 snap-x snap-mandatory scrollbar-none sm:grid sm:grid-cols-2 lg:grid-cols-4">
             {Object.entries(CRAFT_MEDIA).map(([key, item], idx) => (
-              <div
+              <Link
                 key={key}
-                className="group relative flex flex-col shrink-0 w-[280px] sm:w-auto snap-start overflow-hidden rounded-[1.25rem] border border-ink-950/12 bg-offwhite transition-all duration-300 hover:border-ink-950/30 hover:shadow-lg active:scale-[0.98]"
+                href={`/services/${item.serviceSlug}`}
+                className="group relative flex flex-col shrink-0 w-[280px] sm:w-auto snap-start overflow-hidden rounded-[1.25rem] border border-ink-950/12 bg-offwhite transition-all duration-300 hover:border-ink-950/30 hover:shadow-lg hover:-translate-y-1 active:scale-[0.98]"
               >
                 <div className="relative aspect-[4/3] w-full overflow-hidden bg-ink-950/10">
                   <Image
@@ -103,18 +104,18 @@ export async function WorkTeaser({ locale, content }: { locale: AppLocale; conte
                   </span>
                 </div>
                 <div className="flex flex-col flex-1 p-5">
-                  <h3 className="text-[1.0625rem] font-bold text-ink-950">
+                  <h3 className="text-[1.0625rem] font-bold text-ink-950 group-hover:text-emerald-700 transition-colors">
                     {locale === "ar" ? item.titleAr : item.titleEn}
                   </h3>
                   <p className="mt-2 text-[0.875rem] leading-[1.8] text-steel-600 flex-1">
                     {locale === "ar" ? item.descAr : item.descEn}
                   </p>
-                  <div className="mt-4 pt-3 border-t border-ink-950/10 flex items-center justify-between text-[0.8125rem] font-semibold text-navy-800">
-                    <span>{locale === "ar" ? "المعايير المطبقة" : "Standards"}</span>
-                    <ArrowRight className="h-3.5 w-3.5 rtl:rotate-180" />
+                  <div className="mt-4 pt-3 border-t border-ink-950/10 flex items-center justify-between text-[0.8125rem] font-semibold text-navy-800 group-hover:text-emerald-700 transition-colors">
+                    <span>{locale === "ar" ? "استكشف الخدمة" : "Explore Service"}</span>
+                    <ArrowRight className="h-3.5 w-3.5 rtl:rotate-180 transition-transform group-hover:translate-x-1 rtl:group-hover:-translate-x-1" />
                   </div>
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
 

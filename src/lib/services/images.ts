@@ -51,6 +51,7 @@ export const SERVICE_MEDIA: Record<string, ServiceMediaAsset> = {
 
 export const CRAFT_MEDIA = {
   identity: {
+    serviceSlug: "branding-creative",
     src: "/media/craft/craft-identity-system.webp",
     titleAr: "هندسة الهوية والعلامة التجارية",
     titleEn: "Brand Identity Architecture",
@@ -58,6 +59,7 @@ export const CRAFT_MEDIA = {
     descEn: "Comprehensive visual systems, refined typography, and enduring design standards.",
   },
   flagship: {
+    serviceSlug: "web-commerce-experiences",
     src: "/media/craft/craft-digital-flagship.webp",
     titleAr: "منصات وتجارب التجارة الرقمية",
     titleEn: "Digital Commerce Flagships",
@@ -65,6 +67,7 @@ export const CRAFT_MEDIA = {
     descEn: "Ultra-fast interactive interfaces and seamless checkout on modern cloud tech.",
   },
   film: {
+    serviceSlug: "content-production",
     src: "/media/craft/craft-commercial-film.webp",
     titleAr: "الإنتاج السينمائي والتصوير التجاري",
     titleEn: "Cinematic Film & Commercials",
@@ -72,6 +75,7 @@ export const CRAFT_MEDIA = {
     descEn: "Cinematic direction and global-standard optics reflecting Saudi ambition.",
   },
   growth: {
+    serviceSlug: "performance-acquisition",
     src: "/media/craft/craft-growth-engine.webp",
     titleAr: "محركات النمو والأداء الرقمي",
     titleEn: "Growth & Performance Engines",
