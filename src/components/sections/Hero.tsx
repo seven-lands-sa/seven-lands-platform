@@ -193,15 +193,51 @@ export async function Hero({ content }: { content?: HeroContent } = {}) {
           </div>
         </div>
 
-        {/* Capability rail — a first, quiet index of the seven Lands. */}
-        <div className="mt-14 border-t border-ink-950/10 pt-6 lg:mt-20">
-          <Link
-            href="/services"
-            className="group flex items-center justify-between gap-4 text-[0.8125rem] font-semibold text-steel-600 transition-colors duration-200 hover:text-ink-950"
-          >
+        {/* Capability rail — interactive index of the seven Lands */}
+        <div className="mt-12 border-t border-ink-950/10 pt-6 lg:mt-16">
+          <div className="flex items-center justify-between gap-4 text-[0.8125rem] font-semibold text-steel-600 mb-3.5">
             <span>{t("pathCaption")}</span>
-            <ArrowRight />
-          </Link>
+            <Link
+              href="/services"
+              className="inline-flex items-center gap-1.5 text-navy-800 hover:text-ink-950 font-bold"
+            >
+              <span>{locale === "ar" ? "استكشف المجالات الـ 7" : "Explore All Lands"}</span>
+              <ArrowRight className="h-3.5 w-3.5" />
+            </Link>
+          </div>
+
+          <div className="flex gap-2 overflow-x-auto pb-2 -mx-4 px-4 sm:mx-0 sm:px-0 snap-x snap-mandatory scrollbar-none sm:flex-wrap">
+            {(
+              locale === "ar"
+                ? [
+                    { slug: "strategy-business-growth", num: "01", name: "استراتيجية ونمو الأعمال" },
+                    { slug: "branding-creative", num: "02", name: "الهوية والعلامة التجارية" },
+                    { slug: "content-production", num: "03", name: "الإنتاج وصناعة المحتوى" },
+                    { slug: "social-digital-presence", num: "04", name: "التواجد الرقمي والشبكات" },
+                    { slug: "performance-acquisition", num: "05", name: "الأداء واكتساب العملاء" },
+                    { slug: "web-commerce-experiences", num: "06", name: "المواقع والتجارة الرقمية" },
+                    { slug: "software-automation-technology", num: "07", name: "البرمجيات والأنظمة" },
+                  ]
+                : [
+                    { slug: "strategy-business-growth", num: "01", name: "Strategy & Growth" },
+                    { slug: "branding-creative", num: "02", name: "Brand & Identity" },
+                    { slug: "content-production", num: "03", name: "Content Production" },
+                    { slug: "social-digital-presence", num: "04", name: "Social Presence" },
+                    { slug: "performance-acquisition", num: "05", name: "Performance & Growth" },
+                    { slug: "web-commerce-experiences", num: "06", name: "Digital Platforms" },
+                    { slug: "software-automation-technology", num: "07", name: "Software & Tech" },
+                  ]
+            ).map((item) => (
+              <Link
+                key={item.slug}
+                href={`/services/${item.slug}`}
+                className="inline-flex shrink-0 snap-start items-center gap-2 rounded-full border border-ink-950/10 bg-white px-3.5 py-1.5 text-[0.8125rem] font-medium text-steel-600 transition-all duration-200 hover:border-ink-950/30 hover:text-ink-950 hover:bg-offwhite active:scale-95 shadow-2xs"
+              >
+                <span className="num font-bold text-ice-400 text-[0.6875rem]">{item.num}</span>
+                <span>{item.name}</span>
+              </Link>
+            ))}
+          </div>
         </div>
       </div>
     </section>

@@ -11,6 +11,7 @@ import { AnalyticsListener } from "@/components/system/AnalyticsListener";
 import { CookieConsentBanner } from "@/components/system/CookieConsentBanner";
 import { TrackingScripts } from "@/components/system/TrackingScripts";
 import { SalesChatWidget } from "@/components/chat/SalesChatWidget";
+import { MobileAppDock } from "@/components/layout/MobileAppDock";
 import "../globals.css";
 
 export function generateStaticParams() {
@@ -122,12 +123,13 @@ export default async function LocaleLayout({
 
         <NextIntlClientProvider>
           <Header locale={locale} />
-          <main id="main" tabIndex={-1}>{children}</main>
+          <main id="main" tabIndex={-1} className="pb-24 lg:pb-0">{children}</main>
           <Footer locale={locale} />
           <ScrollReveal />
           <AnalyticsListener />
           <CookieConsentBanner settings={consentSettings} locale={locale} />
           <SalesChatWidget />
+          <MobileAppDock locale={locale} />
         </NextIntlClientProvider>
       </body>
     </html>

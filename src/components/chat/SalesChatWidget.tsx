@@ -49,6 +49,12 @@ export function SalesChatWidget() {
   }, [isAr]);
 
   useEffect(() => {
+    const handleOpen = () => setIsOpen(true);
+    window.addEventListener("open-sales-chat", handleOpen);
+    return () => window.removeEventListener("open-sales-chat", handleOpen);
+  }, []);
+
+  useEffect(() => {
     if (isOpen) {
       messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
     }
@@ -172,13 +178,13 @@ export function SalesChatWidget() {
   };
 
   return (
-    <div className="fixed bottom-6 end-6 z-50 flex flex-col items-end">
+    <div className="fixed bottom-20 lg:bottom-6 end-3 lg:end-6 z-50 flex flex-col items-end">
       {/* CHAT WINDOW */}
       {isOpen && (
         <div
           role="dialog"
           aria-label={isAr ? "محادثة مبيعات سفن لاند" : "Seven Lands Sales Chat"}
-          className="mb-4 flex h-[580px] max-h-[85vh] w-[380px] max-w-[calc(100vw-2rem)] flex-col overflow-hidden rounded-[1.5rem] border border-ink-950/15 bg-white shadow-2xl transition-all duration-300 sm:w-[420px]"
+          className="mb-2 lg:mb-4 flex h-[580px] max-h-[75vh] lg:max-h-[85vh] w-[calc(100vw-1.5rem)] sm:w-[420px] flex-col overflow-hidden rounded-[1.5rem] border border-ink-950/15 bg-white shadow-2xl transition-all duration-300"
         >
           {/* HEADER */}
           <div className="relative flex items-center justify-between border-b border-ink-950/10 bg-ink-950 px-5 py-4 text-white">
@@ -372,13 +378,13 @@ export function SalesChatWidget() {
         </div>
       )}
 
-      {/* FLOATING TRIGGER BUTTON */}
+      {/* FLOATING TRIGGER BUTTON (Desktop only - mobile triggers via dock) */}
       <button
         type="button"
         onClick={() => setIsOpen((prev) => !prev)}
         aria-expanded={isOpen}
         aria-label={isAr ? "فتح محادثة مستشار سفن لاند" : "Open Seven Lands Sales Chat"}
-        className="group relative flex h-14 items-center gap-3 rounded-full bg-ink-950 px-5 text-white shadow-xl transition-all duration-300 hover:scale-[1.03] hover:bg-black active:scale-[0.98]"
+        className="hidden lg:flex group relative h-14 items-center gap-3 rounded-full bg-ink-950 px-5 text-white shadow-xl transition-all duration-300 hover:scale-[1.03] hover:bg-black active:scale-[0.98]"
       >
         <span className="relative flex h-3 w-3">
           <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />

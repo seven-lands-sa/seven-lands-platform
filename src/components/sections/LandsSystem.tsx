@@ -238,7 +238,7 @@ export function LandsSystem({ lands }: { lands: LandsSystemItem[] }) {
             <li key={land.slug}>
               <Link
                 href={`/services/${land.slug}`}
-                className="group flex flex-col overflow-hidden rounded-[1.25rem] border border-ink-950/12 bg-white transition-colors duration-200 hover:border-ink-950/30 shadow-xs"
+                className="group flex flex-col overflow-hidden rounded-[1.25rem] border border-ink-950/12 bg-white transition-all duration-300 hover:border-ink-950/30 hover:shadow-lg active:scale-[0.98] shadow-xs"
                 data-analytics="service_cta_click"
                 data-analytics-location="lands_mobile"
               >
@@ -251,12 +251,15 @@ export function LandsSystem({ lands }: { lands: LandsSystemItem[] }) {
                       sizes="(max-width: 768px) 100vw, 50vw"
                       className="object-cover transition-transform duration-500 group-hover:scale-105"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-ink-950/60 to-transparent" />
-                    <span className="absolute bottom-3 start-4 flex items-center gap-2 text-white">
-                      <span className="num text-[0.75rem] font-bold bg-white/20 px-2 py-0.5 rounded-full backdrop-blur-xs">
-                        {land.number}
+                    <div className="absolute inset-0 bg-gradient-to-t from-ink-950/70 via-ink-950/20 to-transparent" />
+                    <div className="absolute bottom-3 start-4 end-4 flex items-center justify-between text-white">
+                      <span className="num text-[0.75rem] font-bold bg-white/20 px-2.5 py-0.5 rounded-full backdrop-blur-xs">
+                        0{land.number} LAND
                       </span>
-                    </span>
+                      <span className="text-[0.6875rem] text-white/80 font-medium">
+                        {isAr ? "معتمد في الرياض" : "Active Riyadh"}
+                      </span>
+                    </div>
                   </div>
                 )}
                 <div className="flex flex-col gap-3 p-5">
@@ -265,11 +268,30 @@ export function LandsSystem({ lands }: { lands: LandsSystemItem[] }) {
                       <LandGlyph glyph={land.glyph} className="h-5 w-5 text-navy-800" />
                       <span className="display-3 !text-[1.1875rem]">{land.title}</span>
                     </span>
-                    <ArrowRight className="text-steel-600" />
+                    <ArrowRight className="text-steel-600 transition-transform group-hover:translate-x-1 rtl:group-hover:-translate-x-1" />
                   </span>
                   <span className="text-[0.9375rem] leading-relaxed text-steel-600">
                     {land.promise}
                   </span>
+
+                  {/* Capability tags */}
+                  {land.capabilities?.length > 0 && (
+                    <div className="mt-2 flex flex-wrap gap-1.5 pt-2 border-t border-ink-950/8">
+                      {land.capabilities.slice(0, 3).map((cap) => (
+                        <span
+                          key={cap}
+                          className="rounded-full bg-offwhite px-2.5 py-1 text-[0.75rem] font-medium text-steel-600 border border-ink-950/8"
+                        >
+                          {cap}
+                        </span>
+                      ))}
+                      {land.capabilities.length > 3 && (
+                        <span className="num px-2 py-1 text-[0.75rem] text-muted font-semibold">
+                          +{land.capabilities.length - 3}
+                        </span>
+                      )}
+                    </div>
+                  )}
                 </div>
               </Link>
             </li>

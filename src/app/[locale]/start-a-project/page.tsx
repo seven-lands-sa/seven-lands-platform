@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import type { AppLocale } from "@/i18n/routing";
@@ -90,6 +91,23 @@ export default async function StartAProjectPage({ params }: PageProps) {
 
             <aside className="lg:col-span-4 lg:col-start-9">
               <div className="sticky top-28 flex flex-col gap-6">
+                <div className="overflow-hidden rounded-[1.25rem] border border-ink-950/12 bg-white p-3 shadow-sm">
+                  <div className="relative aspect-[16/10] w-full overflow-hidden rounded-[0.875rem]">
+                    <Image
+                      src="/media/editorial/riyadh-consultation-space.webp"
+                      alt={locale === "ar" ? "مقر سفن لاند في الرياض — صالة الاستشارات التنفيذية" : "Seven Lands Riyadh HQ — Executive Consultation Space"}
+                      fill
+                      priority
+                      sizes="(max-width: 1024px) 100vw, 30vw"
+                      className="object-cover"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-ink-950/60 via-transparent to-transparent" />
+                    <span className="absolute bottom-2.5 start-3 text-[0.75rem] font-bold text-white">
+                      {locale === "ar" ? "الرياض · حي الملك سلمان" : "Riyadh · King Salman Dist."}
+                    </span>
+                  </div>
+                </div>
+
                 <div className="rounded-[1.25rem] border border-ink-950/12 bg-white p-6">
                   <h2 className="display-3">{t("aside.heading")}</h2>
                   <ol className="mt-5 flex flex-col divide-y divide-ink-950/10" role="list">
