@@ -2,6 +2,8 @@
 
 Bilingual (Arabic-first / English) corporate web application and content management platform for **Seven Lands / سفن لاند** — a premier Saudi full-service growth partner combining strategy, branding, content, social, performance, web, and enterprise software.
 
+> 📖 **للاطلاع على الدليل التقني والهندسي الشامل للمشروع:** راجع [`docs/MASTER_SYSTEM_ARCHITECTURE.md`](docs/MASTER_SYSTEM_ARCHITECTURE.md).
+
 ---
 
 ## 1. Project Authority & Identity
@@ -10,7 +12,7 @@ Bilingual (Arabic-first / English) corporate web application and content managem
 - **Primary Service Account**: `sevenlands.sa@gmail.com`
 - **GitHub Organization / Namespace**: [`seven-lands-sa`](https://github.com/seven-lands-sa)
 - **Official Repository**: `seven-lands-platform` (Private)
-- **Authoritative Release Status**: Release Candidate 1 (RC1) Sealed
+- **Authoritative Release Status**: Production Live (RC1 Final)
 
 ---
 
@@ -18,14 +20,15 @@ Bilingual (Arabic-first / English) corporate web application and content managem
 
 | Layer | Technology | Version / Specification |
 |---|---|---|
-| **Framework** | Next.js (App Router, Server Components) | 15.2+ / React 19 |
-| **CMS Engine** | Payload CMS 3 | Modern Headless CMS |
+| **Framework** | Next.js (App Router, Server Components) | 16.4+ / React 19 / Turbopack |
+| **CMS Engine** | Payload CMS 3 | Modern Headless CMS (Arabic RTL First) |
 | **Database** | PostgreSQL | Neon Serverless (Pooled) |
+| **AI & Voice STT** | GhostMind CoreOne API | Chat Completions & Whisper Audio Transcription |
 | **Media Storage** | Cloudflare R2 | S3-compatible, private by default |
 | **Transactional Email** | Resend | DNS authenticated (SPF, DKIM, DMARC) |
 | **Hosting & Edge** | Vercel | Production + Preview / Staging |
 | **Language & Typing** | TypeScript | Strict mode |
-| **Styling** | Tailwind CSS 4 | Custom design tokens |
+| **Styling** | Tailwind CSS 4 | Custom design tokens & luxury styling |
 | **Localization** | `next-intl` | Arabic (RTL, Primary) + English (LTR) |
 
 ---
@@ -59,6 +62,7 @@ DATABASE_URI=postgres://seven_lands:password@127.0.0.1:5432/seven_lands_dev
 PAYLOAD_SECRET=your_32_byte_hex_secret
 SITE_CANONICAL_URL=https://7-lands.com
 RUNTIME_ORIGIN=http://localhost:3000
+GHOSTMIND_API_KEY=gmk_live__ZkhppflBwxJrB9rM8fPTtwgtkmpb3l6YrnkcpCJ84g
 ```
 
 ### Step 3: Run Database Migrations
