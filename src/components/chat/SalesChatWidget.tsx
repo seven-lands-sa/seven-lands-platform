@@ -61,6 +61,112 @@ export function SalesChatWidget() {
 
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
+  // Audio recording state (Speech-to-Text via GhostMind)
+  const [isRecording, setIsRecording] = useState(false);
+  const [recordingSeconds, setRecordingSeconds] = useState(0);
+  const [transcribing, setTranscribing] = useState(false);
+  const mediaRecorderRef = useRef<MediaRecorder | null>(null);
+  const audioChunksRef = useRef<Blob[]>([]);
+  const recordingTimerRef = useRef<NodeJS.Timeout | null>(null);
+
+  const startRecording = async () => {
+    try {
+      if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
+        alert(isAr ? "المتصفح لا يدعم تسجيل الصوت" : "Microphone not supported on this browser");
+        return;
+      }
+      const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+      audioChunksRef.current = [];
+      const mimeType = MediaRecorder.isTypeSupported("audio/webm")
+        ? "audio/webm"
+        : MediaRecorder.isTypeSupported("audio/mp4")
+        ? "audio/mp4"
+        : "";
+      const mediaRecorder = mimeType ? new MediaRecorder(stream, { mimeType }) : new MediaRecorder(stream);
+      mediaRecorderRef.current = mediaRecorder;
+
+      mediaRecorder.ondataavailable = (event) => {
+        if (event.data.size > 0) {
+          audioChunksRef.current.push(event.data);
+        }
+      };
+
+      mediaRecorder.onstop = async () => {
+        stream.getTracks().forEach((track) => track.stop());
+
+        const audioBlob = new Blob(audioChunksRef.current, {
+          type: mediaRecorder.mimeType || "audio/webm",
+        });
+
+        if (audioBlob.size < 500) {
+          setIsRecording(false);
+          return;
+        }
+
+        setTranscribing(true);
+        try {
+          const formData = new FormData();
+          formData.append("file", audioBlob, "recording.webm");
+
+          const res = await fetch("/api/transcribe", {
+            method: "POST",
+            body: formData,
+          });
+
+          if (res.ok) {
+            const data = await res.json();
+            if (data.text && data.text.trim()) {
+              setInputText((prev) => (prev ? `${prev} ${data.text.trim()}` : data.text.trim()));
+            }
+          }
+        } catch (err) {
+          console.error("Transcription error:", err);
+        } finally {
+          setTranscribing(false);
+          setIsRecording(false);
+          setRecordingSeconds(0);
+        }
+      };
+
+      mediaRecorder.start(250);
+      setIsRecording(true);
+      setRecordingSeconds(0);
+      recordingTimerRef.current = setInterval(() => {
+        setRecordingSeconds((prev) => prev + 1);
+      }, 1000);
+    } catch (err) {
+      console.error("Mic error:", err);
+      alert(isAr ? "يرجى السماح بالوصول للمايكروفون للتحدث" : "Please allow microphone access to record audio");
+      setIsRecording(false);
+    }
+  };
+
+  const stopRecording = () => {
+    if (recordingTimerRef.current) {
+      clearInterval(recordingTimerRef.current);
+      recordingTimerRef.current = null;
+    }
+    if (mediaRecorderRef.current && mediaRecorderRef.current.state === "recording") {
+      mediaRecorderRef.current.stop();
+    }
+  };
+
+  const cancelRecording = () => {
+    if (recordingTimerRef.current) {
+      clearInterval(recordingTimerRef.current);
+      recordingTimerRef.current = null;
+    }
+    if (mediaRecorderRef.current) {
+      mediaRecorderRef.current.onstop = null;
+      if (mediaRecorderRef.current.state === "recording") {
+        mediaRecorderRef.current.stop();
+      }
+    }
+    audioChunksRef.current = [];
+    setIsRecording(false);
+    setRecordingSeconds(0);
+  };
+
   useEffect(() => {
     const greeting: ChatMessage = {
       id: "init",
@@ -394,33 +500,94 @@ export function SalesChatWidget() {
             <div ref={messagesEndRef} />
           </div>
 
-          {/* INPUT BAR */}
+          {/* INPUT BAR WITH VOICE SPEECH-TO-TEXT */}
           <div className="border-t border-ink-950/10 bg-white p-3">
-            <form
-              onSubmit={(e) => {
-                e.preventDefault();
-                handleSend();
-              }}
-              className="flex items-center gap-2"
-            >
-              <input
-                type="text"
-                value={inputText}
-                onChange={(e) => setInputText(e.target.value)}
-                placeholder={isAr ? "اكتب استفسارك هنا..." : "Type your message..."}
-                className="flex-1 rounded-xl border border-ink-950/15 bg-offwhite px-4 py-2.5 text-[0.875rem] text-ink-950 focus:outline-none focus:border-ink-950"
-              />
-              <button
-                type="submit"
-                disabled={!inputText.trim() || loading}
-                aria-label={isAr ? "إرسال" : "Send"}
-                className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-ink-950 text-white transition-opacity hover:opacity-90 disabled:opacity-40"
+            {isRecording ? (
+              <div className="flex items-center justify-between gap-3 rounded-xl border border-rose-300 bg-rose-50/80 px-3.5 py-2 text-rose-950 animate-in fade-in duration-200">
+                <div className="flex items-center gap-2">
+                  <span className="relative flex h-3 w-3">
+                    <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-rose-500 opacity-75" />
+                    <span className="relative inline-flex h-3 w-3 rounded-full bg-rose-600" />
+                  </span>
+                  <span className="text-[0.8125rem] font-bold">
+                    {isAr ? "جارٍ الاستماع..." : "Listening..."}
+                  </span>
+                  <span className="num text-[0.8125rem] font-semibold text-rose-700">
+                    {String(Math.floor(recordingSeconds / 60)).padStart(2, "0")}:
+                    {String(recordingSeconds % 60).padStart(2, "0")}
+                  </span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <button
+                    type="button"
+                    onClick={cancelRecording}
+                    className="flex h-8 w-8 items-center justify-center rounded-lg text-rose-700 hover:bg-rose-200/60"
+                    title={isAr ? "إلغاء التسجيل" : "Cancel recording"}
+                  >
+                    <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                  </button>
+                  <button
+                    type="button"
+                    onClick={stopRecording}
+                    className="flex h-8 px-3 items-center justify-center gap-1.5 rounded-lg bg-rose-600 text-[0.75rem] font-bold text-white shadow-sm hover:bg-rose-700 active:scale-95 transition-all"
+                  >
+                    <span>{isAr ? "تحويل لنص" : "Done"}</span>
+                    <svg className="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            ) : transcribing ? (
+              <div className="flex items-center justify-center gap-2.5 rounded-xl border border-emerald-200 bg-emerald-50/80 px-4 py-2.5 text-[0.8125rem] font-medium text-emerald-900 animate-in fade-in duration-200">
+                <span className="inline-block h-3.5 w-3.5 animate-spin rounded-full border-2 border-emerald-600 border-t-transparent" />
+                <span>{isAr ? "يجري تحويل كلامك إلى نص عبر الذكاء الاصطناعي..." : "Converting speech to text via AI..."}</span>
+              </div>
+            ) : (
+              <form
+                onSubmit={(e) => {
+                  e.preventDefault();
+                  handleSend();
+                }}
+                className="flex items-center gap-2"
               >
-                <ArrowRight className="h-4 w-4" />
-              </button>
-            </form>
+                <input
+                  type="text"
+                  value={inputText}
+                  onChange={(e) => setInputText(e.target.value)}
+                  placeholder={isAr ? "اكتب استفسارك أو تحدث بالمايك..." : "Type your message or use mic..."}
+                  className="flex-1 rounded-xl border border-ink-950/15 bg-offwhite px-4 py-2.5 text-[0.875rem] text-ink-950 focus:outline-none focus:border-ink-950"
+                />
+                <button
+                  type="button"
+                  onClick={startRecording}
+                  aria-label={isAr ? "التحدث بالمايك" : "Voice input"}
+                  title={isAr ? "تسجيل رسالة صوتية وتحويلها لنص" : "Record voice message"}
+                  className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-ink-950/15 bg-offwhite text-steel-600 transition-colors hover:bg-ink-950/5 hover:text-ink-950"
+                >
+                  <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z"
+                    />
+                  </svg>
+                </button>
+                <button
+                  type="submit"
+                  disabled={!inputText.trim() || loading}
+                  aria-label={isAr ? "إرسال" : "Send"}
+                  className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-ink-950 text-white transition-opacity hover:opacity-90 disabled:opacity-40"
+                >
+                  <ArrowRight className="h-4 w-4" />
+                </button>
+              </form>
+            )}
             <div className="mt-2 flex items-center justify-between px-1 text-[0.6875rem] text-muted">
-              <span>{isAr ? "محادثة مشفرة وآمنة" : "Encrypted & secure"}</span>
+              <span>{isAr ? "محادثة مشفرة وآمنة · صوتي وكتابي" : "Encrypted & secure · Voice & Text"}</span>
               <a
                 href="https://wa.me/966507776891"
                 target="_blank"

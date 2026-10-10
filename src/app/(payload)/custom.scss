@@ -619,54 +619,213 @@ select {
   -webkit-font-smoothing: antialiased;
 }
 
-/* ── RTL POLISH & ALIGNMENT ──────────────────────────────────────────────── */
-[dir="rtl"],
-html[dir="rtl"] {
+/* ── RADICAL TRUE RTL LAYOUT TRANSFORMATION ──────────────────────────────── */
+html[dir="rtl" i],
+html[dir="RTL"],
+[dir="rtl" i],
+[dir="RTL"],
+html[lang="ar"],
+body:has([dir="rtl" i]) {
+  direction: rtl;
   text-align: right;
 
+  /* 1. Base Layout Grid: Nav moves to the RIGHT */
+  .template-default {
+    direction: rtl !important;
+    display: grid !important;
+    grid-template-columns: 1fr var(--nav-width, 275px) !important;
+
+    .nav {
+      grid-column: 2 !important;
+      left: auto !important;
+      right: 0 !important;
+      border-left: 1px solid var(--theme-elevation-150) !important;
+      border-right: none !important;
+      direction: rtl !important;
+      text-align: right !important;
+    }
+
+    .template-default__wrap {
+      grid-column: 1 !important;
+      direction: rtl !important;
+      text-align: right !important;
+      margin-right: 0 !important;
+    }
+  }
+
+  /* Nav toggler button */
+  .template-default__nav-toggler-wrapper {
+    left: 0 !important;
+    right: auto !important;
+  }
+
+  /* 2. Top App Header: Logo & Breadcrumbs on Right, User & Lang on Left */
+  .app-header {
+    direction: rtl !important;
+    display: flex !important;
+    flex-direction: row-reverse !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+
+    .app-header__logo {
+      order: 10 !important;
+    }
+
+    .step-nav {
+      order: 9 !important;
+      direction: rtl !important;
+      display: flex !important;
+      align-items: center !important;
+
+      ol, ul {
+        direction: rtl !important;
+        display: flex !important;
+        flex-direction: row !important;
+        align-items: center !important;
+        gap: 0.5rem !important;
+      }
+
+      svg {
+        transform: rotate(180deg) !important;
+      }
+    }
+
+    .app-header__controls {
+      order: 1 !important;
+      direction: rtl !important;
+      display: flex !important;
+      align-items: center !important;
+      gap: 0.75rem !important;
+    }
+  }
+
+  /* 3. Dashboard Groups and Collection Cards */
+  .dashboard {
+    direction: rtl !important;
+    text-align: right !important;
+
+    &__group-header {
+      direction: rtl !important;
+      text-align: right !important;
+    }
+  }
+
+  .card {
+    direction: rtl !important;
+    text-align: right !important;
+    display: flex !important;
+    flex-direction: row-reverse !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+
+    .card__title {
+      text-align: right !important;
+      margin-left: auto !important;
+      margin-right: 0 !important;
+    }
+
+    .card__actions {
+      margin-left: 0 !important;
+      margin-right: auto !important;
+      display: flex !important;
+      align-items: center !important;
+    }
+  }
+
+  /* 4. Navigation Sidebar Elements */
   .nav {
-    border-left: 1px solid var(--theme-elevation-150);
-    border-right: none;
-    text-align: right;
+    .nav__scroll {
+      direction: rtl !important;
+      text-align: right !important;
+    }
+
+    .nav-group__toggle,
+    .nav__link {
+      direction: rtl !important;
+      text-align: right !important;
+      display: flex !important;
+      flex-direction: row-reverse !important;
+      justify-content: flex-end !important;
+      align-items: center !important;
+      gap: 0.75rem !important;
+
+      .nav__link-icon,
+      svg {
+        margin-left: 0.5rem !important;
+        margin-right: 0 !important;
+      }
+    }
+
+    .nav-group__label {
+      text-align: right !important;
+      display: block !important;
+    }
   }
 
-  .nav__scroll {
-    text-align: right;
+  /* 5. Collection List Tables */
+  .collection-list {
+    direction: rtl !important;
+
+    .table {
+      direction: rtl !important;
+      text-align: right !important;
+
+      th, td {
+        text-align: right !important;
+      }
+    }
+
+    .list-controls {
+      direction: rtl !important;
+      display: flex !important;
+      flex-direction: row-reverse !important;
+      justify-content: space-between !important;
+    }
   }
 
-  .nav__link,
-  .nav-group__toggle {
-    flex-direction: row-reverse;
-    justify-content: flex-end;
-    text-align: right;
-    gap: 0.75rem;
+  /* 6. Document Header and Controls */
+  .doc-header {
+    direction: rtl !important;
+    display: flex !important;
+    flex-direction: row-reverse !important;
+    justify-content: space-between !important;
+
+    &__controls {
+      display: flex !important;
+      flex-direction: row-reverse !important;
+      gap: 0.75rem !important;
+    }
   }
 
+  /* 7. Forms, Labels, and Fields */
   .field-type {
-    text-align: right;
-  }
+    direction: rtl !important;
+    text-align: right !important;
 
-  .field-type label,
-  .field-label {
-    text-align: right;
-    display: block;
-    font-weight: 600;
-  }
+    label,
+    .field-label {
+      direction: rtl !important;
+      text-align: right !important;
+      display: block !important;
+      font-weight: 600 !important;
+    }
 
-  .field-description {
-    text-align: right;
-    font-size: 0.85rem;
-    opacity: 0.85;
+    .field-description {
+      direction: rtl !important;
+      text-align: right !important;
+      font-size: 0.85rem !important;
+      opacity: 0.85 !important;
+    }
   }
 
   input[type="text"],
   input[type="password"],
   textarea {
-    text-align: right;
-    direction: rtl;
+    direction: rtl !important;
+    text-align: right !important;
   }
 
-  /* Keep technical strings LTR */
+  /* Technical Identifiers stay LTR */
   input[name*="url"],
   input[name*="slug"],
   input[name*="key"],
@@ -680,32 +839,19 @@ html[dir="rtl"] {
     text-align: left !important;
   }
 
-  .table th,
-  .table td {
-    text-align: right;
-  }
-
-  .doc-header__controls {
-    flex-direction: row-reverse;
-    gap: 0.75rem;
-  }
-
-  .step-nav {
-    flex-direction: row;
-    direction: rtl;
-  }
-
-  .step-nav svg,
-  .breadcrumb svg {
-    transform: rotate(180deg);
-  }
-
   .tabs-nav {
-    direction: rtl;
+    direction: rtl !important;
+    display: flex !important;
+    justify-content: flex-start !important;
   }
 
   .popup__content {
-    text-align: right;
+    direction: rtl !important;
+    text-align: right !important;
+  }
+
+  .localizer-button {
+    direction: rtl !important;
   }
 }
 
