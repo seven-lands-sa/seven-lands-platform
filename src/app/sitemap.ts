@@ -2,6 +2,7 @@ import type { MetadataRoute } from "next";
 import { routing } from "@/i18n/routing";
 import { CONTENT_UPDATED_AT, site } from "@/content/site";
 import { lands } from "@/content/services";
+import { publishedArticles } from "@/content/insights";
 import { listPagePublications } from "@/lib/pages/adapter";
 
 /**
@@ -82,6 +83,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         changeFrequency: "monthly" as const,
         priority: 0.8,
         alternates: alternatesFor(`/services/${land.slug}`),
+      })),
+      ...publishedArticles.map((article) => ({
+        url: `${site.url}/${locale}/insights/${article.slug}`,
+        lastModified: new Date(`${article.date}T00:00:00Z`),
+        changeFrequency: "monthly" as const,
+        priority: 0.7,
+        alternates: alternatesFor(`/insights/${article.slug}`),
       })),
     ];
   });

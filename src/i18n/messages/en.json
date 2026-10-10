@@ -58,8 +58,8 @@
       "description": "One team for strategy, creative and technology — working from Buraydah, Al Qassim, with businesses across Saudi Arabia."
     },
     "insights": {
-      "title": "Insights",
-      "description": "Notes from the work itself: what works, what doesn't, and how decisions get made in marketing and technology."
+      "title": "Insights & Analyses — Seven Lands Growth & Creative Advisory",
+      "description": "Strategic articles and case analyses on brand architecture, e-commerce conversion, commercial cinema, performance marketing, and software automation in Saudi Arabia."
     },
     "start": {
       "title": "Start a project",
@@ -190,11 +190,19 @@
   },
   "insights": {
     "hero": {
-      "eyebrow": "Insights",
-      "title": "Insights",
-      "lede": "Notes from the work itself, with no filler to fill a page."
+      "eyebrow": "Executive Insights & Field Analysis",
+      "title": "Actionable Perspectives on Brand & Digital Growth",
+      "lede": "Executive analyses and strategic blueprints derived from our hands-on work building brands, high-speed commerce, and performance engines across the Saudi market."
     },
-    "backToInsights": "All insights"
+    "backToInsights": "All Insights & Analyses",
+    "featuredLabel": "Featured Reading",
+    "latestLabel": "Latest Strategic Analyses",
+    "filterAll": "All Disciplines",
+    "readingTime": "{minutes} min read",
+    "relatedService": "Related Seven Lands Solutions",
+    "keyTakeaways": "Executive Summary",
+    "shareArticle": "Share Article",
+    "authorLabel": "By"
   },
   "about": {
     "hero": {
