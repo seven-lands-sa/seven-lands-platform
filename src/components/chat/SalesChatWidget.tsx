@@ -69,7 +69,16 @@ export function SalesChatWidget() {
       return;
     }
 
-    if (text === "طلب عرض سعر أو استشارة" || text === "Request a Project Consultation" || text === "طلب عرض سعر لمشروع") {
+    if (
+      text === "طلب عرض سعر أو استشارة" ||
+      text === "Request a Project Consultation" ||
+      text === "طلب عرض سعر لمشروع" ||
+      text === "تزويدكم ببيانات مشروعي" ||
+      text === "حجز جلسة استكشافية" ||
+      text === "طلب خطة إعلانية مخصصة" ||
+      text === "Share Project Scope" ||
+      text === "Book Consultation"
+    ) {
       setLeadFormActive(true);
       const userMsg: ChatMessage = {
         id: String(Date.now()),
@@ -81,8 +90,8 @@ export function SalesChatWidget() {
         id: String(Date.now() + 1),
         sender: "bot",
         text: isAr
-          ? "يسعدنا خدمتك! يرجى تزويدنا ببيانات التواصل الأساسية ليرتبط بك مستشار النمو في سفن لاند ويعد لك مقترحاً مخصصاً:"
-          : "We are pleased to assist! Please provide your contact details so a Seven Lands growth advisor can prepare your tailored proposal:",
+          ? "أبشر بسعدك! 🌟 يرجى تزويدنا ببيانات التواصل الأساسية ليرتبط بك مستشار النمو في سفن لاند ويعد لك دراسة ونطاق عمل مخصص:"
+          : "Delighted to assist! 🌟 Please share your contact details so our growth advisor can prepare a tailored strategy for your business:",
         timestamp: new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" }),
         showLeadForm: true,
       };
@@ -103,10 +112,18 @@ export function SalesChatWidget() {
     setLoading(true);
 
     try {
+      const history = messages
+        .filter((m) => m.id !== "init")
+        .slice(-6)
+        .map((m) => ({
+          role: m.sender === "user" ? "user" : "assistant",
+          content: m.text,
+        }));
+
       const res = await fetch("/api/chat", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ message: text, locale }),
+        body: JSON.stringify({ message: text, locale, history }),
       });
       const data = await res.json();
 

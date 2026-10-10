@@ -2805,6 +2805,21 @@ export interface SiteSetting {
      */
     businessCategory?: string | null;
   };
+  ai?: {
+    enabled?: boolean | null;
+    /**
+     * افتراضيًا: auto (أو chatgpt / openai_direct)
+     */
+    model?: string | null;
+    /**
+     * المفتاح السري للربط مع GhostMind Core. إذا تُرِك فارغاً، سيعتمد النظام على المفتاح المعرّف في بيئة التشغيل تلقائياً.
+     */
+    ghostmindApiKey?: string | null;
+    /**
+     * اتركه فارغاً لاعتماد الشخصية السعودية الاحترافية المدمجة في المنصة والمدربة على إغلاق الصفقات وشرح المجالات السبعة لسفن لاند.
+     */
+    systemPromptOverride?: string | null;
+  };
   updatedAt?: string | null;
   createdAt?: string | null;
 }
@@ -3333,6 +3348,14 @@ export interface SiteSettingsSelect<T extends boolean = true> {
     | T
     | {
         businessCategory?: T;
+      };
+  ai?:
+    | T
+    | {
+        enabled?: T;
+        model?: T;
+        ghostmindApiKey?: T;
+        systemPromptOverride?: T;
       };
   updatedAt?: T;
   createdAt?: T;

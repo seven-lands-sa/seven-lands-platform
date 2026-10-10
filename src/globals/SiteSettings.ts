@@ -52,6 +52,7 @@ export const SiteSettings: GlobalConfig = {
       localization: "اللغة والمنطقة الزمنية",
       location: "الموقع الجغرافي",
       general: "معلومات عامة",
+      ai: "مساعد الذكاء الاصطناعي",
     },
   }),
   fields: [
@@ -280,6 +281,58 @@ export const SiteSettings: GlobalConfig = {
                   label: "تصنيف النشاط",
                   description: "يُستخدم في بيانات البحث المنظَّمة وفي التعريف المختصر.",
                 }),
+              ],
+            },
+          ],
+        },
+        {
+          label: "الذكاء الاصطناعي (AI & Chat)",
+          fields: [
+            {
+              name: "ai",
+              type: "group",
+              label: "إعدادات GhostMind Core ومساعد المبيعات",
+              fields: [
+                {
+                  type: "row",
+                  fields: [
+                    {
+                      name: "enabled",
+                      type: "checkbox",
+                      label: "تفعيل مساعد الذكاء الاصطناعي",
+                      defaultValue: true,
+                      admin: { width: "50%" },
+                    },
+                    {
+                      name: "model",
+                      type: "text",
+                      label: "محرك الذكاء الاصطناعي (Model)",
+                      defaultValue: "auto",
+                      admin: {
+                        width: "50%",
+                        description: "افتراضيًا: auto (أو chatgpt / openai_direct)",
+                      },
+                    },
+                  ],
+                },
+                {
+                  name: "ghostmindApiKey",
+                  type: "text",
+                  label: "مفتاح الربط مع منصة GhostMind API Key",
+                  admin: {
+                    description:
+                      "المفتاح السري للربط مع GhostMind Core. إذا تُرِك فارغاً، سيعتمد النظام على المفتاح المعرّف في بيئة التشغيل تلقائياً.",
+                  },
+                },
+                {
+                  name: "systemPromptOverride",
+                  type: "textarea",
+                  label: "تخصيص تعليمات وشخصية المساعد الذكي (اختياري)",
+                  admin: {
+                    description:
+                      "اتركه فارغاً لاعتماد الشخصية السعودية الاحترافية المدمجة في المنصة والمدربة على إغلاق الصفقات وشرح المجالات السبعة لسفن لاند.",
+                  },
+                },
               ],
             },
           ],

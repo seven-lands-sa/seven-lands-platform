@@ -11,6 +11,7 @@ import * as migration_20261008_220122_phase_h_leads_collection from './20261008_
 import * as migration_20261008_223729_phase_g_graphql_enum_sanitize from './20261008_223729_phase_g_graphql_enum_sanitize';
 import * as migration_20261008_225211_phase_g_redirects_collection from './20261008_225211_phase_g_redirects_collection';
 import * as migration_20261008_234513_phase_i_tracking_consent_globals from './20261008_234513_phase_i_tracking_consent_globals';
+import * as migration_20261010_070000_ghostmind_ai_settings from './20261010_070000_ghostmind_ai_settings';
 
 export const migrations = [
   {
@@ -77,5 +78,10 @@ export const migrations = [
     up: migration_20261008_234513_phase_i_tracking_consent_globals.up,
     down: migration_20261008_234513_phase_i_tracking_consent_globals.down,
     name: '20261008_234513_phase_i_tracking_consent_globals'
+  },
+  {
+    up: migration_20261010_070000_ghostmind_ai_settings.up,
+    down: migration_20261010_070000_ghostmind_ai_settings.down,
+    name: '20261010_070000_ghostmind_ai_settings'
   },
 ];

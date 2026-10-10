@@ -120,8 +120,8 @@ export default async function AboutPage({ params }: PageProps) {
             <div className="mt-8 overflow-hidden rounded-[1.25rem] border border-ink-950/10 shadow-md">
               <div className="relative aspect-[16/10] w-full overflow-hidden">
                 <Image
-                  src="/media/editorial/riyadh-consultation-space.webp"
-                  alt={locale === "ar" ? "مساحة الاستشارات والترحيب بشركاء الأعمال في الرياض" : "Client Consultation Lounge — Seven Lands Riyadh"}
+                  src="/media/editorial/creative-branding-studio.webp"
+                  alt={locale === "ar" ? "استوديو الإبداع وصناعة الهويات التجارية في الرياض" : "Creative Branding & Identity Studio — Seven Lands Riyadh"}
                   fill
                   sizes="(max-width: 1024px) 100vw, 40vw"
                   className="object-cover transition-transform duration-500 hover:scale-105"
@@ -241,20 +241,31 @@ export default async function AboutPage({ params }: PageProps) {
               </div>
             </dl>
 
-            <div className="mt-8 rounded-[1.25rem] border border-ink-950/12 bg-white p-6">
-              <h3 className="display-3">{t("locationHeading")}</h3>
-              <p className="mt-4 text-[0.9375rem] leading-[1.9] text-steel-600">{t("locationBody")}</p>
-              <a
-                href={identity.location.mapsUrl ?? undefined}
-                target="_blank"
-                rel="noopener noreferrer"
-                data-analytics="maps_click"
-                data-analytics-location="about"
-                className="mt-5 inline-flex items-center gap-2.5 text-[0.9375rem] font-semibold text-navy-800 underline-offset-[6px] hover:underline"
-              >
-                <PinIcon />
-                <span>{identity.location.display}</span>
-              </a>
+            <div className="mt-8 overflow-hidden rounded-[1.25rem] border border-ink-950/12 bg-white shadow-sm">
+              <div className="relative aspect-[16/9] w-full overflow-hidden border-b border-ink-950/8">
+                <Image
+                  src="/media/editorial/tech-performance-hub.webp"
+                  alt={locale === "ar" ? "بيئة العمل المتقدمة وأنظمة تحليلات النمو الرقمي في الرياض" : "Advanced Growth Analytics & Technology Hub — Seven Lands Riyadh"}
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 40vw"
+                  className="object-cover transition-transform duration-500 hover:scale-105"
+                />
+              </div>
+              <div className="p-6">
+                <h3 className="display-3">{t("locationHeading")}</h3>
+                <p className="mt-4 text-[0.9375rem] leading-[1.9] text-steel-600">{t("locationBody")}</p>
+                <a
+                  href={identity.location.mapsUrl ?? undefined}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  data-analytics="maps_click"
+                  data-analytics-location="about"
+                  className="mt-5 inline-flex items-center gap-2.5 text-[0.9375rem] font-semibold text-navy-800 underline-offset-[6px] hover:underline"
+                >
+                  <PinIcon />
+                  <span>{identity.location.display}</span>
+                </a>
+              </div>
             </div>
           </div>
         </div>

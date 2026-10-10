@@ -178,12 +178,12 @@ export default async function ContactPage({ params }: PageProps) {
                 <div className="overflow-hidden rounded-[1.25rem] border border-ink-950/12 bg-white p-3 shadow-sm">
                   <div className="relative aspect-[16/10] w-full overflow-hidden rounded-[0.875rem]">
                     <Image
-                      src="/media/editorial/riyadh-consultation-space.webp"
-                      alt={locale === "ar" ? "مقر سفن لاند في الرياض — صالة الاستشارات" : "Seven Lands Riyadh HQ — Consultation Lounge"}
+                      src="/media/editorial/riyadh-client-consultation.webp"
+                      alt={locale === "ar" ? "مقر سفن لاند في الرياض — صالة استقبال واستشارات العملاء" : "Seven Lands Riyadh HQ — Client Reception & Consultation Lounge"}
                       fill
                       priority
                       sizes="(max-width: 1024px) 100vw, 30vw"
-                      className="object-cover"
+                      className="object-cover transition-transform duration-700 hover:scale-105"
                     />
                   </div>
                 </div>
